@@ -13,7 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
+//     return view('single-page');
+// });
+Route::get('home', function () {
+    return view('index');
+});
+Route::get('contact', function () {
+    return view('contact');
+});
+Route::get('single', function () {
     return view('single-page');
 });
 
