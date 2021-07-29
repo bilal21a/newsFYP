@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2021 at 11:20 AM
+-- Generation Time: Jul 29, 2021 at 02:17 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -405,8 +405,8 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` int(11) NOT NULL,
-  `del` int(11) NOT NULL,
+  `type` int(11) DEFAULT NULL,
+  `del` int(11) DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -422,7 +422,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `ty
 (11, 'kazi', 'kazi@gmail.com', NULL, '$2y$10$E6RyBnStoxgUUdHFlMNDw.ZCE7yWi0aFpvLNJBGgRt.KlyDxxWxQC', 2, 1, 'tBjMNPh5QTfIHwLWGMlC1PnNKk9HwrbtI9ixnp4N5FxWASYYXV7WiKNHSrXW', '2020-07-05 06:17:09', '2020-07-11 04:36:11'),
 (25, 'user', 'user@gmail.com', NULL, '$2y$10$JIE2GTVvdHS2bLbaOSNJ7.eWTrgDOFU2ic9ii4SUcUF3oLQK1xDTi', 3, 1, NULL, '2020-07-29 05:19:35', '2020-07-29 05:19:35'),
 (26, 'ali', 'ali@gmail.com', NULL, '$2y$10$c35TixBoKvzLWiIVdgH1t.InxJlWAvJYUdRv1dCaQW/7qz4ur2/I2', 3, 1, NULL, '2020-07-29 08:30:30', '2020-07-29 08:30:30'),
-(27, 'Bilal', 'bilal@gmail.com', NULL, '$2y$10$hAK3CiMYDYAlpaaTmlI57OJCRF52k1X38eAah0zPi.uflU9IEnQ6m', 3, 1, NULL, '2021-07-28 02:53:36', '2021-07-28 02:53:36');
+(27, 'Bilal', 'bilal@gmail.com', NULL, '$2y$10$hAK3CiMYDYAlpaaTmlI57OJCRF52k1X38eAah0zPi.uflU9IEnQ6m', 3, 1, NULL, '2021-07-28 02:53:36', '2021-07-28 02:53:36'),
+(28, 'bilal', 'bilo@gmail.com', NULL, '$2y$10$3NgLQRqGDLRpWanJZxhBeub2LaDe84hcxWEUbo1CATbUlDb/aloUa', NULL, NULL, NULL, '2021-07-29 05:20:44', '2021-07-29 05:20:44');
 
 --
 -- Indexes for dumped tables
@@ -589,7 +590,7 @@ ALTER TABLE `taggable_tags`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
