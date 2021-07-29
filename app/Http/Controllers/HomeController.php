@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -26,10 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // dd("inside");
-        $all_post=Post::all();
-        // dd($all_post);
-
-        return view('user.index', compact('all_post'));
+        return view('home');
     }
 }
