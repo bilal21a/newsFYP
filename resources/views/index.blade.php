@@ -71,9 +71,11 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav m-auto">
                             <a href="index.html" class="nav-item nav-link active">Home</a>
-                            <a href="#" class="nav-item nav-link">Sports</a>
-                            <a href="#" class="nav-item nav-link">Tech</a>
-                            <a href="#" class="nav-item nav-link">Fashion</a>
+
+                            @foreach ($category as $cat)
+                                <a href="#" class="nav-item nav-link">{{$cat->name}}</a>
+                            @endforeach
+
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                                 <div class="dropdown-menu">
@@ -81,8 +83,6 @@
                                     <a href="#" class="dropdown-item">Sub Item 2</a>
                                 </div>
                             </div>
-                            <a href="single-page.html" class="nav-item nav-link">Single Page</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                         </div>
                     </div>
                 </nav>
@@ -97,61 +97,41 @@
                 <div class="row">
                     <div class="col-md-6 tn-left">
                         <div class="tn-img">
-                            <img src="img/top-news-1.jpg" />
+                            <img src="{{asset('img/main_image/'.$posts_most_viewed->main_image)}}" />
                             <div class="tn-content">
                                 <div class="tn-content-inner">
-                                    <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                    <a class="tn-title" href="">Lorem ipsum dolor sit amet adipiscing elit</a>
+                                    <?php
+                                    $date_most_viewed= $posts_most_viewed['created_at'];
+                                    $old_date_timestamp_most_viewed = strtotime($date_most_viewed);
+                                    $new_date_most_viewed = date('F d, Y', $old_date_timestamp_most_viewed);
+                                    ?>
+                                    <a class="tn-date" href=""><i class="far fa-clock"></i>{{ $new_date_most_viewed }}</a>
+                                    <a class="tn-title" href="">{{ $posts_most_viewed->title }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 tn-right">
                         <div class="row">
+                            @foreach ($posts_most_viewed_2 as $post_most_viewed_2)
                             <div class="col-md-6">
                                 <div class="tn-img">
-                                    <img src="img/top-news-2.jpg" />
+                                    <img src="{{asset('img/main_image/'.$post_most_viewed_2['main_image'])}}" />
                                     <div class="tn-content">
+                                        <?php
+                                        $date_most_viewed_2= $post_most_viewed_2['created_at'];
+                                        $old_date_timestamp_most_viewed_2 = strtotime($date_most_viewed_2);
+                                        $new_date_most_viewed_2 = date('F d, Y', $old_date_timestamp_most_viewed_2);
+                                        ?>
                                         <div class="tn-content-inner">
-                                            <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="tn-title" href="">Integer faucibus pharetra odio</a>
+                                            <a class="tn-date" href=""><i class="far fa-clock"></i>{{ $new_date_most_viewed_2 }}</a>
+                                            <a class="tn-title" href="">{{ $post_most_viewed_2['title'] }}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="tn-img">
-                                    <img src="img/top-news-3.jpg" />
-                                    <div class="tn-content">
-                                        <div class="tn-content-inner">
-                                            <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="tn-title" href="">Nulla vitae pharetra ligula</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="tn-img">
-                                    <img src="img/top-news-4.jpg" />
-                                    <div class="tn-content">
-                                        <div class="tn-content-inner">
-                                            <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="tn-title" href="">Ut ac euismod tellus a blandit</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="tn-img">
-                                    <img src="img/top-news-5.jpg" />
-                                    <div class="tn-content">
-                                        <div class="tn-content-inner">
-                                            <a class="tn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="tn-title" href="">Cras ac egestas sem nec euismod</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -164,172 +144,49 @@
         <div class="cat-news">
             <div class="container-fluid">
                 <div class="row">
+                    @foreach ($post_count as $count)
+                    <?php
+                    $category_topFour= App\Category::where('status', 1)->where('id', $count)->first();
+                    $category_post= App\Post::where('status', 1)->where('category_id', $count)->get();
+                    ?>
+
                     <div class="col-md-6">
-                        <h2><i class="fas fa-align-justify"></i>Sports</h2>
+                        <h2><i class="fas fa-align-justify"></i>{{$category_topFour->name}}</h2>
                         <div class="row cn-slider">
+
+                            @foreach ($category_post as $cat_data)
+                            <?php
+                                $date= $cat_data['created_at'];
+                                $old_date_timestamp = strtotime($date);
+                                $new_date = date('F d, Y', $old_date_timestamp);
+                            ?>
                             <div class="col-md-6">
                                 <div class="cn-img">
-                                    <img src="img/cat-news-1.jpg" />
+                                    <img src="{{asset('img/main_image/'.$cat_data->main_image)}}" />
                                     <div class="cn-content">
                                         <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Cras sed semper puru vitae lobortis velit</a>
+                                            <a class="cn-date" href=""><i class="far fa-clock"></i>{{$new_date}}</a>
+                                            <a class="cn-title" href="">{{$cat_data->title}}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-2.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Vestibulum ante ipsum primis</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-3.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Sed quis convallis lacus</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+
+
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <h2><i class="fas fa-align-justify"></i>Technology</h2>
-                        <div class="row cn-slider">
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-4.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Vivamus vel felis nec magna</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-5.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Phasellus vitae fermentum est</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-6.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Aenean ut varius dui</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
+
+
                 </div>
             </div>
         </div>
         <!-- Category News End-->
 
 
-        <!-- Category News Start-->
-        <div class="cat-news">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h2><i class="fas fa-align-justify"></i>Business</h2>
-                        <div class="row cn-slider">
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-7.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Interdum et malesuada fames ac ante</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-8.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Mauris non ligula eget ante sagittis</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-9.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Integer non nunc nec nulla aliquet</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h2><i class="fas fa-align-justify"></i>Entertainment</h2>
-                        <div class="row cn-slider">
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-10.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Ut laoreet justo non ornare</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-11.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Proin a nulla ut enim feugiat</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="cn-img">
-                                    <img src="img/cat-news-12.jpg" />
-                                    <div class="cn-content">
-                                        <div class="cn-content-inner">
-                                            <a class="cn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                                            <a class="cn-title" href="">Sed mauris sem sollicitudin at neque</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Category News End-->
+
 
 
         <!-- Main News Start-->
@@ -475,13 +332,9 @@
                                 <h2><i class="fas fa-align-justify"></i>Category</h2>
                                 <div class="category">
                                     <ul class="fa-ul">
-                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">National</a></li>
-                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">International</a></li>
-                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Economics</a></li>
-                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Politics</a></li>
-                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Lifestyle</a></li>
-                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Technology</a></li>
-                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">Trades</a></li>
+                                        @foreach ($category as $cat)
+                                        <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i></span><a href="">{{ $cat->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -581,7 +434,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-widget">
                             <h3 class="title">Newsletter</h3>
@@ -636,7 +489,7 @@
 
         <!-- Template Javascript -->
         <script src="{{asset('js/main.js')}}"></script>
-        
+
         <!-- <script src="js/main.js"></script> -->
     </body>
 </html>

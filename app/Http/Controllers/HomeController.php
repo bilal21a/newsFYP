@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use PDO;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,44 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //section 1
+        $posts_most_viewed= Post::where('status', 1)->orderBy('view_count', 'desc')->first();
+
+        //section 1.1
+        $posts_most_viewed_2= Post::where('status', 1)->orderBy('view_count', 'desc')->take(5)->get()->toArray();
+        array_shift($posts_most_viewed_2);
+
+
+
+
+        //section 2
+        $category= Category::where('status', 1)->get();
+        $posts= Post::where('status', 1)->get();
+
+
+
+        $post_raw= Post::where('status', 1)
+        ->select('category_id')->get()->toArray();
+
+        //show top 4 catogories with most posts
+        foreach($post_raw as $single){
+            $post_items[] = $single['category_id'];
+        }
+        $post_count=array_count_values($post_items);
+        $post_count_flip=array_flip($post_count);
+        $post_count = array_slice($post_count_flip, 0, 4);
+
+
+
+        // dd($post_count_flip);
+
+
+         //setting data
+         $this->data['category'] = $category;
+         $this->data['posts'] = $posts;
+         $this->data['post_count'] = $post_count;
+         $this->data['posts_most_viewed'] = $posts_most_viewed;
+         $this->data['posts_most_viewed_2'] = $posts_most_viewed_2;
+        return view('index',$this->data);
     }
 }
