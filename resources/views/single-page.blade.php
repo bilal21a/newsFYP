@@ -98,9 +98,9 @@
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">News</a></li>
-                    <li class="breadcrumb-item active">News details</li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">{{ $post->name }}</a></li>
+                    <li class="breadcrumb-item active">{{ $post->title }}</li>
                 </ul>
             </div>
         </div>
@@ -113,20 +113,19 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="sn-img">
-                            <img src="{{asset('img/top-news-1.jpg')}}" />
-                        </div>
+                            <img src="{{asset('img/main_image/'.$post->main_image)}}" />
+                        </div>\
+                        <?php
+                            $date= $post->created_at;
+                            $old_date_timestamp = strtotime($date);
+                            $new_date = date('F d, Y', $old_date_timestamp);
+                        ?>
                         <div class="sn-content">
-                            <a class="sn-title" href="">Lorem ipsum dolor sit amet</a>
-                            <a class="sn-date" href=""><i class="far fa-clock"></i>05-Feb-2020</a>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique dictum tincidunt. Nam rhoncus sem vitae orci blandit, quis fermentum justo laoreet. Fusce vestibulum orci vitae luctus tincidunt. Maecenas eros elit, scelerisque at justo eget, consectetur semper turpis. Proin pulvinar lorem eu sapien fermentum, sed finibus augue convallis. Aliquam ultrices porta gravida. Vestibulum nec libero sit amet enim consequat facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras facilisis massa eget suscipit venenatis. Suspendisse et molestie diam. Vestibulum in massa dapibus, blandit nibh ut, feugiat leo.
-                            </p>
-                            <p>
-                                Nulla consectetur risus libero. Donec mattis tortor justo, ac egestas purus condimentum in. Etiam viverra nec metus quis egestas. Nulla commodo, lectus nec dictum malesuada, tortor tellus consequat nisi, sit amet dictum erat tellus in libero. In dignissim lectus quis elit posuere, sit amet tempor nisi iaculis. Curabitur eget ante in libero laoreet finibus nec et libero. In hac habitasse platea dictumst. Morbi tincidunt ex non odio auctor tristique. Nulla facilisi. Maecenas ullamcorper, felis eget interdum semper, mi ipsum auctor magna, ut ullamcorper leo metus vitae ex. Curabitur eu tempor elit. Phasellus blandit elit fringilla, ultricies ligula sed, pretium ligula. Duis condimentum elementum orci, pulvinar mattis elit luctus at. Vestibulum lacinia porttitor urna, eget aliquet justo porta sed. Cras pulvinar euismod consectetur. Vestibulum quis nisi non erat feugiat viverra.
-                            </p>
-                            <p>
-                                Aliquam eleifend pharetra nunc, et finibus felis tristique nec. Ut mattis nisi ante, vel varius ipsum consectetur sit amet. Donec sed eros at magna sollicitudin molestie. Cras quis malesuada felis. Maecenas sodales nunc sit amet lobortis iaculis. Etiam eget consectetur sem, et aliquet justo. Curabitur at viverra lacus, eget feugiat erat. Fusce lacinia faucibus diam ut vestibulum. Vestibulum nisi sem, lacinia ullamcorper iaculis a, finibus eget mauris. Vestibulum elementum quam quam, sit amet condimentum odio luctus at. Aenean dictum nec nisi vitae hendrerit. Nulla facilisi.
-                            </p>
+                            <a class="sn-title" href="">{{ $post->title }}</a>
+                            <a class="sn-date" href=""><i class="far fa-clock"></i>{{ $new_date }}</a>
+                            <p>{{ $post->short_description }}</p><br>
+                            <h4>Description</h4>
+                            <p>{{ $post->description }}</p>
                         </div>
                     </div>
 

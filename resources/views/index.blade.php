@@ -106,7 +106,7 @@
                                     $new_date_most_viewed = date('F d, Y', $old_date_timestamp_most_viewed);
                                     ?>
                                     <a class="tn-date" href=""><i class="far fa-clock"></i>{{ $new_date_most_viewed }}</a>
-                                    <a class="tn-title" href="">{{ $posts_most_viewed->title }}</a>
+                                    <a class="tn-title" href="{{ URL('single_post/'.$posts_most_viewed->id )}}">{{ $posts_most_viewed->title }}</a>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                                         ?>
                                         <div class="tn-content-inner">
                                             <a class="tn-date" href=""><i class="far fa-clock"></i>{{ $new_date_most_viewed_2 }}</a>
-                                            <a class="tn-title" href="">{{ $post_most_viewed_2['title'] }}</a>
+                                            <a class="tn-title" href="{{ URL('single_post/'.$post_most_viewed_2['id'] )}}">{{ $post_most_viewed_2['title'] }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                     <div class="cn-content">
                                         <div class="cn-content-inner">
                                             <a class="cn-date" href=""><i class="far fa-clock"></i>{{$new_date}}</a>
-                                            <a class="cn-title" href="">{{$cat_data->title}}</a>
+                                            <a class="cn-title" href="{{ URL('single_post/'.$cat_data->id )}}">{{$cat_data->title}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -208,7 +208,7 @@
                                             $new_date_latest_first = date('F d, Y', $old_date_timestamp_latest_first);
                                         ?>
                                         <div class="mn-content">
-                                            <a class="mn-title" href="">{{ $posts_latest_first['title'] }}</a>
+                                            <a class="mn-title" href="{{ URL('single_post/'.$posts_latest_first['id'] )}}">{{ $posts_latest_first['title'] }}</a>
                                             <a class="mn-date" href=""><i class="far fa-clock"></i>{{ $new_date_latest_first }}</a>
                                             <p> {{ substr($posts_latest_first['short_description'],0,100) }} ...</p>
                                         </div>
@@ -226,7 +226,7 @@
                                                 $new_date_single = date('F d, Y', $old_date_single);
                                             ?>
                                             <div class="mn-content">
-                                                <a class="mn-title" href="">{{$single['title'] }}</a>
+                                                <a class="mn-title" href="{{ URL('single_post/'.$single['id'] )}}">{{$single['title'] }}</a>
                                                 <a class="mn-date" href=""><i class="far fa-clock"></i>{{ $new_date_single }}</a>
                                             </div>
                                         </div>

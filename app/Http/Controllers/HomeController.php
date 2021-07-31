@@ -29,7 +29,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         //section 1
         $posts_most_viewed= Post::where('status', 1)->orderBy('view_count', 'desc')->first();
 
@@ -46,11 +45,9 @@ class HomeController extends Controller
         array_shift($posts_latest);
         // dd($posts_latest);
 
-
         //section 2
         $category= Category::where('status', 1)->get();
         $posts= Post::where('status', 1)->get();
-
 
         //show top 4 catogories with most posts
         $post_raw= Post::where('status', 1)
@@ -62,11 +59,6 @@ class HomeController extends Controller
         $post_count=array_count_values($post_items);
         $post_count_flip=array_flip($post_count);
         $post_count = array_slice($post_count_flip, 0, 4);
-
-
-
-        // dd($post_count_flip);
-
 
          //setting data
          $this->data['category'] = $category;
@@ -80,4 +72,18 @@ class HomeController extends Controller
 
         return view('index',$this->data);
     }
+
+
+    public function single_post($post_id)
+    {
+        $post = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->select('cat.name','cat.status','cat.created_at','p.*')
+        ->where('p.id', $post_id)
+        ->first();
+
+        $this->data['post'] = $post;
+        return view('single-page',$this->data);
+    }
+
 }

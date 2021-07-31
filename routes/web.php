@@ -25,7 +25,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('single-page');
 // });
 Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], function () {
-    Route::get('/index', 'HomeController@index')->name('home');
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('single_post/{post_id}', 'HomeController@single_post')->name('single_post');
 });
 
 Auth::routes();
