@@ -70,7 +70,7 @@ class HomeController extends Controller
          $this->data['posts_latest_first'] = $posts_latest_first;
          $this->data['posts_latest'] = $posts_latest;
 
-        return view('index',$this->data);
+        return view('user.home',$this->data);
     }
 
 
@@ -83,7 +83,7 @@ class HomeController extends Controller
         ->first();
 
         $this->data['post'] = $post;
-        return view('single-page',$this->data);
+        return view('user.single-page',$this->data);
     }
 
 }
