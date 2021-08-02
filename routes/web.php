@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('contact', function () {
 //     return view('contact');
 // });
-// Route::get('single', function () {
+//  Route::get('single', function () {
 //     return view('single-page');
-// });
+//  });
 Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('single_post/{post_id}', 'HomeController@single_post')->name('single_post');
