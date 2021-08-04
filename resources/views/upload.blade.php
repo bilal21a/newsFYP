@@ -36,10 +36,11 @@
                 <label for="summernote"><b>Description</b></label>
             <textarea id="summernote" name="disc" style="height: 150px;"></textarea>
         </div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" name="choose_file" id="validatedCustomFile" required>
-            <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile">Choose file</label>
           </div>
+
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" name="hot_news" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1"><b>Hot News</b></label>
@@ -58,11 +59,21 @@
      <!--Create Upload Post End-->
 @endsection
 
+
+
 @section('after_js')
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#summernote').summernote();
         });
-      </script>
+
+
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+
 @endsection
