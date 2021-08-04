@@ -7,7 +7,9 @@ use App\Post;
 use App\Tags;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Laravel\Ui\Presets\React;
 use PDO;
 
 class HomeController extends Controller
@@ -84,6 +86,15 @@ class HomeController extends Controller
 
         $this->data['post'] = $post;
         return view('user.single-page',$this->data);
+    }
+
+
+    public function upload_post(Request $request)
+    {
+        // $userId = Auth::id();
+        $request->input('hot_news');
+        $title= $request->title;
+       dd($request);
     }
 
 }
