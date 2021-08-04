@@ -40,7 +40,7 @@
           </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1"><b>Hot NEWS</b></label>
+            <label class="form-check-label" for="exampleCheck1"><b>Hot News</b></label>
           </div>
           <div class="row">
             <div class="col-md-8">

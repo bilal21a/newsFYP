@@ -14,15 +14,16 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+         <!-- CSS Libraries -->
+         <link href="{{asset('lib/slick/slick.css')}} "rel="stylesheet">
+         <link href="{{asset('lib/slick/slick-theme.css')}}" rel="stylesheet">
+        <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
-        <!-- CSS Libraries -->
-        <link href="{{asset('lib/slick/slick.css')}} "rel="stylesheet">
 
-        <link href="{{asset('lib/slick/slick-theme.css')}}" rel="stylesheet">
         <!-- Template Stylesheet -->
-        <link href="{{asset('css/style.css')}}" rel="stylesheet">
         @yield('after_css')
     </head>
 
