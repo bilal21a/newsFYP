@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('single-page');
 // });
 Route::get('home1', function () {
-    return view('index');
+    return view('upload');
 });
 // Route::get('contact', function () {
 //     return view('contact');

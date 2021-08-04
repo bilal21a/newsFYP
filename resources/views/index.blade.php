@@ -16,17 +16,16 @@
         <!-- CSS Libraries -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <!-- <link href="lib/slick/slick.css" rel="stylesheet"> -->
         <link href="{{asset('lib/slick/slick.css')}} "rel="stylesheet">
 
-        <!-- <link href="lib/slick/slick-theme.css" rel="stylesheet"> -->
         <link href="{{asset('lib/slick/slick-theme.css')}}" rel="stylesheet">
         <!-- Template Stylesheet -->
-        <!-- <link href="css/style.css" rel="stylesheet"> -->
         <link href="{{asset('css/style.css')}}" rel="stylesheet">
+        @yield('css')
     </head>
 
     <body>
+
         @include('layouts.partials.header')
 
 
@@ -35,10 +34,12 @@
 
         @include('layouts.partials.footer')
 
-
+        @yield('js')
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
         <!-- <script src="lib/easing/easing.min.js"></script> -->
         <script src="{{asset('lib/easing/easing.min.js')}}"></script>
 
