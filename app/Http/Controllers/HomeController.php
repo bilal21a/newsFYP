@@ -94,6 +94,7 @@ class HomeController extends Controller
         // $userId = Auth::id();
         $request->input('hot_news');
         $title= $request->title;
+
        dd($request);
     }
 
