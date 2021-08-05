@@ -17,6 +17,10 @@ Route::get('upload', function () {
     return view('upload');
 });
 
+Route::get('text', function () {
+    return view('categories');
+});
+
 
 
 Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], function () {
