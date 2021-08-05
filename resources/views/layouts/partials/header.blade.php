@@ -32,7 +32,10 @@
         </div>
         <!-- Top Header End -->
 
-
+<?php
+$cat= App\Category::get()->take(7);
+// dd($cat);
+?>
         <!-- Header Start -->
         <div class="header">
             <div class="container">
@@ -44,19 +47,19 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav m-auto">
-                            <a href="index.html" class="nav-item nav-link">Home</a>
-                            <a href="#" class="nav-item nav-link">Sports</a>
-                            <a href="#" class="nav-item nav-link">Tech</a>
-                            <a href="#" class="nav-item nav-link">Fashion</a>
-                            <div class="nav-item dropdown">
+                            <a href="{{route('home')}}" class="nav-item nav-link" >Home</a>
+                            @foreach ($cat as $cat_single)
+                                <a href="#" class="nav-item nav-link">{{$cat_single->name}}</a>
+                            @endforeach
+
+                            {{-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
                                 <div class="dropdown-menu">
                                     <a href="#" class="dropdown-item">Sub Item 1</a>
                                     <a href="#" class="dropdown-item">Sub Item 2</a>
                                 </div>
-                            </div>
-                            <a href="single-page.html" class="nav-item nav-link active">Single Page</a>
-                            <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                            </div> --}}
+                            <a href="{{route('contact_us')}}" class="nav-item nav-link">Contact Us</a>
                         </div>
                     </div>
                 </nav>

@@ -13,13 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('upload', function () {
-    return view('upload');
-});
+Route::get('upload', function () {return view('upload');});
+Route::get('contact_us', function () {return view('user.contact');})->name('contact_us');
 
-Route::get('text', function () {
-    return view('categories');
-});
+
+Route::get('text', function () {return view('categories');});
 
 
 
