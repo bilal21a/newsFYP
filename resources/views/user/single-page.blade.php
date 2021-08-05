@@ -33,7 +33,7 @@
                             <a class="sn-date" href=""><i class="far fa-clock"></i>{{ $new_date }}</a>
                             <p>{{ $post->short_description }}</p><br>
                             <h4>Description</h4>
-                            <p>{{ $post->description }}</p>
+                            <p>{!! $post->description !!}</p>
                         </div>
                     </div>
 

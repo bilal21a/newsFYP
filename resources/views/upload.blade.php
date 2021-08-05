@@ -10,7 +10,7 @@
   <div class="uploadbody">
 
     <div class="container contain">
-        <form method="post" action="{{ route('upload_post') }}" accept-charset="UTF-8">
+        <form method="post" action="{{ route('upload_post') }}" enctype="multipart/form-data">
         @csrf
         <h2>Upload New Post</h2>
             <div class="form-group">
@@ -37,7 +37,7 @@
             <textarea id="summernote" name="disc" style="height: 150px;"></textarea>
         </div>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile">
+            <input type="file" class="custom-file-input" id="customFile" name="main_image">
             <label class="custom-file-label" for="customFile">Choose file</label>
           </div>
 
