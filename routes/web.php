@@ -27,6 +27,7 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('single_post/{post_id}', 'HomeController@single_post')->name('single_post');
     Route::post('upload_post', 'HomeController@upload_post')->name('upload_post');
+    Route::get('categories', 'HomeController@show_categories')->name('show_categories');
 
 });
 

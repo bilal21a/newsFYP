@@ -116,9 +116,6 @@ class HomeController extends Controller
             $status=0;
         }
 
-        // dd($request);
-
-
         $request->validate([
             'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
