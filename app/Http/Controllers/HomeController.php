@@ -128,8 +128,6 @@ class HomeController extends Controller
         $request->main_image->move(public_path('img/main_image'), $imageName);
         /* Store $imageName name in DATABASE from HERE */
 
-
-
         $post = new Post();
         $post->title = $title;
         $post->short_description = $short_description;
@@ -142,7 +140,7 @@ class HomeController extends Controller
         $post->status = $status;
         $post->save();
 
-        return redirect()->back();
+        return redirect()->route('home');
     }
 
 }

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('home1', function () {
+Route::get('upload', function () {
     return view('upload');
 });
 

@@ -15,11 +15,11 @@
         <h2>Upload New Post</h2>
             <div class="form-group">
               <label for="title"><b>Title</b></label>
-              <input type="text" class="form-control" name="title" id="title">
+              <input type="text" class="form-control" name="title" id="title" required>
             </div>
             <div class="form-group">
               <label for="category"><b>Select Category</b></label>
-              <select class="form-control" id="category" name="category">
+              <select class="form-control" id="category" name="category" required>
                   <?php $cat=App\Category::where('status', 1)->get()->toArray(); ?>
                 <option selected disabled>Select Category</option>
                 @foreach ($cat as $single_cat)
@@ -30,14 +30,14 @@
             </div>
             <div class="form-group">
               <label for="textarea1"><b>Short Description</b></label>
-              <textarea class="form-control" name="short_disc" id="textarea1" rows="2"></textarea>
+              <textarea class="form-control" name="short_disc" id="textarea1" rows="2" required></textarea>
             </div>
             <div class="form-group">
                 <label for="summernote"><b>Description</b></label>
-            <textarea id="summernote" name="disc" style="height: 150px;"></textarea>
+            <textarea id="summernote" name="disc" style="height: 150px;" required></textarea>
         </div>
           <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" name="main_image">
+            <input type="file" class="custom-file-input" id="customFile" name="main_image" required>
             <label class="custom-file-label" for="customFile">Choose file</label>
           </div>
 
@@ -49,8 +49,8 @@
             <div class="col-md-8">
             </div>
             <div class="col-md-4">
-                <button type="submit" value="Publish" name="submit" class="btn btn-warning btn-custom">Publish</button>
-                <button type="submit" value="Save as Draft" name="submit" class="btn btn-outline-warning">Save as Draft</button>
+                <button type="submit" value="Publish" name="submit" class="btn btn-custom">Publish</button>
+                <button type="submit" value="Save as Draft" name="submit" class="btn btn-outline-warning btn-custom2">Save as Draft</button>
             </div>
         </div>
           </form>
