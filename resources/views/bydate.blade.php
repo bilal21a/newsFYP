@@ -130,3 +130,4 @@
  @endsection
 
  @section('after_js')
+@endsection
