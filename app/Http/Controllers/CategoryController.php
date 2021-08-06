@@ -45,6 +45,7 @@ class CategoryController extends Controller
 
 
         $this->data['posts_all'] = $posts_all;
+        // dd($this->data);
 
         return view('user.categories',$this->data);
 
