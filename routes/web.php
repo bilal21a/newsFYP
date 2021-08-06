@@ -18,6 +18,7 @@ Route::get('contact_us', function () {return view('user.contact');})->name('cont
 
 
 Route::get('text', function () {return view('categories');});
+Route::get('text2', function () {return view('bydate');});
 
 
 
