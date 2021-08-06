@@ -29,6 +29,7 @@ class CategoryController extends Controller
                  ->groupBy('category_id')
                  ->orderby('total', 'DESC')
                  ->where('status', 1)
+                 ->take(10)
                  ->get();
 
         $most_posts_cat=array();
@@ -37,15 +38,17 @@ class CategoryController extends Controller
             // dd($value->total);
             $cat=DB::table('categories as cat')
             ->join('posts as p', 'p.category_id', '=', 'cat.id')
-            ->select('cat.name as cat_name')
+            ->select('cat.name as cat_name','cat.id')
             ->where('p.status', 1)
             ->where('p.category_id', $value->category_id)
             ->distinct()
+            ->take(10)
             ->get()
             ->toArray();
             $most_posts_cat[] = $cat;
         }
 
+        // dd($most_posts_cat);
 
         $this->data['posts_all'] = $posts_all;
         $this->data['cat_name'] = $cat_name;
