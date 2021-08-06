@@ -49,7 +49,7 @@ $cat= App\Category::get()->take(7);
                         <div class="navbar-nav m-auto">
                             <a href="{{route('home')}}" class="nav-item nav-link" >Home</a>
                             @foreach ($cat as $cat_single)
-                                <a href="#" class="nav-item nav-link">{{$cat_single->name}}</a>
+                                <a href="{{ route('show_categories',$cat_single->id) }}" class="nav-item nav-link">{{$cat_single->name}}</a>
                             @endforeach
 
                             {{-- <div class="nav-item dropdown">
