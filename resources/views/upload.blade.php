@@ -50,7 +50,7 @@
             </div>
             <div class="col-md-4">
                 <button type="submit" value="Publish" name="submit" class="btn btn-custom">Publish</button>
-                <button type="submit" value="Save as Draft" name="submit" class="btn btn-outline-warning btn-custom2">Save as Draft</button>
+                <button type="submit" value="Save as Draft" name="submit" class="btn btn-outline btn-custom2">Save as Draft</button>
             </div>
         </div>
           </form>
