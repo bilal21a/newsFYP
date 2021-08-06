@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,7 @@ class CategoryController extends Controller
         ->get()
         ->toArray();
 
-
+        $cat_name=Category::where('id', $cat_id)->get()->toArray();
 
         $most_posts_cat_raw = DB::table('posts as p')
                  ->select('category_id', DB::raw('count(*) as total'))
@@ -45,6 +46,7 @@ class CategoryController extends Controller
 
 
         $this->data['posts_all'] = $posts_all;
+        $this->data['cat_name'] = $cat_name;
 
         return view('user.category',$this->data);
 
