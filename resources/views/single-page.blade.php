@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <meta charset="utf-8">
         <title>News 24 - Free News Website Templates</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
