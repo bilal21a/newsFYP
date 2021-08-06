@@ -13,25 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('single-page');
-// });
-Route::get('home1', function () {
-    return view('index');
-});
-Route::get('contact', function () {
-    return view('contact');
-});
-Route::get('single', function () {
-    return view('single-page');
+Route::get('upload', function () {return view('upload');});
+Route::get('contact_us', function () {return view('user.contact');})->name('contact_us');
+
+
+Route::get('text', function () {return view('categories');});
+
+
+
+Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('single_post/{post_id}', 'HomeController@single_post')->name('single_post');
+    Route::post('upload_post', 'HomeController@upload_post')->name('upload_post');
+
 });
 
-// Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
