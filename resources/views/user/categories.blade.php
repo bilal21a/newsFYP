@@ -12,7 +12,7 @@
     <div class="sidebar-widget">
 
 
-    {{-- <h2 class="st"><i class="fas fa-align-justify jx"></i>{{$posts_all[0]->cat_name}}</h2> --}}
+    <h2 class="st"><i class="fas fa-align-justify jx"></i>{{$cat_name[0]['name']}}</h2>
 </div>
 </div>
     <div class="container-fluid">
