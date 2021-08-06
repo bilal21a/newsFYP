@@ -22,6 +22,8 @@ class CategoryController extends Controller
 
         $cat_name=Category::where('id', $cat_id)->get()->toArray();
 
+
+        //for header
         $most_posts_cat_raw = DB::table('posts as p')
                  ->select('category_id', DB::raw('count(*) as total'))
                  ->groupBy('category_id')
