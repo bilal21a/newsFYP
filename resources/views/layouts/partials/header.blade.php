@@ -57,8 +57,6 @@
             ->toArray();
             $most_posts_cat[] = $cat;
         }
-
-        // dd($most_posts_cat);
 ?>
         <!-- Header Start -->
         <div class="header">
