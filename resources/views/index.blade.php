@@ -16,7 +16,7 @@
 
         @include('layouts.partials.header')
 
-            <br> <br> <br>
+            <br> <br> <br> <br>
         @yield('content')
 
 

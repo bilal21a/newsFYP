@@ -20,7 +20,7 @@ Route::get('contact_us', function () {return view('user.contact');})->name('cont
 
 Route::get('text', function () {return view('categories');});
 Route::get('text2', function () {return view('bydate');});
-Route::get('text3', function () {return view('upload');});
+Route::get('text3', function () {return view('user.singlepage');});
 
 
 
