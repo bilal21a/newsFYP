@@ -1,0 +1,183 @@
+.footer {
+    position: relative;
+    padding: 60px 0 0 0;
+    margin-top: 15px;
+    background: #353535;
+}
+
+@media (min-width: 992px) {
+    .footer .container-fluid {
+        max-width: 95%;
+    }
+}
+
+.footer .footer-widget {
+    position: relative;
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.footer .footer-widget h1 {
+    color: #ffffff;
+    margin-bottom: 18px; 
+}
+
+.footer .footer-widget .title {
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.footer .footer-widget p {
+    color: #ffffff;
+}
+
+.footer .footer-widget ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer .footer-widget ul li {
+    margin-bottom: 12px; 
+}
+
+.footer .footer-widget ul li:last-child {
+    margin-bottom: 0; 
+}
+
+.footer .footer-widget ul li a {
+    color: #ffffff;
+    white-space: nowrap;
+    display: block;
+    line-height: 23px;
+}
+
+.footer .footer-widget ul li a::before {
+    content: '\f061';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    padding-right: 5px;
+}
+
+.footer .footer-widget ul li a:hover {
+    padding-left: 10px; 
+}
+
+.footer .contact-info p {
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.footer .contact-info p i {
+    color: #ffffff;
+    margin-right: 5px;
+}
+
+.footer .social {
+    position: relative;
+    width: 100%;
+}
+
+.footer .social a {
+    display: inline-block;
+    margin: 10px 5px 0 0;
+    width: 35px;
+    height: 35px;
+    padding: 2px 0;
+    text-align: center;
+    font-size: 18px;
+    background: #353535;
+    border: 1px solid #ffffff;
+}
+
+.footer .social a i {
+    color: #ffffff;
+}
+
+.footer .social a:hover {
+    background-color: #38ab69;
+    border-color: #34a263;
+    
+
+.footer .newsletter {
+    position: relative;
+    width: 100%;
+}
+
+.footer .newsletter form {
+    position: relative;
+    width: 100%;
+}
+
+.footer .newsletter input {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #ffffff;
+}
+
+.footer .newsletter .btn {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    top: 0;
+    right: 0;
+    padding: 0 15px;
+    border: none;
+    background: #353535;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+.footer .newsletter .btn:hover {
+    background-color: #38ab69;
+    border-color: #34a263;
+}
+
+.footer .newsletter input:focus,
+.footer .newsletter .btn:focus {
+    box-shadow: none;
+}
+
+
+/**********************************/
+/******** Footer Bottom CSS *******/
+/**********************************/
+.footer-bottom {
+    position: relative;
+    padding: 25px 0;
+    background: #111111;
+}
+
+.footer-bottom .copyright {
+    text-align: left;
+}
+
+.footer-bottom .template-by {
+    text-align: right;
+}
+
+.footer-bottom .copyright p,
+.footer-bottom .template-by p {
+    color: #ffffff;
+    font-weight: 400;
+    margin: 0;
+}
+
+.footer-bottom .copyright p a,
+.footer-bottom .template-by p a {
+    font-weight: 600;
+}
+
+.footer-bottom .copyright p a:hover,
+.footer-bottom .template-by p a:hover {
+    color: #ffffff;
+}
+
+@media (max-width: 768.98px) {
+    .footer-bottom .copyright,
+    .footer-bottom .template-by {
+        text-align: center; 
+    } 
+}

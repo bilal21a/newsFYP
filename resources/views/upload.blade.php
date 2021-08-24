@@ -1,79 +1,86 @@
-@extends('index2')
+@extends('index')
 
-@section('after_css')
-    <link href="{{asset('css/upload.css')}}" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@section('css')
+    <link rel="stylesheet" href="{{asset('js/plugins/summernote/summernote-bs4.css')}}">
+    <link rel="stylesheet" href="{{asset('js/plugins/simplemde/simplemde.min.css')}}">
 @endsection
 
 @section('content')
     <!--Create Upload Post Start-->
-  <div class="uploadbody">
+    <div class="container">
+        <form>
+            <div class="content block">
+                <div class="block">
+                    <div class="block-content">
+                        <h1>Upload New Post</h1>
+                        <div class="form-group">
+                            <label for="example-text-input">Title</label>
+                            <input type="text" class="form-control" id="example-text-input" name="example-text-input" placeholder="Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="example-select">Select Category</label>
+                            <select class="form-control" id="example-select" name="example-select">
+                                <option value="0" selected hidden>Please select</option>
+                                <option value="1">Option #1</option>
+                                <option value="2">Option #2</option>
+                                <option value="3">Option #3</option>
+                                <option value="4">Option #4</option>
+                                <option value="5">Option #5</option>
+                                <option value="6">Option #6</option>
+                                <option value="7">Option #7</option>
+                                <option value="8">Option #8</option>
+                                <option value="9">Option #9</option>
+                                <option value="10">Option #10</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="example-textarea-input">Short Description</label>
+                            <textarea class="form-control" id="example-textarea-input" name="example-textarea-input" rows="4" placeholder="Short Description"></textarea>
+                        </div>
+                        <label for="example-text-input">Description</label>
+                        <form action="be_forms_editors.html" method="POST" onsubmit="return false;">
+                            <div class="form-group">
+                    <!-- CKEditor Container -->
+                             <textarea id="js-ckeditor" name="ckeditor"></textarea>
+                            </div>
+                        </form>
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="example-file-input-custom">
+                                <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" value="" id="example-checkbox-inline1" name="example-checkbox-inline1">
+                                <label class="form-check-label" for="example-checkbox-inline1">Hot News</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-success">Publish</button>
+                                <button type="button" class="btn btn-outline-success">Save as Draft</button>
+                            </div>
 
-    <div class="container contain">
-        <form method="post" action="{{ route('upload_post') }}" enctype="multipart/form-data">
-        @csrf
-        <h2>Upload New Post</h2>
-            <div class="form-group">
-              <label for="title"><b>Title</b></label>
-              <input type="text" class="form-control" name="title" id="title" required>
-            </div>
-            <div class="form-group">
-              <label for="category"><b>Select Category</b></label>
-              <select class="form-control" id="category" name="category" required>
-                  <?php $cat=App\Category::where('status', 1)->get()->toArray(); ?>
-                <option selected disabled>Select Category</option>
-                @foreach ($cat as $single_cat)
-                    <option value="{{ $single_cat['id'] }}">{{ $single_cat['name'] }}</option>
-                @endforeach
+                        </div>
+                    </div>
 
-              </select>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="textarea1"><b>Short Description</b></label>
-              <textarea class="form-control" name="short_disc" id="textarea1" rows="2" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="summernote"><b>Description</b></label>
-            <textarea id="summernote" name="disc" style="height: 150px;" required></textarea>
-        </div>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" name="main_image" required>
-            <label class="custom-file-label" for="customFile">Choose file</label>
-          </div>
-
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" name="hot_news" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1"><b>Hot News</b></label>
-          </div>
-          <div class="row">
-            <div class="col-md-8">
-            </div>
-            <div class="col-md-4">
-                <button type="submit" value="Publish" name="submit" class="btn btn-custom">Publish</button>
-                <button type="submit" value="Save as Draft" name="submit" class="btn btn-outline btn-custom2">Save as Draft</button>
-            </div>
-        </div>
-          </form>
+        </form>
     </div>
-</div>
      <!--Create Upload Post End-->
 @endsection
 
 
 
-@section('after_js')
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#summernote').summernote();
-        });
+@section('js')
+    <script src="{{asset('js/plugins/summernote/summernote-bs4.min.js')}}"></script>
+    <script src="{{asset('js/plugins/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('js/plugins/simplemde/simplemde.min.js')}}"></script>
+    <script>jQuery(function(){ One.helpers(['summernote', 'ckeditor', 'simplemde']); });</script>
 
-
-            // For Choose File
-            $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-            });
-</script>
-
-@endsection
+    @endsection

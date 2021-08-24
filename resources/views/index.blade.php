@@ -1,56 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>News 24 - Free News Website Templates</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="Bootstrap Ecommerce Template" name="keywords">
-        <meta content="Bootstrap Ecommerce Template Free Download" name="description">
 
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
 
-        <!-- Google Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+        <link href="{{asset('css/oneui.min.css')}} "rel="stylesheet">
+        <link href="{{asset('style.css')}} "rel="stylesheet">
+        <link href="{{asset('css/footer.css')}} "rel="stylesheet">
 
-        <!-- CSS Libraries -->
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="{{asset('lib/slick/slick.css')}} "rel="stylesheet">
-
-        <link href="{{asset('lib/slick/slick-theme.css')}}" rel="stylesheet">
-        <!-- Template Stylesheet -->
-        <link href="{{asset('css/style.css')}}" rel="stylesheet">
         @yield('css')
     </head>
 
     <body>
+        @yield('inline_css')
 
         @include('layouts.partials.header')
 
-
+            <br> <br> <br>
         @yield('content')
+
+
+
+
 
 
         @include('layouts.partials.footer')
 
-        @yield('js')
         <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="{{asset('js/oneui.core.min.js')}}"></script>
+        <script src="{{asset('js/oneui.app.min.js')}}"></script>
+        <script src="{{asset('js/plugins/chart.js/Chart.bundle.min.js')}}"></script>
+        <script src="{{asset('js/pages/be_pages_dashboard.min.js')}}"></script>
+        @yield('js')
 
-        <!-- <script src="lib/easing/easing.min.js"></script> -->
-        <script src="{{asset('lib/easing/easing.min.js')}}"></script>
-
-        <script src="{{asset('lib/slick/slick.min.js')}}"></script>
-
-        <!-- <script src="lib/slick/slick.min.js"></script> -->
-
-
-        <!-- Template Javascript -->
-        <script src="{{asset('js/main.js')}}"></script>
-
-        <!-- <script src="js/main.js"></script> -->
     </body>
 </html>
