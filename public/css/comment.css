@@ -1,0 +1,36 @@
+body {
+    background: #eee
+}
+
+.date {
+    font-size: 11px
+}
+/* here is change */
+.comment-text {
+    font-size: 14px;
+    margin-bottom: 0px !important;
+}
+
+.fs-12 {
+    font-size: 12px
+}
+
+.shadow-none {
+    box-shadow: none
+}
+
+.name {
+    color: #38ab69
+}
+
+.cursor:hover {
+    color: #34a263
+}
+
+.cursor {
+    cursor: pointer
+}
+
+.textarea {
+    resize: none
+}

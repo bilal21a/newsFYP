@@ -1,0 +1,42 @@
+.dot{
+    font-size: 8px;
+
+}
+.section1 {
+    border-bottom: 1px solid #b4b4b4;
+    padding-bottom: 23px;
+    padding-top: 23px;
+    border-right: 1px solid #b4b4b4;
+}
+
+.section2{
+    padding-bottom: 23px;
+    padding-top: 23px;
+    border-right: 1px solid #b4b4b4;
+}
+
+.btn-photo{
+    margin-top: 12px;
+}
+
+.upload-photo{
+    margin-top: 22px;
+}
+
+.name{
+    margin-top: 20px;
+}
+
+.section-3{
+    padding-top: 23px;
+}
+
+#change_email_div{
+    display: none;
+}
+#change_pass_div{
+    display: none;
+}
+#change_setting_div{
+    display: none;
+}
