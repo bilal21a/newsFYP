@@ -19,8 +19,12 @@ Route::get('contact_us', function () {return view('user.contact');})->name('cont
 
 
 Route::get('text', function () {return view('categories');});
-Route::get('text2', function () {return view('bydate');});
-Route::get('text3', function () {return view('user.singlepage');});
+Route::get('text2', function () {return view('user.singlepage');});
+Route::get('text3', function () {return view('user.single2');});
+Route::get('text4', function () {return view('user.allcategories');});
+Route::get('text5', function () {return view('user.unicategories');});
+Route::get('text6', function () {return view('user.contact');});
+Route::get('text7', function () {return view('showcomment');});
 
 
 
