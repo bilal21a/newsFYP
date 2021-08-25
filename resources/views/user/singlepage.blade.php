@@ -5,7 +5,7 @@
     {{-- <link href="{{asset('css/comment.css')}} "rel="stylesheet"> --}}
 @endsection
 
-{{-- @section('inline_css')
+@section('inline_css')
     <style>
         .round{
             width: 100%;
@@ -15,7 +15,7 @@
             border-radius: 15px 15px 0px 0px;
         }
     </style>
-@endsection --}}
+@endsection
 
 @section('content')
 

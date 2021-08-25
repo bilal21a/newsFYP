@@ -1,5 +1,5 @@
 
-    <nav>
+   <nav class="nv">
     <div class="wrapper">
       <div class="logo"><a href="#">LOGO</a></div>
       <input type="radio" name="slider" id="menu-btn">
@@ -26,7 +26,7 @@
           <div class="mega-box">
             <div class="content">
               <div class="row">
-                <img src="{{asset('img.jpg')}}" alt="">
+                <img class="imag" src="assets/img.jpg" alt="">
               </div>
               <div class="row">
                 <header>Design Services</header>

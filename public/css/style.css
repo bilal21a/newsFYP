@@ -5,14 +5,14 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-nav{
+.nv{
   position: fixed;
   z-index: 99;
   width: 100%;
   
   background: #242526;
 }
-nav .wrapper{
+.nv .wrapper{
   position: relative;
   max-width: 1300px;
   padding: 0px 30px;
@@ -97,7 +97,7 @@ nav .wrapper{
   width: calc(25% - 30px);
   line-height: 45px;
 }
-.content .row img{
+.content .row .imag{
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -258,7 +258,7 @@ nav .wrapper{
     font-size: 19px;
   }
 }
-nav input{
+.nv input{
   display: none;
 }
 
