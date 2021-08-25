@@ -25,6 +25,8 @@ Route::get('text4', function () {return view('user.allcategories');});
 Route::get('text5', function () {return view('user.unicategories');});
 Route::get('text6', function () {return view('user.contact');});
 Route::get('text7', function () {return view('showcomment');});
+Route::get('text8', function () {return view('filter');});
+Route::get('text9', function () {return view('profile');});
 
 
 
