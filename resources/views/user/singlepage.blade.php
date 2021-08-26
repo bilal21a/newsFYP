@@ -32,32 +32,31 @@
                            <a href="javascript:void(0)">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                           <a href="javascript:void(0)">Category Name</a>
+                           <a href="javascript:void(0)">{{$post->cat_name}}</a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Post Title</li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $post->title }}</li>
                      </ol>
                   </nav>
-                  <h1 class="font-w700" style="line-height: 35px;">Judicial appointments and the inferiority of seniority</h1>
-                  <img src="{{asset('media/photos/photo14.jpg')}}" alt="" style="width: 100%;">
+                  <h1 class="font-w700" style="line-height: 35px;">{{$post->title}}</h1>
+                  <img src="{{asset('img/main_image/'. $post->main_image)}}" alt="" style="width: 100%;">
                   <div class="pt-2 pb-3">
                      <span>
-                     <a href="" class="text-dark pr-4"><i class="fa fa-user"> Reporter Name</i></a>
-                     <a href="" class="text-dark pr-4"><i class="fa fa-clock"> 14-08-2021</i></a>
+                     <a href="" class="text-dark pr-4"><i class="fa fa-user">   {{$post->name}}</i></a>
+                            <?php
+                                $var_1= $post->created_at;
+                                $var_2 = strtotime($var_1);
+                                $date = date('F d, Y', $var_2);
+                            ?>
+
+                     <a href="" class="text-dark pr-4"><i class="fa fa-clock"> {{$date}}</i></a>
                      </span>
                   </div>
                   <div class="block block-rounded block-link-pop" style="background-color: #f5f5f5;">
                      <div class="block-content">
-                        <p><i>Allow me to begin by stating that, in most situations, I wouldn’t insert myself into a debate that is already saturated by the opinions of Salman Raja; Feisal Naqvi; and Salahuddin Ahmed. However, seeing as how the debate curls around the totem of merit, I would hope that relative inexperience will not disqualify this brief offering – much of which only considers existing points from a different perspective. </i></p>
+                        <p><i>{{ $post->short_description  }}</i></p>
                      </div>
                   </div>
-                  <div >Allow me to begin by stating that, in most situations, I wouldn’t insert myself into a debate that is already saturated by the opinions of Salman Raja; Feisal Naqvi; and Salahuddin Ahmed. However, seeing as how the debate curls around the totem of merit, I would hope that relative inexperience will not disqualify this brief offering – much of which only considers existing points from a different perspective.
-                     To pick up from the two basic propositions that Feisal Naqvi rightly reduces the debate to: “competence is not [necessarily] the same thing as seniority”, and “it is vitally important that only the most competent judges sit on the Supreme Court of Pakistan”.
-                     Not one of the three participants in this debate seems to disagree with either proposition. Everyone agrees that seniority-superiority has to go; the disagreement is a matter of when. Salman Raja and Feisal Naqvi argue that there is already no place for it. Salahuddin Ahmed argues that it is the least bad option while we come up with a better one.
-                     Let’s examine this. If seniority is a lazy, unimaginative process that leaves deviation from mediocrity to chance, then why accept it as even a temporary measure? If the ultimate object is merit, then let us stick to just that for now. Logically, you would only pick seniority-superiority if it identified merit more frequently than available alternatives. But it’s hard to see how that might be the case.
-                     Say you have five candidates - all inducted at the same time, but born in different months. While this would make their relative ‘seniority’ a matter of pure chance, assume A is the best choice. Under a system dictated by ‘seniority’, A will only be picked one out of every five times. Phrased differently, only one out of five possibilities maximises A’s time at the Supreme Court.
-                     Now the alternative: selection after deliberation by the Judicial Commission. Assume, first that the Judicial Commission convenes to do nothing more than roll a die. This, already, is an equally successful system. If the JC’s only function were to identify any one person less competent than the most competent person, eliminate them, and then roll a die to determine who gets picked next, it would already be 25 percent more successful as a system.
-                     But, let us look at this not through the lens of ‘logic’, but of ‘experience’. Experience suggests that sometimes, rather than eliminating the worst person for the job, the JC might deliberately eliminate the best person for it. In such a situation, seniority may well be the better system: one in five is better than nothing. But, given our 17-member Supreme Court, even if this were a country where 13 elevations to the Court were entirely ‘engineered’, and only 4 were good-faith efforts that managed to arrive at the correct candidate, this would still be the superior system to seniority.
-                     Much of the temptation to pick seniority is a product of looking at the issue from the wrong end. The right judge can be chosen by the wrong system, and the wrong judge might be chosen through the right system. This is why either side can quote examples of judges to support its argument. The point is to pick the system that picks the right judge more often than the alternatives.
+                  <div >{!! $post->description !!}
                   </div>
                   <div class="row">
                      <div class="col-md-12">
@@ -105,32 +104,40 @@
                <div class="block-content">
                   <h2 class="pt-3">Latest News </h2>
                </div>
+
+
+               @foreach ( $latest_news as $news_lat)
+
                <a class="block block-rounded block-link-pop" href="javascript:void(0)">
                   <div class="block-content" style="padding-top: 0">
                      <div class="row">
                         <div class="col-sm-3 customwork" >
-                           <img src="{{asset('media/photos/photo14.jpg')}}" alt="" style="width: 100%;">
+                           <img src="{{asset('img/main_image/'. $news_lat->main_image)}}" alt="" style="width: 100%;">
                         </div>
                         <div class="col-sm-9" >
-                           <h5 class="mt-1">Title of the News Will be shown ple of the News Will be shown </h5>
-                           <small><i class="far fa-clock"> 12-09-2020</i></small>
+                            <?php
+                                $count=str_word_count($news_lat->title);
+                            ?>
+                            @if ($count<8)
+                           <h5 class="mt-1 mb-0" >{{ substr($news_lat->title,0,30) }} </h5>
+                            @else
+                           <h5 class="mt-1 mb-0" >{{ substr($news_lat->title,0,30) }}...  </h5>
+                            @endif
+
+                           <?php
+                                    $var_1= $news_lat->created_at;
+                                    $var_2 = strtotime($var_1);
+                                    $date = date('F d, Y', $var_2);
+                            ?>
+
+                           <small><i class="far fa-clock"> {{$date}}</i></small>
                         </div>
                      </div>
                   </div>
                </a>
-               <a class="block block-rounded block-link-pop" href="javascript:void(0)">
-                  <div class="block-content" style="padding-top: 0">
-                     <div class="row">
-                        <div class="col-sm-3 customwork" >
-                           <img src="{{asset('media/photos/photo14.jpg')}}" alt="" style="width: 100%;">
-                        </div>
-                        <div class="col-sm-9" >
-                           <h5 class="mt-1">Title of the News Will be shown Title of the News Will be shown </h5>
-                           <small><i class="far fa-clock"> 12-09-2020</i></small>
-                        </div>
-                     </div>
-                  </div>
-               </a>
+
+               @endforeach
+
             </div>
          </div>
          <div class="block-content">
@@ -139,41 +146,33 @@
                   <h2 class="pt-3">Related News </h2>
                </div>
                <div class="row mt-2">
-                  <div class="col-md-3 col-sm-6 ">
-                     <a class="block block-rounded block-link-pop" href="javascript:void(0)">
-                        <div class="block-content pb-3" style="padding-top: 0">
-                           <div class="row round1">
-                              <div class="col-sm-12 pt-3 round" >
-                                 <img src="{{asset('media/photos/photo14.jpg')}}" alt="" class="round" >
-                              </div>
-                           </div>
-                           <div class="row">
-                              <div class="col-sm-12 " >
-                                 <h5 class="mt-1">Title of the News Will be shown ple of the News Will be shown Title of the News Will be shown ple of the News Will be shown</h5>
-                                 <hr>
-                                 <small><i class="far fa-clock"> 12-09-2020</i></small>
-                              </div>
-                           </div>
-                        </div>
-                     </a>
-                  </div>
+                  @foreach ($related_news as $news_rel)
+
+
                   <div class="col-md-3 col-sm-6">
                      <a class="block block-rounded block-link-pop" href="javascript:void(0)">
                         <div class="block-content pb-3" style="padding-top: 0">
                            <div class="row round1">
                               <div class="col-sm-12 pt-3 round" >
-                                 <img src="{{asset('media/photos/photo14.jpg')}}" alt="" class="round">
+                                 <img src="{{asset('img/main_image/'. $news_rel->main_image)}}" alt="" class="round">
                               </div>
                            </div>
                            <div class="row">
                               <div class="col-sm-12 " >
-                                 <h5 class="mt-1">Title of the News Will be shown ple of the News Will be shown Title of the News Will be shown ple of the News Will be shown</h5>
-                                 <small><i class="far fa-clock"> 12-09-2020</i></small>
+                                 <h5 class="mt-1">{{$news_rel->title}}</h5>
+                                 <?php
+                                    $var_1= $news_rel->created_at;
+                                    $var_2 = strtotime($var_1);
+                                    $date = date('F d, Y', $var_2);
+                                ?>
+                                 <small><i class="far fa-clock"> {{$date}}</i></small>
                               </div>
                            </div>
                         </div>
                      </a>
                   </div>
+
+                  @endforeach
                </div>
             </div>
          </div>

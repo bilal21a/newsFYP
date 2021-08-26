@@ -83,7 +83,7 @@ class HomeController extends Controller
         $post = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.description','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
         ->where('p.id', $post_id)
         ->first();
@@ -96,7 +96,7 @@ class HomeController extends Controller
         ->join('users as user', 'p.created_by', '=', 'user.id')
         ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
-        ->latest()->take(4)->get()->toArray();
+        ->latest()->take(20)->get()->toArray();
 
         //related posts
         $related_news = DB::table('posts as p')
@@ -105,13 +105,15 @@ class HomeController extends Controller
         ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
         ->where('p.category_id', $cat_id)
+        ->take(4)
         ->get()
         ->toArray();
 
         $this->data['post'] = $post;
         $this->data['latest_news'] = $latest_news;
         $this->data['related_news'] = $related_news;
-        return view('user.single-page',$this->data);
+        // dd($this->data);
+        return view('user.singlepage',$this->data);
     }
 
 
