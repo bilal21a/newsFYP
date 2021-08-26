@@ -19,12 +19,16 @@
 
 @section('content')
 
+<br> <br>
+
 <div class="content">
     <div class="">
         <div class="block">
             <div class="row">
                 <div class="col-md-8">
+
                     <div class="block-content">
+
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-alt push">
                                 <li class="breadcrumb-item">

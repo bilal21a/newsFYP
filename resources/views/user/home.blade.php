@@ -10,6 +10,11 @@
          <div class="row">
              @foreach ($hot_news as $single_hot)
 
+             <?php
+                $var_1= $single_hot->created_at;
+                $var_2 = strtotime($var_1);
+                $date = date('F d, Y', $var_2);
+             ?>
 
             <div class="col-md-3 col-sm-6">
                <div class="block-content pb-3 my_card " style="padding-top: 0">
@@ -23,9 +28,9 @@
                         <a href="#"><span class="cat-name" >{{$single_hot->cat_name}}</span></a>
                         <a href="https://www.google.com" class="text-dark">
                            <h5 class="mt-3 mb-0">{{$single_hot->title}}</h5>
-                           <p class="card-text short_disc mb-1" >{{$single_hot->short_description}}</p>
+                           <p class="card-text short_disc mb-1" > {{ substr($single_hot->short_description,0,100) }} ...</p>
                         </a>
-                        <a href="" class="text-dark"><span class="short_disc">{{$single_hot->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc">{{$single_hot->created_at}}</span></a>
+                        <a href="" class="text-dark"><span class="short_disc">{{$single_hot->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc">{{$date}}</span></a>
                      </div>
                   </div>
                </div>
@@ -55,6 +60,11 @@
 
                 @foreach ($latest_news as $latest_single)
 
+                <?php
+                    $var_1= $latest_single->created_at;
+                    $var_2 = strtotime($var_1);
+                    $date = date('F d, Y', $var_2);
+                 ?>
 
                <div class="col-md-3 col-sm-6">
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
@@ -69,7 +79,7 @@
                            <a href="https://www.google.com" class="text-dark">
                               <h5 class="mt-3 mb-0">{{$latest_single->title}}</h5>
                            </a>
-                           <a href="" class="text-dark"><span class="short_disc"> {{$latest_single->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{$latest_single->created_at}}</span></a>
+                           <a href="" class="text-dark"><span class="short_disc"> {{$latest_single->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
                         </div>
                      </div>
                   </div>
@@ -100,7 +110,11 @@
             <div class="row">
 
                 @foreach ( $top_stories as $top_single )
-
+                    <?php
+                        $var_1= $top_single->created_at;
+                        $var_2 = strtotime($var_1);
+                        $date = date('F d, Y', $var_2);
+                    ?>
                <div class="col-md-4 col-sm-4">
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
                      <div class="row round1">
@@ -113,9 +127,9 @@
                            <a href="#"><span class="cat-name" >{{$top_single->cat_name}}</span></a>
                            <a href="https://www.google.com" class="text-dark">
                               <h5 class="mt-3 mb-0">{{$top_single->title}}</h5>
-                              <p class="card-text short_disc mb-1" >{{$top_single->short_description}}</p>
+                              <p class="card-text short_disc mb-1" >{{ substr($top_single->short_description,0,100) }} ...</p>
                            </a>
-                           <a href="" class="text-dark"><span class="short_disc">{{$top_single->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{$top_single->created_at}}</span></a>
+                           <a href="" class="text-dark"><span class="short_disc">{{$top_single->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
                         </div>
                      </div>
                   </div>
@@ -149,6 +163,10 @@
                 $first_post= App\Post::where('status', 1)->where('category_id', $count)->first();
                 $three_post= App\Post::where('status', 1)->where('category_id', $count)->take(4)->get()->toArray();
                 array_shift($three_post);
+
+
+
+
 
                 // dd($three_post);
                 ?>
