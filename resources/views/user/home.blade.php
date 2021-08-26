@@ -52,25 +52,29 @@
                <h2 class="georgia">Latest News </h2>
             </div>
             <div class="row">
+
+                @foreach ($latest_news as $latest_single)
+
+
                <div class="col-md-3 col-sm-6">
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
                      <div class="row round1">
                         <div class="col-sm-12 round" >
-                           <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
+                           <a href=""><img src={{asset('img/main_image/'. $latest_single->main_image)}} alt="" class="round"></a>
                         </div>
                      </div>
                      <div class="row">
                         <div class="col-sm-12 pt-1" >
-                           <a href="#"><span class="cat-name" >Sports</span></a>
+                           <a href="#"><span class="cat-name" >{{$latest_single->cat_name}}</span></a>
                            <a href="https://www.google.com" class="text-dark">
-                              <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
+                              <h5 class="mt-3 mb-0">{{$latest_single->title}}</h5>
                            </a>
-                           <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
+                           <a href="" class="text-dark"><span class="short_disc"> {{$latest_single->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{$latest_single->created_at}}</span></a>
                         </div>
                      </div>
                   </div>
                </div>
-
+               @endforeach
 
 
             </div>
@@ -94,63 +98,32 @@
                <h2 class="georgia">Top Stories </h2>
             </div>
             <div class="row">
+
+                @foreach ( $top_stories as $top_single )
+
                <div class="col-md-4 col-sm-4">
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
                      <div class="row round1">
                         <div class="col-sm-12 round" >
-                           <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
+                           <a href=""><img src={{asset('img/main_image/'. $top_single->main_image)}} alt="" class="round"></a>
                         </div>
                      </div>
                      <div class="row">
                         <div class="col-sm-12 pt-1" >
-                           <a href="#"><span class="cat-name" >Sports</span></a>
+                           <a href="#"><span class="cat-name" >{{$top_single->cat_name}}</span></a>
                            <a href="https://www.google.com" class="text-dark">
-                              <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                              <p class="card-text short_disc mb-1" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <h5 class="mt-3 mb-0">{{$top_single->title}}</h5>
+                              <p class="card-text short_disc mb-1" >{{$top_single->short_description}}</p>
                            </a>
-                           <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
+                           <a href="" class="text-dark"><span class="short_disc">{{$top_single->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{$top_single->created_at}}</span></a>
                         </div>
                      </div>
                   </div>
                </div>
-               <div class="col-md-4 col-sm-4">
-                  <div class="block-content pb-3 my_card " style="padding-top: 0">
-                     <div class="row round1">
-                        <div class="col-sm-12 round" >
-                           <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-sm-12 pt-1" >
-                           <a href="#"><span class="cat-name" >Sports</span></a>
-                           <a href="https://www.google.com" class="text-dark">
-                              <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                              <p class="card-text short_disc mb-1" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                           </a>
-                           <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-4">
-                  <div class="block-content pb-3 my_card " style="padding-top: 0">
-                     <div class="row round1">
-                        <div class="col-sm-12 round" >
-                           <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-sm-12 pt-1" >
-                           <a href="#"><span class="cat-name" >Sports</span></a>
-                           <a href="https://www.google.com" class="text-dark">
-                              <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                              <p class="card-text short_disc mb-1" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                           </a>
-                           <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+               @endforeach
+
+
+
             </div>
             <br>
             <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
@@ -173,8 +146,11 @@
                 @foreach ($post_count as $count)
                 <?php
                 $category_topFour= App\Category::where('status', 1)->where('id', $count)->first();
-                $first_post= App\Post::where('status', 1)->where('category_id', $count)->first()->get();
-                $three_post= App\Post::where('status', 1)->where('category_id', $count)->take(3)->get();
+                $first_post= App\Post::where('status', 1)->where('category_id', $count)->first();
+                $three_post= App\Post::where('status', 1)->where('category_id', $count)->take(4)->get()->toArray();
+                array_shift($three_post);
+
+                // dd($three_post);
                 ?>
 
 
@@ -183,17 +159,17 @@
                   <a href="">
                      <div class="row">
                         <div class="col-md-4 pad">
-                           <img src={{asset('media/photos/photo14.jpg')}} alt="" style="width: 100%;">
+                           <img src={{asset('img/main_image/'. $first_post['main_image'])}} alt="" style="width: 100%;">
                         </div>
                         <div class="col-md-8">
-                           <p class="s-ttl pt-1 text-dark" >We want to do away with the factors for conflict. Therefore, the Islamic</p>
+                           <p class="s-ttl pt-1 text-dark" >{{$first_post['title']}}</p>
                         </div>
                      </div>
                   </a>
                   <hr>
                   @foreach ($three_post as $three)
                   <a href="" class="text-dark">
-                    <p class="s-ttl">We want to do away with the factors for conflict. Therefore, the Islamic</p>
+                    <p class="s-ttl">{{$three['title']}}</p>
                  </a>
                  <hr>
                   @endforeach
