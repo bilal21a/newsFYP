@@ -70,60 +70,9 @@
                      </div>
                   </div>
                </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="block-content pb-3 my_card " style="padding-top: 0">
-                     <div class="row round1">
-                        <div class="col-sm-12 round" >
-                           <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-sm-12 pt-1" >
-                           <a href="#"><span class="cat-name" >Sports</span></a>
-                           <a href="https://www.google.com" class="text-dark">
-                              <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                           </a>
-                           <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="block-content pb-3 my_card " style="padding-top: 0">
-                     <div class="row round1">
-                        <div class="col-sm-12 round" >
-                           <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-sm-12 pt-1" >
-                           <a href="#"><span class="cat-name" >Sports</span></a>
-                           <a href="https://www.google.com" class="text-dark">
-                              <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                           </a>
-                           <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-3 col-sm-6">
-                  <div class="block-content pb-3 my_card " style="padding-top: 0">
-                     <div class="row round1">
-                        <div class="col-sm-12 round" >
-                           <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-sm-12 pt-1" >
-                           <a href="#"><span class="cat-name" >Sports</span></a>
-                           <a href="https://www.google.com" class="text-dark">
-                              <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                           </a>
-                           <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+
+
+
             </div>
             <br>
             <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
