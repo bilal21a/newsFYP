@@ -74,28 +74,43 @@ class HomeController extends Controller
          $this->data['top_stories'] = $top_stories;
          $this->data['post_count'] = $post_count;
 
-        //  dd($hot_news);
-
-
         return view('user.home',$this->data);
     }
 
-
-
-
-
-
-
-
     public function single_post($post_id)
     {
+        //single news
         $post = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->select('cat.name','cat.status','cat.created_at','p.*')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->where('p.status', 1)
         ->where('p.id', $post_id)
         ->first();
 
+        $cat_id=$post->cat_id;
+
+        //latest news
+        $latest_news = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->where('p.status', 1)
+        ->latest()->take(4)->get()->toArray();
+
+        //related posts
+        $related_news = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->where('p.status', 1)
+        ->where('p.category_id', $cat_id)
+        ->get()
+        ->toArray();
+
         $this->data['post'] = $post;
+        $this->data['latest_news'] = $latest_news;
+        $this->data['related_news'] = $related_news;
         return view('user.single-page',$this->data);
     }
 
