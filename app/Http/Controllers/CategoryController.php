@@ -27,7 +27,7 @@ class CategoryController extends Controller
 
         $this->data['posts_all'] = $posts_all;
         $this->data['cat_name'] = $cat_name;
-
+        dd($this->data);
         return view('user.categories',$this->data);
 
     }
