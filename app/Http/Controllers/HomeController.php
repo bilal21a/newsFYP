@@ -39,8 +39,15 @@ class HomeController extends Controller
         // dd($latest_news);
 
         //hot news
-        $hot_news= Post::where('status', 1)->where('hot_news', 1)->latest()->take(4)->get()->toArray();
-        // dd($hot_news);
+        $hot_news = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->where('p.status', 1)
+        ->latest()
+        ->take(4)
+        ->get()
+        ->toArray();
 
         //show top 4 catogories with most posts
         $post_raw= Post::where('status', 1)
