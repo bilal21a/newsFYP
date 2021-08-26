@@ -66,7 +66,8 @@ class HomeController extends Controller
          $this->data['top_stories'] = $top_stories;
          $this->data['post_count'] = $post_count;
 
-        //  dd($this->data);
+        //  dd($hot_news);
+
 
         return view('user.home',$this->data);
     }
