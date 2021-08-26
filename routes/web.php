@@ -18,7 +18,7 @@ Route::get('upload', function () {return view('upload');});
 Route::get('contact_us', function () {return view('user.contact');})->name('contact_us');
 
 
-Route::get('text', function () {return view('categories');});
+Route::get('text', function () {return view('user.home');});
 Route::get('text2', function () {return view('user.singlepage');});
 Route::get('text4', function () {return view('user.allcategories');});
 Route::get('text5', function () {return view('user.unicategories');});
