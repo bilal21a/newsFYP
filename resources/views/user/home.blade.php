@@ -5,85 +5,33 @@
    <section class="block">
       <div class="block-content">
          <div class="mt-5" style="margin: 0px 12px;">
-            <h2 class="georgia">Related News </h2>
+            <h2 class="georgia">Hot News </h2>
          </div>
          <div class="row">
+             @foreach ($hot_news as $single_hot)
+
+
             <div class="col-md-3 col-sm-6">
                <div class="block-content pb-3 my_card " style="padding-top: 0">
                   <div class="row round1">
                      <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
+                        <a href=""><img src={{asset('img/main_image/'. $single_hot['main_image'])}} alt="" class="round"></a>
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-sm-12 pt-1" >
                         <a href="#"><span class="cat-name" >Sports</span></a>
                         <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                           <p class="card-text short_disc mb-1" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                           <h5 class="mt-3 mb-0">{{$single_hot['title']}}</h5>
+                           <p class="card-text short_disc mb-1" >{{$single_hot['short_description']}}</p>
                         </a>
                         <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
                      </div>
                   </div>
                </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="#"><span class="cat-name" >Sports</span></a>
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                           <p class="card-text short_disc mb-1" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="#"><span class="cat-name" >Sports</span></a>
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                           <p class="card-text short_disc mb-1" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="#"><span class="cat-name" >Sports</span></a>
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                           <p class="card-text short_disc mb-1" >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
+            @endforeach
+
          </div>
          <br>
          <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
