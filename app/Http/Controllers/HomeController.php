@@ -31,25 +31,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //section 1
-        $posts_most_viewed= Post::where('status', 1)->orderBy('view_count', 'desc')->first();
-
-        //section 1.1
-        $posts_most_viewed_2= Post::where('status', 1)->orderBy('view_count', 'desc')->take(5)->get()->toArray();
-        array_shift($posts_most_viewed_2);
-
-        //section tags
-        $tags_ten=Tags::take(10)->get();
+        //top stories
+        $top_stories= Post::where('status', 1)->orderBy('view_count', 'desc')->take(3)->get()->toArray();
 
         //latest news
-        $posts_latest_first= Post::where('status', 1)->latest()->first()->toArray();
-        $posts_latest= Post::where('status', 1)->latest()->take(6)->get()->toArray();
-        array_shift($posts_latest);
-        // dd($posts_latest);
+        $latest_news= Post::where('status', 1)->latest()->take(4)->get()->toArray();
+        // dd($latest_news);
 
-        //section 2
-        $category= Category::where('status', 1)->get();
-        $posts= Post::where('status', 1)->get();
+        //hot news
+        $hot_news= Post::where('status', 1)->where('hot_news', 1)->latest()->take(4)->get()->toArray();
+        // dd($hot_news);
 
         //show top 4 catogories with most posts
         $post_raw= Post::where('status', 1)
@@ -63,17 +54,21 @@ class HomeController extends Controller
         $post_count = array_slice($post_count_flip, 0, 4);
 
          //setting data
-         $this->data['category'] = $category;
-         $this->data['posts'] = $posts;
+         $this->data['hot_news'] = $hot_news;
+         $this->data['latest_news'] = $latest_news;
+         $this->data['top_stories'] = $top_stories;
          $this->data['post_count'] = $post_count;
-         $this->data['posts_most_viewed'] = $posts_most_viewed;
-         $this->data['posts_most_viewed_2'] = $posts_most_viewed_2;
-         $this->data['tags_ten'] = $tags_ten;
-         $this->data['posts_latest_first'] = $posts_latest_first;
-         $this->data['posts_latest'] = $posts_latest;
+
+        //  dd($this->data);
 
         return view('user.home',$this->data);
     }
+
+
+
+
+
+
 
 
     public function single_post($post_id)

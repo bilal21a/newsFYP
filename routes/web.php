@@ -18,9 +18,9 @@ Route::get('upload', function () {return view('upload');});
 Route::get('contact_us', function () {return view('user.contact');})->name('contact_us');
 
 
-Route::get('text', function () {return view('categories');});
+Route::get('text', function () {return view('user.home');});
 Route::get('text2', function () {return view('user.singlepage');});
-aRoute::get('text4', function () {return view('user.allcategories');});
+Route::get('text4', function () {return view('user.allcategories');});
 Route::get('text5', function () {return view('user.unicategories');});
 Route::get('text6', function () {return view('user.contact');});
 Route::get('text7', function () {return view('showcomment');});
