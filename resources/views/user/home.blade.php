@@ -6,7 +6,7 @@
       <div class="block-content">
           <div class="mt-5" style="margin: 0px 12px;">
 
-                  <h2 class="georgia">Related News </h2>
+                  <h2 class="georgia">Hot News </h2>
 
 
           </div>
