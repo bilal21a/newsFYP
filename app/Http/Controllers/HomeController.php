@@ -32,11 +32,21 @@ class HomeController extends Controller
     public function index()
     {
         //top stories
-        $top_stories= Post::where('status', 1)->orderBy('view_count', 'desc')->take(3)->get()->toArray();
+        $top_stories = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->where('p.status', 1)
+        ->orderBy('view_count', 'desc')
+        ->latest()->take(3)->get()->toArray();
 
         //latest news
-        $latest_news= Post::where('status', 1)->latest()->take(4)->get()->toArray();
-        // dd($latest_news);
+        $latest_news = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->where('p.status', 1)
+        ->latest()->take(4)->get()->toArray();
 
         //hot news
         $hot_news = DB::table('posts as p')
@@ -44,10 +54,8 @@ class HomeController extends Controller
         ->join('users as user', 'p.created_by', '=', 'user.id')
         ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
-        ->latest()
-        ->take(4)
-        ->get()
-        ->toArray();
+        ->where('p.hot_news', 1)
+        ->latest()->take(4)->get()->toArray();
 
         //show top 4 catogories with most posts
         $post_raw= Post::where('status', 1)
