@@ -29,7 +29,7 @@
                   <nav aria-label="breadcrumb">
                      <ol class="breadcrumb breadcrumb-alt push">
                         <li class="breadcrumb-item">
-                           <a href="javascript:void(0)">Home</a>
+                           <a href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="breadcrumb-item">
                            <a href="javascript:void(0)">{{$post->cat_name}}</a>

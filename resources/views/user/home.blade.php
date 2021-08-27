@@ -40,9 +40,11 @@
 
          </div>
          <br>
+         <a href="{{ url('hot_news') }}">
          <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
          View All<i class="fa fa-angle-double-right  ml-1"></i>
          </button>
+        </a>
          <br><br>
       </div>
    </section>
@@ -65,19 +67,20 @@
                     $var_1= $latest_single->created_at;
                     $var_2 = strtotime($var_1);
                     $date = date('F d, Y', $var_2);
+                    // dd($latest_single);
                  ?>
 
                <div class="col-md-3 col-sm-6">
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
                      <div class="row round1">
                         <div class="col-sm-12 round" >
-                           <a href=""><img src={{asset('img/main_image/'. $latest_single->main_image)}} alt="" class="round"></a>
+                           <a href="{{ url('single_post/'.$latest_single->id) }}"><img src={{asset('img/main_image/'. $latest_single->main_image)}} alt="" class="round"></a>
                         </div>
                      </div>
                      <div class="row">
                         <div class="col-sm-12 pt-1" >
-                           <a href="#"><span class="cat-name" >{{$latest_single->cat_name}}</span></a>
-                           <a href="https://www.google.com" class="text-dark">
+                           <a href="{{ url('categories/'.$latest_single->cat_id) }}"><span class="cat-name" >{{$latest_single->cat_name}}</span></a>
+                           <a href="{{ url('single_post/'.$latest_single->id) }}" class="text-dark">
                               <h5 class="mt-3 mb-0">{{$latest_single->title}}</h5>
                            </a>
                            <a href="" class="text-dark"><span class="short_disc"> {{$latest_single->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
@@ -90,9 +93,11 @@
 
             </div>
             <br>
+            <a href="{{ url('latest_news') }}">
             <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
             View All<i class="fa fa-angle-double-right  ml-1"></i>
             </button>
+            </a>
             <br><br>
          </div>
       </section>
@@ -120,13 +125,13 @@
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
                      <div class="row round1">
                         <div class="col-sm-12 round" >
-                           <a href=""><img src={{asset('img/main_image/'. $top_single->main_image)}} alt="" class="round"></a>
+                           <a href="{{ url('single_post/'.$top_single->id) }}"><img src={{asset('img/main_image/'. $top_single->main_image)}} alt="" class="round"></a>
                         </div>
                      </div>
                      <div class="row">
                         <div class="col-sm-12 pt-1" >
-                           <a href="#"><span class="cat-name" >{{$top_single->cat_name}}</span></a>
-                           <a href="https://www.google.com" class="text-dark">
+                           <a href="{{ url('categories/'.$top_single->cat_id) }}"><span class="cat-name" >{{$top_single->cat_name}}</span></a>
+                           <a href="{{ url('single_post/'.$top_single->id) }}" class="text-dark">
                               <h5 class="mt-3 mb-0">{{$top_single->title}}</h5>
                               <p class="card-text short_disc mb-1" >{{ substr($top_single->short_description,0,100) }} ...</p>
                            </a>
@@ -141,9 +146,10 @@
 
             </div>
             <br>
+            <a href="{{ url('top_stories') }}">
             <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
             View All<i class="fa fa-angle-double-right  ml-1"></i>
-            </button>
+            </button></a>
             <br><br>
          </div>
       </section>
@@ -164,14 +170,12 @@
                 $first_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->first();
                 $three_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->take(4)->get()->toArray();
                 array_shift($three_post);
-
-                // dd($three_post);
                 ?>
 
 
                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
                   <h3 class="long_cat" >{{$category_topFour->name}}</h3>
-                  <a href="">
+                  <a href="{{ url('single_post/'.$first_post['id']) }}">
                      <div class="row">
                         <div class="col-md-4 pad">
                            <img src={{asset('img/main_image/'. $first_post['main_image'])}} alt="" style="width: 100%;">
@@ -183,7 +187,7 @@
                   </a>
                   <hr>
                   @foreach ($three_post as $three)
-                  <a href="" class="text-dark">
+                  <a href="{{ url('single_post/'.$three['id']) }}" class="text-dark">
                     <p class="s-ttl">{{$three['title']}}</p>
                  </a>
                  <hr>
@@ -194,6 +198,12 @@
 
                @endforeach
             </div>
+            <br>
+            <a href="">
+            <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
+            View All<i class="fa fa-angle-double-right  ml-1"></i>
+            </button></a>
+            <br><br>
          </div>
       </section>
 

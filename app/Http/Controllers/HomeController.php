@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //recursive
+        //top category
         $post_count =DB::table('posts')
         ->select('category_id',DB::raw('count(*) as total'))
         ->orderBy('total','desc')
@@ -46,7 +46,7 @@ class HomeController extends Controller
         $top_stories = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
         ->orderBy('view_count', 'desc')
         ->latest()->take(3)->get()->toArray();
@@ -55,7 +55,7 @@ class HomeController extends Controller
         $latest_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
         ->latest()->take(4)->get()->toArray();
 

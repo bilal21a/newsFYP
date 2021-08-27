@@ -10,11 +10,11 @@
    <section class="block">
       <div class="block-content">
          <div class="" style="margin: 0px 12px;">
-            <h2 class="georgia">Hot News </h2>
+            <h2 class="georgia">Top Stories </h2>
          </div>
          <div class="row">
 
-            @foreach ($hot_news as $posts)
+            @foreach ($top_stories as $posts)
 
 
             <div class="col-md-3 col-sm-6">
@@ -41,7 +41,7 @@
             </div>
             @endforeach
          </div>
-         {{ $hot_news->links() }}
+         {{ $top_stories->links() }}
       </div>
    </section>
    <!-- End 4 in 1 -->
