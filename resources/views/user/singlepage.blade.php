@@ -32,7 +32,7 @@
                            <a href="{{ url('/') }}">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                           <a href="javascript:void(0)">{{$post->cat_name}}</a>
+                           <a href="{{ url('categories/' .$post->cat_id) }}">{{$post->cat_name}}</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $post->title }}</li>
                      </ol>
@@ -41,14 +41,14 @@
                   <img src="{{asset('img/main_image/'. $post->main_image)}}" alt="" style="width: 100%;">
                   <div class="pt-2 pb-3">
                      <span>
-                     <a href="" class="text-dark pr-4"><i class="fa fa-user">   {{$post->name}}</i></a>
+                     <a href="#" class="text-dark pr-4"><i class="fa fa-user">   {{$post->name}}</i></a>
                             <?php
                                 $var_1= $post->created_at;
                                 $var_2 = strtotime($var_1);
                                 $date = date('F d, Y', $var_2);
                             ?>
 
-                     <a href="" class="text-dark pr-4"><i class="fa fa-clock"> {{$date}}</i></a>
+                     <a href="#" class="text-dark pr-4"><i class="fa fa-clock"> {{$date}}</i></a>
                      </span>
                   </div>
                   <div class="block block-rounded block-link-pop" style="background-color: #f5f5f5;">
@@ -108,7 +108,7 @@
 
                @foreach ( $latest_news as $news_lat)
 
-               <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+               <a class="block block-rounded block-link-pop" href="{{ url('single_post/'.$news_lat->id) }}">
                   <div class="block-content" style="padding-top: 0">
                      <div class="row">
                         <div class="col-sm-3 customwork" >
@@ -150,7 +150,7 @@
 
 
                   <div class="col-md-3 col-sm-6">
-                     <a class="block block-rounded block-link-pop" href="javascript:void(0)">
+                     <a class="block block-rounded block-link-pop" href="{{ url('single_post/'.$news_rel->id) }}">
                         <div class="block-content pb-3" style="padding-top: 0">
                            <div class="row round1">
                               <div class="col-sm-12 pt-3 round" >
