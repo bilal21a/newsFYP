@@ -63,22 +63,10 @@ class HomeController extends Controller
         $hot_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
         ->where('p.hot_news', 1)
         ->latest()->take(4)->get()->toArray();
-
-        //show top 4 catogories with most posts
-        // $post_raw= Post::where('status', 1)
-        // ->select('category_id')->get()->toArray();
-        // //show top 4 catogories with most posts
-        // foreach($post_raw as $single){
-        //     $post_items[] = $single['category_id'];
-        // }
-        // $post_count=array_count_values($post_items);
-        // $post_count_flip=array_flip($post_count);
-        // $post_count = array_slice($post_count_flip, 0, 4);
-        // dd($post_count);
 
          //setting data
          $this->data['hot_news'] = $hot_news;
