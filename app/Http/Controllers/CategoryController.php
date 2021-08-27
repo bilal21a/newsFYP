@@ -81,25 +81,24 @@ class CategoryController extends Controller
 
         //all cat posts
         $all_cat_posts=[];
+        $all_cat_name=[];
+
         for ($i = 0; $i < count($post_count); $i++) {
             $all_cat_posts[$i] =DB::table('posts as p')
             ->join('categories as cat', 'p.category_id', '=', 'cat.id')
             ->join('users as user', 'p.created_by', '=', 'user.id')
             ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
             ->where('p.status', 1)
-            ->where('cat.id', $post_count[$i]->category_id)
+            ->where('cat.id', $post_count[$i]->category_id)->take(4)
             ->get()->toArray();
-        }
 
-        //all cat names
-        $all_cat_name=[];
-        for ($i = 0; $i < count($post_count); $i++) {
-            $all_cat_name[$i]=Category::where('id', $post_count[$i]->category_id)->get()->toArray();
+            $all_cat_posts['all_cat_name'][$i]=Category::where('id', $post_count[$i]->category_id)->get()->toArray();
+
         }
 
 
+        // $this->data['all_cat_name'] = $all_cat_name;
         $this->data['all_cat_posts'] = $all_cat_posts;
-        $this->data['all_cat_name'] = $all_cat_name;
         dd($this->data);
         return view('user.allcategories',$this->data);
 

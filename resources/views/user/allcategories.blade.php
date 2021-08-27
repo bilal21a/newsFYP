@@ -6,11 +6,14 @@
 @section('content')
 <br> <br> <br>
 <section class="block">
-   <!-- 4 in 1 -->
+    @foreach ($all_cat_posts as $cat_posts_raw)
+
+
+
    <section class="block">
       <div class="block-content">
          <div class="" style="margin: 0px 12px;">
-            <h2 class="georgia">SPORTS </h2>
+            <h2 class="georgia">abc </h2>
          </div>
          <div class="row">
             <div class="col-md-3 col-sm-6">
@@ -89,177 +92,8 @@
          <br><br>
       </div>
    </section>
-   <!-- End 4 in 1 -->
    <hr style="margin: 0px 50px;">
-   <!-- 4 in 1 -->
-   <section class="block">
-      <div class="block-content">
-         <div class="" style="margin: 0px 12px;">
-            <h2 class="georgia">POLITICS </h2>
-         </div>
-         <div class="row">
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <br>
-         <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
-         View All<i class="fa fa-angle-double-right  ml-1"></i>
-         </button>
-         <br><br>
-      </div>
-   </section>
-   <!-- End 4 in 1 -->
-   <hr style="margin: 0px 50px;">
-   <!-- 4 in 1 -->
-   <section class="block">
-      <div class="block-content">
-         <div class="" style="margin: 0px 12px;">
-            <h2 class="georgia">ENTERTAINMENT </h2>
-         </div>
-         <div class="row">
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-               <div class="block-content pb-3 my_card " style="padding-top: 0">
-                  <div class="row round1">
-                     <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
-                        </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <br>
-         <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
-         View All<i class="fa fa-angle-double-right  ml-1"></i>
-         </button>
-         <br><br>
-      </div>
-   </section>
-   <!-- End 4 in 1 -->
+   @endforeach
 </section>
 @endsection
 @section('js')
