@@ -89,8 +89,8 @@ class CategoryController extends Controller
 
 
 
-        $this->data['top_stories'] = $top_stories;
-        return view('user.allcategories',$this->data);
+        // $this->data['top_stories'] = $top_stories;
+        // return view('user.allcategories',$this->data);
 
     }
 }
