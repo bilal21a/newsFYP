@@ -25,15 +25,20 @@
                <div class="block-content pb-3 my_card " style="padding-top: 0">
                   <div class="row round1">
                      <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('media/photos/photo14.jpg')}} alt="" class="round"></a>
+                        <a href=""><img src={{asset('img/main_image/'. $single_cat->main_image)}} alt="" class="round"></a>
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-sm-12 pt-1" >
                         <a href="https://www.google.com" class="text-dark">
-                           <h5 class="mt-3 mb-0">Design Responsive, SEO friendly & Fast Loading WordPress website</h5>
+                           <h5 class="mt-3 mb-0">{{ $single_cat->title }}</h5>
                         </a>
-                        <a href="" class="text-dark"><span class="short_disc"> BY FRIEZE</span></a> | <a href="" class="text-dark"><span class="short_disc"> 04 AUG 21</span></a>
+                        <?php
+                            $var_1= $single_cat->created_at;
+                            $var_2 = strtotime($var_1);
+                            $date = date('F d, Y', $var_2);
+                        ?>
+                        <a href="" class="text-dark"><span class="short_disc"> {{ $single_cat->name }}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{ $date }}</span></a>
                      </div>
                   </div>
                </div>
@@ -41,10 +46,10 @@
 
             @endforeach
 
-         </div><br>
+         </div><br><a href="{{ url('categories/'.$single_cat->cat_id) }}">
          <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
          View All<i class="fa fa-angle-double-right  ml-1"></i>
-         </button><br><br>
+         </button><br><br></a>
       </div>
    </section>
    <hr style="margin: 0px 50px;">
