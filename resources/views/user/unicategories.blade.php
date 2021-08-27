@@ -13,10 +13,7 @@
             <h2 class="georgia">{{ $cat_name[0]['name'] }} </h2>
          </div>
          <div class="row">
-
             @foreach ($posts_all as $posts)
-
-
             <div class="col-md-3 col-sm-6">
                <div class="block-content pb-3 my_card " style="padding-top: 0">
                   <div class="row round1">
@@ -41,6 +38,7 @@
             </div>
             @endforeach
          </div>
+         {{ $posts_all->links() }}
       </div>
    </section>
    <!-- End 4 in 1 -->
