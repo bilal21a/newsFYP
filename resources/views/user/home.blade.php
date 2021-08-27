@@ -159,14 +159,10 @@
 
                 @foreach ($post_count as $count)
                 <?php
-                $category_topFour= App\Category::where('status', 1)->where('id', $count)->first();
-                $first_post= App\Post::where('status', 1)->where('category_id', $count)->first();
-                $three_post= App\Post::where('status', 1)->where('category_id', $count)->take(4)->get()->toArray();
+                $category_topFour= App\Category::where('status', 1)->where('id', $count->category_id)->first();
+                $first_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->first();
+                $three_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->take(4)->get()->toArray();
                 array_shift($three_post);
-
-
-
-
 
                 // dd($three_post);
                 ?>

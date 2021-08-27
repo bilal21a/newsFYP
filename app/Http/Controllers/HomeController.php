@@ -31,6 +31,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //recursive
+        $post_count =DB::table('posts')
+        ->select('category_id',DB::raw('count(*) as total'))
+        ->orderBy('total','desc')
+        ->take(4)
+        ->groupBy('category_id')->get();
+
+            // dd($post_count);
+
+
+
         //top stories
         $top_stories = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
@@ -58,15 +69,16 @@ class HomeController extends Controller
         ->latest()->take(4)->get()->toArray();
 
         //show top 4 catogories with most posts
-        $post_raw= Post::where('status', 1)
-        ->select('category_id')->get()->toArray();
-        //show top 4 catogories with most posts
-        foreach($post_raw as $single){
-            $post_items[] = $single['category_id'];
-        }
-        $post_count=array_count_values($post_items);
-        $post_count_flip=array_flip($post_count);
-        $post_count = array_slice($post_count_flip, 0, 4);
+        // $post_raw= Post::where('status', 1)
+        // ->select('category_id')->get()->toArray();
+        // //show top 4 catogories with most posts
+        // foreach($post_raw as $single){
+        //     $post_items[] = $single['category_id'];
+        // }
+        // $post_count=array_count_values($post_items);
+        // $post_count_flip=array_flip($post_count);
+        // $post_count = array_slice($post_count_flip, 0, 4);
+        // dd($post_count);
 
          //setting data
          $this->data['hot_news'] = $hot_news;
@@ -79,7 +91,7 @@ class HomeController extends Controller
 
     public function single_post($post_id)
     {
-        //single news
+       //single news
         $post = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
