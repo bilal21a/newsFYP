@@ -74,32 +74,34 @@ class CategoryController extends Controller
     public function all_categories()
     {
         //top category
-         $post_count =DB::table('posts')
-         ->select('category_id',DB::raw('count(*) as total'))
-         ->orderBy('total','desc')
-         ->groupBy('category_id')->get();
+        $post_count =DB::table('posts')
+        ->select('category_id',DB::raw('count(*) as total'))
+        ->orderBy('total','desc')
+        ->groupBy('category_id')->get();
 
         //all cat posts
         $all_cat_posts=[];
-        $all_cat_name=[];
-
         for ($i = 0; $i < count($post_count); $i++) {
-            $all_cat_posts[$i] =DB::table('posts as p')
+
+            $all_cat_posts['posts'][$i] =DB::table('posts as p')
             ->join('categories as cat', 'p.category_id', '=', 'cat.id')
             ->join('users as user', 'p.created_by', '=', 'user.id')
             ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
             ->where('p.status', 1)
             ->where('cat.id', $post_count[$i]->category_id)->take(4)
             ->get()->toArray();
-
-            $all_cat_posts['all_cat_name'][$i]=Category::where('id', $post_count[$i]->category_id)->get()->toArray();
-
         }
 
+        //to remove empty data values finnal value is $allCats
+        $allCats=[];
+        for ($i = 0; $i < count($post_count); $i++) {
+            if($all_cat_posts['posts'][$i]){
+                $allCats[$i]=$all_cat_posts['posts'][$i];
+            }
+        }
 
-        // $this->data['all_cat_name'] = $all_cat_name;
-        $this->data['all_cat_posts'] = $all_cat_posts;
-        dd($this->data);
+        $this->data['allCats'] = $allCats;
+        // dd($this->data);
         return view('user.allcategories',$this->data);
 
     }
