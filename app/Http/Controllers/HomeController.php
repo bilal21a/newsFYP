@@ -83,12 +83,17 @@ class HomeController extends Controller
         $post = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.description','p.main_image','p.created_at','user.name')
+        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.description','p.view_count','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
         ->where('p.id', $post_id)
         ->first();
 
         $cat_id=$post->cat_id;
+
+        //increase view count by 1
+        $view_count=$post->view_count;
+        $view_count=$view_count+1;
+        Post::where('id', $post_id)->update(['view_count' => $view_count]);
 
         //latest news
         $latest_news = DB::table('posts as p')

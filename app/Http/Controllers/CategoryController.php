@@ -18,13 +18,8 @@ class CategoryController extends Controller
         ->where('p.status', 1)
         ->where('p.category_id', $cat_id)
         ->paginate(12);
-        // ->get()
-        // ->toArray();
 
         $cat_name=Category::where('id', $cat_id)->get()->toArray();
-
-
-
 
         $this->data['posts_all'] = $posts_all;
         $this->data['cat_name'] = $cat_name;
@@ -43,8 +38,6 @@ class CategoryController extends Controller
          ->where('p.hot_news', 1)
          ->latest()->paginate(12);
 
-
-
         $this->data['hot_news'] = $hot_news;
         return view('user.all.hotnews',$this->data);
 
@@ -58,8 +51,6 @@ class CategoryController extends Controller
         ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
         ->latest()->paginate(12);
-
-
 
         $this->data['latest_news'] = $latest_news;
         return view('user.all.latestnews',$this->data);
@@ -75,9 +66,6 @@ class CategoryController extends Controller
         ->where('p.status', 1)
         ->orderBy('view_count', 'desc')
         ->latest()->paginate(12);
-        // ->take(3)->get()->toArray();
-
-
 
         $this->data['top_stories'] = $top_stories;
         return view('user.all.topstories',$this->data);
@@ -85,12 +73,35 @@ class CategoryController extends Controller
     }
     public function all_categories()
     {
+        //top category
+         $post_count =DB::table('posts')
+         ->select('category_id',DB::raw('count(*) as total'))
+         ->orderBy('total','desc')
+         ->groupBy('category_id')->get();
+
+        //all cat posts
+        $all_cat_posts=[];
+        for ($i = 0; $i < count($post_count); $i++) {
+            $all_cat_posts[$i] =DB::table('posts as p')
+            ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+            ->join('users as user', 'p.created_by', '=', 'user.id')
+            ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+            ->where('p.status', 1)
+            ->where('cat.id', $post_count[$i]->category_id)
+            ->get()->toArray();
+        }
+
+        //all cat names
+        $all_cat_name=[];
+        for ($i = 0; $i < count($post_count); $i++) {
+            $all_cat_name[$i]=Category::where('id', $post_count[$i]->category_id)->get()->toArray();
+        }
 
 
-
-
-        // $this->data['top_stories'] = $top_stories;
-        // return view('user.allcategories',$this->data);
+        $this->data['all_cat_posts'] = $all_cat_posts;
+        $this->data['all_cat_name'] = $all_cat_name;
+        dd($this->data);
+        return view('user.allcategories',$this->data);
 
     }
 }
