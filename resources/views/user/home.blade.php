@@ -199,7 +199,7 @@
                @endforeach
             </div>
             <br>
-            <a href="">
+            <a href="{{ url('all_categories') }}">
             <button type="button" class="btn btn-sm btn-light mr-1 mb-3 cat_btn" style="float: right;">
             View All<i class="fa fa-angle-double-right  ml-1"></i>
             </button></a>

@@ -25,12 +25,12 @@
                <div class="block-content pb-3 my_card " style="padding-top: 0">
                   <div class="row round1">
                      <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('img/main_image/'. $single_cat->main_image)}} alt="" class="round"></a>
+                        <a href="{{ url('single_post/'.$single_cat->id) }}"><img src={{asset('img/main_image/'. $single_cat->main_image)}} alt="" class="round"></a>
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
+                        <a href="{{ url('single_post/'.$single_cat->id) }} " class="text-dark">
                            <h5 class="mt-3 mb-0">{{ $single_cat->title }}</h5>
                         </a>
                         <?php
@@ -38,7 +38,7 @@
                             $var_2 = strtotime($var_1);
                             $date = date('F d, Y', $var_2);
                         ?>
-                        <a href="" class="text-dark"><span class="short_disc"> {{ $single_cat->name }}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{ $date }}</span></a>
+                        <a href="#" class="text-dark"><span class="short_disc"> {{ $single_cat->name }}</span></a> | <a href="#" class="text-dark"><span class="short_disc"> {{ $date }}</span></a>
                      </div>
                   </div>
                </div>

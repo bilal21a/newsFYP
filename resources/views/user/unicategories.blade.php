@@ -18,12 +18,13 @@
                <div class="block-content pb-3 my_card " style="padding-top: 0">
                   <div class="row round1">
                      <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('img/main_image/'. $posts->main_image)}} alt="" class="round"></a>
+                        <a href="col-sm-12 round" >
+                            <a href="{{ url('single_post/'.$posts->id) }}"><img src={{asset('img/main_image/'. $posts->main_image)}} alt="" class="round"></a>
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-sm-12 pt-1" >
-                        <a href="https://www.google.com" class="text-dark">
+                        <a href="{{ url('single_post/'.$posts->id) }}" class="text-dark">
                            <h5 class="mt-3 mb-0">{{ $posts->title }}</h5>
                         </a>
                         <?php
