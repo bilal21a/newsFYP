@@ -14,19 +14,20 @@
                 $var_1= $single_hot->created_at;
                 $var_2 = strtotime($var_1);
                 $date = date('F d, Y', $var_2);
+                // dd($single_hot);
              ?>
 
             <div class="col-md-3 col-sm-6">
                <div class="block-content pb-3 my_card " style="padding-top: 0">
                   <div class="row round1">
                      <div class="col-sm-12 round" >
-                        <a href=""><img src={{asset('img/main_image/'. $single_hot->main_image)}} alt="" class="round"></a>
+                        <a href="{{ url('single_post/'.$single_hot->id) }}"><img src={{asset('img/main_image/'. $single_hot->main_image)}} alt="" class="round"></a>
                      </div>
                   </div>
                   <div class="row">
                      <div class="col-sm-12 pt-1" >
-                        <a href="#"><span class="cat-name" >{{$single_hot->cat_name}}</span></a>
-                        <a href="https://www.google.com" class="text-dark">
+                        <a href="{{ url('categories/'.$single_hot->cat_id) }}"><span class="cat-name" >{{$single_hot->cat_name}}</span></a>
+                        <a href="{{ url('single_post/'.$single_hot->id) }}" class="text-dark">
                            <h5 class="mt-3 mb-0">{{$single_hot->title}}</h5>
                            <p class="card-text short_disc mb-1" > {{ substr($single_hot->short_description,0,100) }} ...</p>
                         </a>
