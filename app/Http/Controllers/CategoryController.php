@@ -17,6 +17,7 @@ class CategoryController extends Controller
         ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
         ->where('p.status', 1)
         ->where('p.category_id', $cat_id)
+        // ->paginate(15)
         ->get()
         ->toArray();
 
@@ -27,8 +28,8 @@ class CategoryController extends Controller
 
         $this->data['posts_all'] = $posts_all;
         $this->data['cat_name'] = $cat_name;
-        dd($this->data);
-        return view('user.categories',$this->data);
+        // dd($this->data);
+        return view('user.unicategories',$this->data);
 
     }
 }
