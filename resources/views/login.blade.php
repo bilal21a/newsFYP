@@ -65,18 +65,18 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-6 col-xl-5">
-                                                        <button type="submit" class="btn btn-primary">
+                                                        {{-- <button type="submit" class="btn btn-primary">
                                                             {{ __('Login') }}
-                                                        </button>
+                                                        </button> --}}
 
                                                         @if (Route::has('password.request'))
                                                             <a class="btn btn-link" href="{{ route('password.request') }}">
                                                                 {{ __('Forgot Your Password?') }}
                                                             </a>
                                                         @endif
-                                                        {{-- <button type="submit" class="btn btn-block btn-success">
-                                                            <i class="fa fa-fw fa-sign-in-alt mr-1"></i> Sign In
-                                                        </button> --}}
+                                                        <button type="submit" class="btn btn-block btn-success">
+                                                            <i class="fa fa-fw fa-sign-in-alt mr-1"></i> {{ __('Login') }}
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>

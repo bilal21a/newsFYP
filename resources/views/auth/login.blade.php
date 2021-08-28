@@ -22,8 +22,15 @@
                                     <div class="block-header">
                                         <h3 class="block-title">Sign In</h3>
                                         <div class="block-options">
-                                            <a class="btn-block-option font-size-sm" href="op_auth_reminder.html">Forgot Password?</a>
-                                            <a class="btn-block-option" href="op_auth_signup.html" data-toggle="tooltip" data-placement="left" title="New Account">
+                                            @if (Route::has('password.request'))
+                                            <a class="btn-block-option font-size-sm" href="{{ route('password.request') }}">{{ __('Forgot Password?') }}</a>
+
+                                                            {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                                {{ __('Forgot Password?') }}
+                                                            </a> --}}
+                                            @endif
+                                            {{-- <a class="btn-block-option font-size-sm" href="op_auth_reminder.html">Forgot Password?</a> --}}
+                                            <a class="btn-block-option" href="{{ route('register') }}" data-toggle="tooltip" data-placement="left" title="New Account">
                                                 <i class="fa fa-user-plus"></i>
                                             </a>
                                         </div>
@@ -39,7 +46,7 @@
                                                 @csrf
                                                 <div class="py-3">
                                                     <div class="form-group">
-                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                        <input id="email" type="email" class="form-control form-control-alt form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
                                                         {{-- <input type="text" class="form-control form-control-alt form-control-lg" id="login-username" name="login-username" placeholder="Username"> --}}
                                                         @error('email')
                                                         <span class="invalid-feedback" role="alert">
@@ -48,7 +55,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group">
-                                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                                        <input id="login-password" type="password" class="form-control form-control-alt form-control-lg @error('password') is-invalid @enderror" name="login-password" required autocomplete="current-password" placeholder="Password">
                                                         @error('password')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -58,25 +65,16 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input" id="login-remember" name="login-remember">
-                                                            <label class="custom-control-label font-w400" for="login-remember">Remember Me</label>
+                                                            <input type="checkbox" class="custom-control-input" id="login-remember" name="login-remember" {{ old('remember') ? 'checked' : '' }}>
+                                                            <label class="custom-control-label font-w400" for="login-remember">{{ __('Remember Me') }}</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-6 col-xl-5">
-                                                        <button type="submit" class="btn btn-primary">
-                                                            {{ __('Login') }}
+                                                        <button type="submit" class="btn btn-block btn-success">
+                                                            <i class="fa fa-fw fa-sign-in-alt mr-1"></i> {{ __('Login') }}
                                                         </button>
-
-                                                        @if (Route::has('password.request'))
-                                                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                                                {{ __('Forgot Your Password?') }}
-                                                            </a>
-                                                        @endif
-                                                        {{-- <button type="submit" class="btn btn-block btn-success">
-                                                            <i class="fa fa-fw fa-sign-in-alt mr-1"></i> Sign In
-                                                        </button> --}}
                                                     </div>
                                                 </div>
                                             </form>

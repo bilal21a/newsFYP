@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('upload', function () {return view('upload');});
 Route::get('register1', function () {return view('register');});
-Route::get('signin', function () {return view('login');});
+Route::get('fuck', function () {return view('auth.passwords.reset');});
 Route::get('contact', function () {return view('user.contact');})->name('contact');
 
 
