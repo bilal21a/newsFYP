@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('upload', function () {return view('upload');});
-Route::get('contact_us', function () {return view('user.contact');})->name('contact_us');
+Route::get('contact', function () {return view('user.contact');})->name('contact');
 
 
 Route::get('text', function () {return view('user.home');});
