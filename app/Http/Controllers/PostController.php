@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
+    public function filter_post(Request $request){
+        return view('filter');
+    }
+
     public function search_post(Request $request){
         // dd($request->category);
 

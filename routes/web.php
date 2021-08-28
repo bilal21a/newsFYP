@@ -40,6 +40,8 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     Route::get('top_stories', 'CategoryController@top_stories')->name('top_stories');
     Route::get('all_categories', 'CategoryController@all_categories')->name('all_categories');
     Route::get('categories/{cat_id}', 'CategoryController@show_categories')->name('show_categories');
+
+    Route::get('filter_post', 'PostController@filter_post')->name('filter_post');
     Route::get('search_post', 'PostController@search_post')->name('search_post');
 
 
