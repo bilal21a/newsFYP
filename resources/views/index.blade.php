@@ -23,7 +23,6 @@
 
 
 
-
         @include('layouts.partials.footer')
 
         <!-- JavaScript Libraries -->
