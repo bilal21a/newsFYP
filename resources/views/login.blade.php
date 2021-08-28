@@ -35,13 +35,26 @@
 
                                             <!-- Sign In Form -->
 
-                                            <form class="js-validation-signin" action="be_pages_auth_all.html" method="POST">
+                                            <form class="js-validation-signin" action="{{ route('login') }}" method="POST">
+                                                @csrf
                                                 <div class="py-3">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control form-control-alt form-control-lg" id="login-username" name="login-username" placeholder="Username">
+                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                        {{-- <input type="text" class="form-control form-control-alt form-control-lg" id="login-username" name="login-username" placeholder="Username"> --}}
+                                                        @error('email')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="password" class="form-control form-control-alt form-control-lg" id="login-password" name="login-password" placeholder="Password">
+                                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                                        @error('password')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                        {{-- <input type="password" class="form-control form-control-alt form-control-lg" id="login-password" name="login-password" placeholder="Password"> --}}
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="custom-control custom-checkbox">
@@ -52,9 +65,18 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-md-6 col-xl-5">
-                                                        <button type="submit" class="btn btn-block btn-success">
-                                                            <i class="fa fa-fw fa-sign-in-alt mr-1"></i> Sign In
+                                                        <button type="submit" class="btn btn-primary">
+                                                            {{ __('Login') }}
                                                         </button>
+
+                                                        @if (Route::has('password.request'))
+                                                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                                {{ __('Forgot Your Password?') }}
+                                                            </a>
+                                                        @endif
+                                                        {{-- <button type="submit" class="btn btn-block btn-success">
+                                                            <i class="fa fa-fw fa-sign-in-alt mr-1"></i> Sign In
+                                                        </button> --}}
                                                     </div>
                                                 </div>
                                             </form>
