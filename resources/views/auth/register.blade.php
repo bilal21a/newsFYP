@@ -36,7 +36,8 @@
                                             <!-- Sign Up Form -->
                                             <!-- jQuery Validation (.js-validation-signup class is initialized in js/pages/op_auth_signup.min.js which was auto compiled from _es6/pages/op_auth_signup.js) -->
                                             <!-- For more info and examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                                            <form class="js-validation-signup" action="be_pages_auth_all.html" method="POST">
+                                            <form class="js-validation-signup" action="{{ route('register') }}" method="POST">
+                                                @csrf
                                                 <div class="py-3">
                                                     <div class="form-group">
                                                         <input id="name" type="text" class="form-control form-control-lg form-control-alt @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Name">
