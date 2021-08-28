@@ -71,6 +71,8 @@ class CategoryController extends Controller
         return view('user.all.topstories',$this->data);
 
     }
+
+
     public function all_categories()
     {
         //top category
