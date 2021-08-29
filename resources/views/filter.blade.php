@@ -18,7 +18,7 @@
          <div class="container  ">
             <div class="row">
                <div class="form-group col-xl-11 col-md-11 col-sm-11">
-                  <input type="text" class="form-control" id="search_bar" name="search_bar" placeholder="">
+                  <input type="text" class="form-control" id="search_bar" name="search_bar" placeholder="Search by Name">
                </div>
                <div class="form-group col-xl-1 col-md-1 col-sm-1">
                   <button class="btn btn-success" id="search_btn" data-toggle="layout" data-action="header_loader_on">FILTER</button>
@@ -40,19 +40,15 @@
                      </div>
                   </div>
                </div>
+               <?php
+               $cat=App\Category::where('status',1)->get()->toArray();
+               ?>
                <div class="form-group col-xl-4 col-md-4 col-sm-4">
                   <select class="form-control" id="category" name="category">
                      <option value="0" hidden selected>Category</option>
-                     <option value="7">Option #1</option>
-                     <option value="8">pak</option>
-                     <option value="3">Option #3</option>
-                     <option value="4">Option #4</option>
-                     <option value="5">Option #5</option>
-                     <option value="6">Option #6</option>
-                     <option value="7">Option #7</option>
-                     <option value="8">Option #8</option>
-                     <option value="9">Option #9</option>
-                     <option value="10">Option #10</option>
+                     @foreach ($cat as $category)
+                     <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                     @endforeach
                   </select>
                </div>
             </div>
@@ -61,11 +57,10 @@
    </form>
    <div class="block-content">
       <div class="row" id="ajax_show">
+        {{-- <div class="col-sm-12 col-md-12 no-result" id="ajax_show_2"></div> --}}
          {{-- appended to javascript --}}
-         <div class="loader_div">
-         </div>
-         {{-- -------------------- --}}
       </div>
+
    </div>
 </section>
 @endsection
@@ -90,6 +85,9 @@
    }
    .georgia {
    font-family: Georgia, serif;
+   }
+   .no-result{
+       text-align: center;
    }
    .cat-name{
    text-transform: uppercase;
@@ -141,7 +139,7 @@
 <script>
    $( document ).ready(function() {
     var ajaxData = $('#ajax_show');
-        ajaxData.append(`No result found`);
+        ajaxData.append(`<div class="no-result col-sm-12 col-md-12"><h5>No result found</h5></div>`);
 
     $.ajaxSetup({
         headers: {
@@ -208,7 +206,7 @@
         $("#clear_btn").css("display","none");
         $("#search_btn").css("display","block");
         var ajaxData = $('#ajax_show');
-        ajaxData.append(`No result found`);
+        ajaxData.append(`<div class="no-result col-sm-12 col-md-12"><h5>No result found</h5></div>`);
 
     });
 
