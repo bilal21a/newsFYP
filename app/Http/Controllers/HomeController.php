@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
 use PDO;
-
+use Intervention\Image\Facades\Image;
 class HomeController extends Controller
 {
     /**
@@ -153,10 +153,24 @@ class HomeController extends Controller
             'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+        // dd($main_image);
+
         $imageExtension = $request->main_image->extension();
-        $imageName="main_image_".uniqid(rand(), true).".".$imageExtension;
-        $request->main_image->move(public_path('img/main_image'), $imageName);
-        /* Store $imageName name in DATABASE from HERE */
+        $imageName="image_".uniqid(rand(), true).".".$imageExtension;
+        $request->main_image->move(public_path('img/main_image/'), $imageName);
+        // dd(public_path('img/main_image/' . $imageName));
+
+        // main img
+        $image = Image::make(public_path('img/main_image/' . $imageName))->fit(920, 520);
+        $image->save();
+
+        // thumb img
+        $image = Image::make(public_path('img/main_image/' . $imageName))->fit(340, 180);
+        $image->save(public_path('img/thumb_image/' . $imageName));
+
+        // list img
+        $image = Image::make(public_path('img/main_image/' . $imageName))->fit(110, 60);
+        $image->save(public_path('img/list_image/' . $imageName));
 
         $post = new Post();
         $post->title = $title;
