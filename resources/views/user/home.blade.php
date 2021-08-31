@@ -178,7 +178,10 @@
                   <a href="{{ url('single_post/'.$first_post['id']) }}">
                      <div class="row">
                         <div class="col-md-4 pad">
-                           <img src={{asset('img/main_image/'. $first_post['main_image'])}} alt="" style="width: 100%;">
+                            <?php
+                                // dd($first_post);
+                                ?>
+                           <img src={{asset('img/thumb_image/'. $first_post['thumb_image'])}} alt="" style="width: 100%;">
                         </div>
                         <div class="col-md-8">
                            <p class="s-ttl pt-1 text-dark" >{{$first_post['title']}}</p>

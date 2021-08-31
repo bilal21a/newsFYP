@@ -112,7 +112,10 @@
                   <div class="block-content" style="padding-top: 0">
                      <div class="row">
                         <div class="col-sm-3 customwork" >
-                           <img src="{{asset('img/main_image/'. $news_lat->main_image)}}" alt="" style="width: 100%;">
+                            <?php
+                                // dd($news_lat);
+                            ?>
+                           <img src="{{asset('img/list_image/'. $news_lat->list_image)}}" alt="" style="width: 100%;">
                         </div>
                         <div class="col-sm-9" >
                             <?php

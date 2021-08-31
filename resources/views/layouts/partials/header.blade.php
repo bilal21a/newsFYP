@@ -7,7 +7,9 @@
       <ul class="nav-links">
         <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="{{ url('upload') }}">Upload Post</a></li>
+        <li><a href="{{ url('profile') }}">Profile</a></li>
+        <li><a href="{{ url('all_categories') }}">Categories</a></li>
         <li>
           <a href="#" class="desktop-item">Dropdown Menu</a>
           <input type="checkbox" id="showDrop">
