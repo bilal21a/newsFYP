@@ -3,9 +3,9 @@
 /public/storage
 /storage/*.key
 /vendor
-/public/main_image
-/public/thumb_image
-/public/list_image
+/public/img/main_image
+/public/img/thumb_image
+/public/img/list_image
 .env
 .env.backup
 .phpunit.result.cache
