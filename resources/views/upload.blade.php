@@ -108,69 +108,23 @@
 </script>
 
     <script>
-  $( document ).ready(function() {
+//   $( document ).ready(function() {
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+//     $( "#publish" ).on( "click", notify );
+//     $( "#save_draft" ).on( "click", notify );
 
+//     function notify() {
+//         var btn_name = $(this).val();
 
+//         var title = $("#title").val();
+//         var short_disc = $("#short_disc").val();
+//         var category=$('#category').val();
+//         var disc = $("#summernote").val();
+//         var main_image=$('#main_image').val();
 
+//     }
 
-
-
-
-
-    // $( "#publish" ).on( "click", notify );
-    // $( "#save_draft" ).on( "click", notify );
-
-
-    // function notify() {
-    //     var btn_name = $(this).val();
-
-    //     var title = $("#title").val();
-    //     var short_disc = $("#short_disc").val();
-    //     var category=$('#category').val();
-    //     var disc = $("#summernote").val();
-    //     var main_image=$('#main_image').val();
-    //     // var formData = new FormData(this);
-    //     var file = document.getElementById("main_image").files[0];
-    //     // var main_image=$('#main_image').val().split('\\').pop();
-
-    //     var fd = new FormData();
-    //     fd.append("file", file);
-
-    //     console.log(disc);
-    //     if ($('#hot_news').is(":checked")){
-    //         var hot_news=1;
-    //     }
-    //     else{var hot_news=0;}
-
-    //     if (main_image=='') {
-    //         alert('Please Select image file');
-    //     }
-    //     else{
-    //     console.log(fd);
-
-    //     $.ajax({
-    //        url: '/upload_post' ,
-    //        type: "post",
-    //     //    data: {btn_name:btn_name, title:title, short_disc:short_disc , category:category ,disc:disc , main_image:main_image , hot_news:hot_news},
-    //        data: fd,
-
-    //        success: function( response ) {
-    //             console.log(response);
-
-    //        }
-    //     });
-    //     }
-    // }
-
-
-
-   });
+//    });
     </script>
 
     @endsection
