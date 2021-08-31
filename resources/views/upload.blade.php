@@ -17,11 +17,11 @@
                         <h1>Upload New Post</h1>
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="Title" name="title">
+                            <input type="text" class="form-control" id="title" placeholder="Title" name="title" required>
                         </div>
                         <div class="form-group">
                             <label for="category">Select Category</label>
-                            <select class="form-control" id="category" name="category">
+                            <select class="form-control" id="category" name="category" required>
                                 <?php
                                     $cat=App\Category::where('status',1)->get()->toArray();
                                 ?>
