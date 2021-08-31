@@ -5,6 +5,7 @@
 /vendor
 /public/main_image
 /public/thumb_image
+/public/profile_image
 /public/list_image
 .env
 .env.backup
