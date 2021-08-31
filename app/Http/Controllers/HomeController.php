@@ -180,6 +180,8 @@ class HomeController extends Controller
         $post->category_id = $category_id;
         $post->created_by = $created_by;
         $post->main_image = $imageName;
+        $post->thumb_image = $imageName;
+        $post->list_image = $imageName;
         $post->hot_news = $hot_news;
         $post->status = $status;
         $post->save();
