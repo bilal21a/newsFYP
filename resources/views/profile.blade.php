@@ -3,7 +3,6 @@
 @section('css')
 
     <link href="{{asset('css/profile.css')}} "rel="stylesheet">
-
 @endsection
 
 @section('content')
@@ -159,6 +158,8 @@
     </div>
 </div>
 
+<input type="hidden" id="logoutUrl" value="{{ URL('logout') }}" />
+
 @endsection
 
 @section('js')
@@ -185,7 +186,7 @@
 
     <script>
     $( document ).ready(function() {
-        fetchData();
+                fetchData();
         function fetchData() {
             $.ajax({
             url: 'profile_page',
@@ -199,11 +200,17 @@
                 var last_name = data.last_name;
                 var email = data.email;
                 var profile_pic='{{asset('img/profile_image')}}'+'/'+ data.profile_pic;
+                var profile_pic_empty='{{asset('default.png')}}';
 
 
                 $("#email").html(email);
                 $("#email_edit").val(email);
-                $("#profile_img").html(`<img class="img-avatar ml-2" src="${profile_pic}" alt="">`);
+                if (data.profile_pic=null) {
+                    $("#profile_img").html(`<img class="img-avatar ml-2" src="${profile_pic_empty}" alt="">`);
+                }
+                else{
+                    $("#profile_img").html(`<img class="img-avatar ml-2" src="${profile_pic}" alt="">`);
+                }
                 $("#first_name").val(first_name);
                 $("#last_name").val(last_name);
                 }
@@ -214,6 +221,7 @@
 
     $("#email_save").click(function(){
         var email=$("#email_edit").val();
+        var logoutUrl=$("#logoutUrl").val();
 
         $.ajax({
         type: "GET",
@@ -231,6 +239,8 @@
             icon: 'success',
             title: data,
             })
+
+            window.location.href = logoutUrl;
         }
         });
     });
@@ -239,6 +249,8 @@
         var curr_pass=$("#curr_pass").val();
         var new1_pass=$("#new1_pass").val();
         var new2_pass=$("#new2_pass").val();
+        var logoutUrl=$("#logoutUrl").val();
+
 
         if (new1_pass==new2_pass) {
         $.ajax({
@@ -264,6 +276,9 @@
                 icon: 'success',
                 title: data,
                 })
+
+                window.location.href = logoutUrl;
+
             }
 
 

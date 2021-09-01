@@ -70,6 +70,7 @@
                                     <div class="d-flex flex-column comment-section">
 
                                     @foreach ($comments as $comment)
+                                    @if ($comment->commentable_id==$post->id)
                                     <?php
                                     $var_1= $comment->created_at;
                                     $var_2 = strtotime($var_1);
@@ -84,6 +85,7 @@
                                              <p class="comment-text">{{ $comment->comment }}</p>
                                           </div>
                                        </div>
+                                    @endif
                                     @endforeach
 
                                        {{-- <div class="bg-white">
@@ -100,7 +102,7 @@
                                         @csrf
                                         <div class="d-flex flex-row align-items-start">
                                             <img class="rounded-circle" src="{{asset('img/profile_image/'.Auth::user()->profile_pic)}}" style="width: 6%;height: 6%;">
-                                            <textarea class="form-control ml-1 shadow-none textarea" name="comment"></textarea>
+                                            <textarea class="form-control ml-1 shadow-none textarea" name="comment" placeholder="Type your comment" required></textarea>
                                             <input type="hidden" name="post_id" value="{{ $post->id }}" />
                                         </div>
                                         <div class="mt-2 text-right">
@@ -204,4 +206,6 @@
 </div>
 @endsection
 @section('js')
+<script src="{{asset('js/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+<script src="{{asset('js/plugins/jquery-validation/additional-methods.js')}}"></script>
 @endsection
