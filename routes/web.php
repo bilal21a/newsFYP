@@ -57,6 +57,10 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     //by author name
     Route::get('author_name/{user_id}', 'PostController@author_name')->name('author_name');
 
+    //comment
+    Route::post('/comment/store', 'CommentController@store')->name('comment.add');
+    Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+
 });
 
 

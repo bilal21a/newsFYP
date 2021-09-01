@@ -83,7 +83,7 @@ class HomeController extends Controller
         $post = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.description','p.view_count','p.main_image','p.created_at','p.created_by','user.name')
+        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.description','p.view_count','p.main_image','p.created_at','p.created_by','user.name','user.profile_pic')
         ->where('p.status', 1)
         ->where('p.id', $post_id)
         ->first();
@@ -114,9 +114,16 @@ class HomeController extends Controller
         ->get()
         ->toArray();
 
+        //comments
+        $comments = DB::table('comments as c')
+        ->join('users as user', 'c.user_id', '=', 'user.id')
+        ->select('user.name','c.comment','c.created_at','user.profile_pic')
+        ->get()->toArray();
+
         $this->data['post'] = $post;
         $this->data['latest_news'] = $latest_news;
         $this->data['related_news'] = $related_news;
+        $this->data['comments'] = $comments;
         // dd($this->data);
         return view('user.singlepage',$this->data);
     }
