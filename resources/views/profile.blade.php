@@ -222,6 +222,10 @@
         success: function (data) {
             console.log("SUCCESS : ", data);
 
+            $("#change_email_body").css("display","block");
+            $("#change_email_div").css("display","none");
+            fetchData();
+
             Toast.fire({
             icon: 'success',
             title: data,
@@ -251,6 +255,10 @@
                 })
             }
             else{
+                $("#change_pass_body").css("display","block");
+                $("#change_pass_div").css("display","none");
+                fetchData();
+
                 Toast.fire({
                 icon: 'success',
                 title: data,
@@ -287,6 +295,10 @@
            success: (response) => {
              if (response) {
                this.reset();
+
+               $("#change_setting_body").css("display","block");
+                $("#change_setting_div").css("display","none");
+                fetchData();
 
                Toast.fire({
                 icon: 'success',
@@ -357,7 +369,7 @@
             });
 
 
-            //for change email btn
+            //for change pass btn
         $( "#change_pass" ).click(function() {
                 $("#change_pass_body").css("display","none")
                 $("#change_pass_div").css("display","block")
@@ -369,7 +381,7 @@
             });
 
 
-            //for change email btn
+            //for change setting btn
         $( "#add_photo" ).click(function() {
                 $("#change_setting_body").css("display","none")
                 $("#change_setting_div").css("display","block")

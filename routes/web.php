@@ -56,5 +56,10 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
 
 
 Auth::routes();
+Route::get('logout', 'AuthController@logout')->name('logout');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

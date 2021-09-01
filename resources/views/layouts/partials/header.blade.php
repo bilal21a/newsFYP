@@ -10,6 +10,11 @@
         <li><a href="{{ url('upload') }}">Upload Post</a></li>
         <li><a href="{{ url('profile') }}">Profile</a></li>
         <li><a href="{{ url('all_categories') }}">Categories</a></li>
+        <li><a href="{{ url('logout') }}">Logout</a></li>
+
+
+
+
         <li>
           <a href="#" class="desktop-item">Dropdown Menu</a>
           <input type="checkbox" id="showDrop">
