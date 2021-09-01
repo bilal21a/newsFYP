@@ -118,6 +118,7 @@ class HomeController extends Controller
         $comments = DB::table('comments as c')
         ->join('users as user', 'c.user_id', '=', 'user.id')
         ->select('user.name','c.comment','c.created_at','c.commentable_id','user.profile_pic')
+        ->where('c.commentable_id', $post_id)
         ->get()->toArray();
         // dd($comments);
         $this->data['post'] = $post;

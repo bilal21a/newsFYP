@@ -69,8 +69,9 @@
                                  <div class="col-md-12">
                                     <div class="d-flex flex-column comment-section">
 
+                                    @if ($comments!=null)
+
                                     @foreach ($comments as $comment)
-                                    @if ($comment->commentable_id==$post->id)
                                     <?php
                                     $var_1= $comment->created_at;
                                     $var_2 = strtotime($var_1);
@@ -85,8 +86,12 @@
                                              <p class="comment-text">{{ $comment->comment }}</p>
                                           </div>
                                        </div>
-                                    @endif
                                     @endforeach
+
+                                    @else
+                                    <h4>No Comments Posted</h4>
+
+                                    @endif
 
                                        {{-- <div class="bg-white">
                                           <div class="d-flex flex-row fs-12">
@@ -106,7 +111,7 @@
                                             <input type="hidden" name="post_id" value="{{ $post->id }}" />
                                         </div>
                                         <div class="mt-2 text-right">
-                                             <button type="submit" class="btn btn-sm btn-success">Post Comment</button>
+                                             <button type="submit" class="btn  btn-success">Post Comment</button>
                                              {{-- <button type="button" class="btn btn-sm btn-outline-success">Cancel</button> --}}
                                         </div>
                                         </form>

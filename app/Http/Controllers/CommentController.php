@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -24,23 +26,40 @@ class CommentController extends Controller
         return back();
     }
 
-    public function replyStore(Request $request)
+    // public function replyStore(Request $request)
+    // {
+    //     dd($request);
+
+    //     $reply = new Comment();
+
+    //     $reply->comment = $request->get('comment');
+
+    //     $reply->user()->associate($request->user());
+
+    //     $reply->parent_id = $request->get('comment_id');
+
+    //     $post = Post::find($request->get('post_id'));
+
+    //     $post->comments()->save($reply);
+
+    //     return back();
+
+    // }
+
+    public function your_comments()
     {
-        dd($request);
+        $user_id=Auth::id();
 
-        $reply = new Comment();
+         //comments
+         $comments = DB::table('comments as c')
+         ->join('users as user', 'c.user_id', '=', 'user.id')
+         ->select('user.name','c.comment','c.created_at','c.commentable_id','user.profile_pic')
+         ->where('c.user_id', $user_id)
+         ->get()->toArray();
 
-        $reply->comment = $request->get('comment');
-
-        $reply->user()->associate($request->user());
-
-        $reply->parent_id = $request->get('comment_id');
-
-        $post = Post::find($request->get('post_id'));
-
-        $post->comments()->save($reply);
-
-        return back();
-
+         $this->data['comments'] = $comments;
+        // dd($this->data);
+        return view('showcomment',$this->data);
     }
+
 }

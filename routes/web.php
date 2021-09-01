@@ -59,7 +59,8 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
 
     //comment
     Route::post('/comment/store', 'CommentController@store')->name('comment.add');
-    Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+    // Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+    Route::get('/your_comments', 'CommentController@your_comments')->name('your_comments');
 
 });
 
