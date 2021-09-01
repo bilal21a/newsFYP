@@ -8,7 +8,7 @@
 
 
 @section('content')
-<br> <br> <br>
+
 <section class="block">
     @foreach ($allCats as $allCat)
 

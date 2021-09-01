@@ -4,7 +4,7 @@
     <link href="{{asset('css/login.css')}} "rel="stylesheet">
 @endsection
 @section('content')
-<br> <br> <br>
+
         <!-- Page Container -->
         <div id="page-container">
 

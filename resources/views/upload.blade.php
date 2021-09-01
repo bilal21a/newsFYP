@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<br> <br> <br>
+
     <!--Create Upload Post Start-->
     <div class="container">
         <form method="post" action="{{ route('upload_post') }}" id="upload_form" enctype="multipart/form-data">
