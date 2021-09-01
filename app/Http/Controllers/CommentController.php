@@ -59,7 +59,7 @@ class CommentController extends Controller
          ->get()->toArray();
 
          $this->data['comments'] = $comments;
-        // dd($this->data);
+        dd($this->data);
         return view('showcomment',$this->data);
     }
 
