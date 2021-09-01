@@ -46,7 +46,7 @@ class HomeController extends Controller
         $top_stories = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
         ->where('p.status', 1)
         ->orderBy('view_count', 'desc')
         ->latest()->take(3)->get()->toArray();
@@ -55,7 +55,7 @@ class HomeController extends Controller
         $latest_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
         ->where('p.status', 1)
         ->latest()->take(4)->get()->toArray();
 
@@ -63,7 +63,7 @@ class HomeController extends Controller
         $hot_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
         ->where('p.status', 1)
         ->where('p.hot_news', 1)
         ->latest()->take(4)->get()->toArray();
@@ -83,7 +83,7 @@ class HomeController extends Controller
         $post = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.description','p.view_count','p.main_image','p.created_at','user.name')
+        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.description','p.view_count','p.main_image','p.created_at','p.created_by','user.name')
         ->where('p.status', 1)
         ->where('p.id', $post_id)
         ->first();
@@ -99,7 +99,7 @@ class HomeController extends Controller
         $latest_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.list_image','p.created_at','user.name',)
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.list_image','p.created_at','p.created_by','user.name',)
         ->where('p.status', 1)
         ->latest()->take(20)->get()->toArray();
 
@@ -107,7 +107,7 @@ class HomeController extends Controller
         $related_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
         ->where('p.status', 1)
         ->where('p.category_id', $cat_id)
         ->take(4)

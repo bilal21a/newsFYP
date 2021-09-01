@@ -19,7 +19,7 @@ class PostController extends Controller
         $posts = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
         ->where('p.status', 1);
 
 
@@ -37,5 +37,37 @@ class PostController extends Controller
         }
 
          return $posts->get()->toArray();
+    }
+
+
+    public function author_name($user_id){
+
+        $posts = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        ->where('p.created_by', $user_id)
+        ->where('p.status', 1)
+        ->latest()->get()->toArray();
+
+        dd($posts);
+    }
+
+
+    public function by_date($created_at){
+
+        $var_1= $created_at;
+        $var_2 = strtotime($var_1);
+        $date = date('Y-m-d', $var_2);
+
+        $posts = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        ->where('p.created_at', 'like', $date.'%')
+        ->where('p.status', 1)
+        ->latest()->get()->toArray();
+
+        dd($posts);
     }
 }

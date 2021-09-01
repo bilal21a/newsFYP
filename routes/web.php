@@ -52,6 +52,11 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     Route::post('profile_image_change', 'ProfileController@profile_image_change')->name('profile_image_change');
     Route::post('profile_name_change', 'ProfileController@profile_name_change')->name('profile_name_change');
 
+    //by date
+    Route::get('by_date/{created_at}', 'PostController@by_date')->name('by_date');
+    //by author name
+    Route::get('author_name/{user_id}', 'PostController@author_name')->name('author_name');
+
 });
 
 

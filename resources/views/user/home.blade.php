@@ -31,7 +31,7 @@
                            <h5 class="mt-3 mb-0">{{$single_hot->title}}</h5>
                            <p class="card-text short_disc mb-1" > {{ substr($single_hot->short_description,0,100) }} ...</p>
                         </a>
-                        <a href="" class="text-dark"><span class="short_disc">{{$single_hot->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc">{{$date}}</span></a>
+                        <a href="{{ url('author_name/'.$single_hot->created_by) }}" class="text-dark"><span class="short_disc">{{$single_hot->name}}</span></a> | <a href="{{ url('by_date/'.$single_hot->created_at) }}" class="text-dark"><span class="short_disc">{{$date}}</span></a>
                      </div>
                   </div>
                </div>
