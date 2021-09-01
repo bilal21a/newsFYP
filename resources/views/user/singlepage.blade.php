@@ -106,7 +106,11 @@
                                         <form method="post" action="{{ route('comment.add') }}">
                                         @csrf
                                         <div class="d-flex flex-row align-items-start">
+                                            @if (Auth::user()->profile_pic==null)
+                                            <img class="rounded-circle" src="{{asset('default.png')}}" style="width: 6%;height: 6%;">
+                                            @else
                                             <img class="rounded-circle" src="{{asset('img/profile_image/'.Auth::user()->profile_pic)}}" style="width: 6%;height: 6%;">
+                                            @endif
                                             <textarea class="form-control ml-1 shadow-none textarea" name="comment" placeholder="Type your comment" required></textarea>
                                             <input type="hidden" name="post_id" value="{{ $post->id }}" />
                                         </div>
