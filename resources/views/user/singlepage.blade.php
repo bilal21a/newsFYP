@@ -105,7 +105,7 @@
                                         </div>
                                         <div class="mt-2 text-right">
                                              <button type="submit" class="btn btn-sm btn-success">Post Comment</button>
-                                             <button type="button" class="btn btn-sm btn-outline-success">Cancel</button>
+                                             {{-- <button type="button" class="btn btn-sm btn-outline-success">Cancel</button> --}}
                                         </div>
                                         </form>
                                        </div>
