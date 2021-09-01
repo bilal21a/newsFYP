@@ -91,7 +91,7 @@
 
             <div class="section2">
                 <h4>Your Recent Comments</h4>
-                <a class="link-fx text-success" href="">View All Comments</a>
+                <a class="link-fx text-success" href="{{ url('your_comments/') }}">View All Comments</a>
             </div>
         </div>
 
