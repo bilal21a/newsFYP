@@ -53,12 +53,13 @@ class CommentController extends Controller
          //comments
          $comments = DB::table('comments as c')
          ->join('users as user', 'c.user_id', '=', 'user.id')
-         ->select('user.name','c.comment','c.created_at','c.commentable_id','user.profile_pic')
+         ->join('posts as p', 'c.commentable_id', '=', 'p.id')
+         ->select('user.name','c.comment','c.created_at','c.commentable_id','user.profile_pic','p.title as post_title')
          ->where('c.user_id', $user_id)
          ->get()->toArray();
 
          $this->data['comments'] = $comments;
-        // dd($this->data);
+        dd($this->data);
         return view('showcomment',$this->data);
     }
 
