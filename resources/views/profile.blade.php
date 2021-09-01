@@ -203,7 +203,7 @@
 
                 $("#email").html(email);
                 $("#email_edit").val(email);
-                if (data.profile_pic=null) {
+                if (data.profile_pic==null) {
                     $("#profile_img").html(`<img class="img-avatar ml-2" src="${profile_pic_empty}" alt="">`);
                 }
                 else{
