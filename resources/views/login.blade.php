@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-    <br> <br> <br>
+    
 
     <div id="page-container">
 

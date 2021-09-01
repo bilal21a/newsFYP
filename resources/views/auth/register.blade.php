@@ -3,7 +3,7 @@
 @endsection
 
 @section('content')
-    <br> <br> <br>
+  
 
         <!-- Page Container -->
 

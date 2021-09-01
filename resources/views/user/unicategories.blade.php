@@ -4,7 +4,7 @@
 <link href="{{asset('css/comment.css')}} "rel="stylesheet">
 @endsection
 @section('content')
-<br> <br> <br>
+
 <section class="block">
    <!-- 4 in 1 -->
    <section class="block">

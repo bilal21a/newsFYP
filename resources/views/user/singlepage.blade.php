@@ -19,7 +19,7 @@
 </style>
 @endsection
 @section('content')
-<br> <br>
+
 <div class="content">
    <div class="">
       <div class="block">
