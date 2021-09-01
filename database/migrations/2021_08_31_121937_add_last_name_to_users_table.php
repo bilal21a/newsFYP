@@ -15,7 +15,7 @@ class AddLastNameToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('profile_pic')->nullable();
-            $table->string('last_name')->nullable();
+            // $table->string('last_name')->nullable();
 
         });
     }

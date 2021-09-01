@@ -24,9 +24,10 @@
 
                         <div id="change_email_div">
                             <h4>Enter a new Email address</h4>
+                            <form id="email-form" method="post" action="javascript:void(0)">
+                                @csrf
                             <div class="row" >
-                                <form id="email-form" method="post" action="javascript:void(0)">
-                                    @csrf
+
                                 <div class="col-md-8">
                                     <input type="email" class="form-control" id="email_edit" name="email" placeholder="Emai Input">
                                 </div>
@@ -35,8 +36,8 @@
                                     <button type="submit" class="btn btn-success" id="email_save">Save</button>
                                     <button type="button" id="cancel_btn_change_email" class="btn btn-light">Cancel  </button>
                                  </div>
-                                </form>
                             </div> <br>
+                        </form>
                         </div>
 
                         <p>Use this email to sign in. This is also where we'll send email communication and newsletters.</p>
@@ -141,10 +142,10 @@
                         <label for="example-text-input">First Name</label>
                         <input type="text" class="form-control" id="first_name" name="first_name" placeholder="first name" >
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="example-text-input">Last Name</label>
                         <input type="text" class="form-control" id="last_name" name="last_name" placeholder="last name" >
-                    </div>
+                    </div> --}}
                     <span class="text-danger" id="image-name-error"></span>
                 </div>
 
@@ -248,7 +249,7 @@
         success: function (data) {
             console.log("SUCCESS : ", data);
 
-            if (data=='Please Enter Correct Password') {
+            if (data=='Current Password is Incorrect') {
                 Toast.fire({
                 icon: 'warning',
                 title: data,

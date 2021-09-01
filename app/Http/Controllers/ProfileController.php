@@ -49,7 +49,7 @@ class ProfileController extends Controller
 
         }
         else{
-            return 'Please Enter Correct Password';
+            return 'Current Password is Incorrect';
         }
     }
 
@@ -81,7 +81,6 @@ class ProfileController extends Controller
 
         $user_id=Auth::id();
         User::where('id', $user_id)->update(['name' => $request->first_name]);
-        User::where('id', $user_id)->update(['last_name' => $request->last_name]);
           return response()->json('Name Changed successfully');
 
     }
