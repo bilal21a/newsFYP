@@ -42,7 +42,7 @@
                 </div>
                 @endforeach
                 @else
-                     <div class="d-flex flex-column justify-content-center" style="text-align: center;"><span class="d-block font-weight-bold ">You Don't Have Posted Any Comment Yet!</span></div>
+                     <div class="d-flex flex-column justify-content-center" style="text-align: center; margin-bottom: 20px;"><span class="d-block font-weight-bold ">You Don't Have Posted Any Comment Yet!</span></div>
 
                 @endif
                 <!-- end repeat -->
