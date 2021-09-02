@@ -1,10 +1,10 @@
 
-   <nav class="nv">
+   <nav class="nv" >
     <div class="wrapper">
       <div class="logo"><a href="#">LOGO</a></div>
       <input type="radio" name="slider" id="menu-btn">
       <input type="radio" name="slider" id="close-btn">
-      <ul class="nav-links">
+      <ul class="nav-links" style="margin-top: 15px;">
         <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
         <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="{{ url('upload') }}">Upload Post</a></li>

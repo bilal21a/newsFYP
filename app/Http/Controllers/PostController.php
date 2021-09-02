@@ -47,13 +47,13 @@ class PostController extends Controller
         $posts = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name','user.id')
         ->where('p.created_by', $user_id)
         ->where('p.status', 1)
         ->latest()->get()->toArray();
 
         $this->data['posts'] = $posts;
-        dd($this->data);
+        // dd($this->data);
         return view('yourposts',$this->data);
     }
 
