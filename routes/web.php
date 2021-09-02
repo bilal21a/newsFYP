@@ -57,6 +57,8 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     Route::get('by_date/{created_at}', 'PostController@by_date')->name('by_date');
     //by author name
     Route::get('author_name/{user_id}', 'PostController@author_name')->name('author_name');
+    //by author name
+    Route::get('publish_posts/', 'PostController@publish_posts')->name('publish_posts');
 
     //comment
     Route::post('/comment/store', 'CommentController@store')->name('comment.add');

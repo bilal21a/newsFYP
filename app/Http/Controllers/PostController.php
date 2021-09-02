@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -39,6 +40,22 @@ class PostController extends Controller
          return $posts->get()->toArray();
     }
 
+
+    public function publish_posts(){
+        $user_id=Auth::id();
+
+        $posts = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        ->where('p.created_by', $user_id)
+        ->where('p.status', 1)
+        ->latest()->get()->toArray();
+
+        $this->data['posts'] = $posts;
+        dd($this->data);
+        return view('yourposts',$this->data);
+    }
 
     public function author_name($user_id){
 
