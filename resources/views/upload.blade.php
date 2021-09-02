@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label for="summernote"><b>Description</b></label>
-                        <textarea id="summernote" name="disc" style="height: 150px;" required></textarea>
+                        <textarea id="summernote" class="smrnote" name="disc" style="height: 150px;" required></textarea>
                     </div>
                         <div class="form-group">
                             <div class="custom-file">
