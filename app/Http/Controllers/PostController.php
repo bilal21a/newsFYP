@@ -7,6 +7,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Laravel\Ui\Presets\React;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -56,6 +58,66 @@ class PostController extends Controller
         dd($this->data);
         return view('yourposts',$this->data);
     }
+
+    public function saved_posts(){
+        $user_id=Auth::id();
+
+        $posts = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        ->where('p.created_by', $user_id)
+        ->where('p.status', 1)
+        ->latest()->get()->toArray();
+
+        $this->data['posts'] = $posts;
+
+        return view('draft',$this->data);
+    }
+
+    public function saved_posts_fetch(Request $request){
+        // dd($request->all());
+
+            if ($request->file('main_image')) {
+                $request->validate([
+                    'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                    ]);
+
+                $imageExtension = $request->main_image->extension();
+                $imageName="image_".uniqid(rand(), true).".".$imageExtension;
+                $request->main_image->move(public_path('img/main_image/'), $imageName);
+                // dd(public_path('img/main_image/' . $imageName));
+
+                // main img
+                $image = Image::make(public_path('img/main_image/' . $imageName))->fit(920, 520);
+                $image->save();
+
+                // thumb img
+                $image = Image::make(public_path('img/main_image/' . $imageName))->fit(340, 180);
+                $image->save(public_path('img/thumb_image/' . $imageName));
+
+                // list img
+                $image = Image::make(public_path('img/main_image/' . $imageName))->fit(110, 60);
+                $image->save(public_path('img/list_image/' . $imageName));
+
+
+                Post::where('id', '=', $request->post_id)->update([
+                    'main_image' => $imageName ,
+                    'thumb_image' => $imageName ,
+                    'list_image' => $imageName ,
+            ]);
+            }
+
+            Post::where('id', '=', $request->post_id)->update([
+                'title' => $request->title ,
+                'category_id' => $request->category ,
+                'short_description' => $request->short_disc ,
+                'description' => $request->disc
+        ]);
+
+        return redirect()->back();
+    }
+
 
     public function author_name($user_id){
 

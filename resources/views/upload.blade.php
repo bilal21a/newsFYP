@@ -107,24 +107,4 @@
      }
 </script>
 
-    <script>
-//   $( document ).ready(function() {
-
-//     $( "#publish" ).on( "click", notify );
-//     $( "#save_draft" ).on( "click", notify );
-
-//     function notify() {
-//         var btn_name = $(this).val();
-
-//         var title = $("#title").val();
-//         var short_disc = $("#short_disc").val();
-//         var category=$('#category').val();
-//         var disc = $("#summernote").val();
-//         var main_image=$('#main_image').val();
-
-//     }
-
-//    });
-    </script>
-
     @endsection
