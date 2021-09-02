@@ -87,15 +87,19 @@
                     </div>
 
             </div>
+            <div class="row">
+                <div class="section2 col-sm-6 col-md-6 col-lg-6">
+                    <h4>Your Recent Posts</h4>
+                    <a class="link-fx text-success" href="{{ url('your_comments/') }}">View All Posts</a>
+                </div>
 
-
-            <div class="section2">
-                <h4>Your Recent Comments</h4>
-                <a class="link-fx text-success" href="{{ url('your_comments/') }}">View All Comments</a>
+                <div class="section2 col-sm-6 col-md-6 col-lg-6">
+                    <h4>Your Recent Comments</h4>
+                    <a class="link-fx text-success" href="{{ url('your_comments/') }}">View All Comments</a>
+                </div>
             </div>
+
         </div>
-
-
         <!-- Section 2 Start     -->
 
         <div class="col-sm-6 section-3">

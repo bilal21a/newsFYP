@@ -6,13 +6,14 @@
     border-bottom: 1px solid #b4b4b4;
     padding-bottom: 23px;
     padding-top: 23px;
-    border-right: 1px solid #b4b4b4;
+    margin-right: -14px;
+    /* border-right: 1px solid #b4b4b4; */
 }
 
 .section2{
     padding-bottom: 23px;
     padding-top: 23px;
-    border-right: 1px solid #b4b4b4;
+    border-left: -14px solid #b4b4b4;
 }
 
 .btn-photo{
@@ -29,6 +30,8 @@
 
 .section-3{
     padding-top: 23px;
+    border-left: 1px solid #b4b4b4;
+
 }
 
 #change_email_div{
