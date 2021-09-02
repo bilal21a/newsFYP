@@ -41,14 +41,14 @@
                   <img src="{{asset('img/main_image/'. $post->main_image)}}" alt="" style="width: 100%;">
                   <div class="pt-2 pb-3">
                      <span>
-                     <a href="#" class="text-dark pr-4"><i class="fa fa-user">   {{$post->name}}</i></a>
+                     <a href="{{ url('author_name/'.$post->created_by) }}" class="text-dark pr-4"><i class="fa fa-user">   {{$post->name}}</i></a>
                             <?php
                                 $var_1= $post->created_at;
                                 $var_2 = strtotime($var_1);
                                 $date = date('F d, Y', $var_2);
                             ?>
 
-                     <a href="#" class="text-dark pr-4"><i class="fa fa-clock"> {{$date}}</i></a>
+                     <a href="{{ url('by_date/'.$post->created_at) }}" class="text-dark pr-4"><i class="fa fa-clock"> {{$date}}</i></a>
                      </span>
                   </div>
                   <div class="block block-rounded block-link-pop" style="background-color: #f5f5f5;">

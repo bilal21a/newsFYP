@@ -28,6 +28,7 @@ Route::get('text6', function () {return view('user.contact');});
 Route::get('text7', function () {return view('showcomment');});
 Route::get('text8', function () {return view('filter');});
 Route::get('text9', function () {return view('upload');});
+Route::get('text10', function () {return view('author');});
 Route::get('profile', function () {return view('profile');});
 
 

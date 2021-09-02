@@ -50,7 +50,9 @@ class PostController extends Controller
         ->where('p.status', 1)
         ->latest()->get()->toArray();
 
-        dd($posts);
+        $this->data['posts'] = $posts;
+        return view('author',$this->data);
+        // dd($posts);
     }
 
 
@@ -67,6 +69,9 @@ class PostController extends Controller
         ->where('p.created_at', 'like', $date.'%')
         ->where('p.status', 1)
         ->latest()->get()->toArray();
+
+        $this->data['posts'] = $posts;
+        return view('bydate',$this->data);
 
         dd($posts);
     }

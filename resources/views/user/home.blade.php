@@ -83,7 +83,7 @@
                            <a href="{{ url('single_post/'.$latest_single->id) }}" class="text-dark">
                               <h5 class="mt-3 mb-0">{{$latest_single->title}}</h5>
                            </a>
-                           <a href="" class="text-dark"><span class="short_disc"> {{$latest_single->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
+                           <a href="{{ url('author_name/'.$latest_single->created_by) }}" class="text-dark"><span class="short_disc"> {{$latest_single->name}}</span></a> | <a href="{{ url('by_date/'.$latest_single->created_at) }}" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
                         </div>
                      </div>
                   </div>
@@ -135,7 +135,7 @@
                               <h5 class="mt-3 mb-0">{{$top_single->title}}</h5>
                               <p class="card-text short_disc mb-1" >{{ substr($top_single->short_description,0,100) }} ...</p>
                            </a>
-                           <a href="" class="text-dark"><span class="short_disc">{{$top_single->name}}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
+                           <a href="{{ url('author_name/'.$top_single->created_by) }}" class="text-dark"><span class="short_disc">{{$top_single->name}}</span></a> | <a href="{{ url('by_date/'.$top_single->created_at) }}" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
                         </div>
                      </div>
                   </div>
