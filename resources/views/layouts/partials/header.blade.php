@@ -10,6 +10,7 @@
         <li><a href="{{ url('upload') }}">Upload Post</a></li>
         <li><a href="{{ url('profile') }}">Profile</a></li>
         <li><a href="{{ url('all_categories') }}">Categories</a></li>
+        <li><a href="{{ url('text10') }}">Published POst</a></li>
         <li><a href="{{ url('logout') }}">Logout</a></li>
 
 
