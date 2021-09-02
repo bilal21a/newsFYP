@@ -33,11 +33,11 @@
                         </div>
                         <div class="form-group">
                             <label for="short_disc">Short Description</label>
-                            <textarea class="form-control" id="short_disc"  rows="4" name="short_disc" placeholder="Short Description"></textarea>
+                            <textarea class="form-control" id="short_disc"  rows="4" name="short_disc" placeholder="Short Description" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="summernote"><b>Description</b></label>
-                        <textarea id="summernote" name="disc" style="height: 150px;" required></textarea>
+                        <textarea id="summernote" class="smrnote" name="disc" style="height: 150px;" required></textarea>
                     </div>
                         <div class="form-group">
                             <div class="custom-file">
@@ -78,7 +78,9 @@
     {{-- <script src="{{asset('js/plugins/ckeditor/ckeditor.js')}}"></script> --}}
     <script src="{{asset('js/plugins/simplemde/simplemde.min.js')}}"></script>
     {{-- <script>jQuery(function(){ One.helpers(['summernote', 'ckeditor', 'simplemde']); });</script> --}}
+    <script src="{{asset('js/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $('#summernote').summernote();
