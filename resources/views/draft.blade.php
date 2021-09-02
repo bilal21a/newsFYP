@@ -35,7 +35,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-9" >
+                                <div class="col-sm-9" style="margin-top: 10px;">
                                     <h3 class="mt-1">Title of the News Will be shown ple of the News Will be shown </h3>
                                     <p>Short Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam unde quisquam at eveniet temporibus dolorum cum nam tempora itaque omnis, molestias pariatur nisi iusto. Sit, assumenda magni. Vitae, sunt dolorem.</p>
                                     <small><i class="far fa-clock"> 12-09-2020</i></small>

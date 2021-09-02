@@ -177,7 +177,7 @@ class HomeController extends Controller
         $image->save(public_path('img/thumb_image/' . $imageName));
 
         // list img
-        $image = Image::make(public_path('img/main_image/' . $imageName))->fit(110, 60);
+        $image = Image::make(public_path('img/main_image/' . $imageName))->fit(60, 60);
         $image->save(public_path('img/list_image/' . $imageName));
 
         $post = new Post();

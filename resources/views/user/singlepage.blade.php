@@ -7,17 +7,7 @@
 <link href="{{asset('css/comment.css')}} "rel="stylesheet">
 
 @endsection
-@section('inline_css')
-<style>
-   .round{
-   width: 100%;
-   border-radius: 10px 10px 0px 0px;
-   }
-   .round1{
-   border-radius: 15px 15px 0px 0px;
-   }
-</style>
-@endsection
+
 @section('content')
 
 <div class="content">
@@ -133,45 +123,39 @@
             </div>
             <div class="col-md-4">
                <div class="block-content">
-                  <h2 class="pt-3">Latest News </h2>
+                  <h2 class="pt-4">Latest News </h2>
                </div>
 
 
                @foreach ( $latest_news as $news_lat)
-
-               <a class="block block-rounded block-link-pop" href="{{ url('single_post/'.$news_lat->id) }}">
-                  <div class="block-content" style="padding-top: 0">
-                     <div class="row">
-                        <div class="col-sm-3 customwork" >
-                            <?php
-                                // dd($news_lat);
-                            ?>
-                           <img src="{{asset('img/list_image/'. $news_lat->list_image)}}" alt="" style="width: 100%;">
-                        </div>
-                        <div class="col-sm-9" >
+               <div class="block block-rounded mb-0" href="{{ url('single_post/'.$news_lat->id) }}">
+                <div class="block-content" style="padding-top: 0">
+                    <div class="row">
+                        <div class="col-sm-8" >
                             <?php
                                 $count=str_word_count($news_lat->title);
                             ?>
                             @if ($count<8)
-                           <h5 class="mt-1 mb-0" >{{ substr($news_lat->title,0,30) }} </h5>
+                                 <h5 class="mt-1 f-size" >{{ substr($news_lat->title,0,30) }} </h5>
                             @else
-                           <h5 class="mt-1 mb-0" >{{ substr($news_lat->title,0,30) }}...  </h5>
+                                <h5 class="mt-1 f-size" >{{ substr($news_lat->title,0,30) }}...  </h5>
                             @endif
-
-                           <?php
+                            {{-- <h5 class="mt-1 f-size">Title of the News Will be shown ple of the News Will be shown </h5> --}}
+                            <?php
                                     $var_1= $news_lat->created_at;
                                     $var_2 = strtotime($var_1);
                                     $date = date('F d, Y', $var_2);
                             ?>
-
-                           <small><i class="far fa-clock"> {{$date}}</i></small>
+                            <small class="sm-size"><i class="far fa-clock"> {{ $date }}</i> | <i class="far fa-user"> Author</i></small>
                         </div>
-                     </div>
-                  </div>
-               </a>
-
+                        <div class="col-sm-4 customwork" >
+                            <img src="{{asset('img/list_image/'. $news_lat->list_image)}}" alt="" class="sho" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
                @endforeach
-
             </div>
          </div>
          <div class="block-content">
@@ -213,6 +197,31 @@
       </div>
    </div>
 </div>
+@endsection
+@section('inline_css')
+<style>
+    .round{
+        width: 100%;
+         border-radius: 10px 10px 0px 0px;
+     }
+     .img-size{
+         height: 180px;
+     }
+     .sho{
+         width: 60px;
+         height: 60px;
+         border-radius: 8px;
+     }
+     .f-size{
+         font-size: 14px;
+     }
+     .sm-size{
+         font-size: 12px;
+     }
+     .round1{
+         border-radius: 15px 15px 0px 0px;
+     }
+ </style>
 @endsection
 @section('js')
 <script src="{{asset('js/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
