@@ -79,23 +79,9 @@
                                                     ?>
                                                     <option value="0" selected hidden>Please select</option>
                                                     @foreach ($cat as $single_cat)
-                                                    {{-- <option value="{{ $single_cat->id }}" {{ $single_cat->id == $order->user_id ? 'selected' : '' }}>{{ $single_cat->name }}</option> --}}
-                                                        <option value="{{ $single_cat['id'] }}">{{ $single_cat['name'] }}</option>
+                                                    <option value="{{ $single_cat['id'] }}" {{ $single_cat['id'] == $single->cat_id ? 'selected' : '' }}>{{ $single_cat['name'] }}</option>
                                                     @endforeach
                                                 </select>
-                                                {{-- <select class="form-control" id="example-select" name="category">
-                                                    <option value="0" selected hidden>Please select</option>
-                                                    <option value="1">Option #1</option>
-                                                    <option value="2">Option #2</option>
-                                                    <option value="3">Option #3</option>
-                                                    <option value="4">Option #4</option>
-                                                    <option value="5">Option #5</option>
-                                                    <option value="6">Option #6</option>
-                                                    <option value="7">Option #7</option>
-                                                    <option value="8">Option #8</option>
-                                                    <option value="9">Option #9</option>
-                                                    <option value="10">Option #10</option>
-                                                </select> --}}
                                             </div>
                                             <div class="form-group">
                                                 <label for="example-textarea-input">Short Description</label>
@@ -108,11 +94,11 @@
                                         <div class="form-group">
                                                 <div class=" customwork" >
                                                     <img src="{{asset('img/list_image/'. $single->list_image)}}" alt="" class="sho" >
-                                                    <button type="submit" class="btn btn btn-success" id="img_btn">Edit Image</button>
+                                                    <button type="button" class="btn btn btn-success" id="img_btn">Edit Image</button>
                                                 </div>
                                                 <br>
                                             <div class="custom-file  img_hide">
-                                                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="main_image" name="main_image"  onchange="validateImage()" required>
+                                                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="main_image" name="main_image"  onchange="validateImage()">
                                                 <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
                                             </div>
 
@@ -145,10 +131,14 @@
 									<div class="block-content font-size-sm">
 										<p>Do You Want To Delete This Post?</p>
 									</div>
+                                    <form method="post" action="{{ route('saved_posts_delete') }}" id="upload_form" enctype="multipart/form-data">
+                                        @csrf
+                                    <input type="hidden" name="id" id="" value="{{ $single->id }}">
 									<div class="block-content block-content-full text-right border-top">
 										<button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-trash-alt mr-1"></i> Delete</button>
+										<button type="submit" class="btn btn-sm btn-danger" ><i class="fa fa-trash-alt mr-1"></i> Delete</button>
 									</div>
+                                    </form>
 								</div>
 							</div>
 						</div>

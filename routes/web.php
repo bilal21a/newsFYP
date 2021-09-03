@@ -62,6 +62,7 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     //by save posts
     Route::get('saved_posts', 'PostController@saved_posts')->name('saved_posts');
     Route::post('saved_posts_fetch', 'PostController@saved_posts_fetch')->name('saved_posts_fetch');
+    Route::post('saved_posts_delete', 'PostController@saved_posts_delete')->name('saved_posts_delete');
 
     //comment
     Route::post('/comment/store', 'CommentController@store')->name('comment.add');
