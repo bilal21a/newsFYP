@@ -49,6 +49,11 @@
                             </div>
                         </div>
                     </a>
+                    <form method="post" action="{{ route('saved_posts_publish') }}" id="upload_form" enctype="multipart/form-data">
+                        @csrf
+                    <input type="hidden" name="id" id="" value="{{ $single->id }}">
+                        <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-trash-alt mr-1"></i> publish</button>
+                    </form>
                     <hr>
 					{{-- ---------------edit button model------------ --}}
 					<div class="modal" id="modal-block-large{{ $single->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
