@@ -11,6 +11,8 @@
 					<div class="block-content">
 						<h2 class="pt-3">Saved </h2>
 					</div>
+                @if ($posts!=null)
+
 					@foreach ($posts as $single)
 					<a class="block block-rounded " href="javascript:void(0)">
 						<div class="block-content" style="padding-top: 0">
@@ -26,7 +28,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-9" >
+                                <div class="col-sm-9" style="margin-top:10px;">
                                     <h3 class="mt-1">{{ $single->title }}</h3>
                                     <?php
                                         $sd=strlen($single->short_description) > 850 ? substr($single->short_description,0,850)."..." : $single->short_description;
@@ -45,6 +47,8 @@
                                         $date = date('F d, Y', $var_2);
                                     ?>
                                     <small><i class="far fa-clock"> {{ $date }}</i></small>
+                                    <br>
+                                    <div><button type="submit" class="btn btn btn-success">Publish</button></div>
                                 </div>
                             </div>
                         </div>
@@ -154,6 +158,10 @@
 						</div>
 					</div>
 					@endforeach
+                    @else
+                     <div class="d-flex flex-column justify-content-center" style="text-align: center; margin-bottom: 20px;"><span class="d-block font-weight-bold ">You Don't Have Posted Any Comment Yet!</span></div>
+
+                @endif
 				</div>
 			</div>
 		</div>
