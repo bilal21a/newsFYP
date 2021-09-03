@@ -127,6 +127,14 @@ class PostController extends Controller
         return redirect()->back();
     }
 
+    public function saved_posts_publish(Request $request){
+
+        // dd((int)$request->id);
+        $post = Post::find( (int)$request->id );
+        $post->update(['status' => 1]);
+        return redirect()->back();
+    }
+
 
     public function author_name($user_id){
 
