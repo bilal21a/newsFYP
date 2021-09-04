@@ -22,7 +22,7 @@
 										<img class="img-fluid options-item stl" src="{{asset('img/main_image/'. $single->main_image)}}" alt="">
 										<div class="options-overlay bg-black-75">
 											<div class="options-overlay-content">
-                                                <a class="btn btn-sm btn-light" href="javascript:void(0)" data-toggle="modal" data-target="#modal-block-large{{ $single->id }}"><i class="fa fa-pencil-alt text-primary mr-1"></i> Edit</a>
+                                                <a class="btn btn-sm btn-light" href="javascript:void(0)" data-toggle="modal" data-target="#modal-block-large{{ $single->id }}"><i class="fa fa-pencil-alt text-success mr-1"></i> Edit</a>
                                                 <a class="btn btn-sm btn-light" href="javascript:void(0)" data-toggle="modal" data-target="#modal-block-small"><i class="fa fa-times text-danger mr-1"></i> Delete</a>
                                             </div>
                                         </div>
@@ -46,25 +46,33 @@
                                         $var_2 = strtotime($var_1);
                                         $date = date('F d, Y', $var_2);
                                     ?>
+                                    <div class="row">
+                                        <div class="col-sm-9">
                                     <small><i class="far fa-clock"> {{ $date }}</i></small>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <form method="post" action="{{ route('saved_posts_publish') }}" id="upload_form" enctype="multipart/form-data">
+                                                @csrf
+                                            <input type="hidden" name="id" id="" value="{{ $single->id }}">
+                                                <button type="submit" class="btn btn btn-success" ><i class="fa fa-paper-plane mr-1"></i> Publish</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     <br>
-                                    <div><button type="submit" class="btn btn btn-success">Publish</button></div>
+                                    {{-- <div><button type="submit" class="btn btn btn-success">Publish</button></div> --}}
                                 </div>
                             </div>
+
                         </div>
                     </a>
-                    <form method="post" action="{{ route('saved_posts_publish') }}" id="upload_form" enctype="multipart/form-data">
-                        @csrf
-                    <input type="hidden" name="id" id="" value="{{ $single->id }}">
-                        <button type="submit" class="btn btn-sm btn-primary" ><i class="fa fa-trash-alt mr-1"></i> publish</button>
-                    </form>
+
                     <hr>
 					{{-- ---------------edit button model------------ --}}
 					<div class="modal" id="modal-block-large{{ $single->id }}" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
 						<div class="modal-dialog modal-lg" role="document">
 							<div class="modal-content">
 								<div class="block block-themed block-transparent mb-0">
-									<div class="block-header bg-primary-dark">
+									<div class="block-header bg-success">
 										<h3 class="block-title">Edit Post</h3>
 										<div class="block-options">
 											<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
@@ -103,23 +111,35 @@
                                         <div class="form-group">
                                                 <div class=" customwork" >
                                                     <img src="{{asset('img/list_image/'. $single->list_image)}}" alt="" class="sho" >
-                                                    <button type="button" class="btn btn btn-success" id="img_btn">Edit Image</button>
+                                                    <button type="button" class="btn btn-sm  btn btn-success" id="img_btn">Edit Image</button>
                                                 </div>
                                                 <br>
+                                                {{-- <div class="image">
+                                                    <div class="actions">
+                                                      <a href="">
+                                                          <button type="button" class="btn btn-default delete-image-btn pull-right">
+                                                              <span class="glyphicon glyphicon-trash">Delete</span>
+                                                          </button>
+                                                      </a>
+                                                      <a href="">
+                                                          <button type="button" class="btn btn-default edit-image-btn pull-right">
+                                                               <span class="glyphicon glyphicon-pencil">Edit</span>
+                                                           </button>
+                                                       </a>
+                                                     </div>
+                                                     <img src="{{asset('img/thumb_image/'. $single->thumb_image)}}" class="img img-responsive">
+                                                   </div> --}}
                                             <div class="custom-file  img_hide">
                                                 <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="main_image" name="main_image"  onchange="validateImage()">
                                                 <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
                                             </div>
-
-
                                         </div>
                                         <div class="block-content block-content-full text-right border-top">
-                                            <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-check mr-1"></i>Save</button>
+                                            <input type="button" name="submit" class="btn btn-sm  btn-outline-success" value="Close">
+                                            <input type="submit" name="submit" class="btn btn-sm  btn-success" value="Save">
                                         </div>
                                         </form>
 								    </div>
-
 								</div>
 							</div>
 						</div>
@@ -129,7 +149,7 @@
 						<div class="modal-dialog modal-sm" role="document">
 							<div class="modal-content">
 								<div class="block block-themed block-transparent mb-0">
-									<div class="block-header bg-primary-dark">
+									<div class="block-header bg-danger">
 										<h3 class="block-title">Delete Post</h3>
 										<div class="block-options">
 											<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
@@ -144,8 +164,10 @@
                                         @csrf
                                     <input type="hidden" name="id" id="" value="{{ $single->id }}">
 									<div class="block-content block-content-full text-right border-top">
-										<button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-sm btn-danger" ><i class="fa fa-trash-alt mr-1"></i> Delete</button>
+                                        <input type="button" name="submit" class="btn btn-sm  btn-outline-danger" value="Close">
+                                        <button type="submit" name="submit" class="btn btn-sm  btn-danger"><i class="fa fa-trash-alt mr-1"></i> Delete</button>
+										{{-- <button type="button" class="btn btn-sm btn-light" data-dismiss="modal">Close</button> --}}
+										{{-- <button type="submit" class="btn btn-sm btn-danger" ><i class="fa fa-trash-alt mr-1"></i> Delete</button> --}}
 									</div>
                                     </form>
 								</div>
@@ -187,6 +209,7 @@
     .img_hide{
         display: none;
     }
+
 </style>
 @endsection
 @section('js')
