@@ -67,14 +67,18 @@
                     $var_1= $latest_single->created_at;
                     $var_2 = strtotime($var_1);
                     $date = date('F d, Y', $var_2);
-                    // dd($latest_single);
+                    // dd($latest_single->url_to_image);
                  ?>
 
                <div class="col-md-3 col-sm-6">
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
                      <div class="row round1">
                         <div class="col-sm-12 round" >
+                            @if ($latest_single->main_image)
                            <a href="{{ url('single_post/'.$latest_single->id) }}"><img src={{asset('img/main_image/'. $latest_single->main_image)}} alt="" class="round"></a>
+                            @else
+                           <a href="{{ url('single_post/'.$latest_single->id) }}"><img src="{{ $latest_single->url_to_image }}" alt="" class="round"></a>
+                            @endif
                         </div>
                      </div>
                      <div class="row">
@@ -83,7 +87,15 @@
                            <a href="{{ url('single_post/'.$latest_single->id) }}" class="text-dark">
                               <h5 class="mt-3 mb-0">{{$latest_single->title}}</h5>
                            </a>
-                           <a href="{{ url('author_name/'.$latest_single->created_by) }}" class="text-dark"><span class="short_disc"> {{$latest_single->name}}</span></a> | <a href="{{ url('by_date/'.$latest_single->created_at) }}" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
+
+                           @if ($latest_single->created_by==null)
+                           <a href="" class="text-dark"><span class="short_disc"> {{$latest_single->author_name_api}}</span></a>
+                           @else
+                           <?php $userName=App\User::find($latest_single->created_by)->name ?>
+                           <a href="{{ url('author_name/'.$latest_single->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>
+                           @endif
+
+                           |<a href="{{ url('by_date/'.$latest_single->created_at) }}" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
                         </div>
                      </div>
                   </div>
@@ -135,7 +147,15 @@
                               <h5 class="mt-3 mb-0">{{$top_single->title}}</h5>
                               <p class="card-text short_disc mb-1" >{{ substr($top_single->short_description,0,100) }} ...</p>
                            </a>
-                           <a href="{{ url('author_name/'.$top_single->created_by) }}" class="text-dark"><span class="short_disc">{{$top_single->name}}</span></a> | <a href="{{ url('by_date/'.$top_single->created_at) }}" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
+
+                           @if ($top_single->created_by==null)
+                           <a href="" class="text-dark"><span class="short_disc"> {{$top_single->author_name_api}}</span></a>
+                           @else
+                           <?php $userName=App\User::find($top_single->created_by)->name ?>
+                           <a href="{{ url('author_name/'.$top_single->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>
+                           @endif
+
+                           |<a href="{{ url('by_date/'.$top_single->created_at) }}" class="text-dark"><span class="short_disc"> {{$date}}</span></a>
                         </div>
                      </div>
                   </div>
