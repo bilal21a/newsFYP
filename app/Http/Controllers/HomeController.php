@@ -87,32 +87,32 @@ class HomeController extends Controller
        //single news
         $post = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.id as cat_id','cat.name as cat_name','p.id','p.title','p.short_description','p.description','p.view_count','p.main_image','p.created_at','p.created_by','user.name','user.profile_pic')
+        ->select('cat.id as cat_id','cat.name as cat_name','p.*')
         ->where('p.status', 1)
         ->where('p.id', $post_id)
         ->first();
 
         $cat_id=$post->cat_id;
 
+
         //increase view count by 1
         $view_count=$post->view_count;
         $view_count=$view_count+1;
         Post::where('id', $post_id)->update(['view_count' => $view_count]);
+        // dd($cat_id);
+
 
         //latest news
         $latest_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.list_image','p.created_at','p.created_by','user.name',)
+        ->select('cat.name as cat_name','p.*')
         ->where('p.status', 1)
         ->latest()->take(20)->get()->toArray();
 
         //related posts
         $related_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        ->select('cat.name as cat_name','p.*')
         ->where('p.status', 1)
         ->where('p.category_id', $cat_id)
         ->take(4)
@@ -121,8 +121,9 @@ class HomeController extends Controller
 
         //comments
         $comments = DB::table('comments as c')
-        ->join('users as user', 'c.user_id', '=', 'user.id')
-        ->select('user.name','c.comment','c.created_at','c.commentable_id','user.profile_pic')
+        // ->join('users as user', 'c.user_id', '=', 'user.id')
+        ->join('posts as p', 'c.commentable_id', '=', 'p.id')
+        ->select('c.comment','c.created_at','c.commentable_id','p.*')
         ->where('c.commentable_id', $post_id)
         ->get()->toArray();
         // dd($comments);
