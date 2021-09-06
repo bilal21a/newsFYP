@@ -51,7 +51,6 @@ class HomeController extends Controller
         // ->join('users as user', 'p.created_by', '=', 'user.id')
         ->select('cat.name as cat_name','cat.id as cat_id','p.*')
         ->where('p.status', 1)
-        ->orwhere('p.author_name_api', '!=',null)
         ->orderBy('view_count', 'desc')
         ->latest()->take(3)->get()->toArray();
         // dd($top_stories);
@@ -62,15 +61,14 @@ class HomeController extends Controller
         // ->join('users as user', 'p.created_by', '=', 'user.id')
         ->select('cat.name as cat_name','cat.id as cat_id','p.*')
         ->where('p.status', 1)
-        ->orwhere('p.author_name_api', '!=',null)
         ->latest()->take(4)->get()->toArray();
         // dd($latest_news);
 
         //hot news
         $hot_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        // ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.*')
         ->where('p.status', 1)
         ->where('p.hot_news', 1)
         ->latest()->take(4)->get()->toArray();

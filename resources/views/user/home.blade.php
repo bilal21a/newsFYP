@@ -21,7 +21,12 @@
                <div class="block-content pb-3 my_card " style="padding-top: 0">
                   <div class="row round1">
                      <div class="col-sm-12 round" >
-                        <a href="{{ url('single_post/'.$single_hot->id) }}"><img src={{asset('img/main_image/'. $single_hot->main_image)}} alt="" class="round"></a>
+                        @if ($single_hot->main_image)
+                           <a href="{{ url('single_post/'.$single_hot->id) }}"><img src={{asset('img/main_image/'. $single_hot->main_image)}} alt="" class="round"></a>
+                            @else
+                           <a href="{{ url('single_post/'.$single_hot->id) }}"><img src="{{ $single_hot->url_to_image }}" alt="" class="round"></a>
+                            @endif
+                        {{-- <a href="{{ url('single_post/'.$single_hot->id) }}"><img src={{asset('img/main_image/'. $single_hot->main_image)}} alt="" class="round"></a> --}}
                      </div>
                   </div>
                   <div class="row">
@@ -31,7 +36,14 @@
                            <h5 class="mt-3 mb-0">{{$single_hot->title}}</h5>
                            <p class="card-text short_disc mb-1" > {{ substr($single_hot->short_description,0,100) }} ...</p>
                         </a>
-                        <a href="{{ url('author_name/'.$single_hot->created_by) }}" class="text-dark"><span class="short_disc">{{$single_hot->name}}</span></a> | <a href="{{ url('by_date/'.$single_hot->created_at) }}" class="text-dark"><span class="short_disc">{{$date}}</span></a>
+                        @if ($single_hot->created_by==null)
+                           <a href="" class="text-dark"><span class="short_disc"> {{$single_hot->author_name_api}}</span></a>
+                           @else
+                           <?php $userName=App\User::find($single_hot->created_by)->name ?>
+                           <a href="{{ url('author_name/'.$single_hot->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>
+                           @endif
+                        {{-- <a href="{{ url('author_name/'.$single_hot->created_by) }}" class="text-dark"><span class="short_disc">{{$single_hot->name}}</span></a>  --}}
+                        | <a href="{{ url('by_date/'.$single_hot->created_at) }}" class="text-dark"><span class="short_disc">{{$date}}</span></a>
                      </div>
                   </div>
                </div>
@@ -67,7 +79,6 @@
                     $var_1= $latest_single->created_at;
                     $var_2 = strtotime($var_1);
                     $date = date('F d, Y', $var_2);
-                    // dd($latest_single->url_to_image);
                  ?>
 
                <div class="col-md-3 col-sm-6">
@@ -137,7 +148,12 @@
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
                      <div class="row round1">
                         <div class="col-sm-12 round" >
+                            @if ($top_single->main_image)
                            <a href="{{ url('single_post/'.$top_single->id) }}"><img src={{asset('img/main_image/'. $top_single->main_image)}} alt="" class="round"></a>
+                            @else
+                           <a href="{{ url('single_post/'.$top_single->id) }}"><img src="{{ $top_single->url_to_image }}" alt="" class="round"></a>
+                            @endif
+                           {{-- <a href="{{ url('single_post/'.$top_single->id) }}"><img src={{asset('img/main_image/'. $top_single->main_image)}} alt="" class="round"></a> --}}
                         </div>
                      </div>
                      <div class="row">
