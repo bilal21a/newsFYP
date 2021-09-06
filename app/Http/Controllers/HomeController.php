@@ -121,9 +121,9 @@ class HomeController extends Controller
 
         //comments
         $comments = DB::table('comments as c')
-        // ->join('users as user', 'c.user_id', '=', 'user.id')
-        ->join('posts as p', 'c.commentable_id', '=', 'p.id')
-        ->select('c.comment','c.created_at','c.commentable_id','p.*')
+        ->join('users as u', 'c.user_id', '=', 'u.id')
+        // ->join('posts as p', 'c.commentable_id', '=', 'p.id')
+        ->select('c.comment','c.created_at','c.commentable_id','u.name','u.profile_pic')
         ->where('c.commentable_id', $post_id)
         ->get()->toArray();
         // dd($comments);
