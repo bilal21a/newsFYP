@@ -149,9 +149,9 @@
                                 $count=str_word_count($news_lat->title);
                             ?>
                             @if ($count<8)
-                                 <h5 class="mt-1 f-size" >{{ substr($news_lat->title,0,30) }} </h5>
+                                 <a href="{{ url('single_post/'.$news_lat->id) }}"><h5 class="mt-1 f-size" >{{ substr($news_lat->title,0,30) }} </h5></a>
                             @else
-                                <h5 class="mt-1 f-size" >{{ substr($news_lat->title,0,30) }}...  </h5>
+                                <a href="{{ url('single_post/'.$news_lat->id) }}"><h5 class="mt-1 f-size" >{{ substr($news_lat->title,0,30) }}...  </h5></a>
                             @endif
                             {{-- <h5 class="mt-1 f-size">Title of the News Will be shown ple of the News Will be shown </h5> --}}
                             <?php
@@ -162,14 +162,14 @@
                             <small class="sm-size"><i class="far fa-clock"> {{ $date }}</i> | <i class="far fa-user"> Author</i></small>
                         </div>
                         <div class="col-sm-4 customwork" >
-                            @if ($latest_single->main_image)
-                            <img src="{{asset('img/list_image/'. $news_lat->list_image)}}" alt="" class="sho" >
+                            @if ($news_lat->list_image)
+                            {{-- <img src="{{asset('img/list_image/'. $news_lat->list_image)}}" alt="" class="sho" > --}}
 
-                            <a href="{{ url('single_post/'.$latest_single->id) }}"><img src={{asset('img/main_image/'. $latest_single->main_image)}} alt="" class="round"></a>
+                            <a href="{{ url('single_post/'.$news_lat->id) }}"><img src={{asset('img/main_image/'. $news_lat->list_image)}} alt="" class="round"></a>
                              @else
-                            <a href="{{ url('single_post/'.$latest_single->id) }}"><img src="{{ $latest_single->url_to_image }}" alt="" class="round"></a>
+
+                            <a href="{{ url('single_post/'.$news_lat->id) }}"><img src="{{ $news_lat->url_to_image }}" alt="" class="round"></a>
                              @endif
-                            <img src="{{asset('img/list_image/'. $news_lat->list_image)}}" alt="" class="sho" >
                         </div>
                     </div>
                 </div>
