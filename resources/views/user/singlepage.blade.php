@@ -38,12 +38,14 @@
                    @endif
                   <div class="pt-2 pb-3">
                      <span>
+
                         @if ($post->created_by==null)
-                        <a href="" class="text-dark"><span class="short_disc"> {{$post->author_name_api}}</span></a>
+                        @if($post->author_name_api)<a href="" class="text-dark"><span class="short_disc"><i class="fa fa-user"> {{$post->author_name_api}}</i></span></a>@endif
                         @else
                         <?php $userName=App\User::find($post->created_by)->name ?>
-                        <a href="{{ url('author_name/'.$post->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>
+                        <a href="{{ url('author_name/'.$post->created_by) }}" class="text-dark"><span class="short_disc"><i class="fa fa-user">    {{$userName}}</i></span></a>
                         @endif
+
                      {{-- <a href="{{ url('author_name/'.$post->created_by) }}" class="text-dark pr-4"><i class="fa fa-user">   {{$post->name}}</i></a> --}}
                             <?php
                                 $var_1= $post->created_at;
@@ -82,7 +84,13 @@
                                     ?>
                                        <div class="bg-white p-2">
                                           <div class="d-flex flex-row user-info">
-                                             {{-- <img class="rounded-circle" src="{{asset('img/profile_image/'. $comment->profile_pic)}}" style="width: 6%;height: 6%;"> --}}
+
+                                              @if ($comment->profile_pic==null)
+                                             <img class="rounded-circle" src="{{asset('default.png')}}" style="width: 6%;height: 6%;">
+                                              @else
+                                             <img class="rounded-circle" src="{{asset('img/profile_image/'. $comment->profile_pic)}}" style="width: 6%;height: 6%;">
+                                              @endif
+
                                              <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{{ $comment->name }}</span><span class="date text-black-50">Shared publicly - {{ $date }}</span></div>
                                           </div>
                                           <div class="mt-2">
@@ -109,11 +117,13 @@
                                         <form method="post" action="{{ route('comment.add') }}">
                                         @csrf
                                         <div class="d-flex flex-row align-items-start">
+
                                             @if (Auth::user()->profile_pic==null)
                                             <img class="rounded-circle" src="{{asset('default.png')}}" style="width: 6%;height: 6%;">
                                             @else
                                             <img class="rounded-circle" src="{{asset('img/profile_image/'.Auth::user()->profile_pic)}}" style="width: 6%;height: 6%;">
                                             @endif
+
                                             <textarea class="form-control ml-1 shadow-none textarea" name="comment" placeholder="Type your comment" required></textarea>
                                             <input type="hidden" name="post_id" value="{{ $post->id }}" />
                                         </div>
@@ -158,18 +168,28 @@
                                     $var_1= $news_lat->created_at;
                                     $var_2 = strtotime($var_1);
                                     $date = date('F d, Y', $var_2);
+                                    // dd($news_lat);
                             ?>
-                            <small class="sm-size"><i class="far fa-clock"> {{ $date }}</i> | <i class="far fa-user"> Author</i></small>
+                            <small class="sm-size"><i class="far fa-clock"> {{ $date }}</i> |
+                                {{-- <i class="far fa-user"> Author</i> --}}
+
+                                @if ($news_lat->created_by==null)
+                                @if($news_lat->author_name_api)<a href="" class="text-dark"><span class="short_disc"><i class="far fa-user"> {{$news_lat->author_name_api}}</i></span></a>@endif
+                                @else
+                                <?php $userName=App\User::find($news_lat->created_by)->name ?>
+                                <a href="{{ url('author_name/'.$news_lat->created_by) }}" class="text-dark"><span class="short_disc"><i class="far fa-user">    {{$userName}}</i></span></a>
+                                @endif
+
+                            </small>
                         </div>
                         <div class="col-sm-4 customwork" >
-                            @if ($news_lat->list_image)
-                            {{-- <img src="{{asset('img/list_image/'. $news_lat->list_image)}}" alt="" class="sho" > --}}
 
-                            <a href="{{ url('single_post/'.$news_lat->id) }}"><img src={{asset('img/main_image/'. $news_lat->list_image)}} alt="" class="round"></a>
+                             @if ($news_lat->list_image)
+                                 <a href="{{ url('single_post/'.$news_lat->id) }}"><img src={{asset('img/main_image/'. $news_lat->list_image)}} alt="" class="round"></a>
                              @else
-
-                            <a href="{{ url('single_post/'.$news_lat->id) }}"><img src="{{ $news_lat->url_to_image }}" alt="" class="round"></a>
+                                <a href="{{ url('single_post/'.$news_lat->id) }}"><img src="{{ $news_lat->url_to_image }}" alt="" class="round"></a>
                              @endif
+
                         </div>
                     </div>
                 </div>
@@ -192,7 +212,13 @@
                         <div class="block-content pb-3" style="padding-top: 0">
                            <div class="row round1">
                               <div class="col-sm-12 pt-3 round" >
-                                 <img src="{{asset('img/main_image/'. $news_rel->main_image)}}" alt="" class="round">
+
+                            @if ($news_rel->main_image)
+                                <img src={{asset('img/main_image/'. $news_rel->main_image)}} alt="" class="round">
+                            @else
+                               <img src="{{ $news_rel->url_to_image }}" alt="" class="round">
+                            @endif
+
                               </div>
                            </div>
                            <div class="row">
