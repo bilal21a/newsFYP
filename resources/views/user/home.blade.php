@@ -203,9 +203,10 @@
                 @foreach ($post_count as $count)
                 <?php
                 $category_topFour= App\Category::where('status', 1)->where('id', $count->category_id)->first();
-                $first_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->first();
-                $three_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->take(4)->get()->toArray();
+                $first_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->latest()->first();
+                $three_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->take(4)->latest()->get()->toArray();
                 array_shift($three_post);
+                // dd($three_post);
                 ?>
 
 
@@ -217,10 +218,23 @@
                             <?php
                                 // dd($first_post);
                                 ?>
+                                @if ($first_post->thumb_image)
+                                    <img src={{asset('img/thumb_image/'. $first_post['thumb_image'])}} alt="" style="width: 100%;">
+                                 @else
+                                    <img src={{ $first_post->url_to_image }} alt="" style="width: 100%;">
+                                 @endif
                            <img src={{asset('img/thumb_image/'. $first_post['thumb_image'])}} alt="" style="width: 100%;">
                         </div>
                         <div class="col-md-8">
-                           <p class="s-ttl pt-1 text-dark" >{{$first_post['title']}}</p>
+                            <?php
+                                $count=str_word_count($first_post->title);
+                            ?>
+                            @if ($count<25)
+                                 <h5 class="mt-1 f-size" >{{$first_post['title']}}  </h5>
+                            @else
+                                <h5 class="mt-1 f-size" >{{ substr($first_post['title'],0,50) }} ...</h5>
+                            @endif
+                           {{-- <p class="s-ttl pt-1 text-dark" >{{ substr($first_post['title'],0,100) }} ...</p> --}}
                         </div>
                      </div>
                   </a>
