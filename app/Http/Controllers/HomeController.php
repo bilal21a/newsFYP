@@ -61,7 +61,7 @@ class HomeController extends Controller
         ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','p.author_name_api')
         ->where('p.status', 1)
         ->latest()->take(4)->get()->toArray();
-        dd($latest_news);
+        // dd($latest_news);
 
         //hot news
         $hot_news = DB::table('posts as p')
