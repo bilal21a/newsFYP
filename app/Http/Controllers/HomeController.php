@@ -57,10 +57,11 @@ class HomeController extends Controller
         //latest news
         $latest_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        // ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','p.author_name_api')
         ->where('p.status', 1)
-        ->latest()->take(4)->get()->toArray();
+        ->latest()->get()->toArray();
+        dd($latest_news);
 
         //hot news
         $hot_news = DB::table('posts as p')
