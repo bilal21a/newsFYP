@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddApiCatNameTable extends Migration
+class AddApiNameToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddApiCatNameTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('api_name');
+            $table->string('api_name')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddApiCatNameTable extends Migration
     public function down()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('api_name')->nullable();
+            //
         });
     }
 }
