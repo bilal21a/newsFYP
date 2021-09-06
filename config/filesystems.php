@@ -64,7 +64,18 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
-
+        'public_main' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/img/main_image',
+        ],
+        'public_thumb' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/img/thumb_image',
+        ],
+        'public_list' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/img/list_image',
+        ],
     ],
 
     /*

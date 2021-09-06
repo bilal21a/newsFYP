@@ -28,14 +28,13 @@
                      </ol>
                   </nav>
                   <h1 class="font-w700" style="line-height: 35px;">{{$post->title}}</h1>
+
                   @if ($post->main_image)
                   <img src="{{asset('img/main_image/'. $post->main_image)}}" alt="" style="width: 100%;">
-
                    @else
                   <img src="{{ $post->url_to_image }}" alt="" style="width: 100%;">
-
-                  {{-- <a href="{{ url('single_post/'.$post->id) }}"><img src="{{ $post->url_to_image }}" alt="" class="round"></a> --}}
                    @endif
+
                   <div class="pt-2 pb-3">
                      <span>
 

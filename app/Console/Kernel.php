@@ -2,6 +2,7 @@
 
 namespace App\Console;
 use App\Jobs\GetAllNewsFromApi;
+use App\Jobs\COnvertUrlToFiles;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -25,6 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->job(new GetAllNewsFromApi)->everyMinute();
+        $schedule->job(new COnvertUrlToFiles)->everyMinute();
         // $schedule->command('inspire')->hourly();
     }
 
