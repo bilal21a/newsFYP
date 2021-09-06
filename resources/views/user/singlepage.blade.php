@@ -28,10 +28,23 @@
                      </ol>
                   </nav>
                   <h1 class="font-w700" style="line-height: 35px;">{{$post->title}}</h1>
+                  @if ($post->main_image)
                   <img src="{{asset('img/main_image/'. $post->main_image)}}" alt="" style="width: 100%;">
+
+                   @else
+                  <img src="{{ $post->url_to_image }}" alt="" style="width: 100%;">
+
+                  {{-- <a href="{{ url('single_post/'.$post->id) }}"><img src="{{ $post->url_to_image }}" alt="" class="round"></a> --}}
+                   @endif
                   <div class="pt-2 pb-3">
                      <span>
-                     <a href="{{ url('author_name/'.$post->created_by) }}" class="text-dark pr-4"><i class="fa fa-user">   {{$post->name}}</i></a>
+                        @if ($post->created_by==null)
+                        <a href="" class="text-dark"><span class="short_disc"> {{$post->author_name_api}}</span></a>
+                        @else
+                        <?php $userName=App\User::find($post->created_by)->name ?>
+                        <a href="{{ url('author_name/'.$post->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>
+                        @endif
+                     {{-- <a href="{{ url('author_name/'.$post->created_by) }}" class="text-dark pr-4"><i class="fa fa-user">   {{$post->name}}</i></a> --}}
                             <?php
                                 $var_1= $post->created_at;
                                 $var_2 = strtotime($var_1);
@@ -69,7 +82,7 @@
                                     ?>
                                        <div class="bg-white p-2">
                                           <div class="d-flex flex-row user-info">
-                                             <img class="rounded-circle" src="{{asset('img/profile_image/'. $comment->profile_pic)}}" style="width: 6%;height: 6%;">
+                                             {{-- <img class="rounded-circle" src="{{asset('img/profile_image/'. $comment->profile_pic)}}" style="width: 6%;height: 6%;"> --}}
                                              <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{{ $comment->name }}</span><span class="date text-black-50">Shared publicly - {{ $date }}</span></div>
                                           </div>
                                           <div class="mt-2">
@@ -149,6 +162,13 @@
                             <small class="sm-size"><i class="far fa-clock"> {{ $date }}</i> | <i class="far fa-user"> Author</i></small>
                         </div>
                         <div class="col-sm-4 customwork" >
+                            @if ($latest_single->main_image)
+                            <img src="{{asset('img/list_image/'. $news_lat->list_image)}}" alt="" class="sho" >
+
+                            <a href="{{ url('single_post/'.$latest_single->id) }}"><img src={{asset('img/main_image/'. $latest_single->main_image)}} alt="" class="round"></a>
+                             @else
+                            <a href="{{ url('single_post/'.$latest_single->id) }}"><img src="{{ $latest_single->url_to_image }}" alt="" class="round"></a>
+                             @endif
                             <img src="{{asset('img/list_image/'. $news_lat->list_image)}}" alt="" class="sho" >
                         </div>
                     </div>
