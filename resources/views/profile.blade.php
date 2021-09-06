@@ -98,7 +98,10 @@
                     <a class="link-fx text-success" href="{{ url('your_comments/') }}">View All Comments</a>
                 </div>
             </div>
-
+            <div class="section2">
+                <h4>Your Saved Posts</h4>
+                <a class="link-fx text-success" href="{{ url('saved_posts/') }}">View All Saved Posts</a>
+            </div>
         </div>
         <!-- Section 2 Start     -->
 
