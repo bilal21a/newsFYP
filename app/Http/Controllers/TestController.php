@@ -21,13 +21,13 @@ class TestController extends Controller
             // dd($cat->id);
 
 
-            $newsapi = new NewsApi('97685f4f0823492f8a2cd2bc44d46b5f');
+            $newsapi = new NewsApi('466263e697cd481d8ac59473e4ec51d2');
             $sources = $newsapi->getSources("sports", "en", "us");
             // $sources = https://newsapi.org/v2/top-headlines?category=sports&apiKey=97685f4f0823492f8a2cd2bc44d46b5f;
             $endpoint = "https://newsapi.org/v2/top-headlines";
             $client = new \GuzzleHttp\Client();
             $category = $cat->api_name;
-            $apiKey = '97685f4f0823492f8a2cd2bc44d46b5f';
+            $apiKey = '466263e697cd481d8ac59473e4ec51d2';
             // $value = "ABC";
 
             $response = $client->request('GET', $endpoint, ['query' => [
@@ -56,7 +56,7 @@ class TestController extends Controller
             }
 
             foreach($api_posts as $single_api) {
-                // dd($cat->id);
+                if ($single_api['author']!=null && $single_api['title']!=null && $single_api['description']!=null && $single_api['urlToImage']!=null ) {
 
                 $slugs = Post::where('slug', '=', $single_api['slug'])->first();
                 if ($slugs === null) {
@@ -76,9 +76,8 @@ class TestController extends Controller
             }
             // dd($api_posts);
 
-
+            }
         }
-        // dd("004 is chutya");
     }
     }
 }
