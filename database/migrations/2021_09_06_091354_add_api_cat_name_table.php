@@ -26,7 +26,7 @@ class AddApiCatNameTable extends Migration
     public function down()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('api_name');
+            $table->string('api_name')->nullable();
         });
     }
 }
