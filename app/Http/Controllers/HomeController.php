@@ -49,7 +49,7 @@ class HomeController extends Controller
         $top_stories = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         // ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','p.c')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','p.author_name_api')
         ->where('p.status', 1)
         ->where('p.author_name_api', '!=',null)
         ->orderBy('view_count', 'desc')
