@@ -48,8 +48,8 @@ class HomeController extends Controller
         //top stories
         $top_stories = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        // ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','p.author_name_api')
         ->where('p.status', 1)
         ->orderBy('view_count', 'desc')
         ->latest()->take(3)->get()->toArray();
@@ -60,7 +60,7 @@ class HomeController extends Controller
         // ->join('users as user', 'p.created_by', '=', 'user.id')
         ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','p.author_name_api')
         ->where('p.status', 1)
-        ->latest()->get()->toArray();
+        ->latest()->take(4)->get()->toArray();
         dd($latest_news);
 
         //hot news
