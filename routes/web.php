@@ -76,6 +76,12 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
 
 
 
+    Route::get('api_source/{source}', 'ApiController@api_source')->name('api_source');
+
+
+
+
+
 
 
 

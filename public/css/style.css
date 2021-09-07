@@ -5,12 +5,53 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+.logo1{
+  display: block !important;
+}
+.logo2{
+  display: none !important;
+}
 .nv{
-  position: fixed;
+  position: relative;
   z-index: 99;
   width: 100%;
-  
   background: #242526;
+}
+div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+  text-align: center;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #777;
+}
+.sm-logo-work{
+  width: 40px;
+  height: 22px;
+}
+.search-work{
+  border: 1px solid grey; 
+  height: 30px; 
+  border-radius: 5px; 
+  border-right: none;
+}
+.searchbtn-work{
+  width: 30px; 
+  color: white; 
+  border-left: none; 
+  height: 30px; 
+  border-radius: 5px; 
+  border: 1px solid grey;
 }
 .nv .wrapper{
   position: relative;
@@ -22,6 +63,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.heightwork{
+  height: 37px !important;
 }
 .wrapper .logo a{
   color: #f2f2f2;
@@ -124,20 +168,50 @@
 .row .mega-links li a:hover{
   color: #f2f2f2;
 }
-.wrapper .btn{
+.wrapper .stylework{
   color: #fff;
   font-size: 20px;
   cursor: pointer;
   display: none;
 }
-.wrapper .btn.close-btn{
+.wrapper .stylework.close-btn{
   position: absolute;
   right: 30px;
   top: 10px;
 }
 
+.showdet2{
+  display: none !important;
+}
+
+.btn-work{
+  height: 42px !important;
+  color: #F2F2E5 !important;
+  background-color: #242526 !important;
+}
+
+.btn-work:hover{
+  background-color: #38AB69 !important;
+}
+
+.bg-primary {
+  background-color: #242526!important;
+}
+
+@media screen and (max-width: 415px) {
+  #menu-btn:checked ~ .showdet2{
+    display: none !important;
+  }
+}
+
 @media screen and (max-width: 970px) {
-  .wrapper .btn{
+  .logo1{
+    display: none !important;
+  }
+  .logo2{
+    display: block !important;
+  }
+  .wrapper .stylework{
     display: block;
   }
   .wrapper .nav-links{
@@ -155,6 +229,12 @@
     box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
     transition: all 0.3s ease;
   }
+  .showdet{
+    display: none !important;
+  }
+  .showdet2{
+    display: block !important;
+  }
   /* custom scroll bar */
   ::-webkit-scrollbar {
     width: 10px;
@@ -168,10 +248,11 @@
   #menu-btn:checked ~ .nav-links{
     left: 0%;
   }
-  #menu-btn:checked ~ .btn.menu-btn{
-    display: none;
+  #menu-btn:checked ~ .stylework.menu-btn{
+    display: block;
   }
-  #close-btn:checked ~ .btn.menu-btn{
+  
+  #close-btn:checked ~ .stylework.menu-btn{
     display: block;
   }
   .nav-links li{
