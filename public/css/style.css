@@ -40,19 +40,26 @@ div.scrollmenu a:hover {
   height: 22px;
 }
 .search-work{
-  border: 1px solid grey; 
-  height: 30px; 
-  border-radius: 5px; 
+  border: 1px solid grey;
+  height: 30px;
+  border-radius: 5px;
   border-right: none;
 }
 .searchbtn-work{
-  width: 30px; 
-  color: white; 
-  border-left: none; 
-  height: 30px; 
-  border-radius: 5px; 
+  width: 30px;
+  color: white;
+  border-left: none;
+  height: 30px;
+  background-color: #38ab69;
+  border-color: #34a263;
+  border-radius: 5px;
   border: 1px solid grey;
 }
+.searchbtn-work:hover{
+    background-color: #38AB69 !important;
+    border-color: #34a263;
+
+  }
 .nv .wrapper{
   position: relative;
   max-width: 1300px;
@@ -251,7 +258,7 @@ div.scrollmenu a:hover {
   #menu-btn:checked ~ .stylework.menu-btn{
     display: block;
   }
-  
+
   #close-btn:checked ~ .stylework.menu-btn{
     display: block;
   }

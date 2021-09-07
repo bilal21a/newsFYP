@@ -5,7 +5,7 @@
       <input type="radio" name="slider" id="close-btn">
       <ul class="nav-links">
         <label for="close-btn" class="stylework close-btn"><i class="fas fa-times"></i></label>
-        <li><a href="#">Home</a></li>
+        <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="#">About</a></li>
         <li>
           <a href="#" class="desktop-item">Dropdown Menu</a>
@@ -19,39 +19,46 @@
           </ul>
         </li>
         <li>
-          <a href="#" class="desktop-item">Mega Menu</a>
+
+            @php
+                //header
+                $cats_1 =App\Category::where('status',1)->take(4)->get()->toArray();
+                $cats_2 =App\Category::where('status',1)->take(8)->get()->toArray();
+                $cats_2 = array_slice($cats_2, 4);
+                $cats_3 =App\Category::where('status',1)->take(12)->get()->toArray();
+                $cats_3 = array_slice($cats_3, 8);
+            @endphp
+          <a href="#" class="desktop-item">Categories</a>
           <input type="checkbox" id="showMega">
-          <label for="showMega" class="mobile-item">Mega Menu</label>
+          <label for="showMega" class="mobile-item">Categories</label>
           <div class="mega-box">
             <div class="content">
               <div class="row">
-                <img class="imag" src="assets/img.jpg" alt="">
+                {{-- <img class="imag" src="assets/img.jpg" alt=""> --}}
               </div>
                 <div class="row">
-                <header>Design Services</header>
+                <header></header>
                 <ul class="mega-links">
-                  <li><a href="#">Graphics</a></li>
-                  <li><a href="#">Vectors</a></li>
-                  <li><a href="#">Business cards</a></li>
-                  <li><a href="#">Custom logo</a></li>
+                    @foreach ($cats_1 as $cat1)
+                        <li><a href="{{ url('categories/'.$cat1['id']) }}">{{ $cat1['name'] }}</a></li>
+                    @endforeach
                 </ul>
               </div>
               <div class="row">
-                <header>Email Services</header>
+                <header></header>
                 <ul class="mega-links">
-                  <li><a href="#">Personal Email</a></li>
-                  <li><a href="#">Business Email</a></li>
-                  <li><a href="#">Mobile Email</a></li>
-                  <li><a href="#">Web Marketing</a></li>
+                    @foreach ($cats_2 as $cat2)
+                        <li><a href="{{ url('categories/'.$cat2['id']) }}">{{ $cat2['name'] }}</a></li>
+                    @endforeach
                 </ul>
               </div>
               <div class="row">
-                <header>Security services</header>
+                <header></header>
                 <ul class="mega-links">
-                  <li><a href="#">Site Seal</a></li>
-                  <li><a href="#">VPS Hosting</a></li>
-                  <li><a href="#">Privacy Seal</a></li>
-                  <li><a href="#">Website design</a></li>
+                    @foreach ($cats_3 as $cat3)
+                        <li><a href="{{ url('categories/'.$cat3['id']) }}">{{ $cat3['name'] }}</a></li>
+                    @endforeach
+
                 </ul>
               </div>
             </div>
@@ -101,7 +108,7 @@
                           <i class="si si-user ml-1"></i>
                       </span>
                   </a>
-                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('/profile') }}">
                       <span>Settings</span>
                       <i class="si si-settings"></i>
                   </a>
@@ -111,7 +118,7 @@
                       <span>Lock Account</span>
                       <i class="si si-lock ml-1"></i>
                   </a>
-                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="op_auth_signin.html">
+                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('/logout') }}">
                       <span>Log Out</span>
                       <i class="si si-logout ml-1"></i>
                   </a>
@@ -182,22 +189,22 @@
     <a href="{{ url('api_source/cnn') }}">CNN
       <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
     </a>
-    <a href="#home">Home
+    <a href="{{ url('api_source/espn') }}">ESPN
       <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
     </a>
-    <a href="#home">Home
+    <a href="{{ url('api_source/the-washington-post') }}">Washington Post
       <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
     </a>
-    <a href="#home">Home
+    <a href="{{ url('api_source/usa-today') }}">USA
       <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
     </a>
-    <a href="#home">Home
+    <a href="{{ url('api_source/google-news') }}">Google News
       <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
     </a>
-    <a href="#home">Home
+    <a href="{{ url('api_source/ary-news') }}">ARY News
       <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
     </a>
-    <a href="#home">Home
+    <a href="{{ url('api_source/the-times-of-india') }}">India
       <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
     </a>
 
