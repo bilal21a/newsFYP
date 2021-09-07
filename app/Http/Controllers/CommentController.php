@@ -56,7 +56,7 @@ class CommentController extends Controller
          ->join('posts as p', 'c.commentable_id', '=', 'p.id')
          ->select('user.name','c.comment','c.created_at','c.commentable_id','user.profile_pic','p.title as post_title')
          ->where('c.user_id', $user_id)
-         ->get()->toArray();
+         ->paginate(12);
 
          $this->data['comments'] = $comments;
         // dd($this->data);

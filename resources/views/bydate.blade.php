@@ -17,7 +17,7 @@
 
                 <div class="col-md-12">
                     <div class="block-content">
-                    <h2 class="pt-3">Post From this date {{ $date1 }} </h2>
+                    <h2 class="pt-3">Post From  {{ $date1 }} </h2>
                 </div>
                     @foreach ($posts as $post)
                     <a class="block block-rounded " href="{{ url('single_post/'.$post->id) }}">
@@ -54,6 +54,8 @@
 
         </div>
     </div>
+    {{ $posts->links() }}
+
 </div>
  @endsection
 
