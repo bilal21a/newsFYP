@@ -13,8 +13,8 @@ class CategoryController extends Controller
     {
         $posts_all = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        // ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.*')
         ->where('p.status', 1)
         ->where('p.category_id', $cat_id)->latest()
         ->paginate(12);
@@ -87,12 +87,13 @@ class CategoryController extends Controller
 
             $all_cat_posts['posts'][$i] =DB::table('posts as p')
             ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-            ->join('users as user', 'p.created_by', '=', 'user.id')
-            ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+            // ->join('users as user', 'p.created_by', '=', 'user.id')
+            ->select('cat.name as cat_name','cat.id as cat_id','p.*')
             ->where('p.status', 1)
             ->where('cat.id', $post_count[$i]->category_id)->take(4)->latest()
             ->get()->toArray();
         }
+        // dd($all_cat_posts);
 
         //to remove empty data values finnal value is $allCats
         $allCats=[];

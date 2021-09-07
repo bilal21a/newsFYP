@@ -21,12 +21,7 @@
                <div class="block-content pb-3 my_card " style="padding-top: 0">
                   <div class="row round1">
                      <div class="col-sm-12 round" >
-                        @if ($single_hot->main_image)
-                           <a href="{{ url('single_post/'.$single_hot->id) }}"><img src={{asset('img/main_image/'. $single_hot->main_image)}} alt="" class="round"></a>
-                            @else
-                           <a href="{{ url('single_post/'.$single_hot->id) }}"><img src="{{ $single_hot->url_to_image }}" alt="" class="round"></a>
-                            @endif
-                        {{-- <a href="{{ url('single_post/'.$single_hot->id) }}"><img src={{asset('img/main_image/'. $single_hot->main_image)}} alt="" class="round"></a> --}}
+                        <a href="{{ url('single_post/'.$single_hot->id) }}"><img src={{asset('img/main_image/'. $single_hot->main_image)}} alt="" class="round"></a>
                      </div>
                   </div>
                   <div class="row">
@@ -85,11 +80,7 @@
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
                      <div class="row round1">
                         <div class="col-sm-12 round" >
-                            @if ($latest_single->main_image)
                            <a href="{{ url('single_post/'.$latest_single->id) }}"><img src={{asset('img/main_image/'. $latest_single->main_image)}} alt="" class="round"></a>
-                            @else
-                           <a href="{{ url('single_post/'.$latest_single->id) }}"><img src="{{ $latest_single->url_to_image }}" alt="" class="round"></a>
-                            @endif
                         </div>
                      </div>
                      <div class="row">
@@ -148,12 +139,7 @@
                   <div class="block-content pb-3 my_card " style="padding-top: 0">
                      <div class="row round1">
                         <div class="col-sm-12 round" >
-                            @if ($top_single->main_image)
                            <a href="{{ url('single_post/'.$top_single->id) }}"><img src={{asset('img/main_image/'. $top_single->main_image)}} alt="" class="round"></a>
-                            @else
-                           <a href="{{ url('single_post/'.$top_single->id) }}"><img src="{{ $top_single->url_to_image }}" alt="" class="round"></a>
-                            @endif
-                           {{-- <a href="{{ url('single_post/'.$top_single->id) }}"><img src={{asset('img/main_image/'. $top_single->main_image)}} alt="" class="round"></a> --}}
                         </div>
                      </div>
                      <div class="row">
@@ -218,30 +204,25 @@
                             <?php
                                 // dd($first_post);
                                 ?>
-                                @if ($first_post->thumb_image)
-                                    <img src={{asset('img/thumb_image/'. $first_post['thumb_image'])}} alt="" style="width: 100%;">
-                                 @else
-                                    <img src={{ $first_post->url_to_image }} alt="" style="width: 100%;">
-                                 @endif
                            <img src={{asset('img/thumb_image/'. $first_post['thumb_image'])}} alt="" style="width: 100%;">
                         </div>
                         <div class="col-md-8">
                             <?php
                                 $count=str_word_count($first_post->title);
                             ?>
-                            @if ($count<25)
+                            {{-- @if ($count<20)
                                  <h5 class="mt-1 f-size" >{{$first_post['title']}}  </h5>
                             @else
-                                <h5 class="mt-1 f-size" >{{ substr($first_post['title'],0,50) }} ...</h5>
-                            @endif
-                           {{-- <p class="s-ttl pt-1 text-dark" >{{ substr($first_post['title'],0,100) }} ...</p> --}}
+                                <h5 class="mt-1 f-size" >{{ substr($first_post['title'],0,20) }} ...</h5>
+                            @endif --}}
+                           <p class="s-ttl pt-1 text-dark three_dots" >{{ $first_post['title'] }}</p>
                         </div>
                      </div>
                   </a>
                   <hr>
                   @foreach ($three_post as $three)
                   <a href="{{ url('single_post/'.$three['id']) }}" class="text-dark">
-                    <p class="s-ttl">{{$three['title']}}</p>
+                    <p class="s-ttl three_dots2">{{$three['title']}}</p>
                  </a>
                  <hr>
                   @endforeach
@@ -273,6 +254,20 @@
 @endsection
 @section('inline_css')
 <style>
+    .three_dots {
+    overflow: hidden;
+    width:150px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    }
+    .three_dots2 {
+    overflow: hidden;
+    width: 214px;
+    display: contents;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    }
    .round{
    width: 100%;
    border-radius: 10px 10px 0px 0px;

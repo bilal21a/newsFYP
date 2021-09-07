@@ -38,7 +38,16 @@
                             $var_2 = strtotime($var_1);
                             $date = date('F d, Y', $var_2);
                         ?>
-                        <a href="#" class="text-dark"><span class="short_disc"> {{ $single_cat->name }}</span></a> | <a href="#" class="text-dark"><span class="short_disc"> {{ $date }}</span></a>
+
+                        @if ($single_cat->created_by==null)
+                        <a href="" class="text-dark"><span class="short_disc"> {{$single_cat->author_name_api}}</span></a>
+                        @else
+                        <?php $userName=App\User::find($single_cat->created_by)->name ?>
+                        <a href="{{ url('author_name/'.$single_cat->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>
+                        @endif
+
+                        {{-- <a href="#" class="text-dark"><span class="short_disc"> {{ $single_cat->name }}</span></a>  --}}
+                        | <a href="{{ url('by_date/'.$single_cat->created_at) }}" class="text-dark"><span class="short_disc"> {{ $date }}</span></a>
                      </div>
                   </div>
                </div>

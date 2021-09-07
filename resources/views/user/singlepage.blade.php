@@ -28,19 +28,14 @@
                      </ol>
                   </nav>
                   <h1 class="font-w700" style="line-height: 35px;">{{$post->title}}</h1>
-
-                  @if ($post->main_image)
                   <img src="{{asset('img/main_image/'. $post->main_image)}}" alt="" style="width: 100%;">
-                   @else
-                  <img src="{{ $post->url_to_image }}" alt="" style="width: 100%;">
-                   @endif
-
                   <div class="pt-2 pb-3">
                      <span>
 
                         @if ($post->created_by==null)
                         @if($post->author_name_api)<a href="" class="text-dark"><span class="short_disc"><i class="fa fa-user"> {{$post->author_name_api}}</i></span></a>@endif
                         @else
+
                         <?php $userName=App\User::find($post->created_by)->name ?>
                         <a href="{{ url('author_name/'.$post->created_by) }}" class="text-dark"><span class="short_disc"><i class="fa fa-user">    {{$userName}}</i></span></a>
                         @endif
@@ -162,7 +157,7 @@
                             @else
                                 <a href="{{ url('single_post/'.$news_lat->id) }}"><h5 class="mt-1 f-size" >{{ substr($news_lat->title,0,30) }}...  </h5></a>
                             @endif
-                            {{-- <h5 class="mt-1 f-size">Title of the News Will be shown ple of the News Will be shown </h5> --}}
+                            {{-- <h5 class="mt-1 f-size">Title of the News W ill be shown ple of the News Will be shown </h5> --}}
                             <?php
                                     $var_1= $news_lat->created_at;
                                     $var_2 = strtotime($var_1);
@@ -182,13 +177,7 @@
                             </small>
                         </div>
                         <div class="col-sm-4 customwork" >
-
-                             @if ($news_lat->list_image)
-                                 <a href="{{ url('single_post/'.$news_lat->id) }}"><img src={{asset('img/main_image/'. $news_lat->list_image)}} alt="" class="round"></a>
-                             @else
-                                <a href="{{ url('single_post/'.$news_lat->id) }}"><img src="{{ $news_lat->url_to_image }}" alt="" class="round"></a>
-                             @endif
-
+                            <a href="{{ url('single_post/'.$news_lat->id) }}"><img src={{asset('img/list_image/'. $news_lat->list_image)}} alt="" class="round"></a>
                         </div>
                     </div>
                 </div>
@@ -205,19 +194,12 @@
                <div class="row mt-2">
                   @foreach ($related_news as $news_rel)
 
-
                   <div class="col-md-3 col-sm-6">
                      <a class="block block-rounded block-link-pop" href="{{ url('single_post/'.$news_rel->id) }}">
                         <div class="block-content pb-3" style="padding-top: 0">
                            <div class="row round1">
                               <div class="col-sm-12 pt-3 round" >
-
-                            @if ($news_rel->main_image)
                                 <img src={{asset('img/main_image/'. $news_rel->main_image)}} alt="" class="round">
-                            @else
-                               <img src="{{ $news_rel->url_to_image }}" alt="" class="round">
-                            @endif
-
                               </div>
                            </div>
                            <div class="row">
