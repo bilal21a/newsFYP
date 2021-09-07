@@ -28,6 +28,18 @@
           </ul>
         </li>
         <li>
+
+        @php
+        //header
+        $cats_1 =App\Category::where('status',1)->take(4)->get()->toArray();
+
+        $cats_2 =App\Category::where('status',1)->take(8)->get()->toArray();
+        $cats_2 = array_slice($cats_2, 4);
+
+        $cats_3 =App\Category::where('status',1)->take(12)->get()->toArray();
+        $cats_3 = array_slice($cats_3, 8);
+        @endphp
+
           <a href="#" class="desktop-item">Mega Menu</a>
           <input type="checkbox" id="showMega">
           <label for="showMega" class="mobile-item">Mega Menu</label>
