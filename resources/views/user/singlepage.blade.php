@@ -33,9 +33,8 @@
                      <span>
 
                         @if ($post->created_by==null)
-                        @if($post->author_name_api)<a href="" class="text-dark"><span class="short_disc"><i class="fa fa-user"> {{$post->author_name_api}}</i></span></a>@endif
+                        @if($post->author_name_api)<a href="{{ url('author_name_api/'.$post->author_name_api) }}" class="text-dark"><span class="short_disc"><i class="fa fa-user"> {{$post->author_name_api}}</i></span></a>@endif
                         @else
-
                         <?php $userName=App\User::find($post->created_by)->name ?>
                         <a href="{{ url('author_name/'.$post->created_by) }}" class="text-dark"><span class="short_disc"><i class="fa fa-user">    {{$userName}}</i></span></a>
                         @endif
@@ -56,6 +55,7 @@
                      </div>
                   </div>
                   <div >{!! $post->description !!}
+                    <a href="{{ $post->url }}">Read More</a>
                   </div>
                   <div class="row">
                      <div class="col-md-12">
@@ -168,7 +168,8 @@
                                 {{-- <i class="far fa-user"> Author</i> --}}
 
                                 @if ($news_lat->created_by==null)
-                                @if($news_lat->author_name_api)<a href="" class="text-dark"><span class="short_disc"><i class="far fa-user"> {{$news_lat->author_name_api}}</i></span></a>@endif
+                                @if($news_lat->author_name_api)
+                                <a href="{{ url('author_name_api/'.$news_lat->author_name_api) }}" class="text-dark"><span class="short_disc"><i class="far fa-user"> {{$news_lat->author_name_api}}</i></span></a>@endif
                                 @else
                                 <?php $userName=App\User::find($news_lat->created_by)->name ?>
                                 <a href="{{ url('author_name/'.$news_lat->created_by) }}" class="text-dark"><span class="short_disc"><i class="far fa-user">    {{$userName}}</i></span></a>

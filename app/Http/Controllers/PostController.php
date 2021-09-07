@@ -142,7 +142,7 @@ class PostController extends Controller
         $posts = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
         ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        ->select('cat.name as cat_name','p.*','user.name')
         ->where('p.created_by', $user_id)
         ->where('p.status', 1)
         ->latest()
@@ -161,11 +161,12 @@ class PostController extends Controller
         // ->where('p.created_by', $name)
         ->where('p.author_name_api', 'like', $name.'%')
         ->where('p.status', 1)
-        ->latest()->get()->toArray();
+        ->latest()
+        ->paginate(12);
 
-        // $this->data['posts'] = $posts;
-        // return view('author',$this->data);
-        dd($posts);
+        $this->data['posts'] = $posts;
+        return view('author',$this->data);
+        // dd($posts);
     }
 
 

@@ -33,7 +33,7 @@
                             $date = date('F d, Y', $var_2);
                         ?>
                          @if ($posts->created_by==null)
-                             <a href="" class="text-dark"><span class="short_disc"> {{$posts->author_name_api}}</span></a>
+                             <a href="{{ url('author_name_api/'.$posts->author_name_api) }}" class="text-dark"><span class="short_disc"> {{$posts->author_name_api}}</span></a>
                          @else
                          <?php $userName=App\User::find($posts->created_by)->name ?>
                             <a href="{{ url('author_name/'.$posts->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>

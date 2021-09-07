@@ -31,13 +31,14 @@
                            <h5 class="mt-3 mb-0">{{$single_hot->title}}</h5>
                            <p class="card-text short_disc mb-1" > {{ substr($single_hot->short_description,0,100) }} ...</p>
                         </a>
+
                         @if ($single_hot->created_by==null)
-                           <a href="" class="text-dark"><span class="short_disc"> {{$single_hot->author_name_api}}</span></a>
-                           @else
+                           <a href="{{ url('author_name_api/'.$single_hot->author_name_api) }}" class="text-dark"><span class="short_disc"> {{$single_hot->author_name_api}}</span></a>
+                        @else
                            <?php $userName=App\User::find($single_hot->created_by)->name ?>
                            <a href="{{ url('author_name/'.$single_hot->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>
-                           @endif
-                        {{-- <a href="{{ url('author_name/'.$single_hot->created_by) }}" class="text-dark"><span class="short_disc">{{$single_hot->name}}</span></a>  --}}
+                        @endif
+
                         | <a href="{{ url('by_date/'.$single_hot->created_at) }}" class="text-dark"><span class="short_disc">{{$date}}</span></a>
                      </div>
                   </div>
@@ -91,7 +92,7 @@
                            </a>
 
                            @if ($latest_single->created_by==null)
-                           <a href="" class="text-dark"><span class="short_disc"> {{$latest_single->author_name_api}}</span></a>
+                           <a href="{{ url('author_name_api/'.$latest_single->author_name_api) }}" class="text-dark"><span class="short_disc"> {{$latest_single->author_name_api}}</span></a>
                            @else
                            <?php $userName=App\User::find($latest_single->created_by)->name ?>
                            <a href="{{ url('author_name/'.$latest_single->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>
@@ -151,7 +152,7 @@
                            </a>
 
                            @if ($top_single->created_by==null)
-                           <a href="" class="text-dark"><span class="short_disc"> {{$top_single->author_name_api}}</span></a>
+                           <a href="{{ url('author_name_api/'.$top_single->author_name_api) }}" class="text-dark"><span class="short_disc"> {{$top_single->author_name_api}}</span></a>
                            @else
                            <?php $userName=App\User::find($top_single->created_by)->name ?>
                            <a href="{{ url('author_name/'.$top_single->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>
