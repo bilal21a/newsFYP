@@ -50,6 +50,7 @@
 
         </div>
     </div>
+    {{ $comments->links() }}
     </div>
 @endsection
 

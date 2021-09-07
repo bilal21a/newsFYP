@@ -68,7 +68,8 @@ class PostController extends Controller
         ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.description','p.main_image','p.thumb_image','p.list_image','p.created_at','p.created_by','user.name')
         ->where('p.created_by', $user_id)
         ->where('p.status', '!=' , 1)
-        ->latest()->get()->toArray();
+        ->latest()
+        ->paginate(12);
 
         $this->data['posts'] = $posts;
         // dd($posts);
@@ -144,7 +145,8 @@ class PostController extends Controller
         ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
         ->where('p.created_by', $user_id)
         ->where('p.status', 1)
-        ->latest()->get()->toArray();
+        ->latest()
+        ->paginate(12);
 
         $this->data['posts'] = $posts;
         return view('author',$this->data);
@@ -160,11 +162,12 @@ class PostController extends Controller
 
         $posts = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name')
+        // ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','p.*')
         ->where('p.created_at', 'like', $date.'%')
         ->where('p.status', 1)
-        ->latest()->get()->toArray();
+        ->latest()
+        ->paginate(12);
 
         $this->data['posts'] = $posts;
         return view('bydate',$this->data);
