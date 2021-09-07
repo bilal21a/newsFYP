@@ -40,7 +40,7 @@
                         ?>
 
                         @if ($single_cat->created_by==null)
-                        <a href="" class="text-dark"><span class="short_disc"> {{$single_cat->author_name_api}}</span></a>
+                        <a href="{{ url('author_name_api/'.$single_cat->author_name_api) }}" class="text-dark"><span class="short_disc"> {{$single_cat->author_name_api}}</span></a>
                         @else
                         <?php $userName=App\User::find($single_cat->created_by)->name ?>
                         <a href="{{ url('author_name/'.$single_cat->created_by) }}" class="text-dark"><span class="short_disc"> {{$userName}}</span></a>

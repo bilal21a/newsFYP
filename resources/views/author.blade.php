@@ -13,7 +13,13 @@
                     // dd($posts);?>
                 <div class="col-md-12">
                     <div class="block-content">
-                    <h2 class="pt-3">{{ $posts[0]->name }}'s Posts</h2>
+                        @if ($posts[0]->author_name_api==null)
+                            <h2 class="pt-3">{{ $posts[0]->name }}'s Posts</h2>
+
+                        @else
+                            <h2 class="pt-3">{{ $posts[0]->author_name_api }}'s Posts</h2>
+
+                        @endif
                 </div>
                     @foreach ($posts as $post)
 
