@@ -151,6 +151,21 @@ class PostController extends Controller
         // dd($posts);
     }
 
+    public function author_name_api($name){
+
+        $posts = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->select('cat.name as cat_name','p.*')
+        // ->where('p.created_by', $name)
+        ->where('p.author_name_api', 'like', $name.'%')
+        ->where('p.status', 1)
+        ->latest()->get()->toArray();
+
+        // $this->data['posts'] = $posts;
+        // return view('author',$this->data);
+        dd($posts);
+    }
+
 
     public function by_date($created_at){
 
