@@ -55,7 +55,7 @@
                      </div>
                   </div>
                   <div >{!! $post->description !!}
-                    <a href="{{ $post->url }}">Read More</a>
+                    <a href="{{ $post->url }}" target="_blank">Read More</a>
                   </div>
                   <div class="row">
                      <div class="col-md-12">
