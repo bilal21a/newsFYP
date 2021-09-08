@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashBoardController;
 
 
 
@@ -129,5 +130,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::view('/home', 'admin.home')->name('home');
 
     });
+
+    Route::view('/index', 'admin.home')->name('index');
+
+    Route::get('/home', [DashBoardController::class, 'home'])->name('home');
+    Route::get('/users', [DashBoardController::class, 'users'])->name('users');
+    Route::get('/posts', [DashBoardController::class, 'posts'])->name('posts');
+
+    Route::post('/edit_users', [DashBoardController::class, 'edit_users'])->name('edit_users');
+    Route::post('/delete_users', [DashBoardController::class, 'delete_users'])->name('delete_users');
+
 
 });
