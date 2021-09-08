@@ -198,13 +198,13 @@
       <img class="sm-logo-work" src="{{ asset('img/usa.png') }}" alt="" style="width:35px; height:14px;">
     </a>
     <a href="{{ url('api_source/google-news') }}">Google News
-      <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
+      <img class="sm-logo-work" src="{{ asset('img/google.png') }}" alt="" style="width:21px; height:15px;">
     </a>
     <a href="{{ url('api_source/ary-news') }}">ARY News
-      <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
+      <img class="sm-logo-work" src="{{ asset('img/arynews.png') }}" alt="" style="width:27px; height:19px;">
     </a>
-    <a href="{{ url('api_source/the-times-of-india') }}">India
-      <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
+    <a href="{{ url('api_source/nbc-news') }}">NBC News
+      <img class="sm-logo-work" src="{{ asset('img/nbc.png') }}" alt="" style="width:23px; height:13px;>
     </a>
 
     <span>
