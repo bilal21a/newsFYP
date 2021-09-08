@@ -183,19 +183,19 @@
   <!-- header end -->
   <div class="scrollmenu">
     <a href="{{ url('api_source/bbc-news') }}">BBC News
-      <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
+      <img class="" src="{{ asset('img/bbc.png') }}" alt="" style="width:37px; height:14px;">
     </a>
     <a href="{{ url('api_source/cnn') }}">CNN
-      <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
+      <img class="sm-logo-work" src="{{ asset('img/cnn.png') }}" alt="" style="width:35px; height:14px;">
     </a>
     <a href="{{ url('api_source/espn') }}">ESPN
-      <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
+      <img class="sm-logo-work" src="{{ asset('img/espn.png') }}" alt="" style="width:34px; height:14px;">
     </a>
     <a href="{{ url('api_source/the-washington-post') }}">Washington Post
-      <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
+      <img class="sm-logo-work" src="{{ asset('img/washington post.png') }}" alt="" >
     </a>
     <a href="{{ url('api_source/usa-today') }}">USA
-      <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
+      <img class="sm-logo-work" src="{{ asset('img/usa.png') }}" alt="" style="width:35px; height:14px;">
     </a>
     <a href="{{ url('api_source/google-news') }}">Google News
       <img class="sm-logo-work" src="https://www.pngitem.com/pimgs/m/555-5553390_cnn-icon-clipart-svg-freeuse-stock-cnn-international.png" alt="">
@@ -212,3 +212,13 @@
     <button class="btn-info mr-2 searchbtn-work"><i class="fa fa-search"></i></button>
   </span>
   </div>
+  <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between align-items-center breaking-news bg-white">
+                <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center bg-danger py-2 text-white px-1 news"><span class="d-flex align-items-center">&nbsp;Top Headlines</span></div>
+                <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> <a href="#">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </a> <span class="dot"></span> <a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </a> <span class="dot"></span> <a href="#">Duis aute irure dolor in reprehenderit in voluptate velit esse </a> </marquee>
+            </div>
+        </div>
+    </div>
+</div>
