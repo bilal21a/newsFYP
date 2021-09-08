@@ -32,8 +32,8 @@ class CategoryController extends Controller
          //hot news
          $hot_news = DB::table('posts as p')
          ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-         ->join('users as user', 'p.created_by', '=', 'user.id')
-         ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        //  ->join('users as user', 'p.created_by', '=', 'user.id')
+         ->select('cat.name as cat_name','cat.id as cat_id','p.*')
          ->where('p.status', 1)
          ->where('p.hot_news', 1)
          ->latest()->paginate(12);
@@ -47,8 +47,8 @@ class CategoryController extends Controller
            //latest news
         $latest_news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','user.name','p.created_by','p.list_image')
+        // ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.*')
         ->where('p.status', 1)
         ->latest()->paginate(12);
 
@@ -61,8 +61,8 @@ class CategoryController extends Controller
           //top stories
         $top_stories = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
-        ->join('users as user', 'p.created_by', '=', 'user.id')
-        ->select('cat.name as cat_name','cat.id as cat_id','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name')
+        // ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.*')
         ->where('p.status', 1)
         ->orderBy('view_count', 'desc')
         ->latest()->paginate(12);

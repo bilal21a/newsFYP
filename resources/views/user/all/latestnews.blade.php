@@ -34,7 +34,14 @@
                             $var_2 = strtotime($var_1);
                             $date = date('F d, Y', $var_2);
                         ?>
-                        <a href="" class="text-dark"><span class="short_disc"> {{ $posts->name }}</span></a> | <a href="" class="text-dark"><span class="short_disc"> {{ $date }}</span></a>
+                        @if ($posts->created_by==null)
+                        @if($posts->author_name_api)<a href="{{ url('author_name_api/'.$posts->author_name_api) }}" class="text-dark"><span class="short_disc"><i class="fa fa-user"> {{$posts->author_name_api}}</i></span></a>@endif
+                        @else
+                        <?php $userName=App\User::find($posts->created_by)->name ?>
+                        <a href="{{ url('author_name/'.$posts->created_by) }}" class="text-dark"><span class="short_disc"><i class="fa fa-user">    {{$userName}}</i></span></a>
+                        @endif
+                        {{-- <a href="" class="text-dark"><span class="short_disc"> {{ $posts->name }}</span></a>  --}}
+                        | <a href="" class="text-dark"><span class="short_disc"> {{ $date }}</span></a>
                      </div>
                   </div>
                </div>
