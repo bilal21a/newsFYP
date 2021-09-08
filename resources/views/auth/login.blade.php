@@ -1,10 +1,10 @@
-@extends('index')
+@extends('index2')
 @section('css')
     <link href="{{asset('css/login.css')}} "rel="stylesheet">
 @endsection
 
 @section('content')
-    
+
 
     <div id="page-container">
 

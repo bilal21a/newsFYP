@@ -1,9 +1,9 @@
-@extends('index')
+@extends('index2')
 @section('css')
 @endsection
 
 @section('content')
-  
+
 
         <!-- Page Container -->
 

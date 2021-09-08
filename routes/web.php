@@ -21,7 +21,6 @@ use App\Http\Controllers\Admin\AuthController;
 
 Route::get('upload', function () {return view('upload');});
 Route::get('register1', function () {return view('register');});
-Route::get('fuck', function () {return view('auth.passwords.reset');});
 Route::get('contact', function () {return view('user.contact');})->name('contact');
 
 
@@ -39,7 +38,7 @@ Route::get('profile', function () {return view('profile');});
 
 
 Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], function () {
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('main');
     Route::get('single_post/{post_id}', 'HomeController@single_post')->name('single_post');
     Route::post('upload_post', 'HomeController@upload_post')->name('upload_post');
     Route::get('hot_news', 'CategoryController@hot_news')->name('hot_news');
@@ -98,7 +97,7 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
 
 
 Auth::routes();
-Route::get('logout', 'AuthController@logout')->name('logout');
+Route::get('user_logout', 'UserAuthController@logout')->name('logout');
 
 
 

@@ -68,6 +68,9 @@
     // $user= Auth::user();
     // dd($user);
 @endphp
+
+@if (Auth::user())
+
         <div class="showdet dropdown d-inline-block ml-2">
           <button type="button" class="btn btn-work" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                {{-- @if ($user->profile_pic==null)
@@ -119,6 +122,12 @@
               </div>
           </div>
         </div>
+
+@else
+<li><a href="{{ route('login') }}">Login</a></li>
+<li><a href="{{ route('register') }}">Signup</a></li>
+
+@endif
 <!-- Drop Down User End -->
       </ul>
 
