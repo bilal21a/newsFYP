@@ -80,4 +80,12 @@ class TestController extends Controller
         }
     }
     }
+
+
+    public function learnORM()
+    {
+        // dd("i am her");
+        $orm=Category::where('api_name','!=',null)->get()->toArray();
+        dd($orm);
+    }
 }
