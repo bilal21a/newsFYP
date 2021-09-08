@@ -14,7 +14,7 @@ class AddApiNameToCategoriesTable extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->string('api_name')->nullable();
+            // $table->string('api_name')->nullable();
         });
     }
 

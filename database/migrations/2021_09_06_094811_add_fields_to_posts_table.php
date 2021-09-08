@@ -14,10 +14,10 @@ class AddFieldsToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('author_name_api')->nullable();
-            $table->string('source')->nullable();
-            $table->string('url',800)->nullable();
-            $table->string('url_to_image',800)->nullable();
+            // $table->string('author_name_api')->nullable();
+            // $table->string('source')->nullable();
+            // $table->string('url',800)->nullable();
+            // $table->string('url_to_image',800)->nullable();
         });
     }
 

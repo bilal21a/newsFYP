@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AuthController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -106,4 +110,23 @@ Route::get('/clear_cache', function() {
     $run = Artisan::call('cache:clear');
     $run = Artisan::call('config:cache');
     // return 'FINISHED';
+});
+
+//---------------------------------------------//
+Route::prefix('admin')->name('admin.')->group(function () {
+
+
+    Route::middleware(['guest:admin'])->group(function () {
+        Route::view('/login', 'auth.admin.adminlogin')->name('login');
+        Route::post('/login', [AuthController::class, 'store']);
+
+    });
+
+
+    Route::middleware(['auth:admin'])->group(function () {
+        Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
+        Route::view('/home', 'admin.home')->name('home');
+
+    });
+
 });
