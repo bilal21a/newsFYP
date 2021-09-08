@@ -92,6 +92,7 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
 
 
     Route::get('testing', 'TestController@testing')->name('testing');
+    Route::get('ORM', 'TestController@learnORM')->name('ORM');
 
 
 });
