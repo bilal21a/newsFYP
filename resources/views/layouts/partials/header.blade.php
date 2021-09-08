@@ -204,7 +204,7 @@
       <img class="sm-logo-work" src="{{ asset('img/arynews.png') }}" alt="" style="width:27px; height:19px;">
     </a>
     <a href="{{ url('api_source/nbc-news') }}">NBC News
-      <img class="sm-logo-work" src="{{ asset('img/nbc.png') }}" alt="" style="width:23px; height:13px;>
+      <img class="sm-logo-work" src="{{ asset('img/nbc.png') }}" alt="" style="width:23px; height:13px;">
     </a>
 
     <span>
