@@ -30,6 +30,21 @@
         <script src="{{asset('js/oneui.app.min.js')}}"></script>
         <script src="{{asset('js/plugins/chart.js/Chart.bundle.min.js')}}"></script>
         <script src="{{asset('js/pages/be_pages_dashboard.min.js')}}"></script>
+        <script>
+            $( document ).ready(function() {
+              $(".s-btn-close").css("display","none");
+              $(".s-btn-open").css("display","block");
+            $( "#s-btn-click1" ).click(function() {
+              $(".s-btn-close").css("display","block");
+              $(".s-btn-open").css("display","none");
+            });
+            $( "#s-btn-click" ).click(function() {
+              $(".s-btn-close").css("display","none");
+              $(".s-btn-open").css("display","block");
+            });
+
+  });
+          </script>
         @yield('js')
 
     </body>

@@ -5,6 +5,33 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+.news {
+  width: 160px;
+
+}
+.news-scroll a {
+  text-decoration: none;
+
+}
+.bdr{
+background-color: rgb(228, 228, 228) !important;
+}
+
+.a-bg-clr{
+color: #000000;
+}
+
+.dot {
+  height: 6px;
+  width: 6px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 2px !important;
+  background-color: rgb(207, 23, 23);
+  border-radius: 50%;
+  display: inline-block;
+}
 .logo1{
   display: block !important;
 }
@@ -17,6 +44,8 @@
   width: 100%;
   background: #242526;
 }
+
+
 div.scrollmenu {
   background-color: #333;
   overflow: auto;
@@ -25,6 +54,14 @@ div.scrollmenu {
 }
 
 div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.sea {
   display: inline-block;
   color: white;
   text-align: center;
@@ -50,16 +87,9 @@ div.scrollmenu a:hover {
   color: white;
   border-left: none;
   height: 30px;
-  background-color: #38ab69;
-  border-color: #34a263;
   border-radius: 5px;
   border: 1px solid grey;
 }
-.searchbtn-work:hover{
-    background-color: #38AB69 !important;
-    border-color: #34a263;
-
-  }
 .nv .wrapper{
   position: relative;
   max-width: 1300px;
@@ -82,7 +112,6 @@ div.scrollmenu a:hover {
 }
 .wrapper .nav-links{
   display: inline-flex;
-  margin-top: 10px;
 }
 .nav-links li{
   list-style: none;
@@ -155,12 +184,13 @@ div.scrollmenu a:hover {
   object-fit: cover;
 }
 .content .row header{
+  margin-left: 40px;
   color: #f2f2f2;
   font-size: 20px;
   font-weight: 500;
 }
 .content .row .mega-links{
-  margin-left: -40px;
+  margin-left: 20px;
   border-left: 1px solid rgba(255,255,255,0.09);
 }
 .row .mega-links li{
@@ -351,6 +381,10 @@ div.scrollmenu a:hover {
   display: none;
 }
 
+.rd{
+  display: none;
+}
+
 .body-text{
   position: absolute;
   top: 50%;
@@ -363,23 +397,4 @@ div.scrollmenu a:hover {
 .body-text div{
   font-size: 45px;
   font-weight: 600;
-}
-
-.news {
-    width: 160px
-}
-
-.news-scroll a {
-    text-decoration: none
-}
-
-.dot {
-    height: 6px;
-    width: 6px;
-    margin-left: 3px;
-    margin-right: 3px;
-    margin-top: 2px !important;
-    background-color: rgb(207, 23, 23);
-    border-radius: 50%;
-    display: inline-block
 }
