@@ -1,6 +1,6 @@
 <nav class="nv">
     <div class="wrapper">
-      <div class="logo logo1"><a href="#">LOGO</a></div>
+      <div class="logo logo1"><a href="#">WORLD NEWS</a></div>
       <input type="radio" name="slider" id="menu-btn">
       <input type="radio" name="slider" id="close-btn">
       <ul class="nav-links">
