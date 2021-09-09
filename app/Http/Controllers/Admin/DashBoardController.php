@@ -78,7 +78,7 @@ class DashBoardController extends Controller
     {
         $categories= Category::latest()->get();
         $this->data['categories'] = $categories;
-        dd($categories);
+        // dd($categories);
 
         return view('admin.categories',$this->data);
     }
