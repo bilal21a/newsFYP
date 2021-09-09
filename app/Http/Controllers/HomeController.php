@@ -219,8 +219,15 @@ class HomeController extends Controller
         ]]);
 
         $statusCode = $response->getStatusCode();
-        $top_searches = json_decode($response->getBody(), true);
-
-        dd($top_searches);
+        $data = json_decode($response->getBody(), true);
+        $this->data['data'] = $data;
+        // dd($this->data);
+        if ($data['articles']) {
+            return view('user.apisource',$this->data);
+        }
+        else
+        {
+            return "No Result According to your Search";
+        }
     }
 }

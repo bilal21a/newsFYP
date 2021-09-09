@@ -8,14 +8,12 @@
         <li><a href="{{ url('/') }}">Home</a></li>
         <li><a href="#">About</a></li>
         <li>
-          <a href="#" class="desktop-item">Dropdown Menu</a>
+          <a href="#" class="desktop-item">Menu</a>
           <input type="checkbox" id="showDrop">
-          <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+          <label for="showDrop" class="mobile-item">Menu</label>
           <ul class="drop-menu">
-            <li><a href="#">Drop menu 1</a></li>
-            <li><a href="#">Drop menu 2</a></li>
-            <li><a href="#">Drop menu 3</a></li>
-            <li><a href="#">Drop menu 4</a></li>
+            <li><a href="{{ url('upload') }}">Upload Post</a></li>
+            <li><a href="{{ url('filter_post') }}">Filter News</a></li>
           </ul>
         </li>
         @php
@@ -78,7 +76,7 @@
              @else
             <img class="rounded" src="{{asset('img/profile_image/'. Auth::user()->profile_pic)}}" alt="Header Avatar" style="width: 18px;">
              @endif
-              <span class="d-none d-sm-inline-block ml-1">Adam</span>
+              <span class="d-none d-sm-inline-block ml-1">{{ Auth::user()->name }}</span>
               <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-user-dropdown">
@@ -91,30 +89,37 @@
               </div>
               <div class="p-2">
                   <h5 class="dropdown-header text-uppercase">User Options</h5>
-                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
-                      <span>Inbox</span>
+                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('your_comments') }}">
+                      <span>Comments</span>
                       <span>
-                          <span class="badge badge-pill badge-primary">3</span>
+                          <span class="badge badge-pill badge-primary"></span>
                           <i class="si si-envelope-open ml-1"></i>
                       </span>
                   </a>
-                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_profile.html">
+                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('your_comments') }}">
+                      <span>Post</span>
+                      <span>
+                          <span class="badge badge-pill badge-primary"></span>
+                          <i class="fa fa-newspaper ml-1"></i>
+                      </span>
+                  </a>
+                  {{-- <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_profile.html">
                       <span>Profile</span>
                       <span>
                           <span class="badge badge-pill badge-success">1</span>
                           <i class="si si-user ml-1"></i>
                       </span>
-                  </a>
+                  </a> --}}
                   <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ route('profile') }}">
                       <span>Settings</span>
                       <i class="si si-settings"></i>
                   </a>
                   <div role="separator" class="dropdown-divider"></div>
                   <h5 class="dropdown-header text-uppercase">Actions</h5>
-                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="op_auth_lock.html">
+                  {{-- <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="op_auth_lock.html">
                       <span>Lock Account</span>
                       <i class="si si-lock ml-1"></i>
-                  </a>
+                  </a> --}}
                   <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('logout') }}">
                       <span>Log Out</span>
                       <i class="si si-logout ml-1"></i>
