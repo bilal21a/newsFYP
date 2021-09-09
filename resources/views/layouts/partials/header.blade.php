@@ -119,7 +119,7 @@
                       <span>Lock Account</span>
                       <i class="si si-lock ml-1"></i>
                   </a> --}}
-                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('logout') }}">
+                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('user_logout') }}">
                       <span>Log Out</span>
                       <i class="si si-logout ml-1"></i>
                   </a>
