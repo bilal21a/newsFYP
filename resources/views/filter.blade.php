@@ -21,7 +21,7 @@
                   <input type="text" class="form-control" id="search_bar" name="search_bar" placeholder="Search by Name">
                </div>
                <div class="form-group col-xl-1 col-md-1 col-sm-1">
-                  <button class="btn btn-success" id="search_btn" data-toggle="layout" data-action="header_loader_on">FILTER</button>
+                  <button class="btn btn-success" id="search_btn1" data-toggle="layout" data-action="header_loader_on">FILTER</button>
                   <button class="btn btn-danger" id="clear_btn" style="display: none">CLEAR</button>
                   <button class="btn btn-primary" id="loading_btn" style="display: none"  disabled>Loading<i class="fa fa-cog fa-spin loader"></i></button>
                </div>
@@ -147,8 +147,10 @@
         }
     });
 
-       $("#search_btn").click(function(e){
-        $("#search_btn").css("display","none");
+       $("#search_btn1").click(function(e){
+       console.log("aa");
+
+        $("#search_btn1").css("display","none");
         $("#loading_btn").css("display","block");
         $("#ajax_show").empty();
 
@@ -204,7 +206,7 @@
     $("#clear_btn").click(function(e){
         $("#ajax_show").empty();
         $("#clear_btn").css("display","none");
-        $("#search_btn").css("display","block");
+        $("#search_btn1").css("display","block");
         var ajaxData = $('#ajax_show');
         ajaxData.append(`<div class="no-result col-sm-12 col-md-12"><h5>No result found</h5></div>`);
 
