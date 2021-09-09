@@ -4,8 +4,7 @@
 
         <link href="{{asset('js/plugins/datatables/dataTables.bootstrap4.css')}} "rel="stylesheet">
         <link href="{{asset('js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css')}} "rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-
+        <link href="{{asset('css/summernote.min.css')}} "rel="stylesheet">
 @endsection
 
 @section('content')
@@ -302,7 +301,7 @@
         <script src="{{asset('js/plugins/datatables/buttons/buttons.flash.min.js')}}"></script>
         <script src="{{asset('js/plugins/datatables/buttons/buttons.colVis.min.js')}}"></script>
         <script src="{{asset('js/pages/be_tables_datatables.min.js')}}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <script src="{{asset('js/summernote.min.js')}}"></script>
 
     <script>
         $(document).ready(function() {
