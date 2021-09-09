@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h3 class="title">Useful Links</h3>
+                        <h3 class="title">Categories</h3>
                         <ul>
                             <li><a href="#">Pellentesque</a></li>
                             <li><a href="#">Aliquam</a></li>
@@ -15,15 +15,24 @@
                     </div>
                 </div>
 
+                <?php
+                $category_topFour= App\Category::where('status', 1)->where('id', $count->category_id)->first();
+                $first_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->latest()->first();
+                $three_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->take(4)->latest()->get()->toArray();
+                array_shift($three_post);
+                // dd($three_post);
+                ?>
+
+
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h3 class="title">Quick Links</h3>
+                        <h3 class="title">Posts </h3>
                         <ul>
-                            <li><a href="#">Posuere egestas</a></li>
-                            <li><a href="#">Sollicitudin</a></li>
-                            <li><a href="#">Luctus non</a></li>
-                            <li><a href="#">Duis tincidunt</a></li>
-                            <li><a href="#">Elementum</a></li>
+                            @foreach ($category_topFour as $categories)
+
+                            <li><a href="#">{{ $categories->name }}</a></li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
@@ -54,7 +63,7 @@
                         <h3 class="title">Newsletter</h3>
                         <div class="newsletter">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed porta dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra inceptos
+                                An email newsletter is a recurring email sent to subscribed contacts containing curated informational content from news articles to resources and tips. The goal is to provide ongoing value while surfacing important industry- or niche-related topics.
                             </p>
                             <form>
                                 <div class="row">
