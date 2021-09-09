@@ -54,47 +54,60 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($posts as $post)
                     <tr>
                         <td class="text-center">
 
-                            @if (5>9)
-                            <img class="img-avatar img-avatar48" src="{{ asset ('img/profile_image/') }}" alt="">
+                            @if ($post->main_image)
+                            <img class="img-avatar img-avatar48" src="{{ asset ('img/main_image/'.$post->main_image) }}" alt="">
                             @else
                             <img class="img-avatar img-avatar48" src="{{ asset ('media/avatars/avatar7.jpg') }}" alt="">
                             @endif
 
                         </td>
                         <td class="font-w600 font-size-sm">
-                            <a href="">Megan Fuller</a>
+                            <a href="">{{ $post->title }}</a>
                         </td>
                         <td class="d-none d-sm-table-cell font-size-sm">
-                            <a href="">Megan Fuller</a>
+                            @if ($post->author_name_api!=null)
+                            <a href="">{{ $post->author_name_api }} </a><span class="badge badge-danger badge-pill"> api</span>
+                            @else
+                            <a href="">{{ App\User::find($post->created_by)->name }} </a>
+                            @endif
                         </td>
                         <td class="d-none d-sm-table-cell">
-                            <span class="badge badge-info">Business</span>
+                            @if ($post->status==1)
+                                <span class="badge badge-success">Active</span>
+                            @else
+                                <span class="badge badge-danger">Inactive</span>
+                            @endif
                         </td>
                         <td>
-                            <em class="text-muted font-size-sm">2 days ago</em>
+                            @php
+                                $var_1= $post->created_at;
+                                $var_2 = strtotime($var_1);
+                                $date = date('F d, Y', $var_2);
+                            @endphp
+                            <em class="text-muted font-size-sm">{{ $date }}</em>
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#view-modal">
+                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#view-modal{{ $post->id }}">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#edit-modal">
+                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#edit-modal{{ $post->id }}">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delete-modal" >
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delete-modal{{ $post->id }}" >
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
                         </td>
      <!-- View Modal -->
-    <div class="modal fade" id="view-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal fade" id="view-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="{{ route('admin.edit_users') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-primary">
                             <h3 class="block-title">
@@ -110,43 +123,50 @@
                             <div class="block-content font-size-sm container">
                                 <div class="form-group">
                                     <label for="example-text-input">Title</label>
-                                    <p>Enter Title here</p>
+                                    <p>{{ $post->title }}</p>
                                 </div>
                                 <div class="form-group">
 
-                            <img src="https://i.pinimg.com/originals/73/2e/cf/732ecf284eacc02133c69774b7be7dde.jpg" alt="" style="width: 100%;">
+                                    @if ($post->main_image)
+                                    <img src="{{ asset ('img/main_image/'.$post->main_image) }}" alt="" style="width: 100%;">
+                                    @else
+                                    <img src="{{ asset ('media/avatars/avatar7.jpg') }}" alt="" style="width: 100%;">
+                                    @endif
 
                                 <span>
-                                    <a href="" class="text-dark pr-4"><i class="fa fa-user"> Reporter Name</i></a>
-                                    <a href="" class="text-dark pr-4"><i class="fa fa-clock"> 14-08-2021</i></a>
+
+                                    @if ($post->author_name_api!=null)
+                                    <a href="" class="text-dark pr-4"><i class="fa fa-user"> {{ $post->author_name_api }}</i></a>
+                                    @else
+                                    <a href="" class="text-dark pr-4"><i class="fa fa-user"> {{ App\User::find($post->created_by)->name }}</i></a>
+                                    @endif
+
+
+
+                                    <a href="" class="text-dark pr-4"><i class="fa fa-clock"> {{ $date }}</i></a>
                                 </span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input">Category</label>
-                                    <p>shown Cat here</p>
+                                    <label for="example-text-input">{{ App\Category::find($post->category_id)->name }}</label>
+                                    <p></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-text-input">Short Description</label>
-                                    <p>shown Short description here</p>
+                                    <p>{{ $post->short_description }}</p>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-text-input">Description</label>
-                                    <p>shown description here</p>
+                                    <p>{{ $post->description }}</p>
                                 </div>
-
-
-
-
                         </div>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>
     <!-- END View Modal -->
      <!-- Edit Modal -->
-    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal fade" id="edit-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
                 <form action="{{ route('admin.edit_users') }}" method="POST" enctype="multipart/form-data">
@@ -225,7 +245,7 @@
     </div>
     <!-- END Edit Modal -->
     <!-- Delete Modal -->
-    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal fade" id="delete-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
                 <form action="{{ route('admin.delete_users') }}" method="POST" enctype="multipart/form-data">
@@ -258,6 +278,8 @@
         </div>
     </div>
     <!-- END Delte Modal -->
+                    @endforeach
+
                 </tbody>
             </table>
         </div>
