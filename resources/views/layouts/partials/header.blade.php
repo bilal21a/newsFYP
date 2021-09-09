@@ -73,21 +73,21 @@
 
         <div class="showdet dropdown d-inline-block ml-2">
           <button type="button" class="btn btn-work" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               {{-- @if ($user->profile_pic==null)
+               @if (Auth::user()->profile_pic==null)
             <img class="rounded" src="{{asset('default.png')}}" alt="Header Avatar" style="width: 18px;">
              @else
-            <img class="rounded" src="{{asset('img/profile_image/'. $user->profile_pic)}}" alt="Header Avatar" style="width: 18px;">
-             @endif --}}
+            <img class="rounded" src="{{asset('img/profile_image/'. Auth::user()->profile_pic)}}" alt="Header Avatar" style="width: 18px;">
+             @endif
               <span class="d-none d-sm-inline-block ml-1">Adam</span>
               <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-user-dropdown">
               <div class="p-3 text-center bg-primary">
-                   {{-- @if ($user->profile_pic==null)
+                   @if (Auth::user()->profile_pic==null)
                         <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('default.png')}}" alt="Header Avatar" >
                         @else
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('img/profile_image/'. $user->profile_pic)}}" alt="Header Avatar" >
-                        @endif --}}
+                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('img/profile_image/'.Auth::user()->profile_pic)}}" alt="Header Avatar" >
+                        @endif
               </div>
               <div class="p-2">
                   <h5 class="dropdown-header text-uppercase">User Options</h5>
@@ -105,7 +105,7 @@
                           <i class="si si-user ml-1"></i>
                       </span>
                   </a>
-                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('profile') }}">
+                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ route('profile') }}">
                       <span>Settings</span>
                       <i class="si si-settings"></i>
                   </a>

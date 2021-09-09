@@ -39,6 +39,8 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     Route::get('search_post', 'PostController@search_post')->name('search_post');
 
     //profile
+    // Route::get('profile', function () {return view('profile');});
+    Route::get('profile', 'ProfileController@view')->name('profile');
     Route::get('profile_page', 'ProfileController@profile_index')->name('profile_page');
     Route::get('profile_email_change', 'ProfileController@profile_email_change')->name('profile_email_change');
     Route::get('profile_pass_change', 'ProfileController@profile_pass_change')->name('profile_pass_change');

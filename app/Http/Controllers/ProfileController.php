@@ -14,6 +14,10 @@ use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
+    public function view()
+    {
+        return view('profile');
+    }
     public function profile_index()
     {
         $user_id=Auth::id();
