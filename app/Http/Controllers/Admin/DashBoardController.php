@@ -67,7 +67,7 @@ class DashBoardController extends Controller
 
     public function posts()
     {
-        $posts= Post::get();
+        $posts= Post::latest()->get();
         $this->data['posts'] = $posts;
         // dd($this->data);
 
@@ -84,20 +84,23 @@ class DashBoardController extends Controller
     }
     public function edit_posts(Request $request)
     {
-        $posts= Post::get();
-        $this->data['posts'] = $posts;
-        // dd($this->data);
-
-        return view('admin.posts',$this->data);
+        $id= $request->id;
+         Post::where('id',$id)->update([
+            'title' => $request->title,
+            'category_id' => $request->category,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'status' => $request->status
+         ]);
+        return redirect()->back();
 
     }
-    public function delete_posts()
+    public function delete_posts($id)
     {
-        $posts= Post::get();
-        $this->data['posts'] = $posts;
-        // dd($this->data);
+        // dd($id);
 
-        return view('admin.posts',$this->data);
+        Post::where('id',$id)->delete();
+       return redirect()->back();
 
     }
 

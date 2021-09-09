@@ -109,7 +109,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/delete_users', [DashBoardController::class, 'delete_users'])->name('delete_users');
 
     Route::post('/edit_posts', [DashBoardController::class, 'edit_posts'])->name('edit_posts');
-    Route::post('/delete_posts', [DashBoardController::class, 'delete_posts'])->name('delete_posts');
+    Route::get('/delete_posts/{id}', [DashBoardController::class, 'delete_posts'])->name('delete_posts');
 
 
 });

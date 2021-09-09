@@ -147,8 +147,10 @@
                                 </span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="example-text-input">{{ App\Category::find($post->category_id)->name }}</label>
-                                    <p></p>
+                                    @if (App\Category::find($post->category_id))
+                                    <label for="example-text-input">Category</label>
+                                    <p>{{ App\Category::find($post->category_id)->name }}</p>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="example-text-input">Short Description</label>
@@ -156,7 +158,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="example-text-input">Description</label>
-                                    <p>{{ $post->description }}</p>
+                                    <p>{!! $post->description !!}</p>
                                 </div>
                         </div>
                         </div>
@@ -169,7 +171,7 @@
     <div class="modal fade" id="edit-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="{{ route('admin.edit_users') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.edit_posts') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-primary">
@@ -186,46 +188,41 @@
                             <div class="block-content font-size-sm container">
                                 <div class="form-group">
                                     <label for="example-text-input">Title</label>
-                                    <input type="text" class="form-control" id="example-text-input" name="example-text-input" placeholder="">
+                                    <input type="text" class="form-control" id="example-text-input" name="title" placeholder="" value="{{ $post->title }}">
+                                    <input type="hidden" class="form-control" id="example-text-input" name="id" placeholder="" value="{{ $post->id }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="example-select">Select Category</label>
-                                    <select class="form-control" id="example-select" name="example-select">
-                                        <option value="0" selected hidden>Please select</option>
-                                        <option value="1">Option #1</option>
-                                        <option value="2">Option #2</option>
-                                        <option value="3">Option #3</option>
-                                        <option value="4">Option #4</option>
-                                        <option value="5">Option #5</option>
-                                        <option value="6">Option #6</option>
-                                        <option value="7">Option #7</option>
-                                        <option value="8">Option #8</option>
-                                        <option value="9">Option #9</option>
-                                        <option value="10">Option #10</option>
-                                    </select>
+                                    <select class="form-control" id="example-select" name="category">
+                                    <?php
+                                        $cat=App\Category::where('status',1)->get()->toArray();
+                                    ?>
+                                    <option value="0" selected hidden>Please select</option>
+                                    @foreach ($cat as $single_cat)
+                                    <option value="{{ $single_cat['id'] }}" {{ $single_cat['id'] == $post->category_id ? 'selected' : '' }}>{{ $single_cat['name'] }}</option>
+                                    @endforeach
+                                </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="example-textarea-input">Short Description</label>
-                                    <textarea class="form-control" id="example-textarea-input" name="example-textarea-input" rows="4" placeholder=""></textarea>
+                                    <textarea class="form-control" id="example-textarea-input" name="short_description" rows="4" placeholder="" >{{ $post->short_description }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group container">
                                 <label for="summernote">Description</label>
-                                <textarea id="summernote" name="editordata" style="height: 150px;"></textarea>
-                            </div>
-                            <div class="form-group container">
-                                <div class="custom-file">
-                                    <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                    <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="example-file-input-custom">
-                                    <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
-                                </div>
+                                <textarea id="summernote" name="description" style="height: 150px;">{{ $post->description }}</textarea>
                             </div>
                             <div class="form-group container">
                                 <label for="example-select">Status</label>
-                                <select class="form-control" id="example-select" name="example-select">
-                                    <option value="0" selected hidden>Please select</option>
-                                    <option value="1">Active</option>
-                                    <option value="2">inactive</option>
+                                <select class="form-control" id="example-select" name="status">
+                                    <option value="" selected hidden>Please select</option>
+                                    @if ($post->status==1)
+                                        <option value="1" selected>Active</option>
+                                        <option value="0">inactive</option>
+                                    @else
+                                    <option value="1" >Active</option>
+                                    <option value="0" selected>inactive</option>
+                                    @endif
                                 </select>
                             </div>
 
@@ -248,13 +245,18 @@
     <div class="modal fade" id="delete-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="{{ route('admin.delete_users') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                {{-- <form action="{{ route('admin.delete_posts') }}" method="POST" enctype="multipart/form-data"> --}}
+                    {{-- @csrf --}}
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-primary">
                             <h3 class="block-title">
                                 <i class="fa fa-trash mr-1"></i> Delete User
                             </h3>
+                            {{-- @php
+                                dd($post->id);
+                            @endphp --}}
+                            <input type="hidden" class="form-control" id="example-text-input" name="id" placeholder="" value="{{ $post->id }}">
+
                             <div class="block-options">
                                 <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
                                     <i class="fa fa-fw fa-times"></i>
@@ -268,12 +270,10 @@
 
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                <i class="fa fa-trash mr-1"></i> Delete
-                            </button>
+                            <a href="{{ url('admin/delete_posts/'.$post->id) }}"><button type="button" class="btn btn-sm btn-primary"><i class="fa fa-trash mr-1"></i> Delete</button></a>
                         </div>
                     </div>
-                </form>
+                {{-- </form> --}}
             </div>
         </div>
     </div>
