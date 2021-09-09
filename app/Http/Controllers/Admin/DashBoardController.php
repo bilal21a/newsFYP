@@ -74,5 +74,23 @@ class DashBoardController extends Controller
         return view('admin.posts',$this->data);
 
     }
+    public function edit_posts(Request $request)
+    {
+        $posts= Post::get();
+        $this->data['posts'] = $posts;
+        // dd($this->data);
+
+        return view('admin.posts',$this->data);
+
+    }
+    public function delete_posts()
+    {
+        $posts= Post::get();
+        $this->data['posts'] = $posts;
+        // dd($this->data);
+
+        return view('admin.posts',$this->data);
+
+    }
 
 }
