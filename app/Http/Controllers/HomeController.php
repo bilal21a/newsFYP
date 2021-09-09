@@ -206,6 +206,21 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
-        dd($request);
+        // dd($request);
+        $search=$request->search;
+
+        $endpoint = "https://newsapi.org/v2/top-headlines";
+        $client = new \GuzzleHttp\Client();
+        $apiKey = getenv('NEWS_API_KEY');
+
+        $response = $client->request('GET', $endpoint, ['query' => [
+            'q' => $search,
+            'apiKey' => $apiKey,
+        ]]);
+
+        $statusCode = $response->getStatusCode();
+        $top_searches = json_decode($response->getBody(), true);
+
+        dd($top_searches);
     }
 }

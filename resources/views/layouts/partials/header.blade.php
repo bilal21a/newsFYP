@@ -219,14 +219,15 @@
       <div class="input-group" id="search_bar">
         <input type="radio" name="slider" id="s-btn-click" class="rd">
         <label for="s-btn-click" class="btn s-btn-close"><i class="si si-close"></i></label>
-        <input type="text" for="s-btn-click" class="form-control s-btn-close" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
-        <label type="submit" for="s-btn-click" class="btn s-btn-close"><i class="fa fa-arrow-right"></i></label>
+        <input type="text" for="s-btn-click" class="form-control s-btn-close" placeholder="Search" name="search" aria-label="Search" aria-describedby="basic-addon2">
+        <button type="submit" class="srch btn s-btn-close"><i class="fa fa-arrow-right"></i></button>
       </div>
+    </form>
     <div class="input-group" id="search_btn">
     <input type="radio" name="slider" id="s-btn-click1" class="rd">
     <label for="s-btn-click1" class="btn s-btn-open"><i class="fa fa-search"></i></label>
     </div>
- </form>
+
 
   </div>
   </div>
