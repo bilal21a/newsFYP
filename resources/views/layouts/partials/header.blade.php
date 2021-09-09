@@ -95,7 +95,7 @@
                           <i class="si si-envelope-open ml-1"></i>
                       </span>
                   </a>
-                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('your_comments') }}">
+                  <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('publish_posts') }}">
                       <span>Post</span>
                       <span>
                           <span class="badge badge-pill badge-primary"></span>

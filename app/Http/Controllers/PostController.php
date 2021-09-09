@@ -52,7 +52,7 @@ class PostController extends Controller
         ->select('cat.name as cat_name','p.id','p.title','p.short_description','p.main_image','p.created_at','p.created_by','user.name','user.id')
         ->where('p.created_by', $user_id)
         ->where('p.status', 1)
-        ->latest()->get()->toArray();
+        ->latest()->paginate(12);
 
         $this->data['posts'] = $posts;
         // dd($this->data);
