@@ -74,5 +74,14 @@ class DashBoardController extends Controller
         return view('admin.posts',$this->data);
 
     }
+    public function categories()
+    {
+        $categories= Category::get();
+        $this->data['categories'] = $categories;
+        // dd($categories);
+
+        return view('admin.categories',$this->data);
+
+    }
 
 }
