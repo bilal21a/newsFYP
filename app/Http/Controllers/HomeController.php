@@ -204,4 +204,8 @@ class HomeController extends Controller
         return redirect()->route('home');
     }
 
+    public function search(Request $request)
+    {
+        dd($request);
+    }
 }

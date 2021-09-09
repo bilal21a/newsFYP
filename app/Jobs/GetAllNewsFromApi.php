@@ -48,7 +48,8 @@ class GetAllNewsFromApi implements ShouldQueue
             $endpoint = "https://newsapi.org/v2/top-headlines";
             $client = new \GuzzleHttp\Client();
             $category = $cat->api_name;
-            $apiKey = '466263e697cd481d8ac59473e4ec51d2';
+            $apiKey = getenv('NEWS_API_KEY');
+
             // $value = "ABC";
 
             $response = $client->request('GET', $endpoint, ['query' => [
