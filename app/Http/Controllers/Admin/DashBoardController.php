@@ -76,9 +76,9 @@ class DashBoardController extends Controller
     }
     public function categories()
     {
-        $categories= Category::get();
+        $categories= Category::latest()->get();
         $this->data['categories'] = $categories;
-        // dd($categories);
+        dd($categories);
 
         return view('admin.categories',$this->data);
     }
@@ -100,5 +100,45 @@ class DashBoardController extends Controller
         return view('admin.posts',$this->data);
 
     }
+    public function edit_cat(Request $request)
+    {
+        // dd($request);
 
+        $id= $request->id;
+        $name=$request->name;
+        $status=$request->status;
+        $api_name=$request->api_name;
+         Category::find($id)->update([
+            'name' => $name,
+            'status' => $status,
+            'api_name' => $api_name,
+         ]);
+        return redirect()->back();
+    }
+    public function delete_cat(Request $request)
+    {
+        $id= $request->id;
+        Category::find($id)->delete();
+        return redirect()->back();
+    }
+    public function add_cat(Request $request)
+    {
+
+        $id= $request->id;
+        $name=$request->name;
+        $status=$request->status;
+        if ($request->api_name=="0") {
+            $api_name=null;
+        }
+        else{
+            $api_name=$request->api_name;
+        }
+         Category::create([
+            'name' => $name,
+            'status' => $status,
+            'api_name' => $api_name,
+            'del' => 0,
+         ]);
+        return redirect()->back();
+    }
 }

@@ -111,5 +111,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/edit_posts', [DashBoardController::class, 'edit_posts'])->name('edit_posts');
     Route::post('/delete_posts', [DashBoardController::class, 'delete_posts'])->name('delete_posts');
 
+    Route::post('/edit_cat', [DashBoardController::class, 'edit_cat'])->name('edit_cat');
+    Route::post('/delete_cat', [DashBoardController::class, 'delete_cat'])->name('delete_cat');
+    Route::post('/add_cat', [DashBoardController::class, 'add_cat'])->name('add_cat');
+
 
 });

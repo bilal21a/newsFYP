@@ -56,7 +56,7 @@
 
                     <tr>
                         <td class="font-w600 font-size-sm">
-                            <a href="be_pages_generic_blank.html">{{ $cat->name }}</a>
+                            <a href="">{{ $cat->name }}</a>
                         </td>
                         <td class="d-none d-sm-table-cell font-size-sm">
 
@@ -78,10 +78,10 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#edit-modal">
+                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#edit-modal{{ $cat->id }}">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delete-modal" >
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delete-modal{{ $cat->id }}" >
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
@@ -91,7 +91,7 @@
     <div class="modal fade" id="edit-modal{{ $cat->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="{{ route('admin.edit_users') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.edit_cat') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-primary">
@@ -107,19 +107,19 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="{{ $cat->name }}" >
+                                <input class="form-control" type="text" id="message-email" value="{{ $cat->name }}" name="name" >
                                 <input class="form-control" type="hidden" id="message-id" name="id" value="{{ $cat->id }}">
                             </div>
                             <div class="form-group">
                                 <label>Status</label>
                                 <select class="custom-select" id="example-select-custom" name="status">
-                                    <option value="0">Active</option>
-                                    <option value="1">Inactive</option>
+                                    <option value="0">Inactive</option>
+                                    <option value="1">Active</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Api Name</label>
-                                <select class="custom-select" id="example-select-custom" name="role">
+                                <select class="custom-select" id="example-select-custom" name="api_name">
                                     <option value="business">BUSSINESS</option>
                                     <option value="sports">SPORTS</option>
                                     <option value="entertainment">ENTERTAINMENT</option>
@@ -191,7 +191,7 @@
      <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="{{ route('admin.edit_users') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.add_cat') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-success">
@@ -207,18 +207,19 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="" >
+                                <input class="form-control" type="text" id="message-email" value="" name="name" placeholder="Category Names">
                             </div>
                             <div class="form-group">
                                 <label>Status</label>
-                                <select class="custom-select" id="example-select-custom" name="role">
-                                    <option value="0">Active</option>
-                                    <option value="1">Inactive</option>
+                                <select class="custom-select" id="example-select-custom" name="status">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Api Name</label>
-                                <select class="custom-select" id="example-select-custom" name="role">
+                                <select class="custom-select" id="example-select-custom" name="api_name">
+                                    <option value="0" selected>None of These</option>
                                     <option value="business">BUSSINESS</option>
                                     <option value="sports">SPORTS</option>
                                     <option value="entertainment">ENTERTAINMENT</option>
