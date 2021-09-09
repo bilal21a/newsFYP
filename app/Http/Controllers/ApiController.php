@@ -11,7 +11,7 @@ class ApiController extends Controller
         // dd($source);
             $endpoint = "https://newsapi.org/v2/top-headlines";
             $client = new \GuzzleHttp\Client();
-            $apiKey = '85a5801e8ba449378e51625c3c7e83fb';
+            $apiKey = getenv('NEWS_API_KEY');
             // $value = "ABC";
 
             $response = $client->request('GET', $endpoint, ['query' => [

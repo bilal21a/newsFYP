@@ -214,26 +214,53 @@
 
 
     <div class="sea">
+        <form action="{{ route('search') }}" method="POST" enctype="multipart/form-data">
+            @csrf
       <div class="input-group" id="search_bar">
         <input type="radio" name="slider" id="s-btn-click" class="rd">
         <label for="s-btn-click" class="btn s-btn-close"><i class="si si-close"></i></label>
         <input type="text" for="s-btn-click" class="form-control s-btn-close" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
-        <label for="s-btn-click" class="btn s-btn-close"><i class="fa fa-arrow-right"></i></label>
+        <label type="submit" for="s-btn-click" class="btn s-btn-close"><i class="fa fa-arrow-right"></i></label>
       </div>
     <div class="input-group" id="search_btn">
     <input type="radio" name="slider" id="s-btn-click1" class="rd">
     <label for="s-btn-click1" class="btn s-btn-open"><i class="fa fa-search"></i></label>
     </div>
+ </form>
+
   </div>
   </div>
+
+@php
+
+
+            $endpoint = "https://newsapi.org/v2/top-headlines";
+            $client = new \GuzzleHttp\Client();
+            $apiKey = getenv('NEWS_API_KEY');
+            $source = "us";
+
+            $response = $client->request('GET', $endpoint, ['query' => [
+                'country' => $source,
+                'apiKey' => $apiKey,
+            ]]);
+
+            $statusCode = $response->getStatusCode();
+            $top_headlines = json_decode($response->getBody(), true);
+@endphp
 
   <div class=" mt-0">
     <div class="row">
         <div class="col-md-12">
             <div class="d-flex justify-content-between align-items-center breaking-news bdr" >
                 <div class="d-flex flex-row flex-grow-1 flex-fill justify-content-center py-2 bg-danger text-white px-1 news"><span class="d-flex align-items-center">&nbsp;Headlines</span></div>
-                <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();"> <a href="#" class="a-bg-clr"><span class="dot ml-2"></span> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#" class="a-bg-clr"><span class="dot ml-2"></span> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#" class="a-bg-clr"><span class="dot ml-2"></span> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </marquee>
-            </div>
+                <marquee class="news-scroll" behavior="scroll" direction="left" onmouseover="this.stop();" onmouseout="this.start();">
+                    @foreach ( $top_headlines['articles'] as $headlines)
+
+                     <a href="{{ $headlines['url'] }}" class="a-bg-clr" target="_blank"><span class="dot ml-2"></span> {{ $headlines['title'] }}</a>
+                     @endforeach
+                </marquee>
+
+                    </div>
         </div>
     </div>
 </div>
