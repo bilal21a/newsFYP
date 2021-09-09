@@ -4,33 +4,38 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h3 class="title">Categories</h3>
+                        <h3 class="title">Posts</h3>
+                        @php
+                               $top_stories = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        // ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.*')
+        ->where('p.status', 1)
+        ->orderBy('view_count', 'desc')
+        ->latest()->take(6)->get()->toArray();
+
+        // dd($top_stories);
+                        @endphp
                         <ul>
-                            <li><a href="#">Pellentesque</a></li>
-                            <li><a href="#">Aliquam</a></li>
-                            <li><a href="#">Fusce placerat</a></li>
-                            <li><a href="#">Nulla hendrerit</a></li>
-                            <li><a href="#">Maecenas</a></li>
+                            @foreach ($top_stories as $top)
+
+                            <li><a href="{{ url('single_post/'.$top->id ) }}">{{  substr($top->title,0,30)  }}...</a></li>
+
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
 
                 <?php
-                $category_topFour= App\Category::where('status', 1)->where('id', $count->category_id)->first();
-                $first_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->latest()->first();
-                $three_post= App\Post::where('status', 1)->where('category_id', $count->category_id)->take(4)->latest()->get()->toArray();
-                array_shift($three_post);
-                // dd($three_post);
+                $category_topFour= App\Category::where('status', 1)->take(6)->latest()->get()->toArray();
                 ?>
-
-
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
-                        <h3 class="title">Posts </h3>
+                        <h3 class="title">Categories </h3>
                         <ul>
                             @foreach ($category_topFour as $categories)
-
-                            <li><a href="#">{{ $categories->name }}</a></li>
+                            <li><a href="#">{{ $categories['name'] }}</a></li>
                             @endforeach
 
                         </ul>

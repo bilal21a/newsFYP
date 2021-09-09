@@ -19,7 +19,7 @@
 
 .footer .footer-widget h1 {
     color: #ffffff;
-    margin-bottom: 18px; 
+    margin-bottom: 18px;
 }
 
 .footer .footer-widget .title {
@@ -38,11 +38,11 @@
 }
 
 .footer .footer-widget ul li {
-    margin-bottom: 12px; 
+    margin-bottom: 12px;
 }
 
 .footer .footer-widget ul li:last-child {
-    margin-bottom: 0; 
+    margin-bottom: 0;
 }
 
 .footer .footer-widget ul li a {
@@ -60,7 +60,7 @@
 }
 
 .footer .footer-widget ul li a:hover {
-    padding-left: 10px; 
+    padding-left: 10px;
 }
 
 .footer .contact-info p {
@@ -98,7 +98,7 @@
 .footer .social a:hover {
     background-color: #38ab69;
     border-color: #34a263;
-    
+
 
 .footer .newsletter {
     position: relative;
@@ -178,6 +178,6 @@
 @media (max-width: 768.98px) {
     .footer-bottom .copyright,
     .footer-bottom .template-by {
-        text-align: center; 
-    } 
+        text-align: center;
+    }
 }

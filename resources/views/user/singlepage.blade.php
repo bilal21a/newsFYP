@@ -10,7 +10,7 @@
 
 @section('content')
 
-<div class="content">
+<div class="content pt-0 mt-0">
    <div class="">
       <div class="block">
          <div class="row">
