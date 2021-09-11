@@ -52,13 +52,21 @@
             <!-- User Dropdown -->
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded" src="assets/media/avatars/avatar10.jpg" alt="Header Avatar" style="width: 18px;">
+                    @if (Auth::user()->profile_pic==null)
+                        <img class="rounded" src="{{asset('default.png')}}" alt="Header Avatar" style="width: 18px;">
+                    @else
+                        <img class="rounded" src="{{asset('img/profile_image/'. Auth::user()->profile_pic)}}" alt="Header Avatar" style="width: 18px;">
+                    @endif
                     <span class="d-none d-sm-inline-block ml-1">Adam</span>
                     <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-user-dropdown">
                     <div class="p-3 text-center bg-primary">
-                        <img class="img-avatar img-avatar48 img-avatar-thumb" src="assets/media/avatars/avatar10.jpg" alt="">
+                        @if (Auth::user()->profile_pic==null)
+                            <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('default.png')}}" alt="Header Avatar" >
+                        @else
+                            <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('img/profile_image/'.Auth::user()->profile_pic)}}" alt="Header Avatar" >
+                        @endif
                     </div>
                     <div class="p-2">
                         <h5 class="dropdown-header text-uppercase">User Options</h5>
