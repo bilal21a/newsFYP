@@ -25,23 +25,68 @@
             <li class="nav-main-heading"><hr></li>
             <li class="nav-main-item">
                 <a class="nav-main-link" href="{{ url('admin/users') }}">
-                    <i class="nav-main-link-icon si si-user"></i>
+                    <i class="nav-main-link-icon fa fa-user"></i>
                     <span class="nav-main-link-name">User</span>
                 </a>
             </li>
             <li class="nav-main-item">
                 <a class="nav-main-link" href="{{ url('admin/posts') }}">
-                    <i class="nav-main-link-icon far fa-newspaper"></i>
+                    <i class="nav-main-link-icon fa fa-newspaper"></i>
                     <span class="nav-main-link-name">Post</span>
                 </a>
             </li>
             <li class="nav-main-item">
                 <a class="nav-main-link" href="{{ url('admin/categories') }}">
-                    <i class="nav-main-link-icon si si-list"></i>
+                    <i class="nav-main-link-icon fa fa-list-ul"></i>
                     <span class="nav-main-link-name">Categories</span>
                 </a>
             </li>
-        </ul>
+            <li class="nav-main-item">
+                <a class="nav-main-link" href="">
+                    <i class="nav-main-link-icon fa fa-user-lock"></i>
+                    <span class="nav-main-link-name">Roles & Permissions</span>
+                </a>
+            </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link" href="">
+                    <i class="nav-main-link-icon fa fa-file-alt"></i>
+                    <span class="nav-main-link-name">Post Request</span>
+                </a>
+            </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link" href="">
+                    <i class="nav-main-link-icon fa fa-users-cog"></i>
+                    <span class="nav-main-link-name">User Approval</span>
+                </a>
+            </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link" href="">
+                    <i class="nav-main-link-icon fa fa-bell"></i>
+                    <span class="nav-main-link-name">Notifications</span>
+                </a>
+            </li>
+
+
+        <li class="nav-main-item">
+            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
+                <i class="nav-main-link-icon si si-settings"></i>
+                <span class="nav-main-link-name">Setting</span>
+            </a>
+            <ul class="nav-main-submenu">
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="be_blocks_styles.html">
+                        <span class="nav-main-link-name">General Setting</span>
+                    </a>
+                </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="be_blocks_options.html">
+                        <span class="nav-main-link-name">Admin Setting</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
     </div>
     <!-- END Side Navigation -->
 </nav>
