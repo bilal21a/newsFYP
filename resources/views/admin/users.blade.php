@@ -31,8 +31,8 @@
 <div class="content">
     <!-- Dynamic Table Full -->
     <div class="block">
-        <div class="block-header">
-            <h3 class="block-title"> <small></small></h3>
+        <div class="block-header" >
+            <h3 class="block-title"> Users<small></small></h3>
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
