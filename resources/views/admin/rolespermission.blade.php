@@ -100,7 +100,22 @@
                                     </p>
                                 </div> --}}
                                 {{--  --}}
-                                <div class="col-lg-12 col-xl-12">
+                                <div class="form-group w-75">
+                                    <label for="example-text-input" class="main_label">Skills</label>
+                                    <select class="js-select2 form-control " id="example-select2-multiple" name="example-select2-multiple" style="width: 100%;" data-placeholder="Choose Skills" multiple>
+                                        <option></option>
+                                        <option value="1">HTML</option>
+                                        <option value="2" >CSS</option>
+                                        <option value="3">JavaScript</option>
+                                        <option value="4">PHP</option>
+                                        <option value="5">MySQL</option>
+                                        <option value="6">Ruby</option>
+                                        <option value="7">Angular</option>
+                                        <option value="8">React</option>
+                                        <option value="9">Vue.js</option>
+                                    </select>
+                                </div>
+                                {{-- <div class="col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <select class="js-select2 form-control" id="example-select2-multiple" name="example-select2-multiple" style="width: 100%;" data-placeholder="Choose many.." multiple>
                                             <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
@@ -115,7 +130,7 @@
                                             <option value="9">Vue.js</option>
                                         </select>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="block-content block-content-full text-right border-top">
