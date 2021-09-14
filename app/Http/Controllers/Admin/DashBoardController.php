@@ -173,4 +173,13 @@ class DashBoardController extends Controller
 
         return view('admin.rolespermission');
     }
+
+    public function permission()
+    {
+        // $rp= Category::latest()->get();
+        // $this->data['categories'] = $rp;
+        // dd($categories);
+
+        return view('admin.permission');
+    }
 }

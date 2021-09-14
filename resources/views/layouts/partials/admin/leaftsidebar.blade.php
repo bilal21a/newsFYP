@@ -76,6 +76,12 @@
                     <span class="nav-main-link-name">Roles & Permissions</span>
                 </a>
             </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link" href="{{ url('admin/permission') }}">
+                    <i class="nav-main-link-icon fa fa-tasks"></i>
+                    <span class="nav-main-link-name">Permissions</span>
+                </a>
+            </li>
 
 
             <li class="nav-main-item">

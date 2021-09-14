@@ -14,13 +14,13 @@
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
             <h1 class="flex-sm-fill h3 my-2">
-                Roles & Permissions
+                Permissions
             </h1>
             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
                     <li class="breadcrumb-item">Tables</li>
                     <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href=""> Roles & Permissions
+                        <a class="link-fx" href=""> Permissions
                         </a>
                     </li>
                 </ol>
@@ -33,7 +33,7 @@
     <!-- Dynamic Table Full -->
     <div class="block">
         <div class="block-header">
-            <h3 class="block-title">Roles & Permissions</h3>
+            <h3 class="block-title">Permissions</h3>
             <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#add-modal">
                     <i class="fa fa-fw fa-plus"></i>
@@ -46,8 +46,8 @@
                 <thead>
                     <tr>
                         <th class="text-center" style="width: 10%;">#</th>
-                        <th style="width: 40%;"> Roles</th>
-                        <th class="d-none d-sm-table-cell" style="width: 40%;">Permissions</th>
+                        <th style="width: 40%;"> Permissions</th>
+                        <th class="d-none d-sm-table-cell" style="width: 40%;">Description</th>
                         {{-- <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th> --}}
                         <th style="width: 10%;">Action</th>
                     </tr>
@@ -56,13 +56,10 @@
                     <tr>
                         <td class="text-center font-size-sm">1</td>
                         <td class="font-w600 font-size-sm">
-                            <a href="be_pages_generic_blank.html">Megan Fuller</a>
+                            <a href="be_pages_generic_blank.html">Permission Name</a>
                         </td>
                         <td class="d-none d-sm-table-cell font-size-sm">
-                            <ul><li>Front End Developer</li>
-                            <li>Backend Developer</li>
-                            <li>Abstraction</li>
-                            <li>Polymorphism</li></ul>
+                            <p>Description of Permision Description of Permision Description of Permision</p>
                         </td>
                         <td class="d-none d-sm-table-cell">
                             <div class="btn-group">
@@ -85,7 +82,7 @@
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-primary">
                             <h3 class="block-title">
-                                <i class="fa fa-pencil-alt mr-1"></i> Edit Role & Permission
+                                <i class="fa fa-pencil-alt mr-1"></i> Edit Permission
                             </h3>
                             <div class="block-options">
                                 <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
@@ -98,44 +95,9 @@
                                 <label for="message-email">Name</label>
                                 <input class="form-control" type="text" id="message-email" value="" disabled>
                             </div>
-                            <div class="row">
-                                {{-- <div class="col-lg-4">
-                                    <p class="font-size-sm text-muted">
-                                        Default multiple select input turns into a tags input
-                                    </p>
-                                </div> --}}
-                                {{--  --}}
-                                <div class="form-group w-75">
-                                    <label for="example-text-input" class="main_label">Skills</label>
-                                    <select class="js-select2 form-control " id="example-select2-multiple" name="example-select2-multiple" style="width: 100%;" data-placeholder="Choose Skills" multiple>
-                                        <option></option>
-                                        <option value="1">HTML</option>
-                                        <option value="2" >CSS</option>
-                                        <option value="3">JavaScript</option>
-                                        <option value="4">PHP</option>
-                                        <option value="5">MySQL</option>
-                                        <option value="6">Ruby</option>
-                                        <option value="7">Angular</option>
-                                        <option value="8">React</option>
-                                        <option value="9">Vue.js</option>
-                                    </select>
-                                </div>
-                                {{-- <div class="col-lg-12 col-xl-12">
-                                    <div class="form-group">
-                                        <select class="js-select2 form-control" id="example-select2-multiple" name="example-select2-multiple" style="width: 100%;" data-placeholder="Choose many.." multiple>
-                                            <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                            <option value="1" selected>HTML</option>
-                                            <option value="2" selected>CSS</option>
-                                            <option value="3">JavaScript</option>
-                                            <option value="4">PHP</option>
-                                            <option value="5">MySQL</option>
-                                            <option value="6">Ruby</option>
-                                            <option value="7">Angular</option>
-                                            <option value="8">React</option>
-                                            <option value="9">Vue.js</option>
-                                        </select>
-                                    </div>
-                                </div> --}}
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <small><textarea name="description" id="" cols="30" rows="10">Description of Permission Description of Permission.. Description of Permission Description of Permission..</textarea></small>
                             </div>
                         </div>
                         <div class="block-content block-content-full text-right border-top">
@@ -191,16 +153,16 @@
     </div>
 </div>
     <!-- END Dynamic Table Full -->
-    <!-- add Modal -->
-    <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+       <!-- add Modal -->
+       <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="{{ route('admin.add_cat') }}" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-success">
                             <h3 class="block-title">
-                                <i class="fa fa-plus mr-1"></i> Add Category
+                                <i class="fa fa-plus mr-1"></i> Add Permission
                             </h3>
                             <div class="block-options">
                                 <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
@@ -211,30 +173,12 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="" name="name" placeholder="Category Names">
+                                <input class="form-control" type="text" id="message-email" value="" name="name" placeholder="Permission Name">
                             </div>
                             <div class="form-group">
-                                <label>Status</label>
-                                <select class="custom-select" id="example-select-custom" name="status">
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
+                                <label>Description</label><small>
+                                <textarea name="" id="" cols="30" rows="10"></textarea></small>
                             </div>
-                            <div class="form-group">
-                                <label>Api Name</label>
-                                <select class="custom-select" id="example-select-custom" name="api_name">
-                                    <option value="0" selected>None of These</option>
-                                    <option value="business">BUSSINESS</option>
-                                    <option value="sports">SPORTS</option>
-                                    <option value="entertainment">ENTERTAINMENT</option>
-                                    <option value="health">HEALTH</option>
-                                    <option value="science">SCI</option>
-                                    <option value="general">GENERAL</option>
-                                    <option value="technology">TECHNOLOGY</option>
-                                </select>
-                            </div>
-
-
                         </div>
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-outline-success mr-2" data-dismiss="modal">Cancel</button>
@@ -260,10 +204,4 @@
     <script src="{{asset('js/plugins/datatables/buttons/buttons.colVis.min.js')}}"></script>
     <script src="{{asset('js/pages/be_tables_datatables.min.js')}}"></script>
     <script src="{{asset('js/plugins/select2/js/select2.full.min.js')}}"></script>
-    <script>
-        jQuery(function() {
-            One.helpers(['select2']);
-        });
-    </script>
-
 @endsection
