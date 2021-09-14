@@ -110,6 +110,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/users', [DashBoardController::class, 'users'])->name('users');
     Route::get('/posts', [DashBoardController::class, 'posts'])->name('posts');
     Route::get('/categories', [DashBoardController::class, 'categories'])->name('categories');
+    Route::get('/rolespermission', [DashBoardController::class, 'rolespermission'])->name('rolespermission');
 
     Route::post('/edit_users', [DashBoardController::class, 'edit_users'])->name('edit_users');
     Route::post('/delete_users', [DashBoardController::class, 'delete_users'])->name('delete_users');

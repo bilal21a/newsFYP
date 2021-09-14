@@ -71,8 +71,8 @@
                 </a>
             </li>
             <li class="nav-main-item">
-                <a class="nav-main-link" href="">
-                    <i class="nav-main-link-icon fa fa-user-lock"></i>
+                <a class="nav-main-link" href="{{ url('admin/rolespermission') }}">
+                    <i class="nav-main-link-icon fa fa-tasks"></i>
                     <span class="nav-main-link-name">Roles & Permissions</span>
                 </a>
             </li>

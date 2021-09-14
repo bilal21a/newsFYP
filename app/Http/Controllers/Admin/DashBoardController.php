@@ -165,4 +165,12 @@ class DashBoardController extends Controller
 
         return view('admin.roles', compact('users'));
     }
+    public function rolespermission()
+    {
+        // $rp= Category::latest()->get();
+        // $this->data['categories'] = $rp;
+        // dd($categories);
+
+        return view('admin.rolespermission');
+    }
 }
