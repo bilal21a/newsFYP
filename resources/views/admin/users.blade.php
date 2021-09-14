@@ -69,7 +69,14 @@
                            {{ $users->email }}
                         </td>
                         <td class="d-none d-sm-table-cell">
-                            <span class="badge badge-info">Reader</span>
+                        @php
+                            $my_role=$users->getRoleNames();
+                        @endphp
+                            @if (isset($my_role[0]))
+                            <span class="badge badge-info">{{ $my_role[0] }}</span>
+                            @else
+                            <span class="badge badge-danger">Guest</span>
+                            @endif
                         </td>
                         <?php
                             $var_1= $users->created_at;
@@ -120,9 +127,9 @@
                             <div class="form-group">
                                 <label>Select Role</label>
                                 <select class="custom-select" id="example-select-custom" name="role">
-                                    <option value="0">Admin</option>
-                                    <option value="1">Author</option>
-                                    <option value="2">Reader</option>
+                                    @foreach ($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
