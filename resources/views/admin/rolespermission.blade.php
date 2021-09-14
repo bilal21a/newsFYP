@@ -1,10 +1,13 @@
 @extends('admin.index')
 
+@section('before_css')
+    <link rel="stylesheet" href="{{asset('js/plugins/select2/css/select2.min.css')}}">
+@endsection
 @section('css')
     <link href="{{asset('js/plugins/datatables/dataTables.bootstrap4.css')}} "rel="stylesheet">
     <link href="{{asset('js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css')}} "rel="stylesheet">
-    <link href="{{asset('js/plugins/select2/css/select2.min.css')}} "rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('s/plugins/select2/css/select2.min.css')}}">
+    {{-- <link href="{{asset('js/plugins/select2/css/select2.min.css')}} "rel="stylesheet"> --}}
+    {{-- <link rel="stylesheet" href="{{asset('js/plugins/select2/css/select2.min.css')}}"> --}}
 
 @endsection
 
@@ -96,7 +99,7 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="" disabled>
+                                <input class="form-control" type="text" id="message-email" value="">
                             </div>
                             <div class="row">
                                 {{-- <div class="col-lg-4">
@@ -105,7 +108,7 @@
                                     </p>
                                 </div> --}}
                                 {{--  --}}
-                                <div class="form-group w-75">
+                                <div class="col-lg-12">
                                     <label for="example-text-input" class="main_label">Skills</label>
                                     <select class="js-select2 form-control " id="example-select2-multiple" name="example-select2-multiple" style="width: 100%;" data-placeholder="Choose Skills" multiple>
                                         <option></option>
@@ -251,6 +254,8 @@
 @endsection
 
 @section('js')
+    <script src="{{asset('js/plugins/select2/js/select2.full.min.js')}}"></script>
+
     <script src="{{asset('js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('js/plugins/datatables/buttons/dataTables.buttons.min.js')}}"></script>
@@ -259,7 +264,6 @@
     <script src="{{asset('js/plugins/datatables/buttons/buttons.flash.min.js')}}"></script>
     <script src="{{asset('js/plugins/datatables/buttons/buttons.colVis.min.js')}}"></script>
     <script src="{{asset('js/pages/be_tables_datatables.min.js')}}"></script>
-    <script src="{{asset('js/plugins/select2/js/select2.full.min.js')}}"></script>
     <script>
         jQuery(function() {
             One.helpers(['select2']);

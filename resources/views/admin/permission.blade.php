@@ -93,11 +93,11 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="" disabled>
+                                <input class="form-control" type="text" id="message-email" value="">
                             </div>
                             <div class="form-group">
-                                <label for="description">Description</label>
-                                <small><textarea name="description" id="" cols="30" rows="10">Description of Permission Description of Permission.. Description of Permission Description of Permission..</textarea></small>
+                                <label for="short_disc">Short Description</label>
+                                <textarea class="form-control" id="short_disc" rows="4" name="short_disc" placeholder="Short Description" required=""></textarea>
                             </div>
                         </div>
                         <div class="block-content block-content-full text-right border-top">
