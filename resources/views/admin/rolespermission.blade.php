@@ -4,6 +4,7 @@
     <link href="{{asset('js/plugins/datatables/dataTables.bootstrap4.css')}} "rel="stylesheet">
     <link href="{{asset('js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css')}} "rel="stylesheet">
     <link href="{{asset('js/plugins/select2/css/select2.min.css')}} "rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('s/plugins/select2/css/select2.min.css')}}">
 
 @endsection
 
@@ -182,7 +183,10 @@
     <script src="{{asset('js/plugins/datatables/buttons/buttons.colVis.min.js')}}"></script>
     <script src="{{asset('js/pages/be_tables_datatables.min.js')}}"></script>
     <script src="{{asset('js/plugins/select2/js/select2.full.min.js')}}"></script>
-    <script>jQuery(function(){ One.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider']); });</script>
-
+    <script>
+        jQuery(function() {
+            One.helpers(['select2']);
+        });
+    </script>
 
 @endsection
