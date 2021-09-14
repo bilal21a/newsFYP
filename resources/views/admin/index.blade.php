@@ -9,6 +9,8 @@
     </head>
     <body>
 
+        @yield('internal_css')
+
         <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed">
             @include('layouts.partials.admin.rightsidebar')
 

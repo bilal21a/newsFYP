@@ -24,17 +24,46 @@
             </li>
             <li class="nav-main-heading"><hr></li>
             <li class="nav-main-item">
-                <a class="nav-main-link" href="{{ url('admin/users') }}">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false">
                     <i class="nav-main-link-icon fa fa-user"></i>
                     <span class="nav-main-link-name">User</span>
                 </a>
+                <ul class="nav-main-submenu">
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ url('admin/users') }}">
+                            <i class="nav-main-link-icon fa fa-users"></i>
+                            <span class="nav-main-link-name">All Users</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="">
+                            <i class="nav-main-link-icon fa fa-users-cog"></i>
+                            <span class="nav-main-link-name">User Approval</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-main-item">
-                <a class="nav-main-link" href="{{ url('admin/posts') }}">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                     <i class="nav-main-link-icon fa fa-newspaper"></i>
-                    <span class="nav-main-link-name">Post</span>
+                    <span class="nav-main-link-name">Posts</span>
                 </a>
+                <ul class="nav-main-submenu">
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ url('admin/posts') }}">
+                            <i class="nav-main-link-icon fa fa-newspaper"></i>
+                            <span class="nav-main-link-name">All Posts</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="">
+                            <i class="nav-main-link-icon fa fa-file-alt"></i>
+                            <span class="nav-main-link-name">Post Request</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
+
             <li class="nav-main-item">
                 <a class="nav-main-link" href="{{ url('admin/categories') }}">
                     <i class="nav-main-link-icon fa fa-list-ul"></i>
@@ -47,18 +76,8 @@
                     <span class="nav-main-link-name">Roles & Permissions</span>
                 </a>
             </li>
-            <li class="nav-main-item">
-                <a class="nav-main-link" href="">
-                    <i class="nav-main-link-icon fa fa-file-alt"></i>
-                    <span class="nav-main-link-name">Post Request</span>
-                </a>
-            </li>
-            <li class="nav-main-item">
-                <a class="nav-main-link" href="">
-                    <i class="nav-main-link-icon fa fa-users-cog"></i>
-                    <span class="nav-main-link-name">User Approval</span>
-                </a>
-            </li>
+
+
             <li class="nav-main-item">
                 <a class="nav-main-link" href="">
                     <i class="nav-main-link-icon fa fa-bell"></i>
