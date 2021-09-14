@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Models\Role;
 
 class DashBoardController extends Controller
 {
@@ -38,7 +39,9 @@ class DashBoardController extends Controller
     public function users()
     {
         $user= User::get();
+        $roles=Role::get();
         $this->data['user'] = $user;
+        $this->data['roles'] = $roles;
         // dd($this->data);
 
         return view('admin.users',$this->data);
@@ -51,6 +54,12 @@ class DashBoardController extends Controller
         $id= $request->id;
         $email=$request->email;
         $role=$request->role;
+
+        $role=Role::findById($role);
+        $user=User::find($id);
+        $user->assignRole($role);
+        // dd($role);
+
          User::where('id',$id)->update([
             'email' => $email,
          ]);
@@ -143,5 +152,17 @@ class DashBoardController extends Controller
             'del' => 0,
          ]);
         return redirect()->back();
+    }
+
+    public function roles()
+    {
+        $users = User::orderBy('name','desc')->get();
+        // $role = Role::create(['guard_name' => 'web', 'name' => 'reader']);
+        // $user=User::find(30);
+        // $role=Role::findById(1);
+        // $user->assignRole($role);
+        // dd($user->getRoleNames());
+
+        return view('admin.roles', compact('users'));
     }
 }

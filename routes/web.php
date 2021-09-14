@@ -121,5 +121,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/delete_cat', [DashBoardController::class, 'delete_cat'])->name('delete_cat');
     Route::post('/add_cat', [DashBoardController::class, 'add_cat'])->name('add_cat');
 
+    Route::get('/roles', [DashBoardController::class, 'roles'])->name('roles');
+
+
 
 });
