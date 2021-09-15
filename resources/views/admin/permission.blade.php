@@ -1,8 +1,4 @@
 @extends('admin.index')
-
-@section('before_css')
-    <link rel="stylesheet" href="{{asset('js/plugins/select2/css/select2.min.css')}}">
-@endsection
 @section('css')
     <link href="{{asset('js/plugins/datatables/dataTables.bootstrap4.css')}} "rel="stylesheet">
     <link href="{{asset('js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css')}} "rel="stylesheet">
