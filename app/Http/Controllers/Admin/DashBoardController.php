@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class DashBoardController extends Controller
@@ -168,18 +169,40 @@ class DashBoardController extends Controller
     public function rolespermission()
     {
         // $rp= Category::latest()->get();
-        // $this->data['categories'] = $rp;
-        // dd($categories);
+        $rp= Role::get();
+        $this->data['rp'] = $rp;
+        // dd($rp);
 
-        return view('admin.rolespermission');
+
+        return view('admin.rolespermission',$this->data);
     }
 
     public function permission()
     {
         // $rp= Category::latest()->get();
-        // $this->data['categories'] = $rp;
-        // dd($categories);
+        $permission= Permission::get();
+        $this->data['permission'] = $permission;
+        // dd($permission);
 
-        return view('admin.permission');
+        return view('admin.permission', $this->data);
+    }
+
+    public function edit_perm(Request $request)
+    {
+        // dd($request);
+        $id= $request->id;
+        // $email=$request->email;
+        // $role=$request->role;
+
+        // $role=Role::findById($role);
+        $user=User::find($id);
+        $user->assignRole($role);
+        // dd($role);
+
+         User::where('id',$id)->update([
+            // 'email' => $email,
+         ]);
+        return redirect()->back();
+
     }
 }

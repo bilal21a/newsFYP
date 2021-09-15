@@ -99,15 +99,9 @@
                                 <input class="form-control" type="text" id="message-email" value="">
                             </div>
                             <div class="row">
-                                {{-- <div class="col-lg-4">
-                                    <p class="font-size-sm text-muted">
-                                        Default multiple select input turns into a tags input
-                                    </p>
-                                </div> --}}
-                                {{--  --}}
                                 <div class="col-lg-12">
                                     <label for="example-text-input" class="main_label">Skills</label>
-                                    <select class="js-select2 form-control " id="example-select2-multiple" name="example-select2-multiple" style="width: 100%;" data-placeholder="Choose Skills" multiple>
+                                    <select class="js-select2 form-control " id="edit_perm" name="edit_perm" style="width: 100%;" data-placeholder="Choose Skills" multiple>
                                         <option></option>
                                         <option value="1">HTML</option>
                                         <option value="2" >CSS</option>
@@ -120,22 +114,6 @@
                                         <option value="9">Vue.js</option>
                                     </select>
                                 </div>
-                                {{-- <div class="col-lg-12 col-xl-12">
-                                    <div class="form-group">
-                                        <select class="js-select2 form-control" id="example-select2-multiple" name="example-select2-multiple" style="width: 100%;" data-placeholder="Choose many.." multiple>
-                                            <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                            <option value="1" selected>HTML</option>
-                                            <option value="2" selected>CSS</option>
-                                            <option value="3">JavaScript</option>
-                                            <option value="4">PHP</option>
-                                            <option value="5">MySQL</option>
-                                            <option value="6">Ruby</option>
-                                            <option value="7">Angular</option>
-                                            <option value="8">React</option>
-                                            <option value="9">Vue.js</option>
-                                        </select>
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
                         <div class="block-content block-content-full text-right border-top">
@@ -195,7 +173,7 @@
     <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="{{ route('admin.add_cat') }}" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-success">
@@ -213,28 +191,23 @@
                                 <label for="message-email">Name</label>
                                 <input class="form-control" type="text" id="message-email" value="" name="name" placeholder="Category Names">
                             </div>
-                            <div class="form-group">
-                                <label>Status</label>
-                                <select class="custom-select" id="example-select-custom" name="status">
-                                    <option value="1">Active</option>
-                                    <option value="0">Inactive</option>
-                                </select>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="example-text-input" class="main_label">Skills</label>
+                                    <select class="js-select2 form-control " id="add_perm" name="add_perm" style="width: 100%;" data-placeholder="Choose Skills" multiple>
+                                        <option></option>
+                                        <option value="1">HTML</option>
+                                        <option value="2" >CSS</option>
+                                        <option value="3">JavaScript</option>
+                                        <option value="4">PHP</option>
+                                        <option value="5">MySQL</option>
+                                        <option value="6">Ruby</option>
+                                        <option value="7">Angular</option>
+                                        <option value="8">React</option>
+                                        <option value="9">Vue.js</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Api Name</label>
-                                <select class="custom-select" id="example-select-custom" name="api_name">
-                                    <option value="0" selected>None of These</option>
-                                    <option value="business">BUSSINESS</option>
-                                    <option value="sports">SPORTS</option>
-                                    <option value="entertainment">ENTERTAINMENT</option>
-                                    <option value="health">HEALTH</option>
-                                    <option value="science">SCI</option>
-                                    <option value="general">GENERAL</option>
-                                    <option value="technology">TECHNOLOGY</option>
-                                </select>
-                            </div>
-
-
                         </div>
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-outline-success mr-2" data-dismiss="modal">Cancel</button>

@@ -53,10 +53,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($permission as $permissions)
+
                     <tr>
-                        <td class="text-center font-size-sm">1</td>
+                        <td class="text-center font-size-sm">{{ $permissions->id }}</td>
                         <td class="font-w600 font-size-sm">
-                            <a href="be_pages_generic_blank.html">Permission Name</a>
+                            <a href="be_pages_generic_blank.html">{{ $permissions->name }}</a>
                         </td>
                         <td class="d-none d-sm-table-cell font-size-sm">
                             <p>Description of Permision Description of Permision Description of Permision</p>
@@ -147,6 +149,8 @@
         </div>
     </div>
     <!-- END Delte Modal -->
+    @endforeach
+
                 </tbody>
             </table>
         </div>
