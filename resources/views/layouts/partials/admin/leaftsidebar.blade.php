@@ -105,7 +105,7 @@
                 </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link" href="be_blocks_options.html">
-                        <span class="nav-main-link-name">Admin Setting</span>
+                        <span class="nav-main-link-name">Nav Bar Setting</span>
                     </a>
                 </li>
             </ul>
