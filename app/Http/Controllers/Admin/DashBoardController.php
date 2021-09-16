@@ -176,6 +176,12 @@ class DashBoardController extends Controller
 
         return view('admin.rolespermission',$this->data);
     }
+    public function edit_role(Request $request)
+    {
+        dd($request->all());
+        $edit_perm = $request->input('edit_perm');
+        dd($edit_perm);
+    }
 
     public function permission()
     {
@@ -189,20 +195,45 @@ class DashBoardController extends Controller
 
     public function edit_perm(Request $request)
     {
-        // dd($request);
         $id= $request->id;
-        // $email=$request->email;
-        // $role=$request->role;
+        $name= $request->name;
+        $description= $request->short_disc;
+        Permission::where('id',$id)->update([
+            'name' =>$name,
+            'description' => $description,
+        ]);
 
-        // $role=Role::findById($role);
-        $user=User::find($id);
-        $user->assignRole($role);
-        // dd($role);
-
-         User::where('id',$id)->update([
-            // 'email' => $email,
-         ]);
         return redirect()->back();
 
+    }
+
+    public function delete_perm(Request $request)
+    {
+        // dd($request);
+        $id= $request->id;
+        Permission::find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function add_perm(Request $request)
+    {
+        // dd($request);
+        $name= $request->name;
+        $description= $request->short_disc;
+        Permission::create([
+            'name' =>$name,
+            'description' => $description,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function post_approval()
+    {
+        return view('admin.postapproval');
+    }
+    public function user_approval()
+    {
+        return view('admin.userapproval');
     }
 }

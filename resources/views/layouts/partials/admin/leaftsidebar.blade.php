@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="">
+                        <a class="nav-main-link" href="{{ url('admin/user_approval') }}">
                             <i class="nav-main-link-icon fa fa-users-cog"></i>
                             <span class="nav-main-link-name">User Approval</span>
                         </a>
@@ -56,7 +56,7 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="">
+                        <a class="nav-main-link" href="{{ url('admin/post_approval') }}">
                             <i class="nav-main-link-icon fa fa-file-alt"></i>
                             <span class="nav-main-link-name">Post Request</span>
                         </a>
