@@ -178,9 +178,9 @@ class DashBoardController extends Controller
     }
     public function edit_role(Request $request)
     {
-        dd($request->all());
+        // dd($request->all());
         $edit_perm = $request->input('edit_perm');
-        dd($edit_perm);
+        // dd($edit_perm);
     }
 
     public function permission()
@@ -235,5 +235,18 @@ class DashBoardController extends Controller
     public function user_approval()
     {
         return view('admin.userapproval');
+    }
+
+    public function general_setting()
+    {
+        return view('admin.general');
+    }
+    public function nav_setting()
+    {
+        return view('admin.navbar');
+    }
+    public function notification()
+    {
+        return view('admin.notification');
     }
 }

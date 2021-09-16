@@ -134,6 +134,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
     Route::get('/roles', [DashBoardController::class, 'roles'])->name('roles');
+    Route::get('/general_setting', [DashBoardController::class, 'general_setting'])->name('general_setting');
+    Route::get('/nav_setting', [DashBoardController::class, 'nav_setting'])->name('nav_setting');
+    Route::get('/notification', [DashBoardController::class, 'notification'])->name('notification');
 
 
 

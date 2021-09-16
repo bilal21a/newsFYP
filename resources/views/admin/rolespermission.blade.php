@@ -108,14 +108,14 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="example-text-input" class="main_label">Permissions</label>
-                                    <select class="js-select2 form-control " id="edit_perm{{ $role->id }}" name="edit_perm" style="width: 100%;" data-placeholder="Choose Skills" multiple>
+                                    <select class="js-select2 form-control " id="edit_perm{{ $role->id }}" name="edit_perm[]" style="width: 100%;" data-placeholder="Choose Skills" multiple>
                                        @php
                                        $allperm= Spatie\Permission\Models\Permission::get();
                                        @endphp
                                        @foreach ($perm as $single)
                                        @foreach ($allperm as $select)
 
-                                       <option {{ $select->id == $single->id ? 'selected' : '' }} value="{{ $single->id }}">{{ $select->name }}</option>
+                                       <option {{ $select->id == $single->id ? 'selected' : '' }} value="{{ $select->id }}">{{ $select->name }}</option>
                                        @endforeach
                                        @endforeach
 
