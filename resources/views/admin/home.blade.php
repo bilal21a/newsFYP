@@ -70,9 +70,6 @@
                     <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                         <i class="si si-refresh"></i>
                     </button>
-                    <button type="button" class="btn-block-option">
-                        <i class="si si-settings"></i>
-                    </button>
                 </div>
             </div>
             <div class="block-content block-content-full">
@@ -136,9 +133,6 @@
                 <div class="block-options">
                     <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                         <i class="si si-refresh"></i>
-                    </button>
-                    <button type="button" class="btn-block-option">
-                        <i class="si si-settings"></i>
                     </button>
                 </div>
             </div>

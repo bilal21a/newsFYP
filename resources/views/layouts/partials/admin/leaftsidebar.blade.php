@@ -36,7 +36,7 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="">
+                        <a class="nav-main-link" href="{{ url('admin/user_approval') }}">
                             <i class="nav-main-link-icon fa fa-users-cog"></i>
                             <span class="nav-main-link-name">User Approval</span>
                         </a>
@@ -56,7 +56,7 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="">
+                        <a class="nav-main-link" href="{{ url('admin/post_approval') }}">
                             <i class="nav-main-link-icon fa fa-file-alt"></i>
                             <span class="nav-main-link-name">Post Request</span>
                         </a>
@@ -85,7 +85,7 @@
 
 
             <li class="nav-main-item">
-                <a class="nav-main-link" href="">
+                <a class="nav-main-link" href="{{ url('admin/notification') }}">
                     <i class="nav-main-link-icon fa fa-bell"></i>
                     <span class="nav-main-link-name">Notifications</span>
                 </a>
@@ -99,13 +99,13 @@
             </a>
             <ul class="nav-main-submenu">
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="be_blocks_styles.html">
+                    <a class="nav-main-link" href="{{ url('admin/general_setting') }}">
                         <span class="nav-main-link-name">General Setting</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link" href="be_blocks_options.html">
-                        <span class="nav-main-link-name">Admin Setting</span>
+                    <a class="nav-main-link" href="{{ url('admin/nav_setting') }}">
+                        <span class="nav-main-link-name">Nav Bar Setting</span>
                     </a>
                 </li>
             </ul>

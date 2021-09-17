@@ -49,20 +49,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($permission as $permissions)
+
                     <tr>
-                        <td class="text-center font-size-sm">1</td>
+                        <td class="text-center font-size-sm">{{ $permissions->id }}</td>
                         <td class="font-w600 font-size-sm">
-                            <a href="be_pages_generic_blank.html">Permission Name</a>
+                            <a href="be_pages_generic_blank.html">{{ $permissions->name }}</a>
                         </td>
                         <td class="d-none d-sm-table-cell font-size-sm">
-                            <p>Description of Permision Description of Permision Description of Permision</p>
+                            <p>{{ $permissions->description }}</p>
                         </td>
                         <td class="d-none d-sm-table-cell">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#edit-modal">
+                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#edit-modal{{ $permissions->id }}">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delete-modal" >
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delete-modal{{ $permissions->id }}" >
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
@@ -70,10 +72,10 @@
                         </td>
                     </tr>
                     <!-- Edit Modal -->
-    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal fade" id="edit-modal{{ $permissions->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.edit_perm') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-primary">
@@ -89,11 +91,13 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="">
+                                <input class="form-control" type="text" id="message-email" name="name" value="{{ $permissions->name }}">
+                                <input class="form-control" type="hidden" id="message-id" name="id" value="{{ $permissions->id }}">
+
                             </div>
                             <div class="form-group">
                                 <label for="short_disc">Short Description</label>
-                                <textarea class="form-control" id="short_disc" rows="4" name="short_disc" placeholder="Short Description" required=""></textarea>
+                                <textarea class="form-control" id="short_disc" rows="4" name="short_disc" placeholder="Short Description" >{{ $permissions->description }}</textarea>
                             </div>
                         </div>
                         <div class="block-content block-content-full text-right border-top">
@@ -110,10 +114,10 @@
     <!-- END Edit Modal -->
 
     <!-- Delete Modal -->
-    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal fade" id="delete-modal{{ $permissions->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.delete_perm') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-primary">
@@ -129,7 +133,7 @@
                         <div class="block-content">
                             <p>Do you want to delete...</p>
                         </div>
-                        <input class="form-control" type="hidden" id="message-id" name="id" value="">
+                        <input class="form-control" type="hidden" id="message-id" name="id" value="{{ $permissions->id }}">
 
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
@@ -143,6 +147,8 @@
         </div>
     </div>
     <!-- END Delte Modal -->
+    @endforeach
+
                 </tbody>
             </table>
         </div>
@@ -153,7 +159,7 @@
        <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.add_perm') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-success">
@@ -172,8 +178,8 @@
                                 <input class="form-control" type="text" id="message-email" value="" name="name" placeholder="Permission Name">
                             </div>
                             <div class="form-group">
-                                <label>Description</label><small>
-                                <textarea name="" id="" cols="30" rows="10"></textarea></small>
+                                <label for="short_disc">Short Description</label>
+                                <textarea class="form-control" id="short_disc" rows="4" name="short_disc" placeholder="Short Description" ></textarea>
                             </div>
                         </div>
                         <div class="block-content block-content-full text-right border-top">
@@ -199,5 +205,4 @@
     <script src="{{asset('js/plugins/datatables/buttons/buttons.flash.min.js')}}"></script>
     <script src="{{asset('js/plugins/datatables/buttons/buttons.colVis.min.js')}}"></script>
     <script src="{{asset('js/pages/be_tables_datatables.min.js')}}"></script>
-    <script src="{{asset('js/plugins/select2/js/select2.full.min.js')}}"></script>
 @endsection

@@ -112,6 +112,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/categories', [DashBoardController::class, 'categories'])->name('categories');
     Route::get('/rolespermission', [DashBoardController::class, 'rolespermission'])->name('rolespermission');
     Route::get('/permission', [DashBoardController::class, 'permission'])->name('permission');
+    Route::get('/post_approval', [DashBoardController::class, 'post_approval'])->name('post_approval');
+    Route::get('/user_approval', [DashBoardController::class, 'user_approval'])->name('user_approval');
 
 
     Route::post('/edit_users', [DashBoardController::class, 'edit_users'])->name('edit_users');
@@ -124,7 +126,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/delete_cat', [DashBoardController::class, 'delete_cat'])->name('delete_cat');
     Route::post('/add_cat', [DashBoardController::class, 'add_cat'])->name('add_cat');
 
+    Route::post('/edit_perm', [DashBoardController::class, 'edit_perm'])->name('edit_perm');
+    Route::post('/delete_perm', [DashBoardController::class, 'delete_perm'])->name('delete_perm');
+    Route::post('/add_perm', [DashBoardController::class, 'add_perm'])->name('add_perm');
+
+    Route::post('/edit_role', [DashBoardController::class, 'edit_role'])->name('edit_role');
+
+
     Route::get('/roles', [DashBoardController::class, 'roles'])->name('roles');
+    Route::get('/general_setting', [DashBoardController::class, 'general_setting'])->name('general_setting');
+    Route::get('/nav_setting', [DashBoardController::class, 'nav_setting'])->name('nav_setting');
+    Route::get('/notification', [DashBoardController::class, 'notification'])->name('notification');
 
 
 

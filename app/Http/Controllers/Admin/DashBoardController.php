@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class DashBoardController extends Controller
@@ -168,18 +169,84 @@ class DashBoardController extends Controller
     public function rolespermission()
     {
         // $rp= Category::latest()->get();
-        // $this->data['categories'] = $rp;
-        // dd($categories);
+        $rp= Role::get();
+        $this->data['rp'] = $rp;
+        // dd($rp);
 
-        return view('admin.rolespermission');
+
+        return view('admin.rolespermission',$this->data);
+    }
+    public function edit_role(Request $request)
+    {
+        // dd($request->all());
+        $edit_perm = $request->input('edit_perm');
+        // dd($edit_perm);
     }
 
     public function permission()
     {
         // $rp= Category::latest()->get();
-        // $this->data['categories'] = $rp;
-        // dd($categories);
+        $permission= Permission::get();
+        $this->data['permission'] = $permission;
+        // dd($permission);
 
-        return view('admin.permission');
+        return view('admin.permission', $this->data);
+    }
+
+    public function edit_perm(Request $request)
+    {
+        $id= $request->id;
+        $name= $request->name;
+        $description= $request->short_disc;
+        Permission::where('id',$id)->update([
+            'name' =>$name,
+            'description' => $description,
+        ]);
+
+        return redirect()->back();
+
+    }
+
+    public function delete_perm(Request $request)
+    {
+        // dd($request);
+        $id= $request->id;
+        Permission::find($id)->delete();
+        return redirect()->back();
+    }
+
+    public function add_perm(Request $request)
+    {
+        // dd($request);
+        $name= $request->name;
+        $description= $request->short_disc;
+        Permission::create([
+            'name' =>$name,
+            'description' => $description,
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function post_approval()
+    {
+        return view('admin.postapproval');
+    }
+    public function user_approval()
+    {
+        return view('admin.userapproval');
+    }
+
+    public function general_setting()
+    {
+        return view('admin.general');
+    }
+    public function nav_setting()
+    {
+        return view('admin.navbar');
+    }
+    public function notification()
+    {
+        return view('admin.notification');
     }
 }
