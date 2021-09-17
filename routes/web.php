@@ -130,6 +130,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::post('/edit_role', [DashBoardController::class, 'edit_role'])->name('edit_role');
     Route::post('/delete_role', [DashBoardController::class, 'delete_role'])->name('delete_role');
+    Route::post('/add_role', [DashBoardController::class, 'add_role'])->name('add_role');
 
 
     Route::get('/roles', [DashBoardController::class, 'roles'])->name('roles');
