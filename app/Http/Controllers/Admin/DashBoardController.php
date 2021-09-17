@@ -7,12 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\User;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-
 class DashBoardController extends Controller
 {
     public function home()
@@ -187,6 +187,20 @@ class DashBoardController extends Controller
 
         $roles = Role::findOrFail($role->id);
         $roles->delete();
+
+
+        return redirect()->back();
+    }
+    public function add_role(Request $request)
+    {
+        try {
+        $role =Role::create(['name' => $request->role_name]);
+        $perm= Permission::find($request->add_perm);
+        $role->syncPermissions($perm);
+        } catch (Exception $exception) {
+            return back()->withError($exception->getMessage())->withInput();
+            // toastr()->error($e);
+        }
 
 
         return redirect()->back();

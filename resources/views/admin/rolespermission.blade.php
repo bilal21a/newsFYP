@@ -181,7 +181,7 @@
     <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.add_role') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-success">
@@ -197,22 +197,18 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="" name="name" placeholder="Role Name">
+                                <input class="form-control" type="text" id="message-email" value="" name="role_name" placeholder="Role Name">
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="example-text-input" class="main_label">Skills</label>
-                                    <select class="js-select2 form-control " id="add_perm" name="add_perm" style="width: 100%;" data-placeholder="Choose Skills" multiple>
-                                        <option></option>
-                                        <option value="1">HTML</option>
-                                        <option value="2" >CSS</option>
-                                        <option value="3">JavaScript</option>
-                                        <option value="4">PHP</option>
-                                        <option value="5">MySQL</option>
-                                        <option value="6">Ruby</option>
-                                        <option value="7">Angular</option>
-                                        <option value="8">React</option>
-                                        <option value="9">Vue.js</option>
+                                    <select class="js-select2 form-control " id="add_perm" name="add_perm[]" style="width: 100%;" data-placeholder="Choose Skills" multiple>
+                                        @php
+                                       $allperms= Spatie\Permission\Models\Permission::get();
+                                       @endphp
+                                       @foreach ($allperms as $allperm )
+                                            <option  value="{{ $allperm->id }}">{{ $allperm->name }}</option>
+                                       @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -229,6 +225,10 @@
         </div>
     </div>
     <!-- END add Modal -->
+
+    @if (session('error'))
+    <input type="hidden" id="errors" value="{{ session('error') }}">
+    @endif
 @endsection
 
 @section('js')
@@ -242,10 +242,39 @@
     <script src="{{asset('js/plugins/datatables/buttons/buttons.flash.min.js')}}"></script>
     <script src="{{asset('js/plugins/datatables/buttons/buttons.colVis.min.js')}}"></script>
     <script src="{{asset('js/pages/be_tables_datatables.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.all.min.js"></script>
+    <script>
+        const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+                })
+    </script>
     <script>
         jQuery(function() {
             One.helpers(['select2']);
         });
+
+        $( document ).ready(function() {
+
+            var error=$("#errors").val();
+            console.log(error);
+
+            if (error != null) {
+                Toast.fire({
+                icon: 'warning',
+                title: error,
+            })
+            }
+
+        });
+
     </script>
 
 @endsection
