@@ -103,34 +103,22 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="{{ $role->name }}">
+                                <input class="form-control" type="text" name="role_name" id="message-email" value="{{ $role->name }}">
+                                <input class="form-control" type="hidden" name="role_id" value="{{ $role->id }}">
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="example-text-input" class="main_label">Permissions</label>
                                     <select class="js-select2 form-control " id="edit_perm{{ $role->id }}" name="edit_perm[]" style="width: 100%;" data-placeholder="Choose Skills" multiple>
                                        @php
-                                       $allperm= Spatie\Permission\Models\Permission::get();
+                                       $allperms= Spatie\Permission\Models\Permission::get();
+                                        $perm= $role->getAllPermissions();
                                        @endphp
-                                       @foreach ($perm as $single)
-                                       @foreach ($allperm as $select)
-
-                                       <option {{ $select->id == $single->id ? 'selected' : '' }} value="{{ $select->id }}">{{ $select->name }}</option>
+                                       @foreach ($allperms as $allperm )
+                                            <option  value="{{ $allperm->id }}">{{ $allperm->name }}</option>
                                        @endforeach
-                                       @endforeach
-
-
-
-                                        {{-- <option value="1">HTML</option>
-                                        <option value="2" >CSS</option>
-                                        <option value="3">JavaScript</option>
-                                        <option value="4">PHP</option>
-                                        <option value="5">MySQL</option>
-                                        <option value="6">Ruby</option>
-                                        <option value="7">Angular</option>
-                                        <option value="8">React</option>
-                                        <option value="9">Vue.js</option> --}}
                                     </select>
+
                                 </div>
                             </div>
                         </div>
@@ -151,7 +139,7 @@
     <div class="modal fade" id="delete-modal{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.delete_role') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-primary">
@@ -167,7 +155,7 @@
                         <div class="block-content">
                             <p>Do you want to delete...</p>
                         </div>
-                        <input class="form-control" type="hidden" id="message-id" name="id" value="">
+                        <input class="form-control" type="hidden" id="message-id" name="role_id" value="{{ $role->id }}">
 
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>

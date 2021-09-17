@@ -158,20 +158,13 @@ class DashBoardController extends Controller
     public function roles()
     {
         $users = User::orderBy('name','desc')->get();
-        // $role = Role::create(['guard_name' => 'web', 'name' => 'reader']);
-        // $user=User::find(30);
-        // $role=Role::findById(1);
-        // $user->assignRole($role);
-        // dd($user->getRoleNames());
 
         return view('admin.roles', compact('users'));
     }
     public function rolespermission()
     {
-        // $rp= Category::latest()->get();
         $rp= Role::get();
         $this->data['rp'] = $rp;
-        // dd($rp);
 
 
         return view('admin.rolespermission',$this->data);
@@ -179,13 +172,28 @@ class DashBoardController extends Controller
     public function edit_role(Request $request)
     {
         // dd($request->all());
-        $edit_perm = $request->input('edit_perm');
-        // dd($edit_perm);
+        $role= Role::find($request->role_id);
+        $perm= Permission::find($request->edit_perm);
+        $role->syncPermissions($perm);
+
+        return redirect()->back();
+    }
+    public function delete_role(Request $request)
+    {
+        // dd($request->all());
+        $role= Role::find($request->role_id);
+        $permission=$role->getAllPermissions();
+        $role->revokePermissionTo($permission);
+
+        $roles = Role::findOrFail($role->id);
+        $roles->delete();
+
+
+        return redirect()->back();
     }
 
     public function permission()
     {
-        // $rp= Category::latest()->get();
         $permission= Permission::get();
         $this->data['permission'] = $permission;
         // dd($permission);
