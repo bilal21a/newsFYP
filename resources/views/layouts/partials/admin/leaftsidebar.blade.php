@@ -108,6 +108,11 @@
                         <span class="nav-main-link-name">Nav Bar Setting</span>
                     </a>
                 </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="{{ url('admin/mini_header_setting') }}">
+                        <span class="nav-main-link-name">MiniHeader Setting</span>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>

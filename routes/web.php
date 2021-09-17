@@ -135,10 +135,16 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/roles', [DashBoardController::class, 'roles'])->name('roles');
     Route::get('/general_setting', [DashBoardController::class, 'general_setting'])->name('general_setting');
     Route::get('/nav_setting', [DashBoardController::class, 'nav_setting'])->name('nav_setting');
+    Route::get('/mini_header_setting', [DashBoardController::class, 'mini_header_setting'])->name('mini_header_setting');
     Route::get('/notification', [DashBoardController::class, 'notification'])->name('notification');
 
 
     Route::post('/system_setting', [SettingController::class, 'system_setting'])->name('system_setting');
+
+    Route::post('/system_name_setting', [SettingController::class, 'system_name_setting'])->name('system_name_setting');
+    Route::post('/favicon_setting', [SettingController::class, 'favicon_setting'])->name('favicon_setting');
+    Route::post('/front_logo_setting', [SettingController::class, 'front_logo_setting'])->name('front_logo_setting');
+    Route::post('/admin_logo_setting', [SettingController::class, 'admin_logo_setting'])->name('admin_logo_setting');
 
 
 

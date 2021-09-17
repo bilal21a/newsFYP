@@ -27,8 +27,6 @@
 <div class="content container">
     <div class="block">
         <div class="block-content block-content-full">
-            <form action="{{ route('admin.system_setting') }}" method="POST" enctype="multipart/form-data" >
-                @csrf
                 <div class="row push">
                     <div class="col-lg-2">
                     </div>
@@ -61,7 +59,7 @@
             </div>
         </div>
 
-        <div class="col-md-6 mt-7">
+        <div class="col-md-6 mt-7" id="right_favicon">
             <div class="custom-file form-group">
                 <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                 <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="favicon">
@@ -95,10 +93,10 @@
             </div>
         </div>
 
-        <div class="col-md-6 mt-7">
+        <div class="col-md-6 mt-7" id="right_front">
             <div class="custom-file form-group">
                 <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="favicon">
+                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="front_logo">
                 <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
             </div><br><br>
             <div class="form-group">
@@ -129,10 +127,10 @@
             </div>
         </div>
 
-        <div class="col-md-6 mt-7">
+        <div class="col-md-6 mt-7" id="right_admin">
             <div class="custom-file form-group">
                 <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="favicon">
+                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="admin_logo">
                 <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
             </div><br><br>
             <div class="form-group">
@@ -182,7 +180,6 @@
                     <div class="col-lg-2">
                     </div>
                 </div>
-            </form>
         </div>
     </div>
 </div>
@@ -191,15 +188,32 @@
 @section('js')
 <script>
     $( document ).ready(function() {
-          //for change email btn
-          $( "#change_email" ).click(function() {
-                $("#change_email_body").css("display","none");
-                $("#change_email_div").css("display","block");
+
+          //for favicon edit
+        $( "#favicon_id" ).click(function() {
+                $("#right_favicon").css("display","block");
             });
-        $( "#cancel_btn_change_email" ).click(function() {
-                $("#change_email_body").css("display","block");
-                $("#change_email_div").css("display","none");
-                fetchData();
+        $( "#favicon_cancel" ).click(function() {
+                $("#right_favicon").css("display","none");
+                // fetchData();
+            });
+
+          //for front logo edit
+        $( "#front_logo_edit" ).click(function() {
+                $("#right_front").css("display","block");
+            });
+        $( "#front_logo_cancel" ).click(function() {
+                $("#right_front").css("display","none");
+                // fetchData();
+            });
+
+          //for admin logo edit
+        $( "#admin_logo_edit" ).click(function() {
+                $("#right_admin").css("display","block");
+            });
+        $( "#admin_logo_cancel" ).click(function() {
+                $("#right_admin").css("display","none");
+                // fetchData();
             });
 
     });
@@ -209,9 +223,22 @@
 
 @section('internal_css')
 <style>
-.vl{
+.vl
+{
      border-left: 1px solid grey;
      height: 200px;
-    }
+}
+#right_favicon
+{
+       display: none;
+}
+#right_front
+{
+    display: none;
+}
+#right_admin
+{
+    display: none;
+}
 </style>
 @endsection

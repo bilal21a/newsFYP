@@ -257,4 +257,9 @@ class DashBoardController extends Controller
     {
         return view('admin.notification');
     }
+
+    public function mini_header_setting()
+    {
+        return view('admin.miniheader');
+    }
 }
