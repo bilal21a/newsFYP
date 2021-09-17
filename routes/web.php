@@ -5,9 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashBoardController;
-
-
-
+use App\Http\Controllers\Admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,6 +135,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/general_setting', [DashBoardController::class, 'general_setting'])->name('general_setting');
     Route::get('/nav_setting', [DashBoardController::class, 'nav_setting'])->name('nav_setting');
     Route::get('/notification', [DashBoardController::class, 'notification'])->name('notification');
+
+
+    Route::post('/system_setting', [SettingController::class, 'system_setting'])->name('system_setting');
 
 
 
