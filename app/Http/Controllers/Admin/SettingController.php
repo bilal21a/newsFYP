@@ -27,17 +27,17 @@ class SettingController extends Controller
 
 
         $imageExtension = $request->favicon->extension();
-        $imageName="favicon_".uniqid(rand(), true).".".$imageExtension;
+        $imageName="favicon.".$imageExtension;
         $request->favicon->move(public_path('img/system_image/'), $imageName);
         // dd(public_path('img/main_image/' . $imageName));
 
         $imageExtension = $request->front_logo->extension();
-        $imageName="front_logo_".uniqid(rand(), true).".".$imageExtension;
+        $imageName="front_logo.".$imageExtension;
         $request->front_logo->move(public_path('img/system_image/'), $imageName);
         // dd(public_path('img/main_image/' . $imageName));
 
         $imageExtension = $request->admin_logo->extension();
-        $imageName="admin_logo_".uniqid(rand(), true).".".$imageExtension;
+        $imageName="admin_logo.".$imageExtension;
         $request->admin_logo->move(public_path('img/system_image/'), $imageName);
         // dd(public_path('img/main_image/' . $imageName));
         dd("here");
