@@ -189,7 +189,22 @@
 @endsection
 
 @section('js')
+<script>
+    $( document ).ready(function() {
+          //for change email btn
+          $( "#change_email" ).click(function() {
+                $("#change_email_body").css("display","none");
+                $("#change_email_div").css("display","block");
+            });
+        $( "#cancel_btn_change_email" ).click(function() {
+                $("#change_email_body").css("display","block");
+                $("#change_email_div").css("display","none");
+                fetchData();
+            });
 
+    });
+
+</script>
 @endsection
 
 @section('internal_css')
