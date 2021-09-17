@@ -259,10 +259,7 @@ class DashBoardController extends Controller
         return view('admin.userapproval');
     }
 
-    public function general_setting()
-    {
-        return view('admin.general');
-    }
+
     public function nav_setting()
     {
         return view('admin.navbar');

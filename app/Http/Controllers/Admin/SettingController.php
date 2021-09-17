@@ -8,64 +8,24 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
-    public function system_setting(Request $request)
+    public function general_setting()
     {
-        // dd($request->all());
-        $system_name= $request->system_name;
-        $favicon= $request->favicon;
-        $front_logo= $request->front_logo;
-        $admin_logo= $request->admin_logo;
-
-        $request->validate([
-            'favicon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $request->validate([
-            'front_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        $request->validate([
-            'admin_logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-
-        $imageExtension = $request->favicon->extension();
-        $faviconImage="favicon.".$imageExtension;
-        $request->favicon->move(public_path('img/system_image/'), $faviconImage);
-        // dd(public_path('img/main_image/' . $imageName));
-
-        $imageExtension = $request->front_logo->extension();
-        $frontImage="front_logo.".$imageExtension;
-        $request->front_logo->move(public_path('img/system_image/'), $frontImage);
-        // dd(public_path('img/main_image/' . $imageName));
-
-        $imageExtension = $request->admin_logo->extension();
-        $adminImage="admin_logo.".$imageExtension;
-        $request->admin_logo->move(public_path('img/system_image/'), $adminImage);
-        // dd(public_path('img/main_image/' . $imageName));
-        // dd("here");
-
-
-
-        $setting = new Setting();
-        $setting->system_name = $system_name;
-        $setting->favicon = $faviconImage;
-        $setting->front_logo = $frontImage;
-        $setting->admin_logo = $adminImage;
-
-        $setting->save();
-
-        return redirect()->route('home');
+        $setting= Setting::first();
+        return view('admin.general',compact('setting'));
     }
 
     public function system_name_setting(Request $request)
     {
         $system_name= $request->system_name;
-        $setting = new Setting();
-        $setting->system_name = $system_name;
-        $setting->save();
+        Setting::find(1)->update([
+            'system_name' =>$system_name,
+        ]);
+        return redirect()->back();
     }
 
     public function favicon_setting(Request $request)
     {
+        // dd($request->all());
         $favicon= $request->favicon;
         $request->validate([
             'favicon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -73,9 +33,12 @@ class SettingController extends Controller
         $imageExtension = $request->favicon->extension();
         $faviconImage="favicon.".$imageExtension;
         $request->favicon->move(public_path('img/system_image/'), $faviconImage);
-        $setting = new Setting();
-        $setting->favicon = $faviconImage;
-        $setting->save();
+        Setting::find(1)->update([
+            'favicon' =>$faviconImage,
+        ]);
+
+        return redirect()->back();
+
     }
 
     public function front_logo_setting(Request $request)
@@ -87,9 +50,11 @@ class SettingController extends Controller
         $imageExtension = $request->front_logo->extension();
         $frontImage="front_logo.".$imageExtension;
         $request->front_logo->move(public_path('img/system_image/'), $frontImage);
-        $setting = new Setting();
-        $setting->front_logo = $frontImage;
-        $setting->save();
+        Setting::find(1)->update([
+            'front_logo' =>$frontImage,
+        ]);
+        return redirect()->back();
+
     }
 
     public function admin_logo_setting(Request $request)
@@ -101,9 +66,10 @@ class SettingController extends Controller
         $imageExtension = $request->admin_logo->extension();
         $adminImage="admin_logo.".$imageExtension;
         $request->admin_logo->move(public_path('img/system_image/'), $adminImage);
-        $setting = new Setting();
-        $setting->admin_logo = $adminImage;
-        $setting->save();
+        Setting::find(1)->update([
+            'admin_logo' =>$adminImage,
+        ]);
+        return redirect()->back();
     }
 
 }
