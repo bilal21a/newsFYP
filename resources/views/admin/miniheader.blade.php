@@ -28,7 +28,7 @@
 <div class="content container">
     <div class="block">
         <div class="block-header">
-            <h3 class="block-title"> MINI HEADER </h3>
+            {{-- <h3 class="block-title"> MINI HEADER </h3> --}}
         </div>
         <div class="block-content block-content-full">
             <form action="be_forms_elements.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
@@ -113,8 +113,9 @@
                     </td>
                     <td class="text-center">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#delete-modal" >
-                              Delete  <i class="fa fa-fw fa-times"></i>
+                            <button type="button" class="btn btn-sm btn-danger"  data-toggle="modal" data-target="#delete-modal" >
+                                <i class="fa fa-fw fa-times"></i>
+                              Delete
                             </button>
                         </div>
                     </td>
@@ -144,7 +145,7 @@
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-sm btn-primary">
-                                <i class="fa fa-trash mr-1"></i> Delete
+                                <i class="fa fa-trash mr-1"></i> "Delete"
                             </button>
                         </div>
                     </div>

@@ -14,14 +14,14 @@
             <h1 class="flex-sm-fill h3 my-2">
                 Users <small class="d-block d-sm-inline-block mt-2 mt-sm-0 font-size-base font-w400 text-muted"></small>
             </h1>
-            <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
+            {{-- <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
                     <li class="breadcrumb-item">Tables</li>
                     <li class="breadcrumb-item" aria-current="page">
                         <a class="link-fx" href="">DataTables</a>
                     </li>
                 </ol>
-            </nav>
+            </nav> --}}
         </div>
     </div>
 </div>
@@ -32,7 +32,7 @@
     <!-- Dynamic Table Full -->
     <div class="block">
         <div class="block-header" >
-            <h3 class="block-title"> Users<small></small></h3>
+            {{-- <h3 class="block-title"> Users<small></small></h3> --}}
         </div>
         <div class="block-content block-content-full">
             <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
@@ -88,10 +88,10 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#edit-modal{{ $users->id }}">
+                                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#edit-modal{{ $users->id }}">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delete-modal{{ $users->id }}" >
+                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#delete-modal{{ $users->id }}" >
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
@@ -104,7 +104,7 @@
                 <form action="{{ route('admin.edit_users') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-primary">
+                        <div class="block-header bg-success">
                             <h3 class="block-title">
                                 <i class="fa fa-pencil-alt mr-1"></i> Edit User
                             </h3>
@@ -136,8 +136,8 @@
 
                         </div>
                         <div class="block-content block-content-full text-right border-top">
-                            <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">
+                            <button type="button" class="btn btn-sm btn-outline-success mr-2" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-sm btn-success">
                                 <i class="fa fa-pencil-alt mr-1"></i> Edit
                             </button>
                         </div>
@@ -154,7 +154,7 @@
                 <form action="{{ route('admin.delete_users') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-primary">
+                        <div class="block-header bg-danger">
                             <h3 class="block-title">
                                 <i class="fa fa-trash mr-1"></i> Delete User
                             </h3>
@@ -170,8 +170,8 @@
                         <input class="form-control" type="hidden" id="message-id" name="id" value="{{ $users->id }}">
 
                         <div class="block-content block-content-full text-right border-top">
-                            <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">
+                            <button type="button" class="btn btn-sm btn-outline-dangerr mr-2" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-sm btn-danger">
                                 <i class="fa fa-trash mr-1"></i> Delete
                             </button>
                         </div>

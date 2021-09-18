@@ -16,14 +16,14 @@
             <h1 class="flex-sm-fill h3 my-2">
                 All Posts
             </h1>
-            <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
+            {{-- <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
                     <li class="breadcrumb-item">Tables</li>
                     <li class="breadcrumb-item" aria-current="page">
                         <a class="link-fx" href="">All Posts</a>
                     </li>
                 </ol>
-            </nav>
+            </nav> --}}
         </div>
     </div>
 </div>
@@ -34,10 +34,9 @@
     <!-- Dynamic Table Full -->
     <div class="block">
         <div class="block-header" >
-            <h3 class="block-title">Posts</h3>
+            {{-- <h3 class="block-title">Posts</h3> --}}
         </div>
         <div class="block-content block-content-full">
-            <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
             <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                 <thead>
                     <tr>
@@ -91,13 +90,13 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#view-modal{{ $post->id }}">
+                                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#view-modal{{ $post->id }}">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#edit-modal{{ $post->id }}">
+                                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#edit-modal{{ $post->id }}">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delete-modal{{ $post->id }}" >
+                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#delete-modal{{ $post->id }}" >
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
@@ -108,7 +107,7 @@
             <div class="modal-content">
 
                     <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-primary">
+                        <div class="block-header bg-success">
                             <h3 class="block-title">
                                 <i class="fa fa-eye mr-1"></i> View Post
                             </h3>
@@ -173,7 +172,7 @@
                 <form action="{{ route('admin.edit_posts') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-primary">
+                        <div class="block-header bg-success">
                             <h3 class="block-title">
                                 <i class="fa fa-pencil-alt mr-1"></i> Edit Post
                             </h3>
@@ -229,8 +228,8 @@
 
                         </div>
                         <div class="block-content block-content-full text-right border-top">
-                            <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">
+                            <button type="button" class="btn btn-sm btn-outline-success mr-2" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-sm btn-success">
                                 <i class="fa fa-pencil-alt mr-1"></i> Edit
                             </button>
                         </div>
@@ -247,9 +246,9 @@
                 {{-- <form action="{{ route('admin.delete_posts') }}" method="POST" enctype="multipart/form-data"> --}}
                     {{-- @csrf --}}
                     <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-primary">
+                        <div class="block-header bg-danger">
                             <h3 class="block-title">
-                                <i class="fa fa-trash mr-1"></i> Delete User
+                                <i class="fa fa-trash mr-1"></i> Delete Post
                             </h3>
                             {{-- @php
                                 dd($post->id);
@@ -268,8 +267,8 @@
                         <input class="form-control" type="hidden" id="message-id" name="id" value="">
 
                         <div class="block-content block-content-full text-right border-top">
-                            <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
-                            <a href="{{ url('admin/delete_posts/'.$post->id) }}"><button type="button" class="btn btn-sm btn-primary"><i class="fa fa-trash mr-1"></i> Delete</button></a>
+                            <button type="button" class="btn btn-sm btn-outline-danger mr-2" data-dismiss="modal">Cancel</button>
+                            <a href="{{ url('admin/delete_posts/'.$post->id) }}"><button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash mr-1"></i> Delete</button></a>
                         </div>
                     </div>
                 {{-- </form> --}}

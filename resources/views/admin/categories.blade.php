@@ -14,15 +14,20 @@
                 Categories <small class="d-block d-sm-inline-block mt-2 mt-sm-0 font-size-base font-w400 text-muted">
                 </small>
             </h1>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#add-modal">
+                    <i class="fa fa-fw fa-plus"></i>
+                </button>
+            </div>
 
-            <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
+            {{-- <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                 <ol class="breadcrumb breadcrumb-alt">
                     <li class="breadcrumb-item">Tables</li>
                     <li class="breadcrumb-item" aria-current="page">
                         <a class="link-fx" href="">Categories</a>
                     </li>
                 </ol>
-            </nav>
+            </nav> --}}
         </div>
     </div>
 </div>
@@ -33,13 +38,9 @@
     <!-- Dynamic Table Full -->
     <div class="block">
         <div class="block-header" >
-            <h3 class="block-title">Categories </h3>
+            {{-- <h3 class="block-title">Categories </h3> --}}
             {{-- <small class="d-block d-sm-inline-block mt-2 mt-sm-0 font-size-base font-w400 text-muted"> --}}
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#add-modal">
-                        <i class="fa fa-fw fa-plus"></i>
-                    </button>
-                </div>
+
             {{-- </small> --}}
         </div>
         <div class="block-content block-content-full">
@@ -80,10 +81,10 @@
                         </td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#edit-modal{{ $cat->id }}">
+                                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#edit-modal{{ $cat->id }}">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#delete-modal{{ $cat->id }}" >
+                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#delete-modal{{ $cat->id }}" >
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
@@ -96,7 +97,7 @@
                 <form action="{{ route('admin.edit_cat') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-primary">
+                        <div class="block-header bg-success">
                             <h3 class="block-title">
                                 <i class="fa fa-pencil-alt mr-1"></i> Edit Category
                             </h3>
@@ -135,8 +136,8 @@
 
                         </div>
                         <div class="block-content block-content-full text-right border-top">
-                            <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">
+                            <button type="button" class="btn btn-sm btn-ouline-success mr-2" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-sm btn-success">
                                 <i class="fa fa-pencil-alt mr-1"></i> Edit
                             </button>
                         </div>
@@ -147,13 +148,13 @@
     </div>
     <!-- END Edit Modal -->
     <!-- Delete Modal -->
-    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal fade" id="delete-modal{{ $cat->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
                 <form action="{{ route('admin.delete_users') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-primary">
+                        <div class="block-header bg-danger">
                             <h3 class="block-title">
                                 <i class="fa fa-trash mr-1"></i> Delete Category
                             </h3>
@@ -169,8 +170,8 @@
                         <input class="form-control" type="hidden" id="message-id" name="id" value="">
 
                         <div class="block-content block-content-full text-right border-top">
-                            <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">
+                            <button type="button" class="btn btn-sm btn-ouline-danger mr-2" data-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-sm btn-danger">
                                 <i class="fa fa-trash mr-1"></i> Delete
                             </button>
                         </div>
@@ -209,7 +210,7 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="" name="name" placeholder="Category Names">
+                                <input class="form-control" type="text" id="message-email" value="" name="name" placeholder="Category Name">
                             </div>
                             <div class="form-group">
                                 <label>Status</label>

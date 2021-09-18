@@ -28,7 +28,7 @@
 <div class="content container">
     <div class="block">
         <div class="block-header">
-            <h3 class="block-title"> MINI HEADER </h3>
+            {{-- <h3 class="block-title"> MINI HEADER </h3> --}}
         </div>
         <div class="block-content block-content-full">
             <form action="be_forms_elements.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                        <button type="button" class="btn btn-primary" data-toggle="click-ripple">Submit</button>
+                        <button type="button" class="btn btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
                     </div>
                     <div class="col-lg-2">
@@ -132,7 +132,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="click-ripple">Submit</button>
+                            <button type="button" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
                     </div>
                     <div class="col-lg-4 col-xl-4 vl">
@@ -197,7 +197,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="click-ripple">Submit</button>
+                            <button type="button" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
                     </div>
                     <div class="col-lg-4 col-xl-4 vl">
@@ -262,7 +262,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-sm btn-primary" data-toggle="click-ripple">Submit</button>
+                            <button type="button" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
                     </div>
                 </div>
