@@ -237,9 +237,8 @@
   </div>
 
 @php
-
-
-            $endpoint = "https://newsapi.org/v2/top-headlines";
+            try {
+                $endpoint = "https://newsapi.org/v2/top-headlines";
             $client = new \GuzzleHttp\Client();
             $apiKey = getenv('NEWS_API_KEY');
             $source = "us";
@@ -251,6 +250,15 @@
 
             $statusCode = $response->getStatusCode();
             $top_headlines = json_decode($response->getBody(), true);
+            // dd($top_headlines);
+            }
+            catch (\Throwable $th) {
+             $top_headlines['articles'][0]['title'] = "No Internet Connection";
+             $top_headlines['articles'][0]['url'] = "javascript:void(0)";
+
+            }
+
+
 @endphp
 
   <div class=" mt-0">
