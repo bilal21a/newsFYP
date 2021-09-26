@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashBoardController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\SettingController;
 
 /*
@@ -137,7 +138,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/general_setting', [SettingController::class, 'general_setting'])->name('general_setting');
     Route::get('/nav_setting', [DashBoardController::class, 'nav_setting'])->name('nav_setting');
     Route::get('/mini_header_setting', [DashBoardController::class, 'mini_header_setting'])->name('mini_header_setting');
-    Route::get('/notification', [DashBoardController::class, 'notification'])->name('notification');
 
 
     Route::get('/system_setting', [SettingController::class, 'system_setting'])->name('system_setting');
@@ -147,6 +147,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/front_logo_setting', [SettingController::class, 'front_logo_setting'])->name('front_logo_setting');
     Route::post('/admin_logo_setting', [SettingController::class, 'admin_logo_setting'])->name('admin_logo_setting');
 
+    //----for notification
+    Route::get('/notification', [NotificationController::class, 'notification'])->name('notification');
+    Route::get('/mark_unread_post/{post_id}', [NotificationController::class, 'mark_unread_post'])->name('mark_unread_post');
+    Route::get('/remove_unread_post/{post_id}', [NotificationController::class, 'remove_unread_post'])->name('remove_unread_post');
+    Route::get('/remove_all_unread_post/{post_id}/{user_id}', [NotificationController::class, 'remove_all_unread_post'])->name('remove_all_unread_post');
 
+    Route::get('/mark_unread_comment/{id}', [NotificationController::class, 'mark_unread_comment'])->name('mark_unread_comment');
+    Route::get('/remove_unread_comment/{id}', [NotificationController::class, 'remove_unread_comment'])->name('remove_unread_comment');
+    Route::get('/remove_all_unread_comment/{id}/{user_id}', [NotificationController::class, 'remove_all_unread_comment'])->name('remove_all_unread_comment');
+
+    Route::get('/mark_unread_user/{id}', [NotificationController::class, 'mark_unread_user'])->name('mark_unread_user');
+    Route::get('/remove_unread_user/{id}', [NotificationController::class, 'remove_unread_user'])->name('remove_unread_user');
+    //----end notification
 
 });

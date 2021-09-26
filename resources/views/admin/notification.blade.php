@@ -30,24 +30,38 @@
         <div class="d-flex justify-content-center row">
             <div class="col-md-8 bg-white">
             <div class="bg-white p-2">
-                {{-- <h2 class="d-flex flex-column justify-content-start ml-2">Notifications</h2> --}}
                     <!-- repaeat text -->
+                @php
+                    // dd($comments);
+                @endphp
+
+                @if ($posts||$comments||$users!=null)
+
+
                 <div class="d-flex flex-column comment-section lh">
                         <div class="bg-white p-2">
+                            {{-- posts unread notify 1 --}}
+                            @foreach ($posts as $post)
+                            @if ($post->notify==1)
                             <div class="row vl">
                                 <div class="col-md-10 col-sm-8">
                                     <div class="row">
                                         <div class="col-md-2 col-sm-3">
-                                            <img class="rounded-circle" src="https://dw3i9sxi97owk.cloudfront.net/homepage/user_stories/santamaria/santamaria-avatar_96x96.webp" width="60">
+
+                                            @if ($post->profile_pic==null)
+                                            <img class="rounded-circle" src="{{asset('default.png')}}" width="50">
+                                             @else
+                                            <img class="rounded-circle" src="{{asset('img/profile_image/'. $post->profile_pic)}}" width="50">
+                                             @endif
                                         </div>
                                         <div class="col-md-10 col-sm-9">
                                             <a href="">
                                                 <div class="d-flex flex-row user-info">
-                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block font-weight-bold name text-primary">Manii Posted a New Post</span></div>
+                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block font-weight-bold name text-primary">{{ $post->name }} Posted a New Post</span></div>
                                                 </div>
                                                 <div class="mt-2">
-                                                    <p class="comment-text"> <b> Title Will Be Shown Here! </b></p>
-                                                    <p class="comment-text"> <b> 11 Hours Ago </b></p>
+                                                    <p class="comment-text"> <b> {{ $post->title }} </b></p>
+                                                    <p class="comment-text"> <b> {{ date('F d, Y', strtotime($post->created_at)) }} </b></p>
                                                 </div>
                                             </a>
                                         </div>
@@ -59,29 +73,130 @@
                                             <i class="fa fa-ellipsis-h text-dark"></i>
                                         </button>
                                         <div class="dropdown-menu font-size-sm" aria-labelledby="dropdown-default-light">
-                                            <a class="dropdown-item" href="javascript:void(0)">Mark as Read</a>
-                                            <a class="dropdown-item" href="javascript:void(0)">Remove Notification</a>
+                                            <a class="dropdown-item" href="{{ route('admin.mark_unread_post',$post->post_id) }}">Mark as Read</a>
+                                            <a class="dropdown-item" href="{{ route('admin.remove_unread_post',$post->post_id) }}">Remove Notification</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="javascript:void(0)">Remove all Notification from Manii</a>
+                                            <a class="dropdown-item" href="{{ url('admin/remove_all_unread_post/'.$post->post_id.'/'.$post->user_id) }}">Remove all Notification from {{ $post->name }}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <hr>
+                            @endif
+                            @endforeach
+
+
+                            {{-- comments unread notify 1 --}}
+                            @foreach ($comments as $comment)
+                            @if ($comment->notify==1)
+                            <div class="row vl">
+                                <div class="col-md-10 col-sm-8">
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-3">
+
+                                            @if ($comment->profile_pic==null)
+                                            <img class="rounded-circle" src="{{asset('default.png')}}" width="50">
+                                             @else
+                                            <img class="rounded-circle" src="{{asset('img/profile_image/'. $comment->profile_pic)}}" width="50">
+                                             @endif
+                                        </div>
+                                        <div class="col-md-10 col-sm-9">
+                                            <a href="">
+                                                <div class="d-flex flex-row user-info">
+                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block font-weight-bold name text-primary">{{ $comment->name }} Commented on {{ $comment->post_title }}</span></div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <p class="comment-text"> <b> "{{ $comment->comment }}" </b></p>
+                                                    <p class="comment-text"> <b> {{ date('F d, Y', strtotime($comment->created_at)) }} </b></p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-4">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-sm btn-light circle" id="dropdown-default-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-h text-dark"></i>
+                                        </button>
+                                        <div class="dropdown-menu font-size-sm" aria-labelledby="dropdown-default-light">
+                                            <a class="dropdown-item" href="{{ route('admin.mark_unread_comment',$comment->id) }}">Mark as Read</a>
+                                            <a class="dropdown-item" href="{{ route('admin.remove_unread_comment',$comment->id) }}">Remove Notification</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ url('admin/remove_all_unread_comment/'.$comment->id.'/'.$comment->user_id) }}">Remove all Notification from {{ $comment->name }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            @endif
+                            @endforeach
+
+                            {{-- users unread notify 1 --}}
+                            @foreach ($users as $user)
+                            @if ($user->notify==1)
+                            <div class="row vl">
+                                <div class="col-md-10 col-sm-8">
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-3">
+
+                                            @if ($user->profile_pic==null)
+                                            <img class="rounded-circle" src="{{asset('default.png')}}" width="50">
+                                             @else
+                                            <img class="rounded-circle" src="{{asset('img/profile_image/'. $user->profile_pic)}}" width="50">
+                                             @endif
+                                        </div>
+                                        <div class="col-md-10 col-sm-9">
+                                            <a href="">
+                                                <div class="d-flex flex-row user-info">
+                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block font-weight-bold name text-primary">{{ $user->name }} joined World News</span></div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    {{-- <p class="comment-text"> <b> {{ $user->title }} </b></p> --}}
+                                                    <p class="comment-text"> <b> {{ date('F d, Y', strtotime($user->created_at)) }} </b></p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-4">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-sm btn-light circle" id="dropdown-default-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-h text-dark"></i>
+                                        </button>
+                                        <div class="dropdown-menu font-size-sm" aria-labelledby="dropdown-default-light">
+                                            <a class="dropdown-item" href="{{ route('admin.mark_unread_user',$user->id) }}">Mark as Read</a>
+                                            <a class="dropdown-item" href="{{ route('admin.remove_unread_user',$user->id) }}">Remove Notification</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            @endif
+                            @endforeach
+
+
+                            {{-- -------------------------------read section=----------------- --}}
+                            {{-- posts read notify 0 --}}
+                            @foreach ($posts as $post)
+                            @if ($post->notify==0)
                             <div class="row">
                                 <div class="col-md-10 col-sm-8">
                                     <div class="row">
                                         <div class="col-md-2 col-sm-3">
-                                            <img class="rounded-circle" src="https://dw3i9sxi97owk.cloudfront.net/homepage/user_stories/santamaria/santamaria-avatar_96x96.webp" width="60">
+                                            @if ($post->profile_pic==null)
+                                            <img class="rounded-circle" src="{{asset('default.png')}}" width="50">
+                                             @else
+                                            <img class="rounded-circle" src="{{asset('img/profile_image/'. $post->profile_pic)}}" width="50">
+                                             @endif
                                         </div>
                                         <div class="col-md-10 col-sm-9">
                                             <a href="">
                                                 <div class="d-flex flex-row user-info">
-                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block name text-info">Manii Posted a New Post</span></div>
+                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block name text-info">{{ $post->name }} Posted a New Post</span></div>
                                                 </div>
                                                 <div class="mt-2">
-                                                    <p class="comment-text">  Title Will Be Shown Here! </p>
-                                                    <p class="comment-text"> 11 Hours Ago </p>
+                                                    <p class="comment-text"> <b> {{ $post->title }} </b></p>
+                                                    <p class="comment-text"> <b> {{ date('F d, Y', strtotime($post->created_at)) }} </b></p>
                                                 </div>
                                             </a>
                                         </div>
@@ -93,20 +208,105 @@
                                             <i class="fa fa-ellipsis-h text-dark"></i>
                                         </button>
                                         <div class="dropdown-menu font-size-sm" aria-labelledby="dropdown-default-light">
-                                            <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                                            <a class="dropdown-item" href="javascript:void(0)">Another action</a>
+                                            <a class="dropdown-item" href="{{ route('admin.remove_unread_post',$post->post_id) }}">Remove Notification</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
+                                            <a class="dropdown-item" href="{{ url('admin/remove_all_unread_post/'.$post->post_id.'/'.$post->user_id) }}">Remove all Notification from {{ $post->name }}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <hr>
+                            @endif
+                            @endforeach
+
+                            {{-- comments read notify 0 --}}
+                            @foreach ($comments as $comment)
+                            @if ($comment->notify==0)
+                            <div class="row">
+                                <div class="col-md-10 col-sm-8">
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-3">
+                                            @if ($comment->profile_pic==null)
+                                            <img class="rounded-circle" src="{{asset('default.png')}}" width="50">
+                                             @else
+                                            <img class="rounded-circle" src="{{asset('img/profile_image/'. $comment->profile_pic)}}" width="50">
+                                             @endif                                        </div>
+                                        <div class="col-md-10 col-sm-9">
+                                            <a href="">
+                                                <div class="d-flex flex-row user-info">
+                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block name text-info">{{ $comment->name }} Posted a New Post</span></div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <p class="comment-text"> <b> "{{ $comment->comment }}" </b></p>
+                                                    <p class="comment-text"> <b> {{ date('F d, Y', strtotime($comment->created_at)) }} </b></p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-4">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-sm btn-light circle" id="dropdown-default-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-h text-dark"></i>
+                                        </button>
+                                        <div class="dropdown-menu font-size-sm" aria-labelledby="dropdown-default-light">
+                                            <a class="dropdown-item" href="{{ route('admin.remove_unread_comment',$comment->id) }}">Remove Notification</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ url('admin/remove_all_unread_comment/'.$comment->id.'/'.$comment->user_id) }}">Remove all Notification from {{ $comment->name }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            @endif
+                            @endforeach
+
+                            {{-- users read notify 0 --}}
+                            @foreach ($users as $user)
+                            @if ($user->notify==0)
+                            <div class="row">
+                                <div class="col-md-10 col-sm-8">
+                                    <div class="row">
+                                        <div class="col-md-2 col-sm-3">
+                                            @if ($user->profile_pic==null)
+                                            <img class="rounded-circle" src="{{asset('default.png')}}" width="50">
+                                             @else
+                                            <img class="rounded-circle" src="{{asset('img/profile_image/'. $user->profile_pic)}}" width="50">
+                                             @endif                                        </div>
+                                        <div class="col-md-10 col-sm-9">
+                                            <a href="">
+                                                <div class="d-flex flex-row user-info">
+                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block name text-info">{{ $user->name }} Posted a New Post</span></div>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <p class="comment-text"> <b> {{ date('F d, Y', strtotime($user->created_at)) }} </b></p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-sm-4">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-sm btn-light circle" id="dropdown-default-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-h text-dark"></i>
+                                        </button>
+                                        <div class="dropdown-menu font-size-sm" aria-labelledby="dropdown-default-light">
+                                            <a class="dropdown-item" href="{{ route('admin.remove_unread_user',$user->id) }}">Remove Notification</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            @endif
+                            @endforeach
                         </div>
                 <!-- end repeat -->
 
             </div>
+            @else
             <div class="d-flex flex-column justify-content-center" style="text-align: center;"><span class="d-block font-weight-bold ">You Don't Have Posted Any News Yet!</span></div>
+            @endif
+
         </div>
     </div>
 </div>

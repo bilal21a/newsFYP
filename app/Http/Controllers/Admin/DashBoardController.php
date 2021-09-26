@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -263,10 +264,6 @@ class DashBoardController extends Controller
     public function nav_setting()
     {
         return view('admin.navbar');
-    }
-    public function notification()
-    {
-        return view('admin.notification');
     }
 
     public function mini_header_setting()
