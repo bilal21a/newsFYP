@@ -67,9 +67,7 @@
                     <div class="footer-widget">
                         <h3 class="title">Newsletter</h3>
                         <div class="newsletter">
-                            <p>
-                                An email newsletter is a recurring email sent to subscribed contacts containing curated informational content from news articles to resources and tips. The goal is to provide ongoing value while surfacing important industry- or niche-related topics.
-                            </p>
+                            <p>Subscribe to our newsletter & keep up with all the latest events.</p>
                             <form>
                                 <div class="row">
                                     <div class="col-md-8">
