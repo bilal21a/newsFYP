@@ -1,6 +1,9 @@
 <nav class="nv">
     <div class="wrapper">
-      <div class="logo logo1"><a href="#">WORLD NEWS</a></div>
+        @php
+            $logo = App\Setting::first();
+        @endphp
+      <div class="logo logo1"><a href="#">{{ $logo->front_logo }}</a></div>
       <input type="radio" name="slider" id="menu-btn">
       <input type="radio" name="slider" id="close-btn">
       <ul class="nav-links">
