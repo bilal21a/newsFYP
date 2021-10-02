@@ -64,14 +64,14 @@ class NotificationController extends Controller
     // -----------------comment-------------------
     public function mark_unread_comment($id)
     {
-        Comment::find($id)->update([
+        Comment::where('id',$id)->update([
             'notify' => 0,
         ]);
         return redirect()->back();
     }
     public function remove_unread_comment($id)
     {
-        Comment::find($id)->update([
+        Comment::where('id',$id)->update([
             'notify' => null,
         ]);
         return redirect()->back();
@@ -87,14 +87,14 @@ class NotificationController extends Controller
 // ------------------user-------------------
     public function mark_unread_user($id)
     {
-        User::find($id)->update([
+        User::where('id',$id)->update([
             'notify' => 0,
         ]);
         return redirect()->back();
     }
     public function remove_unread_user($id)
     {
-        User::find($id)->update([
+        User::where('id',$id)->update([
             'notify' => null,
         ]);
         return redirect()->back();

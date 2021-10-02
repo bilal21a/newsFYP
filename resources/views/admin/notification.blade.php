@@ -35,7 +35,7 @@
                     // dd($comments);
                 @endphp
 
-                @if ($posts||$comments||$users!=null)
+                {{-- @if ($posts||$comments||$users!=null) --}}
 
 
                 <div class="d-flex flex-column comment-section lh">
@@ -234,7 +234,7 @@
                                         <div class="col-md-10 col-sm-9">
                                             <a href="">
                                                 <div class="d-flex flex-row user-info">
-                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block name text-info">{{ $comment->name }} Posted a New Post</span></div>
+                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block name text-info">{{ $comment->name }} Commented on {{ $comment->post_title }}</span></div>
                                                 </div>
                                                 <div class="mt-2">
                                                     <p class="comment-text"> <b> "{{ $comment->comment }}" </b></p>
@@ -276,7 +276,7 @@
                                         <div class="col-md-10 col-sm-9">
                                             <a href="">
                                                 <div class="d-flex flex-row user-info">
-                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block name text-info">{{ $user->name }} Posted a New Post</span></div>
+                                                    <div class="d-flex flex-column justify-content-start mt-2"><span class="d-block name text-info">{{ $user->name }} joined World News</span></div>
                                                 </div>
                                                 <div class="mt-2">
                                                     <p class="comment-text"> <b> {{ date('F d, Y', strtotime($user->created_at)) }} </b></p>
@@ -303,9 +303,9 @@
                 <!-- end repeat -->
 
             </div>
-            @else
+            {{-- @else --}}
             <div class="d-flex flex-column justify-content-center" style="text-align: center;"><span class="d-block font-weight-bold ">You Don't Have Posted Any News Yet!</span></div>
-            @endif
+            {{-- @endif --}}
 
         </div>
     </div>
