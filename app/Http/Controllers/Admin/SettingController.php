@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\MiniHeader;
 use App\Setting;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+
 
 class SettingController extends Controller
 {
@@ -69,6 +72,43 @@ class SettingController extends Controller
         Setting::find(1)->update([
             'admin_logo' =>$adminImage,
         ]);
+        return redirect()->back();
+    }
+
+    public function miniheader_setting(Request $request)
+    {
+        $source_name = $request->source_name;
+        $source_api_name = $request->source_api_name;
+        $order = $request->order;
+        $icon = $request->icon;
+
+        $request->validate([
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $imageExtension = $request->icon->extension();
+        $imageName="image_".uniqid(rand(), true).".".$imageExtension;
+        $request->icon->move(public_path('img/miniheader_img/'), $imageName);
+
+        // miniheader_img img
+        $image = Image::make(public_path('img/miniheader_img/' . $imageName))->fit(35, 15);
+        $image->save();
+
+        $setting = new MiniHeader();
+        $setting->source_name = $source_name;
+        $setting->source_api_name = $source_api_name;
+        $setting->order = $order;
+        $setting->icon=$imageName;
+        $setting->save();
+
+        return redirect()->back();
+
+    }
+
+    public function delete_source(Request $request)
+    {
+        $id=$request->id;
+        MiniHeader::find($id)->delete();
         return redirect()->back();
     }
 

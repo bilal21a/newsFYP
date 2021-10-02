@@ -147,6 +147,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/front_logo_setting', [SettingController::class, 'front_logo_setting'])->name('front_logo_setting');
     Route::post('/admin_logo_setting', [SettingController::class, 'admin_logo_setting'])->name('admin_logo_setting');
 
+    Route::post('/miniheader_setting', [SettingController::class, 'miniheader_setting'])->name('miniheader_setting');
+    Route::post('/delete_source', [SettingController::class, 'delete_source'])->name('delete_source');
+
     //----for notification
     Route::get('/notification', [NotificationController::class, 'notification'])->name('notification');
     Route::get('/mark_unread_post/{post_id}', [NotificationController::class, 'mark_unread_post'])->name('mark_unread_post');

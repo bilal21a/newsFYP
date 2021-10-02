@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\MiniHeader;
 use App\Post;
 use App\User;
 use Carbon\Carbon;
@@ -268,6 +269,7 @@ class DashBoardController extends Controller
 
     public function mini_header_setting()
     {
-        return view('admin.miniheader');
+        $mini=MiniHeader::get();
+        return view('admin.miniheader',compact('mini'));
     }
 }

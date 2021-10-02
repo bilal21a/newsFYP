@@ -31,22 +31,23 @@
             {{-- <h3 class="block-title"> MINI HEADER </h3> --}}
         </div>
         <div class="block-content block-content-full">
-            <form action="be_forms_elements.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
+            <form action="{{ route('admin.miniheader_setting') }}" method="POST" enctype="multipart/form-data" >
+               @csrf
                 <div class="row push">
                     <div class="col-lg-2">
                     </div>
                     <div class="col-lg-8 col-xl-8">
                         <div class="form-group">
                             <label for="example-text-input">Source Name</label>
-                            <input type="text" class="form-control" id="example-text-input" name="example-text-input" placeholder="">
+                            <input type="text" class="form-control" id="example-text-input" name="source_name" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="example-text-input">Source API Name</label>
-                            <input type="text" class="form-control" id="example-text-input" name="example-text-input" placeholder="">
+                            <input type="text" class="form-control" id="example-text-input" name="source_api_name" placeholder="">
                         </div>
                         <div class="form-group">
                             <label for="example-text-input">Order</label>
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="order">
                                 <option value="0">Please select</option>
                                 <option value="1"> 1</option>
                                 <option value="2"> 2</option>
@@ -61,12 +62,12 @@
                         <div class="form-group">
                             <div class="custom-file">
                                 <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="example-file-input-custom">
+                                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="icon">
                                 <label class="custom-file-label" for="example-file-input-custom">Choose icon</label>
                             </div>
                         </div>
                         <div class="form-group">
-                        <button type="button" class="btn btn-success" data-toggle="click-ripple">Submit</button>
+                        <button type="submit" class="btn btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
                     </div>
                     <div class="col-lg-2">
@@ -93,6 +94,8 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach ($mini as $header)
+
                 <tr>
                     <td class="text-center">
                         {{-- @if ($users->profile_pic)
@@ -103,13 +106,13 @@
 
                     </td>
                     <td class="font-w600 font-size-sm">
-                        <a href="be_pages_generic_blank.html">BBC</a>
+                        <a href="be_pages_generic_blank.html">{{ $header->source_name }}</a>
                     </td>
                     <td class="d-none d-sm-table-cell font-size-sm">
-                       BBC Api Name
+                       {{ $header->source_api_name }}
                     </td>
                     <td>
-                        <em class="text-muted font-size-sm">4</em>
+                        <em class="text-muted font-size-sm">{{ $header->order }}</em>
                     </td>
                     <td class="text-center">
                         <div class="btn-group">
@@ -120,11 +123,12 @@
                         </div>
                     </td>
                 </tr>
+
                     <!-- Delete Modal -->
     <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.delete_source') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-primary">
@@ -140,7 +144,7 @@
                         <div class="block-content">
                             <p>Do you want to delete...</p>
                         </div>
-                        <input class="form-control" type="hidden" id="message-id" name="id" value="">
+                        <input class="form-control" type="hidden" id="message-id" name="id" value="{{ $header->id }}">
 
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-link mr-2" data-dismiss="modal">Cancel</button>
@@ -154,6 +158,8 @@
         </div>
     </div>
     <!-- END Delte Modal -->
+    @endforeach
+
             </tbody>
         </table>
     </div>
