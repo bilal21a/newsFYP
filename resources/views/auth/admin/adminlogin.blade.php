@@ -1,5 +1,6 @@
-@extends('index')
-@section('css')
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <link href="{{asset('css/login.css')}} "rel="stylesheet">
     <link rel="stylesheet" type="text/css" href={{ asset('css/util.css') }}>
 	<link rel="stylesheet" type="text/css" href={{ asset('css/main.css') }}>
@@ -12,11 +13,9 @@
 	<link rel="stylesheet" type="text/css" href={{ asset('vendor/daterangepicker/daterangepicker.css') }}>
 	<link rel="stylesheet" type="text/css" href={{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}>
 	<link rel="stylesheet" type="text/css" href={{ asset('fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}>
+</head>
 
-@endsection
-
-
-@section('content')
+<body>
 <div class="limiter">
     <div class="container-login100" style="background-image: url({{ URL::asset('images/bg-01.jpg') }})
     /* {{ asset('images/bg-01.jpg') }};"> */
@@ -47,9 +46,7 @@
     </div>
 </div>
 <div id="dropDownSelect1"></div>
-@endsection
 
-@section('js')
         <script src="{{asset('js/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
         <script src="{{asset('js/js/pages/op_auth_signin.min.js')}}"></script>
         <script src={{ asset('vendor/jquery/jquery-3.2.1.min.js') }}></script>
@@ -61,4 +58,5 @@
         <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}"></script>
         <script src={{ asset('vendor/countdowntime/countdowntime.js') }}></script>
         <script src="{{ asset('js/main.js') }}"></script>
-@endsection
+</body>
+</html>

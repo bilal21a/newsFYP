@@ -3,6 +3,7 @@
     <head>
         <meta name="csrf-token" content="{{ csrf_token() }}" />
 
+        {{-- <title>abc</title> --}}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
         <link href="{{asset('css/oneui.min.css')}} "rel="stylesheet">
         <link href="{{asset('css/style.css')}} "rel="stylesheet">

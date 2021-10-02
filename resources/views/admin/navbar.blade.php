@@ -25,43 +25,7 @@
 <!-- END Hero -->
 
 {{-- Page Content --}}
-<div class="content container">
-    <div class="block">
-        <div class="block-header">
-            {{-- <h3 class="block-title"> MINI HEADER </h3> --}}
-        </div>
-        <div class="block-content block-content-full">
-            <form action="be_forms_elements.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
-                <div class="row push">
-                    <div class="col-lg-2">
-                    </div>
-                    <div class="col-lg-8 col-xl-8">
-                        <div class="form-group">
-                            <label for="example-text-input">Source Name</label>
-                            <input type="text" class="form-control" id="example-text-input" name="example-text-input" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="example-text-input">Source API Name</label>
-                            <input type="text" class="form-control" id="example-text-input" name="example-text-input" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-file">
-                                <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
-                                <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="example-file-input-custom">
-                                <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                        <button type="button" class="btn btn-success" data-toggle="click-ripple">Submit</button>
-                        </div>
-                    </div>
-                    <div class="col-lg-2">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 <div class="content container">
     <div class="block">
         <div class="block-header">

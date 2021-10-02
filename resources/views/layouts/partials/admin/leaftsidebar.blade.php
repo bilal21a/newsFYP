@@ -3,10 +3,14 @@
     <!-- Side Header -->
     <div class="content-header bg-white-5">
         <!-- Logo -->
+        @php
+            $logo = App\Setting::first();
+        @endphp
         <a class="font-w600 text-dual" href="index.html">
             <i class="fa fa-circle-notch text-primary"></i>
             <span class="smini-hide">
-                <span class="font-w700 font-size-h5">ne</span> <span class="font-w400">4.0</span>
+                <img src="{{ $logo->admin_logo }}" alt="">
+                {{-- <span class="font-w700 font-size-h5">{{ $logo->admin_logo }}</span> <span class="font-w400"></span> --}}
             </span>
         </a>
         <!-- END Logo -->
