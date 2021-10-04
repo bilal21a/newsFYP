@@ -36,6 +36,8 @@ class SettingController extends Controller
         $imageExtension = $request->favicon->extension();
         $faviconImage="favicon.".$imageExtension;
         $request->favicon->move(public_path('img/system_image/'), $faviconImage);
+        $image = Image::make(public_path('img/system_image/' . $faviconImage))->fit(32,32);
+        $image->save();
         Setting::find(1)->update([
             'favicon' =>$faviconImage,
         ]);
@@ -53,6 +55,8 @@ class SettingController extends Controller
         $imageExtension = $request->front_logo->extension();
         $frontImage="front_logo.".$imageExtension;
         $request->front_logo->move(public_path('img/system_image/'), $frontImage);
+        $image = Image::make(public_path('img/system_image/' . $frontImage))->fit(220, 43);
+        $image->save();
         Setting::find(1)->update([
             'front_logo' =>$frontImage,
         ]);
@@ -69,6 +73,8 @@ class SettingController extends Controller
         $imageExtension = $request->admin_logo->extension();
         $adminImage="admin_logo.".$imageExtension;
         $request->admin_logo->move(public_path('img/system_image/'), $adminImage);
+        $image = Image::make(public_path('img/system_image/' . $adminImage))->fit(220, 43);
+        $image->save();
         Setting::find(1)->update([
             'admin_logo' =>$adminImage,
         ]);
@@ -91,7 +97,7 @@ class SettingController extends Controller
         $request->icon->move(public_path('img/miniheader_img/'), $imageName);
 
         // miniheader_img img
-        $image = Image::make(public_path('img/miniheader_img/' . $imageName))->fit(35, 15);
+        $image = Image::make(public_path('img/miniheader_img/' . $imageName))->resize(40, 15);
         $image->save();
 
         $setting = new MiniHeader();

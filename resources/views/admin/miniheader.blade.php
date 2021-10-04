@@ -61,7 +61,6 @@
                         </div>
                         <div class="form-group">
                             <div class="custom-file">
-                                <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
                                 <input type="file" class="custom-file-input" data-toggle="custom-file-input" id="example-file-input-custom" name="icon">
                                 <label class="custom-file-label" for="example-file-input-custom">Choose icon</label>
                             </div>
@@ -101,7 +100,7 @@
                         {{-- @if ($users->profile_pic)
                         <img class="img-avatar img-avatar48" src="{{ asset ('img/profile_image/'.$users->profile_pic) }}" alt="">
                         @else --}}
-                        <img class="img-avatar img-avatar48" src="{{ asset ('media/avatars/avatar7.jpg') }}" alt="">
+                        <img class="img-avatar48" src="{{ asset ('img/miniheader_img/'. $header->icon) }}" alt="" style="background-color: black">
                         {{-- @endif --}}
 
                     </td>

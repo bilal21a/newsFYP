@@ -3,7 +3,9 @@
         @php
             $logo = App\Setting::first();
         @endphp
-      <div class="logo logo1"><a href="#">{{ $logo->front_logo }}</a></div>
+        {{-- <img src="{{ asset('img/system_image/front_logo.jpg') }}" alt=""> --}}
+        <div class="logo logo1"><a href="#">
+        <img src="{{ asset('img/system_image/front_logo.jpg') }}" alt=""></a></div>
       <input type="radio" name="slider" id="menu-btn">
       <input type="radio" name="slider" id="close-btn">
       <ul class="nav-links">
@@ -193,8 +195,17 @@
   </nav>
   <!-- header end -->
   <div class="scrollmenu">
+      @php
+          $sources= App\MiniHeader::get();
+      @endphp
+        @foreach ($sources as $source)
 
-    <a href="{{ url('api_source/bbc-news') }}">BBC News
+        <a href="{{ url('api_source/'. $source->source_api_name) }}">{{ $source->source_name }}
+            <img class="" src="{{ asset('img/miniheader_img/'. $source->icon) }}" alt="" style="width:37px; height:14px;">
+        </a>
+      @endforeach
+
+    {{-- <a href="{{ url('api_source/bbc-news') }}">BBC News
         <img class="" src="{{ asset('img/bbc.png') }}" alt="" style="width:37px; height:14px;">
       </a>
       <a href="{{ url('api_source/cnn') }}">CNN
@@ -217,7 +228,7 @@
       </a>
       <a href="{{ url('api_source/nbc-news') }}">NBC News
         <img class="sm-logo-work" src="{{ asset('img/nbc.png') }}" alt="" style="width:23px; height:13px;">
-      </a>
+      </a> --}}
 
 
     <div class="sea">

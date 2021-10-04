@@ -2,10 +2,15 @@
 <html lang="en">
     <head>
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        @php
-            $name= App\Setting::first();
-        @endphp
-        <title>{{ $name->system_name }}</title>
+        @yield('title')
+
+         <!-- Icons -->
+        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+        <link rel="shortcut icon" href={{ asset('img/system_image/favicon.jpg') }}>
+        <link rel="icon" type="image/png" sizes="192x192" href={{ asset('img/system_image/favicon.jpg') }}>
+        <link rel="apple-touch-icon" sizes="180x180" href={{ asset('img/system_image/favicon.jpg') }}>
+        <!-- END Icons -->
+
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
         <link href="{{asset('css/oneui.min.css')}} "rel="stylesheet">
         <link href="{{asset('css/style.css')}} "rel="stylesheet">

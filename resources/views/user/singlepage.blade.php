@@ -1,4 +1,10 @@
 @extends('index')
+@section('title')
+@php
+$name= App\Setting::first();
+@endphp
+<title>{{ $name->system_name }} - {{ $post->title }}</title>
+@endsection
 @section('css')
 
 <link href="{{asset('css/single.css')}} "rel="stylesheet">

@@ -52,7 +52,6 @@
                            </span>
                            <div class="options-overlay bg-primary-dark-op">
                               <div class="options-overlay-content">
-                                 <h3 class="h4 text-white mb-2">Favicon</h3>
                                  <a class="btn btn-sm btn-light" href="javascript:void(0)" id="favicon_id">
                                  <i class="fa fa-fw fa-pencil-alt text-success mr-1"></i> Edit
                                  </a>
@@ -88,7 +87,6 @@
                            </span>
                            <div class="options-overlay bg-primary-dark-op">
                               <div class="options-overlay-content">
-                                 <h3 class="h4 text-white mb-2">Logo</h3>
                                  <a class="btn btn-sm btn-light" href="javascript:void(0)" id="front_logo_edit">
                                  <i class="fa fa-fw fa-pencil-alt text-success mr-1"></i> Edit
                                  </a>
@@ -124,7 +122,6 @@
                            </span>
                            <div class="options-overlay bg-primary-dark-op">
                               <div class="options-overlay-content">
-                                 <h3 class="h4 text-white mb-2">Admin Logo</h3>
                                  <a class="btn btn-sm btn-light" href="javascript:void(0)" id="admin_logo_edit">
                                  <i class="fa fa-fw fa-pencil-alt text-success mr-1"></i> Edit
                                  </a>
