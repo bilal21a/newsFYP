@@ -273,12 +273,6 @@ class DashBoardController extends Controller
         return view('admin.userapproval', $this->data);
     }
 
-
-    public function nav_setting()
-    {
-        return view('admin.navbar');
-    }
-
     public function mini_header_setting()
     {
         $mini=MiniHeader::get();

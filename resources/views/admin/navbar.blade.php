@@ -11,21 +11,16 @@
             <h1 class="flex-sm-fill h3 my-2">
                 NavBar Settings <small class="d-block d-sm-inline-block mt-2 mt-sm-0 font-size-base font-w400 text-muted"></small>
             </h1>
-            {{-- <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-alt">
-                    <li class="breadcrumb-item">Tables</li>
-                    <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href="">DataTables</a>
-                    </li>
-                </ol>
-            </nav> --}}
+
         </div>
     </div>
 </div>
 <!-- END Hero -->
 
 {{-- Page Content --}}
-
+@php
+    $all_cat=App\Category::get();
+@endphp
 <div class="content container">
     <div class="block">
         <div class="block-header">
@@ -35,217 +30,40 @@
                 <div class="row push">
                     {{-- ----------section 1------------- --}}
 
+                    @for ($j = 1; $j < 4; $j++)
                     <div class="col-lg-4 col-xl-4">
-                        <form method="post" action="{{ route('admin.main_header1') }}" id="" enctype="multipart/form-data">
+                        @for ($i = 1; $i < 5; $i++)
+                        @php
+                            // dd(${"sec1_" . $i});
+                        @endphp
+                        <form method="post" action="{{ route('admin.main_header'.$j.'_'.$i) }}" id="" enctype="multipart/form-data">
                             @csrf
-                        <input type="hidden" value="1" name="section">
+                        <input type="hidden" value="{{ $i }}" name="order">
+                        <input type="hidden" value="{{ $j }}" name="section">
+                        @if(isset(${"sec".$j."_".$i}[0]))
+                                    <input type="hidden" value="{{ ${"sec".$j."_".$i}[0]->id }}" name="old">
+                        @endif
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section1_1">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
+                            <select class="custom-select" id="section{{ $j }}_{{ $i }}" name="cat_id">
+                                <option value="0" selected disabled>Please select</option>
+                                @foreach($all_cat as $cat)
+                                    @if(isset(${"sec".$j."_".$i}[0]))
+                                    <option value="{{ $cat->id }}" {{ $cat->id == ${"sec".$j."_".$i}[0]->id ? 'selected' : '' }}>{{ $cat->name }}</option>
+                                    @else
+                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                    @endif
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section1_2">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section1_3">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section1_4">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
+                            <button type="submit" class="btn btn-sm btn-success" id="section{{ $j }}_{{ $i }}_btn" data-toggle="click-ripple" style="display: none">Submit</button>
                         </div>
                         </form>
+                        @endfor
                     </div>
-                    {{-- ----------section 2------------- --}}
+                    @endfor
 
-                    <div class="col-lg-4 col-xl-4">
-                        <form method="post" action="{{ route('admin.main_header2') }}" id="upload_form" enctype="multipart/form-data">
-                            @csrf
-                        <input type="hidden" value="2" name="section">
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section2_1">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section2_2">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section2_3">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section2_4">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
-                        </div>
-                        </form>
-                    </div>
-                    {{-- ----------section 3------------- --}}
 
-                    <div class="col-lg-4 col-xl-4">
-                        <form method="post" action="{{ route('admin.main_header3') }}" id="upload_form" enctype="multipart/form-data">
-                            @csrf
-                        <input type="hidden" value="3" name="section">
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section3_1">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section3_2">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section3_3">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="section3_4">
-                                <option value="0">Please select</option>
-                                <option value="1">Option #1</option>
-                                <option value="2">Option #2</option>
-                                <option value="3">Option #3</option>
-                                <option value="4">Option #4</option>
-                                <option value="5">Option #5</option>
-                                <option value="6">Option #6</option>
-                                <option value="7">Option #7</option>
-                                <option value="8">Option #8</option>
-                                <option value="9">Option #9</option>
-                                <option value="10">Option #10</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
-                        </div>
-                        </form>
-                    </div>
 
                 </div>
         </div>
@@ -256,6 +74,23 @@
 @endsection
 
 @section('js')
+<script>
+    $( document ).ready(function() {
+  console.log("hi");
+
+  for (let j = 1; j < 4; j++) {
+    for (let i = 1; i < 5; i++) {
+
+        $( "#section"+j+"_"+i ).change(function() {
+            $("#section"+j+"_"+i+"_btn").css("display", "block");
+        });
+    }
+
+  }
+
+});
+
+</script>
 @endsection
 
 @section('internal_css')

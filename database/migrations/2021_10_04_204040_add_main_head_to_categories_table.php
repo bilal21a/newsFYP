@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMainHeadersTable extends Migration
+class AddMainHeadToCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateMainHeadersTable extends Migration
      */
     public function up()
     {
-        Schema::create('main_headers', function (Blueprint $table) {
-            $table->id();
-            $table->string('cat_name')->nullable();
+        Schema::table('categories', function (Blueprint $table) {
             $table->integer('section')->nullable();
             $table->integer('order')->nullable();
-            $table->timestamps();
         });
     }
 
@@ -29,6 +26,8 @@ class CreateMainHeadersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('main_headers');
+        Schema::table('categories', function (Blueprint $table) {
+            //
+        });
     }
 }

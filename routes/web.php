@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\NavbarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,12 +137,22 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/roles', [DashBoardController::class, 'roles'])->name('roles');
     Route::get('/general_setting', [SettingController::class, 'general_setting'])->name('general_setting');
-    Route::get('/nav_setting', [DashBoardController::class, 'nav_setting'])->name('nav_setting');
     Route::get('/mini_header_setting', [DashBoardController::class, 'mini_header_setting'])->name('mini_header_setting');
 
-    Route::post('/main_header1', [SettingController::class, 'main_header1'])->name('main_header1');
-    Route::post('/main_header2', [SettingController::class, 'main_header2'])->name('main_header2');
-    Route::post('/main_header3', [SettingController::class, 'main_header3'])->name('main_header3');
+    // navbar
+    Route::get('/nav_setting', [NavbarController::class, 'nav_setting'])->name('nav_setting');
+    Route::post('/main_header1_1', [NavbarController::class, 'main_header1_1'])->name('main_header1_1');
+    Route::post('/main_header1_2', [NavbarController::class, 'main_header1_2'])->name('main_header1_2');
+    Route::post('/main_header1_3', [NavbarController::class, 'main_header1_3'])->name('main_header1_3');
+    Route::post('/main_header1_4', [NavbarController::class, 'main_header1_4'])->name('main_header1_4');
+    Route::post('/main_header2_1', [NavbarController::class, 'main_header2_1'])->name('main_header2_1');
+    Route::post('/main_header2_2', [NavbarController::class, 'main_header2_2'])->name('main_header2_2');
+    Route::post('/main_header2_3', [NavbarController::class, 'main_header2_3'])->name('main_header2_3');
+    Route::post('/main_header2_4', [NavbarController::class, 'main_header2_4'])->name('main_header2_4');
+    Route::post('/main_header3_1', [NavbarController::class, 'main_header3_1'])->name('main_header3_1');
+    Route::post('/main_header3_2', [NavbarController::class, 'main_header3_2'])->name('main_header3_2');
+    Route::post('/main_header3_3', [NavbarController::class, 'main_header3_3'])->name('main_header3_3');
+    Route::post('/main_header3_4', [NavbarController::class, 'main_header3_4'])->name('main_header3_4');
 
 
 
