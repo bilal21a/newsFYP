@@ -15,6 +15,9 @@ class CreateMainHeadersTable extends Migration
     {
         Schema::create('main_headers', function (Blueprint $table) {
             $table->id();
+            $table->string('cat_name')->nullable();
+            $table->integer('section')->nullable();
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }

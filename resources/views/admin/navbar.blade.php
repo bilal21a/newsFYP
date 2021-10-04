@@ -32,11 +32,11 @@
             <h3 class="block-title"> MAIN HEADER <small class="ml-2"> CATEGORIES</small> </h3>
         </div>
         <div class="block-content block-content-full">
-            <form action="be_forms_elements.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
+            <form action="{{route('admin.main_header1')}}" method="POST" enctype="multipart/form-data" >
                 <div class="row push">
                     <div class="col-lg-4 col-xl-4">
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
