@@ -46,27 +46,31 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($posts as $post)
                         <tr>
                             <td class="d-none d-sm-table-cell text- ">
-                                <p> Title of the news Title of the news Title of the news Title of the news Title of the news Title of the news Title of the newsTitle of the news</p>
+                                <p> {{ $post->title }}</p>
                             </td>
+                            @php
+                                // dd($post);
+                            @endphp
                             <td>
-                                <span class="font-w600">Thomas Riley</span>
+                                <span class="font-w600">{{ App\User::find($post->created_by)->name }}</span>
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 <span class="font-size-sm text-muted">today</span>
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept">
+                                    <button type="submit" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept" name="accept">
                                         <i class="fa fa-fw fa-check"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject">
+                                    <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject" name="reject">
                                         <i class="fa fa-fw fa-times"></i>
                                     </button>
                             </td>
                         </tr>
-
+                        @endforeach
                     </tbody>
                 </table>
             </div>

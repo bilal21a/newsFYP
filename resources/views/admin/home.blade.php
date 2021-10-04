@@ -85,41 +85,52 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach ($user_all as $users)
                         <tr>
                             <td class="d-none d-sm-table-cell text-center">
-                                <img class="img-avatar img-avatar32" src="{{ asset('default.png') }}" alt="">
+                                @if ($users->profile_pic)
+                            <img class="img-avatar img-avatar48" src="{{ asset ('img/profile_image/'.$users->profile_pic) }}" alt="">
+                            @else
+                            <img class="img-avatar img-avatar48" src="{{ asset ('media/avatars/avatar7.jpg') }}" alt="">
+                            @endif
+                                {{-- <img class="img-avatar img-avatar32" src="{{ asset('default.png') }}" alt=""> --}}
                             </td>
                             <td class="font-w600">
-                                Thomas Riley                                </td>
+                                {{ $users->name }}
+                            </td>
                             <td>
                                 <span class="font-w600 text-warning">Pending..</span>
                             </td>
                             <td class="d-none d-sm-table-cell text-center">
-                                <a class="link-fx font-w600 badge badge-info" href="javascript:void(0)">Reader</a>
-
-                                {{-- <span class="badge badge-info">Reader</span> --}}
+                                @php
+                                    $my_role=$users->getRoleNames();
+                                @endphp
+                                @if (isset($my_role[0]))
+                                    <a class="link-fx font-w600 badge badge-info" href="javascript:void(0)">{{  $my_role[0]  }}</a>
+                                @else
+                                    <a class="link-fx font-w600 badge badge-danger" href="javascript:void(0)">Guest</a>
+                                @endif
                             </td>
 
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept">
+                                    <button type="submit" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept" name="accept">
                                         <i class="fa fa-fw fa-check"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject">
+                                    <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject" name="reject">
                                         <i class="fa fa-fw fa-times"></i>
                                     </button>
                                 </div>
-                                {{-- <a href="javascript:void(0)" data-toggle="tooltip" data-placement="left" title="Accept">
-                                    <i class="fa fa-fw fa-pencil-alt"></i>
-                                </a>
-                                <a href="javascript:void(0)" data-toggle="tooltip" data-placement="left" title="Reject">
-                                    <i class="fa fa-fw fa-pencil-alt"></i>
-                                </a> --}}
                             </td>
                         </tr>
-
+                        @endforeach
                     </tbody>
                 </table>
+                <div class="p-2 border-top">
+                    <a class="btn btn-sm btn-light btn-block text-center" href="{{ route('admin.user_approval') }}">
+                        <i class="fa fa-fw fa-arrow-down mr-1"></i> Load More..
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -140,39 +151,47 @@
                 <table class="table table-striped table-hover table-borderless table-vcenter font-size-sm mb-0">
                     <thead class="thead-dark">
                         <tr class="text-uppercase">
-                            <th class="d-none d-sm-table-cell font-w700 text-center" >Title</th>
+                            <th class="d-none d-sm-table-cell font-w700 text-left" >Title</th>
                             <th class="font-w700">Author</th>
                             <th class="d-none d-sm-table-cell font-w700">Date</th>
                             <th class="font-w700 text-center" style="width: 60px;">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($post_all as $post)
+
                         <tr>
                             <td class="d-none d-sm-table-cell text- ">
                                 <div class="mt-2 font-w600 three_dots s-ttl"  data-toggle="popover" data-html="true" data-placement="top" data-content="<div class='text-center'>
-                                    <p>UI/UX Design Androiod UI/UX Design Androiod UI/UX Design Androiod ​</p></div">
-                                    Title of the news Title of the news Title of the news Title of the news Title of the news
+                                    <p>{{ $post->title }} ​</p></div">
+                                    {{ $post->title }}
                                 </div>
                             </td>
                             <td>
-                                <span class="font-w600">Thomas Riley</span>
+                                <span class="font-w600">{{ App\User::find($post->created_by)['name'] }}</span>
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 <span class="font-size-sm text-muted">today</span>
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept">
+                                    <button type="submit" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept" name="accept">
                                         <i class="fa fa-fw fa-check"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject">
+                                    <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject" name="reject">
                                         <i class="fa fa-fw fa-times"></i>
                                     </button>
                             </td>
                         </tr>
+                        @endforeach
 
                     </tbody>
                 </table>
+                <div class="p-2 border-top">
+                        <a class="btn btn-sm btn-light btn-block text-center" href="{{ route('admin.post_approval') }}">
+                            <i class="fa fa-fw fa-arrow-down mr-1"></i> Load More..
+                        </a>
+                    </div>
             </div>
         </div>
     </div>

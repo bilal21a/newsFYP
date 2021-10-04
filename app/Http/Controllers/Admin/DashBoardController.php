@@ -31,7 +31,13 @@ class DashBoardController extends Controller
         $today_news= Post::whereDate('created_at', Carbon::today())->where('status',1)->get();
         $today_news= count($today_news);
 
+        $user_all= User::paginate(5);
+        $post_all= Post::where('status',1)->where('created_by','!=',null)->latest()->paginate(5);
+
+
         $this->data['user'] = $user;
+        $this->data['user_all'] = $user_all;
+        $this->data['post_all'] = $post_all;
         $this->data['categories'] = $categories;
         $this->data['total_news'] = $total_news;
         $this->data['today_news'] = $today_news;
@@ -254,11 +260,17 @@ class DashBoardController extends Controller
 
     public function post_approval()
     {
-        return view('admin.postapproval');
+        $posts= Post::where('status',1)->where('created_by','!=',null)->latest()->get();
+        $this->data['posts'] = $posts;
+        return view('admin.postapproval', $this->data);
     }
     public function user_approval()
     {
-        return view('admin.userapproval');
+        $user= User::get();
+        $roles=Role::get();
+        $this->data['user'] = $user;
+        $this->data['roles'] = $roles;
+        return view('admin.userapproval', $this->data);
     }
 
 

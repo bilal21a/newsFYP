@@ -48,39 +48,45 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($user as $users)
                     <tr>
                         <td class="d-none d-sm-table-cell text-center">
-                            <img class="img-avatar img-avatar32" src="{{ asset('default.png') }}" alt="">
+                            @if ($users->profile_pic)
+                            <img class="img-avatar img-avatar48" src="{{ asset ('img/profile_image/'.$users->profile_pic) }}" alt="">
+                            @else
+                            <img class="img-avatar img-avatar48" src="{{ asset ('media/avatars/avatar7.jpg') }}" alt="">
+                            @endif
                         </td>
                         <td class="font-w600">
-                            Thomas Riley                                </td>
+                            {{ $users->name }}
+                        </td>
                         <td>
                             <span class="font-w600 text-warning">Pending..</span>
                         </td>
                         <td class="d-none d-sm-table-cell text-center">
-                            <a class="link-fx font-w600 badge badge-info" href="javascript:void(0)">Reader</a>
-
-                            {{-- <span class="badge badge-info">Reader</span> --}}
+                            @php
+                            $my_role=$users->getRoleNames();
+                        @endphp
+                        @if (isset($my_role[0]))
+                        <a class="link-fx font-w600 badge badge-info" href="javascript:void(0)">{{  $my_role[0]  }}</a>
+                        @else
+                        <a class="link-fx font-w600 badge badge-danger" href="javascript:void(0)">Guest</a>
+                        @endif
                         </td>
 
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept">
+                                <button type="submit" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept" name="accept">
                                     <i class="fa fa-fw fa-check"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject">
+                                <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject" name="reject">
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
-                            {{-- <a href="javascript:void(0)" data-toggle="tooltip" data-placement="left" title="Accept">
-                                <i class="fa fa-fw fa-pencil-alt"></i>
-                            </a>
-                            <a href="javascript:void(0)" data-toggle="tooltip" data-placement="left" title="Reject">
-                                <i class="fa fa-fw fa-pencil-alt"></i>
-                            </a> --}}
+
                         </td>
                     </tr>
-
+                    @endforeach
                 </tbody>
             </table>
         </div>
