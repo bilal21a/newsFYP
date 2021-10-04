@@ -105,9 +105,10 @@
                         </form>
                     </div>
                     {{-- ----------section 2------------- --}}
-                    <form method="post" action="{{ route('admin.main_header2') }}" id="upload_form" enctype="multipart/form-data">
-                    @csrf
+
                     <div class="col-lg-4 col-xl-4">
+                        <form method="post" action="{{ route('admin.main_header2') }}" id="upload_form" enctype="multipart/form-data">
+                            @csrf
                         <input type="hidden" value="2" name="section">
                         <div class="form-group">
                             <select class="custom-select" id="example-select-custom" name="section2_1">
@@ -175,9 +176,10 @@
                         </form>
                     </div>
                     {{-- ----------section 3------------- --}}
-                    <form method="post" action="{{ route('admin.main_header3') }}" id="upload_form" enctype="multipart/form-data">
-                    @csrf
+
                     <div class="col-lg-4 col-xl-4">
+                        <form method="post" action="{{ route('admin.main_header3') }}" id="upload_form" enctype="multipart/form-data">
+                            @csrf
                         <input type="hidden" value="3" name="section">
                         <div class="form-group">
                             <select class="custom-select" id="example-select-custom" name="section3_1">
