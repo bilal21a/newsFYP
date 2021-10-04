@@ -32,11 +32,13 @@
             <h3 class="block-title"> MAIN HEADER <small class="ml-2"> CATEGORIES</small> </h3>
         </div>
         <div class="block-content block-content-full">
-            <form action="{{route('admin.main_header1')}}" method="POST" enctype="multipart/form-data" >
                 <div class="row push">
+                    {{-- ----------section 1------------- --}}
+                    <form method="post" action="{{ route('admin.main_header1') }}" id="upload_form" enctype="multipart/form-data">
+                    @csrf
                     <div class="col-lg-4 col-xl-4">
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="">
+                            <select class="custom-select" id="example-select-custom" name="section1_1">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -51,7 +53,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section1_2">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -66,7 +68,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section1_3">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -81,7 +83,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section1_4">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -96,12 +98,16 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
+                            <button type="submit" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-xl-4 vl">
+                    </form>
+                    {{-- ----------section 2------------- --}}
+                    <form method="post" action="{{ route('admin.main_header2') }}" id="upload_form" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-lg-4 col-xl-4">
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section2_1">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -116,7 +122,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section2_2">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -131,7 +137,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section2_3">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -146,7 +152,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section2_4">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -161,12 +167,16 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
+                            <button type="submit" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-xl-4 vl">
+                    </form>
+                    {{-- ----------section 3------------- --}}
+                    <form method="post" action="{{ route('admin.main_header3') }}" id="upload_form" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-lg-4 col-xl-4">
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section3_1">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -181,7 +191,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section3_2">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -196,7 +206,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section3_3">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -211,7 +221,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom">
+                            <select class="custom-select" id="example-select-custom" name="section3_4">
                                 <option value="0">Please select</option>
                                 <option value="1">Option #1</option>
                                 <option value="2">Option #2</option>
@@ -226,11 +236,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="button" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
+                            <button type="submit" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
                     </div>
+                    </form>
+
                 </div>
-            </form>
         </div>
     </div>
 </div>
