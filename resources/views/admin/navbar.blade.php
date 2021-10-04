@@ -34,9 +34,10 @@
         <div class="block-content block-content-full">
                 <div class="row push">
                     {{-- ----------section 1------------- --}}
-                    <form method="post" action="{{ route('admin.main_header1') }}" id="upload_form" enctype="multipart/form-data">
-                    @csrf
+
                     <div class="col-lg-4 col-xl-4">
+                        <form method="post" action="{{ route('admin.main_header1') }}" id="" enctype="multipart/form-data">
+                            @csrf
                         <div class="form-group">
                             <select class="custom-select" id="example-select-custom" name="section1_1">
                                 <option value="0">Please select</option>
@@ -100,12 +101,12 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
+                        </form>
                     </div>
-                    </form>
                     {{-- ----------section 2------------- --}}
-                    <form method="post" action="{{ route('admin.main_header2') }}" id="upload_form" enctype="multipart/form-data">
-                    @csrf
-                    <div class="col-lg-4 col-xl-4">
+                    <div class="col-lg-4 col-xl-4 vl">
+                        <form method="post" action="{{ route('admin.main_header2') }}" id="" enctype="multipart/form-data">
+                            @csrf
                         <div class="form-group">
                             <select class="custom-select" id="example-select-custom" name="section2_1">
                                 <option value="0">Please select</option>
@@ -169,12 +170,13 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
+                        </form>
                     </div>
-                    </form>
                     {{-- ----------section 3------------- --}}
-                    <form method="post" action="{{ route('admin.main_header3') }}" id="upload_form" enctype="multipart/form-data">
-                    @csrf
-                    <div class="col-lg-4 col-xl-4">
+
+                    <div class="col-lg-4 col-xl-4 vl">
+                        <form method="post" action="{{ route('admin.main_header3') }}" id="" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group">
                             <select class="custom-select" id="example-select-custom" name="section3_1">
                                 <option value="0">Please select</option>
@@ -238,8 +240,8 @@
                         <div class="form-group">
                             <button type="submit" class="btn btn-sm btn-success" data-toggle="click-ripple">Submit</button>
                         </div>
+                        </form>
                     </div>
-                    </form>
 
                 </div>
         </div>

@@ -120,6 +120,7 @@ class SettingController extends Controller
 
     public function main_header1(Request $request)
     {
+        dd($request);
         $id=$request->id;
         MiniHeader::find($id)->delete();
         return redirect()->back();
