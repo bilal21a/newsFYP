@@ -118,4 +118,11 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function main_header1(Request $request)
+    {
+        $id=$request->id;
+        MiniHeader::find($id)->delete();
+        return redirect()->back();
+    }
+
 }

@@ -139,6 +139,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/nav_setting', [DashBoardController::class, 'nav_setting'])->name('nav_setting');
     Route::get('/mini_header_setting', [DashBoardController::class, 'mini_header_setting'])->name('mini_header_setting');
 
+    Route::post('/main_header1', [SettingController::class, 'main_header1'])->name('main_header1');
+    Route::post('/main_header2', [SettingController::class, 'main_header2'])->name('main_header2');
+    Route::post('/main_header3', [SettingController::class, 'main_header3'])->name('main_header3');
+
+
 
     Route::get('/system_setting', [SettingController::class, 'system_setting'])->name('system_setting');
 
