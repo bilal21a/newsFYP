@@ -38,6 +38,7 @@
                     <div class="col-lg-4 col-xl-4">
                         <form method="post" action="{{ route('admin.main_header1') }}" id="" enctype="multipart/form-data">
                             @csrf
+                        <input type="hidden" value="1" name="section">
                         <div class="form-group">
                             <select class="custom-select" id="example-select-custom" name="section1_1">
                                 <option value="0">Please select</option>
@@ -104,9 +105,10 @@
                         </form>
                     </div>
                     {{-- ----------section 2------------- --}}
-                    <div class="col-lg-4 col-xl-4 vl">
-                        <form method="post" action="{{ route('admin.main_header2') }}" id="" enctype="multipart/form-data">
-                            @csrf
+                    <form method="post" action="{{ route('admin.main_header2') }}" id="upload_form" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-lg-4 col-xl-4">
+                        <input type="hidden" value="2" name="section">
                         <div class="form-group">
                             <select class="custom-select" id="example-select-custom" name="section2_1">
                                 <option value="0">Please select</option>
@@ -173,10 +175,10 @@
                         </form>
                     </div>
                     {{-- ----------section 3------------- --}}
-
-                    <div class="col-lg-4 col-xl-4 vl">
-                        <form method="post" action="{{ route('admin.main_header3') }}" id="" enctype="multipart/form-data">
-                        @csrf
+                    <form method="post" action="{{ route('admin.main_header3') }}" id="upload_form" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-lg-4 col-xl-4">
+                        <input type="hidden" value="3" name="section">
                         <div class="form-group">
                             <select class="custom-select" id="example-select-custom" name="section3_1">
                                 <option value="0">Please select</option>
