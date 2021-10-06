@@ -74,7 +74,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         @php
-                                                            $all_roles= Spatie\Permission\Models\Role::get();
+                                                            $all_roles= Spatie\Permission\Models\Role::whereNotIn('name', ['guest'])->get();
                                                         @endphp
                                                         <select class="custom-select" id="" name="role">
                                                             <option value="0">Please select</option>
