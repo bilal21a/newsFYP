@@ -293,6 +293,9 @@ class DashBoardController extends Controller
         User::where('id',$user_id)->update([
             'approved' => 1,
         ]);
+        $user=User::find($user_id);
+        $user->removeRole('guest');
+        $user->assignRole($user->raw_role);
         return redirect()->back();
     }
     public function user_reject($user_id)

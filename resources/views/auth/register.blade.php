@@ -73,6 +73,18 @@
                                                         {{-- <input type="password" class="form-control form-control-lg form-control-alt" id="signup-password-confirm" name="signup-password-confirm" placeholder="Password Confirm"> --}}
                                                     </div>
                                                     <div class="form-group">
+                                                        @php
+                                                            $all_roles= Spatie\Permission\Models\Role::get();
+                                                        @endphp
+                                                        <select class="custom-select" id="" name="role">
+                                                            <option value="0">Please select</option>
+                                                            @foreach ($all_roles as $role)
+                                                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                            @endforeach
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <div class="custom-control custom-checkbox">
                                                             <input type="checkbox" class="custom-control-input" id="signup-terms" name="signup-terms">
                                                             <label class="custom-control-label font-w400" for="signup-terms">I agree to Terms &amp; Conditions</label>
