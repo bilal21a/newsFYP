@@ -158,7 +158,7 @@ class HomeController extends Controller
 
         $status_raw = $request-> submit;
         if ($status_raw=="Publish") {
-            $status=1;
+            $status=2;
         }
         else{
             $status=0;
@@ -199,6 +199,7 @@ class HomeController extends Controller
         $post->list_image = $imageName;
         $post->hot_news = $hot_news;
         $post->status = $status;
+        $post->approved = 0;
         $post->save();
 
         return redirect()->route('home');

@@ -11,14 +11,6 @@
             <h1 class="flex-sm-fill h3 my-2">
                 Pending Posts
             </h1>
-            {{-- <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-alt">
-                    <li class="breadcrumb-item">Tables</li>
-                    <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href="">Pending Posts</a>
-                    </li>
-                </ol>
-            </nav> --}}
         </div>
     </div>
 </div>
@@ -28,7 +20,6 @@
      <div class="col-lg-12">
         <div class="block block-mode-loading-oneui">
             <div class="block-header border-bottom">
-                {{-- <h3 class="block-title">Posts Approval</h3> --}}
                 <div class="block-options">
                     <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
                         <i class="si si-refresh"></i>
@@ -51,9 +42,6 @@
                             <td class="d-none d-sm-table-cell text- ">
                                 <p> {{ $post->title }}</p>
                             </td>
-                            @php
-                                // dd($post);
-                            @endphp
                             <td>
                                 <span class="font-w600">{{ App\User::find($post->created_by)->name }}</span>
                             </td>
@@ -62,12 +50,16 @@
                             </td>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <button type="submit" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept" name="accept">
+                                <a href="{{ url('admin/post_accept/'.$post->id) }}">
+                                    <button type="submit" class="btn btn-sm btn-success">
                                         <i class="fa fa-fw fa-check"></i>
                                     </button>
-                                    <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject" name="reject">
+                                </a>
+                                <a href="{{ url('admin/post_reject/'.$post->id) }}">
+                                    <button type="submit" class="btn btn-sm btn-danger">
                                         <i class="fa fa-fw fa-times"></i>
                                     </button>
+                                </a>
                             </td>
                         </tr>
                         @endforeach

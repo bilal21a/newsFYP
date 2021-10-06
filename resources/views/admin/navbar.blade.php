@@ -28,14 +28,10 @@
         </div>
         <div class="block-content block-content-full">
                 <div class="row push">
-                    {{-- ----------section 1------------- --}}
 
                     @for ($j = 1; $j < 4; $j++)
                     <div class="col-lg-4 col-xl-4">
                         @for ($i = 1; $i < 5; $i++)
-                        @php
-                            // dd(${"sec1_" . $i});
-                        @endphp
                         <form method="post" action="{{ route('admin.main_header'.$j.'_'.$i) }}" id="" enctype="multipart/form-data">
                             @csrf
                         <input type="hidden" value="{{ $i }}" name="order">

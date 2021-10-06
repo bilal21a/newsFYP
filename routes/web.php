@@ -112,8 +112,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/categories', [DashBoardController::class, 'categories'])->name('categories');
     Route::get('/rolespermission', [DashBoardController::class, 'rolespermission'])->name('rolespermission');
     Route::get('/permission', [DashBoardController::class, 'permission'])->name('permission');
+    Route::get('/post_reject/{post_id}', [DashBoardController::class, 'post_reject'])->name('post_reject');
+    Route::get('/post_accept/{post_id}', [DashBoardController::class, 'post_accept'])->name('post_accept');
     Route::get('/post_approval', [DashBoardController::class, 'post_approval'])->name('post_approval');
     Route::get('/user_approval', [DashBoardController::class, 'user_approval'])->name('user_approval');
+    Route::get('/user_accept/{user_id}', [DashBoardController::class, 'user_accept'])->name('user_accept');
+    Route::get('/user_reject/{user_id}', [DashBoardController::class, 'user_reject'])->name('user_reject');
 
 
     Route::post('/edit_users', [DashBoardController::class, 'edit_users'])->name('edit_users');
@@ -153,7 +157,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/main_header3_2', [NavbarController::class, 'main_header3_2'])->name('main_header3_2');
     Route::post('/main_header3_3', [NavbarController::class, 'main_header3_3'])->name('main_header3_3');
     Route::post('/main_header3_4', [NavbarController::class, 'main_header3_4'])->name('main_header3_4');
-
+    //end navbar
 
 
     Route::get('/system_setting', [SettingController::class, 'system_setting'])->name('system_setting');

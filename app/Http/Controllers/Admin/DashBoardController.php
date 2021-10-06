@@ -260,17 +260,47 @@ class DashBoardController extends Controller
 
     public function post_approval()
     {
-        $posts= Post::where('status',1)->where('created_by','!=',null)->latest()->get();
+        $posts= Post::where('approved',0)->where('created_by','!=',null)->latest()->get();
         $this->data['posts'] = $posts;
         return view('admin.postapproval', $this->data);
     }
+    public function post_accept($post_id)
+    {
+        Post::where('id',$post_id)->update([
+            'status' =>1,
+            'approved' => 1,
+        ]);
+        return redirect()->back();
+    }
+    public function post_reject($post_id)
+    {
+        Post::where('id',$post_id)->update([
+            'status' =>0,
+            'approved' => 2,
+        ]);
+        return redirect()->back();
+    }
     public function user_approval()
     {
-        $user= User::get();
+        $user= User::where('approved',0)->get();
         $roles=Role::get();
         $this->data['user'] = $user;
         $this->data['roles'] = $roles;
         return view('admin.userapproval', $this->data);
+    }
+    public function user_accept($user_id)
+    {
+        User::where('id',$user_id)->update([
+            'approved' => 1,
+        ]);
+        return redirect()->back();
+    }
+    public function user_reject($user_id)
+    {
+        User::where('id',$user_id)->update([
+            'approved' => 2,
+        ]);
+        return redirect()->back();
     }
 
     public function mini_header_setting()

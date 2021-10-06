@@ -76,12 +76,16 @@
 
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="submit" class="btn btn-sm btn-success"  data-toggle="modal" data-target="" title="Accept" name="accept">
-                                    <i class="fa fa-fw fa-check"></i>
-                                </button>
-                                <button type="submit" class="btn btn-sm btn-danger" data-toggle="modal" data-target="" title="Reject" name="reject">
-                                    <i class="fa fa-fw fa-times"></i>
-                                </button>
+                                <a href="{{ url('admin/user_accept/'.$users->id) }}">
+                                    <button type="submit" class="btn btn-sm btn-success">
+                                        <i class="fa fa-fw fa-check"></i>
+                                    </button>
+                                </a>
+                                <a href="{{ url('admin/user_reject/'.$users->id) }}">
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="fa fa-fw fa-times"></i>
+                                    </button>
+                                </a>
                             </div>
 
                         </td>
