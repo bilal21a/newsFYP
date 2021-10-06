@@ -269,6 +269,7 @@ class DashBoardController extends Controller
         Post::where('id',$post_id)->update([
             'status' =>1,
             'approved' => 1,
+            'created_at' => Carbon::now(),
         ]);
         return redirect()->back();
     }
