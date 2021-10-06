@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="block-content">
-						<h2 class="pt-3">Saved Posts</h2>
+						<h2 class="pt-3">Waiting for Approval</h2>
 					</div>
                 @if (!$posts->isEmpty())
 
@@ -54,7 +54,7 @@
                                             <form method="post" action="{{ route('saved_posts_publish') }}" id="upload_form" enctype="multipart/form-data">
                                                 @csrf
                                             <input type="hidden" name="id" id="" value="{{ $single->id }}">
-                                                <button type="submit" class="btn btn btn-success" ><i class="fa fa-paper-plane mr-1"></i> Publish</button>
+                                                <button type="submit" class="btn btn btn-danger" disabled> Pending..</button>
                                             </form>
                                         </div>
                                     </div>
@@ -176,9 +176,8 @@
 					</div>
 
 					@endforeach
-                    @else
-                     <div class="d-flex flex-column justify-content-center" style="text-align: center; margin-bottom: 20px;"><span class="d-block font-weight-bold ">You Don't Have Any Saved Post Yet!</span></div>
-
+                @else
+                    <div class="d-flex flex-column justify-content-center" style="text-align: center; margin-bottom: 20px;"><span class="d-block font-weight-bold ">You Don't Have Any Post For Approval Yet!</span></div>
                 @endif
 				</div>
 			</div>

@@ -31,8 +31,8 @@ class DashBoardController extends Controller
         $today_news= Post::whereDate('created_at', Carbon::today())->where('status',1)->get();
         $today_news= count($today_news);
 
-        $user_all= User::paginate(5);
-        $post_all= Post::where('status',1)->where('created_by','!=',null)->latest()->paginate(5);
+        $user_all= User::where('approved',0)->paginate(5);
+        $post_all= Post::where('approved',0)->where('status',1)->where('created_by','!=',null)->latest()->paginate(5);
 
 
         $this->data['user'] = $user;
@@ -85,7 +85,7 @@ class DashBoardController extends Controller
 
     public function posts()
     {
-        $posts= Post::latest()->get();
+        $posts= Post::where('created_by', '!=', null)->latest()->get();
         $this->data['posts'] = $posts;
         // dd($this->data);
 

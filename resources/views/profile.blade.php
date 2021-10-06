@@ -89,8 +89,8 @@
             </div>
             <div class="row">
                 <div class="section2 col-sm-6 col-md-6 col-lg-6">
-                    <h4>Your Recent Posts</h4>
-                    <a class="link-fx text-success" href="{{ url('publish_posts/') }}">View All Posts</a>
+                    <h4>Your Published Posts</h4>
+                    <a class="link-fx text-success" href="{{ url('publish_posts/') }}">View Published Posts</a>
                 </div>
 
                 <div class="section2 col-sm-6 col-md-6 col-lg-6">
@@ -98,9 +98,15 @@
                     <a class="link-fx text-success" href="{{ url('your_comments/') }}">View All Comments</a>
                 </div>
             </div>
-            <div class="section2">
-                <h4>Your Saved Posts</h4>
-                <a class="link-fx text-success" href="{{ url('saved_posts/') }}">View All Saved Posts</a>
+            <div class="row">
+                <div class="section2 col-sm-6 col-md-6 col-lg-6">
+                    <h4>Your Saved Posts</h4>
+                    <a class="link-fx text-success" href="{{ url('saved_posts/') }}">View All Saved Posts</a>
+                </div>
+                <div class="section2 col-sm-6 col-md-6 col-lg-6">
+                    <h4>Waiting For Approval</h4>
+                    <a class="link-fx text-success" href="{{ url('approval_posts/') }}">View All Approval Posts</a>
+                </div>
             </div>
         </div>
         <!-- Section 2 Start     -->

@@ -6,11 +6,12 @@
         @php
             $logo = App\Setting::first();
         @endphp
-        <a class="font-w600 text-dual" href="index.html">
-            {{-- <i class="fa fa-circle-notch text-primary"></i> --}}
+         <!-- Logo -->
+         <a class="font-w600 text-dual" href="index.html">
+            <i class="fa fa-circle-notch text-primary"></i>
             <span class="smini-hide">
                 <span class="font-w700 font-size-h5">
-                    <img src="{{  asset('img/system_image/admin_logo.jpg')  }}" alt="">
+                    <img  src="{{  asset('img/system_image/admin_logo.jpg')  }}" alt="" style="width: 160px;  margin-left: 6px">
                 </span>
             </span>
         </a>
@@ -54,17 +55,29 @@
                     <span class="nav-main-link-name">Posts</span>
                 </a>
                 <ul class="nav-main-submenu">
+
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="{{ url('admin/posts') }}">
-                            <i class="nav-main-link-icon fa fa-newspaper"></i>
+                        <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                             <span class="nav-main-link-name">All Posts</span>
                         </a>
-                    </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" href="{{ url('admin/post_approval') }}">
-                            <i class="nav-main-link-icon fa fa-file-alt"></i>
-                            <span class="nav-main-link-name">Post Request</span>
-                        </a>
+                        <ul class="nav-main-submenu">
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="{{ url('admin/posts') }}">
+                                    <span class="nav-main-link-name">World News Posts</span>
+                                </a>
+                            </li>
+                            <li class="nav-main-item">
+                                <a class="nav-main-link" href="{{ url('admin/posts/api') }}">
+                                    <span class="nav-main-link-name">API News</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ url('admin/post_approval') }}">
+                                <i class="nav-main-link-icon fa fa-file-alt"></i>
+                                <span class="nav-main-link-name">Post Request</span>
+                            </a>
+                        </li>
                     </li>
                 </ul>
             </li>

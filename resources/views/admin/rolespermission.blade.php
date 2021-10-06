@@ -54,10 +54,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($rp as $role)
+                    @foreach ($rp as $key=>$role)
 
                     <tr>
-                        <td class="text-center font-size-sm">1</td>
+                        <td class="text-center font-size-sm">{{ $key }}</td>
                         <td class="font-w600 font-size-sm">
                             <a href="be_pages_generic_blank.html">{{ $role->name }}</a>
                         </td>
@@ -202,7 +202,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label for="example-text-input" class="main_label">Skills</label>
+                                    <label for="example-text-input" class="main_label">Permissions</label>
                                     <select class="js-select2 form-control " id="add_perm" name="add_perm[]" style="width: 100%;" data-placeholder="Choose Skills" multiple>
                                         @php
                                        $allperms= Spatie\Permission\Models\Permission::get();

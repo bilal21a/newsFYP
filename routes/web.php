@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DashBoardController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\NavbarController;
+use App\Http\Controllers\Admin\ApiPostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,10 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     Route::post('saved_posts_fetch', 'PostController@saved_posts_fetch')->name('saved_posts_fetch');
     Route::post('saved_posts_delete', 'PostController@saved_posts_delete')->name('saved_posts_delete');
     Route::post('saved_posts_publish', 'PostController@saved_posts_publish')->name('saved_posts_publish');
+
+    //waiting for approval
+    Route::get('approval_posts', 'PostController@approval_posts')->name('approval_posts');
+
 
     //comment
     Route::post('/comment/store', 'CommentController@store')->name('comment.add');
@@ -119,6 +124,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/user_accept/{user_id}', [DashBoardController::class, 'user_accept'])->name('user_accept');
     Route::get('/user_reject/{user_id}', [DashBoardController::class, 'user_reject'])->name('user_reject');
 
+    //Api Posts
+    Route::get('/posts/api', [ApiPostsController::class, 'posts_api'])->name('posts_api');
+    //End Api Posts
 
     Route::post('/edit_users', [DashBoardController::class, 'edit_users'])->name('edit_users');
     Route::post('/delete_users', [DashBoardController::class, 'delete_users'])->name('delete_users');

@@ -13,7 +13,7 @@
 
             <div class="bg-white p-2">
                 <h2 class="d-flex flex-column justify-content-start ml-2">Your Comments</h2>
-                @if ($comments!=null)
+                @if (!$comments->isEmpty())
 
 
                     <!-- repaeat text -->

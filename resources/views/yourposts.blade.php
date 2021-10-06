@@ -13,9 +13,9 @@
 
                 <div class="col-md-12">
                     <div class="block-content">
-                    <h2 class="pt-3">Your Posts </h2>
+                    <h2 class="pt-3">Published Posts </h2>
                 </div>
-                @if ($posts!=null)
+                @if (!$posts->isEmpty())
                     @foreach ($posts as $post)
 
 

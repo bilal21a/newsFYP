@@ -14,16 +14,8 @@
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
             <h1 class="flex-sm-fill h3 my-2">
-                World News Posts
+                API Posts
             </h1>
-            {{-- <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-alt">
-                    <li class="breadcrumb-item">Tables</li>
-                    <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href="">All Posts</a>
-                    </li>
-                </ol>
-            </nav> --}}
         </div>
     </div>
 </div>
@@ -43,9 +35,8 @@
                         <th class="text-center" style="width: 100px;">
                             <i class="far fa-image fa-2x"></i>
                         </th>
-                        <th class="d-none d-sm-table-cell" style="width: 30%;">Title</th>
+                        <th class="d-none d-sm-table-cell" style="width: 45%;">Title</th>
                         <th style="width: 15%;">Source</th>
-                        <th style="width: 15%;">Status</th>
                         <th class="d-none d-sm-table-cell" style="width: 15%;">Published At</th>
                         <th class="text-center" style="width: 100px;">Actions</th>
 
@@ -73,13 +64,6 @@
                             <a href="">{{ App\User::find($post->created_by)->name }} </a>
                             @endif
                         </td>
-                        <td class="d-none d-sm-table-cell">
-                            @if ($post->status==1)
-                                <span class="badge badge-success">Active</span>
-                            @else
-                                <span class="badge badge-danger">Inactive</span>
-                            @endif
-                        </td>
                         <td>
                             @php
                                 $var_1= $post->created_at;
@@ -92,9 +76,6 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#view-modal{{ $post->id }}">
                                     <i class="fa fa-fw fa-eye"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#edit-modal{{ $post->id }}">
-                                    <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
                                 <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#delete-modal{{ $post->id }}" >
                                     <i class="fa fa-fw fa-times"></i>
@@ -165,80 +146,6 @@
         </div>
     </div>
     <!-- END View Modal -->
-     <!-- Edit Modal -->
-    <div class="modal fade" id="edit-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-top" role="document">
-            <div class="modal-content">
-                <form action="{{ route('admin.edit_posts') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-success">
-                            <h3 class="block-title">
-                                <i class="fa fa-pencil-alt mr-1"></i> Edit Post
-                            </h3>
-                            <div class="block-options">
-                                <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
-                                    <i class="fa fa-fw fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="block-content">
-                            <div class="block-content font-size-sm container">
-                                <div class="form-group">
-                                    <label for="example-text-input">Title</label>
-                                    <input type="text" class="form-control" id="example-text-input" name="title" placeholder="" value="{{ $post->title }}">
-                                    <input type="hidden" class="form-control" id="example-text-input" name="id" placeholder="" value="{{ $post->id }}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="example-select">Select Category</label>
-                                    <select class="form-control" id="example-select" name="category">
-                                    <?php
-                                        $cat=App\Category::where('status',1)->get()->toArray();
-                                    ?>
-                                    <option value="0" selected hidden>Please select</option>
-                                    @foreach ($cat as $single_cat)
-                                    <option value="{{ $single_cat['id'] }}" {{ $single_cat['id'] == $post->category_id ? 'selected' : '' }}>{{ $single_cat['name'] }}</option>
-                                    @endforeach
-                                </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="example-textarea-input">Short Description</label>
-                                    <textarea class="form-control" id="example-textarea-input" name="short_description" rows="4" placeholder="" >{{ $post->short_description }}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group container">
-                                <label for="summernote">Description</label>
-                                <textarea id="summernote" name="description" style="height: 150px;">{{ $post->description }}</textarea>
-                            </div>
-                            <div class="form-group container">
-                                <label for="example-select">Status</label>
-                                <select class="form-control" id="example-select" name="status">
-                                    <option value="" selected hidden>Please select</option>
-                                    @if ($post->status==1)
-                                        <option value="1" selected>Active</option>
-                                        <option value="0">inactive</option>
-                                    @else
-                                    <option value="1" >Active</option>
-                                    <option value="0" selected>inactive</option>
-                                    @endif
-                                </select>
-                            </div>
-
-
-
-                        </div>
-                        <div class="block-content block-content-full text-right border-top">
-                            <button type="button" class="btn btn-sm btn-outline-success mr-2" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-success">
-                                <i class="fa fa-pencil-alt mr-1"></i> Edit
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- END Edit Modal -->
     <!-- Delete Modal -->
     <div class="modal fade" id="delete-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
