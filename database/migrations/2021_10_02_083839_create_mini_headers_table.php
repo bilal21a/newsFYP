@@ -17,7 +17,7 @@ class CreateMiniHeadersTable extends Migration
             $table->id();
             $table->string('source_name')->nullable();
             $table->string('source_api_name')->nullable();
-            $table->integer('order')->nullable();
+            $table->integer('order')->unique()->nullable();
             $table->string('icon')->nullable();
             $table->timestamps();
         });

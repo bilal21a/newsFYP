@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\MiniHeader;
 use App\Setting;
+use Exception;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -83,6 +84,7 @@ class SettingController extends Controller
 
     public function miniheader_setting(Request $request)
     {
+        try {
         $source_name = $request->source_name;
         $source_api_name = $request->source_api_name;
         $order = $request->order;
@@ -108,6 +110,12 @@ class SettingController extends Controller
         $setting->save();
 
         return redirect()->back();
+        } catch (\Exception $e) {
+            session()->put('message', $e->getMessage());
+            return redirect()->back();
+
+        }
+
 
     }
 

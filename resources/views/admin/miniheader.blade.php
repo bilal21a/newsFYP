@@ -58,6 +58,10 @@
                                 <option value="7"> 7</option>
                                 <option value="8"> 8</option>
                             </select>
+                        @if (Session::get('message'))
+                            <div id="" class="" style="color: red"> Order value already exists</div>
+                        @endif
+
                         </div>
                         <div class="form-group">
                             <div class="custom-file">

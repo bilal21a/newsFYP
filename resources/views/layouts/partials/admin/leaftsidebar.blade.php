@@ -101,6 +101,13 @@
                 </a>
             </li>
 
+            <li class="nav-main-item">
+                <a class="nav-main-link" href="{{ url('admin/user_profile') }}">
+                    <i class="nav-main-link-icon fa fa-user-cog"></i>
+                    <span class="nav-main-link-name">User Profile</span>
+                </a>
+            </li>
+
 
             <li class="nav-main-item">
                 <a class="nav-main-link" href="{{ url('admin/notification') }}">
