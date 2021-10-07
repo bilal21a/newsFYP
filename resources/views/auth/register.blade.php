@@ -76,8 +76,8 @@
                                                         @php
                                                             $all_roles= Spatie\Permission\Models\Role::whereNotIn('name', ['guest'])->get();
                                                         @endphp
-                                                        <select class="custom-select" id="" name="role">
-                                                            <option value="0">Please select</option>
+                                                        <select class="custom-select" id="" name="role" style="height: calc(2.875rem + 2px);background-color: #f5f5f5;border: #f5f5f5;font-size: 1.25rem;line-height: 1.5;color:#6C757D;">
+                                                            <option value="0" hidden selected>Select Role</option>
                                                             @foreach ($all_roles as $role)
                                                                 <option value="{{ $role->id }}">{{ $role->name }}</option>
                                                             @endforeach
