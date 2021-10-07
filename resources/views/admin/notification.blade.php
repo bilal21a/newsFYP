@@ -35,7 +35,7 @@
                     // dd($comments);
                 @endphp
 
-                {{-- @if ($posts||$comments||$users!=null) --}}
+                @if (!$posts->isEmpty()||$comments->isEmpty()||$users->isEmpty())
 
 
                 <div class="d-flex flex-column comment-section lh">
@@ -303,9 +303,9 @@
                 <!-- end repeat -->
 
             </div>
-            {{-- @else --}}
+            @else
             <div class="d-flex flex-column justify-content-center" style="text-align: center;"><span class="d-block font-weight-bold ">You Don't Have Posted Any News Yet!</span></div>
-            {{-- @endif --}}
+            @endif
 
         </div>
     </div>

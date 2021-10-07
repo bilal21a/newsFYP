@@ -108,83 +108,84 @@
             </div>
             <!-- END User Dropdown -->
 
+            @php
+        $posts = Illuminate\Support\Facades\DB::table('posts as p')
+        ->where('p.notify', '!=', null)
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('p.title','p.notify','p.created_at','p.id as post_id','user.profile_pic','user.id as user_id','user.name')
+        ->where('p.status', 1)
+        ->latest()->take(3)->get();
+
+        $comments = Illuminate\Support\Facades\DB::table('comments as c')
+        ->where('c.notify', '!=', null)
+        ->join('users as user', 'c.user_id', '=', 'user.id')
+        ->join('posts as p', 'c.commentable_id', '=', 'p.id')
+        ->select('c.id','c.user_id','c.comment','c.created_at','c.commentable_id','c.notify','user.name','user.profile_pic','p.title as post_title')
+        ->latest()->take(3)->get();
+
+
+        $users = Illuminate\Support\Facades\DB::table('users as u')
+        ->where('u.notify', '!=', null)->latest()->take(3)->get();
+        // dd($posts);
+
+        $count = count($posts) + count($comments) + count($users);
+        // dd($count);
+            @endphp
             <!-- Notifications Dropdown -->
             <div class="dropdown d-inline-block ml-2">
                 <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="si si-bell"></i>
-                    <span class="badge badge-primary badge-pill">6</span>
+                    <span class="badge badge-success badge-pill">{{ $count }}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-notifications-dropdown">
                     <div class="p-2 bg-primary text-center">
                         <h5 class="dropdown-header text-uppercase text-white">Notifications</h5>
                     </div>
                     <ul class="nav-items mb-0">
+                        @foreach ($posts as $post)
+
                         <li>
                             <a class="text-dark media py-2" href="javascript:void(0)">
                                 <div class="mr-2 ml-3">
-                                    <i class="fa fa-fw fa-check-circle text-success"></i>
+                                    <i class="far fa-list-alt text-success"></i>
                                 </div>
                                 <div class="media-body pr-2">
-                                    <div class="font-w600">You have a new follower</div>
-                                    <small class="text-muted">15 min ago</small>
+                                    <div class="font-w600">{{ $post->name }} Posted a New Post</div>
+                                    <small class="text-muted">{{ date('F d, Y', strtotime($post->created_at)) }}</small>
                                 </div>
                             </a>
                         </li>
+                        @endforeach
+
+                        @foreach ($comments as $comment)
+
                         <li>
                             <a class="text-dark media py-2" href="javascript:void(0)">
                                 <div class="mr-2 ml-3">
-                                    <i class="fa fa-fw fa-plus-circle text-info"></i>
+                                    <i class="far fa-comments text-success"></i>
                                 </div>
                                 <div class="media-body pr-2">
-                                    <div class="font-w600">1 new sale, keep it up</div>
+                                    <div class="font-w600">{{ $comment->name }} Commented on the Post</div>
                                     <small class="text-muted">22 min ago</small>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a class="text-dark media py-2" href="javascript:void(0)">
-                                <div class="mr-2 ml-3">
-                                    <i class="fa fa-fw fa-times-circle text-danger"></i>
-                                </div>
-                                <div class="media-body pr-2">
-                                    <div class="font-w600">Update failed, restart server</div>
-                                    <small class="text-muted">26 min ago</small>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-dark media py-2" href="javascript:void(0)">
-                                <div class="mr-2 ml-3">
-                                    <i class="fa fa-fw fa-plus-circle text-info"></i>
-                                </div>
-                                <div class="media-body pr-2">
-                                    <div class="font-w600">2 new sales, keep it up</div>
-                                    <small class="text-muted">33 min ago</small>
-                                </div>
-                            </a>
-                        </li>
+                        @endforeach
+
+                        @foreach ($users as $user)
                         <li>
                             <a class="text-dark media py-2" href="javascript:void(0)">
                                 <div class="mr-2 ml-3">
                                     <i class="fa fa-fw fa-user-plus text-success"></i>
                                 </div>
                                 <div class="media-body pr-2">
-                                    <div class="font-w600">You have a new subscriber</div>
-                                    <small class="text-muted">41 min ago</small>
+                                    <div class="font-w600">{{ $user->name }} joined World News</div>
+                                    <small class="text-muted">{{ date('F d, Y', strtotime($user->created_at)) }}</small>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a class="text-dark media py-2" href="javascript:void(0)">
-                                <div class="mr-2 ml-3">
-                                    <i class="fa fa-fw fa-check-circle text-success"></i>
-                                </div>
-                                <div class="media-body pr-2">
-                                    <div class="font-w600">You have a new follower</div>
-                                    <small class="text-muted">42 min ago</small>
-                                </div>
-                            </a>
-                        </li>
+                        @endforeach
+
                     </ul>
                     <div class="p-2 border-top">
                         <a class="btn btn-sm btn-light btn-block text-center" href="{{ route('admin.notification') }}">

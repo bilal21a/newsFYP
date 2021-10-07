@@ -313,4 +313,8 @@ class DashBoardController extends Controller
         $mini=MiniHeader::get();
         return view('admin.miniheader',compact('mini'));
     }
+    public function user_profile()
+    {
+        return view('admin.userprofile');
+    }
 }

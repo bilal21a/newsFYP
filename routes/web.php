@@ -192,4 +192,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/remove_unread_user/{id}', [NotificationController::class, 'remove_unread_user'])->name('remove_unread_user');
     //----end notification
 
+    //---UserProfile
+    Route::get('/user_profile', [DashBoardController::class, 'user_profile'])->name('user_profile');
+
 });
