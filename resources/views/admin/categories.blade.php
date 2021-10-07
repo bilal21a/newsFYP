@@ -151,7 +151,7 @@
     <div class="modal fade" id="delete-modal{{ $cat->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="{{ route('admin.delete_users') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.delete_cat') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-danger">
@@ -167,7 +167,7 @@
                         <div class="block-content">
                             <p>Do you want to delete...</p>
                         </div>
-                        <input class="form-control" type="hidden" id="message-id" name="id" value="">
+                        <input class="form-control" type="hidden" id="message-id" name="id" value="{{ $cat->id }}">
 
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-ouline-danger mr-2" data-dismiss="modal">Cancel</button>

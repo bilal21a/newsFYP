@@ -138,8 +138,9 @@ class DashBoardController extends Controller
     }
     public function delete_cat(Request $request)
     {
+        // dd($request->id);
         $id= $request->id;
-        Category::find($id)->delete();
+        Category::where('id',$id)->delete();
         return redirect()->back();
     }
     public function add_cat(Request $request)

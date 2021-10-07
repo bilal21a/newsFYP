@@ -105,7 +105,7 @@
                 </div>
                 <div class="section2 col-sm-6 col-md-6 col-lg-6">
                     <h4>Waiting For Approval</h4>
-                    <a class="link-fx text-success" href="{{ url('approval_posts/') }}">View All Approval Posts</a>
+                    <a class="link-fx text-success" href="{{ url('approval_posts/') }}">View All Pending Posts</a>
                 </div>
             </div>
         </div>

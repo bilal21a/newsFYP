@@ -88,7 +88,7 @@
     <div class="modal fade" id="edit-modal{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
-                <form action="{{ route('admin.favicon_setting') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.edit_role') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-success">
