@@ -138,30 +138,43 @@
 
 @endif
 <!-- Drop Down User End -->
+@if ($user=Auth::user())
 <!-- Notifications Dropdown -->
 <div class="dropdown d-inline-block ml-2">
     <button type="button" class="btn btn-work btn-sm" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-shield-alt"></i>
+        @role('guest')
+        <i class="fa fa-shield-alt" style="color: #d06b5b"></i>
+        @else
+        <i class="fa fa-shield-alt" style="color: #46c27a"></i>
+        @endrole
     </button>
     <div class="dropdown-menu dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-user-dropdown">
       <div class="p-2">
-          <h5 class="dropdown-header text-uppercase">ACCOUNT LEVEL (GUEST)</h5>
-          <a class="heightwork dropdown-item d-flex align-items-center " href="be_pages_generic_inbox.html">
+          @if (isset($user->getRoleNames()[0]))
+            <h5 class="dropdown-header text-uppercase">ACCOUNT LEVEL ({{ $user->getRoleNames()[0] }})</h5>
+          @endif
+          @role('guest')
+          <a class="heightwork dropdown-item d-flex align-items-center " href="">
               <span>
                   <i class="fa fa-fw fa-times-circle text-danger mr-2"></i>
               </span>
               <div>Your Account Is Not Approved Yet!</div>
           </a>
-          <a class="heightwork dropdown-item d-flex align-items-center" href="be_pages_generic_inbox.html">
+          @else
+          <a class="heightwork dropdown-item d-flex align-items-center" href="">
             <span>
                 <i class="fa fa-fw fa-check-circle text-success mr-2"></i>
             </span>
             <div>Your Account Is Approved!</div>
         </a>
+        @endrole
       </div>
   </div>
   </div>
   <!-- END Notifications Dropdown -->
+@endif
+
+
       </ul>
 
       <label for="menu-btn" class="stylework menu-btn"><i class="fas fa-bars"></i></label>

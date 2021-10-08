@@ -112,7 +112,7 @@ $name= App\Setting::first();
                                           </div>
                                        </div> --}}
 
-
+                                       @if (Auth::user())
                                        <div class="bg-light p-2">
                                         <form method="post" action="{{ route('comment.add') }}">
                                         @csrf
@@ -133,6 +133,11 @@ $name= App\Setting::first();
                                         </div>
                                         </form>
                                        </div>
+                                       @else
+                                       <br><br>
+                                       <a href="{{ route('login') }}" class="btn btn-danger"> Sign In to Post Comment</a>
+                                       @endif
+
                                     </div>
                                  </div>
                               </div>

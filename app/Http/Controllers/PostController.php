@@ -12,6 +12,13 @@ use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('auth');
+        $this->middleware('auth',['except'=>['by_date','author_name','author_name_api','filter_post','search_post']]);
+    }
+
+
     public function filter_post(Request $request){
         return view('filter');
     }

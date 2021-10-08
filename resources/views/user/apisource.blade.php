@@ -19,13 +19,13 @@
              <div class="block-content pb-3 my_card " style="padding-top: 0">
                 <div class="row round1">
                    <div class="col-sm-12 round" >
-                      <a href=""><img src="{{ $single_api['urlToImage'] }}" alt="" class="round"></a>
+                      <img src="{{ $single_api['urlToImage'] }}" alt="" class="round">
                    </div>
                 </div>
                 <div class="row">
                    <div class="col-sm-12 pt-1" >
                          <h5 class="mt-3 mb-0">{{$single_api['title']}}</h5>
-                         <p class="card-text short_disc mb-1" >{{ substr($single_api['description'],0,100) }} ... <a href="{{ $single_api['url'] }}">Read More</a></p>
+                         <p class="card-text short_disc mb-1" >{{ substr($single_api['description'],0,100) }} ... <a href="{{ $single_api['url'] }}" target="_blank">Read More</a></p>
                          <span class="short_disc"> {{$single_api['author']}}</span>
                          |<span class="short_disc"> {{$date}}</span>
                    </div>

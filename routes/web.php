@@ -25,19 +25,28 @@ use App\Http\Controllers\Admin\ApiPostsController;
 
 
 Route::get('/', 'HomeController@index')->name('home');
-
-Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], function () {
-    Route::get('single_post/{post_id}', 'HomeController@single_post')->name('single_post');
-    Route::get('upload', function () {return view('upload');});
-    Route::post('upload_post', 'HomeController@upload_post')->name('upload_post');
-    Route::get('hot_news', 'CategoryController@hot_news')->name('hot_news');
-    Route::get('latest_news', 'CategoryController@latest_news')->name('latest_news');
-    Route::get('top_stories', 'CategoryController@top_stories')->name('top_stories');
-    Route::get('all_categories', 'CategoryController@all_categories')->name('all_categories');
-    Route::get('categories/{cat_id}', 'CategoryController@show_categories')->name('show_categories');
-
+Route::get('single_post/{post_id}', 'HomeController@single_post')->name('single_post');
+Route::get('hot_news', 'CategoryController@hot_news')->name('hot_news');
+Route::get('latest_news', 'CategoryController@latest_news')->name('latest_news');
+Route::get('top_stories', 'CategoryController@top_stories')->name('top_stories');
+Route::get('all_categories', 'CategoryController@all_categories')->name('all_categories');
+Route::get('categories/{cat_id}', 'CategoryController@show_categories')->name('show_categories');
+    //by date
+    Route::get('by_date/{created_at}', 'PostController@by_date')->name('by_date');
+    //by author name
+    Route::get('author_name/{user_id}', 'PostController@author_name')->name('author_name');
+    Route::get('author_name_api/{name}', 'PostController@author_name_api')->name('author_name_api');
     Route::get('filter_post', 'PostController@filter_post')->name('filter_post');
     Route::get('search_post', 'PostController@search_post')->name('search_post');
+    Route::post('/search', 'HomeController@search')->name('search');
+
+Route::get('api_source/{source}', 'ApiController@api_source')->name('api_source');
+
+
+Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], function () {
+    Route::get('upload', function () {return view('upload');});
+    Route::post('upload_post', 'HomeController@upload_post')->name('upload_post');
+
 
     //profile
     // Route::get('profile', function () {return view('profile');});
@@ -70,12 +79,10 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     // Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
     Route::get('/your_comments', 'CommentController@your_comments')->name('your_comments');
 
-    Route::get('api_source/{source}', 'ApiController@api_source')->name('api_source');
 
     Route::get('testing', 'TestController@testing')->name('testing');
     Route::get('ORM', 'TestController@learnORM')->name('ORM');
 
-    Route::post('/search', 'HomeController@search')->name('search');
 
 
 

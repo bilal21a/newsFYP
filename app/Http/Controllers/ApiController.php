@@ -6,8 +6,14 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('auth');
+        $this->middleware('auth',['except'=>['api_source']]);
+    }
     public function api_source($source)
     {
+
         // dd($source);
             $endpoint = "https://newsapi.org/v2/top-headlines";
             $client = new \GuzzleHttp\Client();

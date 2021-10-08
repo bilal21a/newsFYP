@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('auth');
+        $this->middleware('auth',['except'=>['hot_news','latest_news','top_stories','all_categories','show_categories']]);
+    }
+
     public function show_categories($cat_id)
     {
         $posts_all = DB::table('posts as p')
