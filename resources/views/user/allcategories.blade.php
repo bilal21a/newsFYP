@@ -68,7 +68,7 @@
 
    @endforeach
    @else
-        <p>There is not post for this Category</p>
+        <div><h3>There is not post for this Category</h3></div>
    @endif
 
 </section>
