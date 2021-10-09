@@ -41,7 +41,7 @@
                         <a href="{{ url('author_name/'.$posts->created_by) }}" class="text-dark"><span class="short_disc"><i class="fa fa-user">    {{$userName}}</i></span></a>
                         @endif
                         {{-- <a href="" class="text-dark"><span class="short_disc"> {{ $posts->name }}</span></a>  --}}
-                        | <a href="" class="text-dark"><span class="short_disc"> {{ $date }}</span></a>
+                        | <a href="{{ url('by_date/'.$posts->created_at) }}" class="text-dark"><span class="short_disc"> {{ $date }}</span></a>
                      </div>
                   </div>
                </div>
