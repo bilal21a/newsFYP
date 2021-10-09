@@ -10,7 +10,7 @@
 @section('content')
 
 <section class="block">
-    @if ($allCats->isEmpty())
+    @if (!$allCats->isEmpty())
 
 
     @foreach ($allCats as $allCat)
@@ -68,7 +68,8 @@
 
    @endforeach
    @else
-        <div><h3>There is not post for this Category</h3></div>
+   <div><h5><center>There is no Post for this Category</center></h5></div>
+
    @endif
 
 </section>
