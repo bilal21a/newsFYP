@@ -20,6 +20,8 @@ use App\Http\Controllers\Admin\ApiPostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('admin_Profile', function () {return view('admin.userprofile');});
+
 
 
 
@@ -199,6 +201,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     //----end notification
 
     //---UserProfile
-    Route::get('/user_profile', [DashBoardController::class, 'user_profile'])->name('user_profile');
+    Route::get('/user_profile/{user_id}', [DashBoardController::class, 'user_profile'])->name('user_profile');
 
 });

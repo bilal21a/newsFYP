@@ -313,8 +313,36 @@ class DashBoardController extends Controller
         $mini=MiniHeader::get();
         return view('admin.miniheader',compact('mini'));
     }
-    public function user_profile()
+    public function user_profile($user_id)
     {
-        return view('admin.userprofile');
+        //latest news
+        $news = DB::table('posts as p')
+        ->join('categories as cat', 'p.category_id', '=', 'cat.id')
+        ->join('users as user', 'p.created_by', '=', 'user.id')
+        ->select('cat.name as cat_name','cat.id as cat_id','p.*')
+        ->where('user.id', $user_id)
+        ->where('p.status', 1)
+        ->latest()->get();
+
+
+        //comments
+        $comments = DB::table('comments as c')
+        ->join('users as u', 'c.user_id', '=', 'u.id')
+        ->join('posts as p', 'c.commentable_id', '=', 'p.id')
+        ->select('c.comment','c.created_at','c.commentable_id','u.name','u.profile_pic')
+        ->get()->toArray();
+
+
+        $publish_posts=Post::where('created_by',$user_id)->where('status',1)->get();
+        $saved_posts=Post::where('created_by',$user_id)->where('status',0)->get();
+
+
+        $this->data['news'] = $news;
+        $this->data['comments'] = $comments;
+        $this->data['publish_posts'] = $publish_posts;
+        $this->data['saved_posts'] = $saved_posts;
+
+
+        return view('admin.userprofile',$this->data);
     }
 }
