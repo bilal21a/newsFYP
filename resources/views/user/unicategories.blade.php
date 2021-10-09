@@ -13,7 +13,7 @@
             <h2 class="georgia">{{ $cat_name[0]['name'] }} </h2>
          </div>
          <div class="row">
-             @if ($posts_all->isEmpty())
+             @if (!$posts_all->isEmpty())
 
 
             @foreach ($posts_all as $posts)
