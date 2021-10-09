@@ -173,6 +173,8 @@
                 var date = new Date(response[i].created_at);
                 var main_image='{{asset('img/main_image')}}'+'/'+ response[i].main_image;
                 var single_link='{{ url('single_post') }}'+'/'+ response[i].id;
+                var created_at='{{ url('by_date') }}'+'/'+ response[i].created_at;
+                var created_by='{{ url('author_name') }}'+'/'+ response[i].created_by;
 
 
                 ajaxData.append(`
@@ -188,7 +190,7 @@
                                 <a href="${single_link}" class="text-dark">
                                 <h5 class="mt-3 mb-0">${response[i].title}</h5>
                                 </a>
-                                <a href="" class="text-dark"><span class="short_disc">${response[i].name}</span></a> | <a href="" class="text-dark"><span class="short_disc"> ${date.toDateString()}</span></a>
+                                <a href="${created_by}"><span class="short_disc">${response[i].name}</span></a> | <a href="${created_at}" class="text-dark"><span class="short_disc"> ${date.toDateString()}</span></a>
                             </div>
                         </div>
                     </div>
