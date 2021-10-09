@@ -316,7 +316,7 @@ class DashBoardController extends Controller
     public function user_profile($user_id)
     {
         //user
-        $user=User::where('id',$user_id)->get();
+        $user=User::where('id',$user_id)->first();
         //latest news
         $news = DB::table('posts as p')
         ->join('categories as cat', 'p.category_id', '=', 'cat.id')
