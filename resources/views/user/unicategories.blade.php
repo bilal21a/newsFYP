@@ -49,7 +49,7 @@
             </div>
             @endforeach
             @else
-                 <div><h3>There is no Post for this Category</h3></div>
+                 <div class="text-center"><p>There is no Post for this Category</p></div>
              @endif
          </div>
          {{ $posts_all->links() }}
