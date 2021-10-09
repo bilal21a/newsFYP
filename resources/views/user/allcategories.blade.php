@@ -68,7 +68,7 @@
 
    @endforeach
    @else
-   <div class="container"><h5><centre>There is no Post for this Category</centre></h5></div>
+   <div class="container" style="text-align: center"><h5>There is no Post for this Category</h5></div>
 
    @endif
 
