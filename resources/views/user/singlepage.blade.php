@@ -175,7 +175,7 @@ $name= App\Setting::first();
                                     $date = date('F d, Y', $var_2);
                                     // dd($news_lat);
                             ?>
-                            <small class="sm-size"><a href="{{ url('by_date/'.$news_lat->created_at) }}"><i class="far fa-clock"> {{ $date }}</i></a> |
+                            <small class="sm-size"><a href="{{ url('by_date/'.$news_lat->created_at) }}" class="text-dark"><i class="far fa-clock"> {{ $date }}</i></a> |
                                 {{-- <i class="far fa-user"> Author</i> --}}
 
                                 @if ($news_lat->created_by==null)
