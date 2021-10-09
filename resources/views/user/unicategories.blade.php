@@ -13,6 +13,9 @@
             <h2 class="georgia">{{ $cat_name[0]['name'] }} </h2>
          </div>
          <div class="row">
+             @if ($posts_all->isEmpty())
+
+
             @foreach ($posts_all as $posts)
             <div class="col-md-3 col-sm-6">
                <div class="block-content pb-3 my_card " style="padding-top: 0">
@@ -45,6 +48,9 @@
                </div>
             </div>
             @endforeach
+            @else
+                 <div><h3>There is no Post for this Category</h3></div>
+             @endif
          </div>
          {{ $posts_all->links() }}
       </div>
