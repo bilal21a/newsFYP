@@ -41,6 +41,8 @@ Route::get('categories/{cat_id}', 'CategoryController@show_categories')->name('s
     Route::post('/search', 'HomeController@search')->name('search');
 
 Route::get('api_source/{source}', 'ApiController@api_source')->name('api_source');
+Route::get('by_date/{created_at}', 'PostController@by_date')->name('by_date');
+
 
 
 Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], function () {
@@ -58,10 +60,7 @@ Route::group(['middleware' => 'Illuminate\Auth\Middleware\Authenticate'], functi
     Route::post('profile_name_change', 'ProfileController@profile_name_change')->name('profile_name_change');
 
     //by date
-    Route::get('by_date/{created_at}', 'PostController@by_date')->name('by_date');
-    //by author name
-    Route::get('author_name/{user_id}', 'PostController@author_name')->name('author_name');
-    Route::get('author_name_api/{name}', 'PostController@author_name_api')->name('author_name_api');
+
     //by publish posts
     Route::get('publish_posts', 'PostController@publish_posts')->name('publish_posts');
     //by save posts
