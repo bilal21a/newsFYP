@@ -11,8 +11,10 @@
             <div class="my-3">
                 <img class="img-avatar img-avatar-thumb" src="{{ asset('media/avatars/avatar13.jpg') }}" alt="">
             </div>
-            <h1 class="h2 text-white mb-0">John Parker</h1>
-            <span class="text-white-75">UI Designer</span>
+            <h1 class="h2 text-white mb-0">{{ $user->name }}</h1>
+            @if (isset($user->getRoleNames()[0]))
+            <span class="text-white-75">{{ $user->getRoleNames()[0] }}</span>
+            @endif
         </div>
     </div>
 </div>
@@ -23,19 +25,24 @@
         <div class="row items-push text-center">
             <div class="col-6 col-md-3">
                 <div class="font-size-sm font-w600 text-muted text-uppercase">Published Posts</div>
-                <div class="link-fx font-size-h3 text-primary">17980</div>
+                <div class="link-fx font-size-h3 text-primary">{{ count($publish_posts) }}</div>
             </div>
             <div class="col-6 col-md-3">
                 <div class="font-size-sm font-w600 text-muted text-uppercase">Saved Posts</div>
-                <div class="link-fx font-size-h3 text-primary">27</div>
+                <div class="link-fx font-size-h3 text-primary">{{ count($saved_posts) }}</div>
             </div>
             <div class="col-6 col-md-3">
                 <div class="font-size-sm font-w600 text-muted text-uppercase">Comments</div>
-                <div class="link-fx font-size-h3 text-primary">1360</div>
+                <div class="link-fx font-size-h3 text-primary">{{ count($comments) }}</div>
             </div>
+            <?php
+            $var_1= $user->created_at;
+            $var_2 = strtotime($var_1);
+            $date = date('F d, Y', $var_2);
+        ?>
             <div class="col-6 col-md-3">
                 <div class="font-size-sm font-w600 text-muted text-uppercase">Member Since</div>
-                <div class="link-fx font-size-h3 text-primary">Oct 25, 1999</div>
+                <div class="link-fx font-size-h3 text-primary">{{ $date }}</div>
             </div>
         </div>
     </div>
@@ -53,48 +60,37 @@
                         <i class="far fa-list-alt text-muted mr-1"></i> Posts
                     </h3>
                 </div>
+
                 <div class="block-content">
+                @foreach ($news as $single_news)
                     <div class="font-size-sm push">
                         <div class="row">
                             <div class="col-md-3">
-                                <img src="{{ asset('media/photos/photo14.jpg') }}" alt="" class="stl" >
+                                <img src="{{asset('img/main_image/'. $single_news->main_image)}}" alt="" class="stl" >
                             </div>
                             <div class="col-md-9">
                                 <div class="d-flex justify-content-between mb-2">
                                     <div>
-                                        <a class="font-w600" href="">Fayazul Hasan Chohan appointed Punjab govt spokesperson</a>
+                                        <a class="font-w600" href="">{{ $single_news->title }}</a>
                                     </div>
                                 </div>
-                                <p class="mb-0">Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!</p>
+                                <p class="mb-0">{{ $single_news->short_description }}</p>
+                                <?php
+                                $var_1= $single_news->created_at;
+                                $var_2 = strtotime($var_1);
+                                $date = date('F d, Y', $var_2);
+                            ?>
                                 <div class="d-flex flex-row fs-12">
-                                    <div class="like p-2 "><b><i class="fa fa-clock"></i><span class="ml-1">12 Jan 2020</span></b></div>
+                                    <div class="like p-2 "><b><i class="fa fa-clock"></i><span class="ml-1">{{ $date }}</span></b></div>
                                 </div>
                             </div>
                         </div>
                         <hr>
                     </div>
-                    <div class="font-size-sm push">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <img src="{{ asset('media/photos/photo14.jpg') }}" alt="" class="stl" >
-                            </div>
-                            <div class="col-md-9">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <div>
-                                        <a class="font-w600" href="">Fayazul Hasan Chohan appointed Punjab govt spokesperson</a>
-                                    </div>
-                                </div>
-                                <p class="mb-0">Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!</p>
-                                <div class="d-flex flex-row fs-12">
-                                    <div class="like p-2 "><b><i class="fa fa-clock"></i><span class="ml-1">12 Jan 2020</span></b></div>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="text-center push">
-                        <button type="button" class="btn btn-sm btn-light">Read More..</button>
-                    </div>
+                @endforeach
+                {{ $news->links() }}
+
+
                 </div>
             </div>
 
@@ -110,45 +106,29 @@
                     </h3>
                 </div>
                 <div class="block-content">
+                    @foreach ($comments as $comment)
+
                     <div class="font-size-sm push">
                         <div class="d-flex justify-content-between mb-2">
                             <div>
-                                <a class="font-w600" href="">Fayazul Hasan Chohan appointed Punjab govt spokesperson</a>
+                                <a class="font-w600" href="">{{ App\Post::where('id', $comment->commentable_id)->first()->title }}</a>
                             </div>
                         </div>
-                        <p class="mb-0">Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!</p>
+                        <p class="mb-0">{{ $comment->comment }}</p>
+                        <?php
+                                        $var_1= $comment->created_at;
+                                        $var_2 = strtotime($var_1);
+                                        $date = date('F d, Y', $var_2);
+                                    ?>
                         <div class="d-flex flex-row fs-12">
-                            <div class="like p-2 "><b><i class="fa fa-clock"></i><span class="ml-1">12 Jan 2020</span></b></div>
+                            <div class="like p-2 "><b><i class="fa fa-clock"></i><span class="ml-1">{{ $date }}</span></b></div>
                         </div>
                         <hr>
                     </div>
-                    <div class="font-size-sm push">
-                        <div class="d-flex justify-content-between mb-2">
-                            <div>
-                                <a class="font-w600" href="">Fayazul Hasan Chohan appointed Punjab govt spokesperson</a>
-                            </div>
-                        </div>
-                        <p class="mb-0">Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!</p>
-                        <div class="d-flex flex-row fs-12">
-                            <div class="like p-2 "><b><i class="fa fa-clock"></i><span class="ml-1">12 Jan 2020</span></b></div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="font-size-sm push">
-                        <div class="d-flex justify-content-between mb-2">
-                            <div>
-                                <a class="font-w600" href="">Fayazul Hasan Chohan appointed Punjab govt spokesperson</a>
-                            </div>
-                        </div>
-                        <p class="mb-0">Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!</p>
-                        <div class="d-flex flex-row fs-12">
-                            <div class="like p-2 "><b><i class="fa fa-clock"></i><span class="ml-1">12 Jan 2020</span></b></div>
-                        </div>
-                        <hr>
-                    </div>
-                    <div class="text-center push">
-                        <button type="button" class="btn btn-sm btn-light">Read More..</button>
-                    </div>
+                    @endforeach
+                    {{ $comments->links() }}
+
+
                 </div>
             </div>
             <!-- END Ratings -->

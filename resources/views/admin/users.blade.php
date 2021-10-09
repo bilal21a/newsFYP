@@ -63,7 +63,7 @@
 
                         </td>
                         <td class="font-w600 font-size-sm">
-                            <a href="be_pages_generic_blank.html">{{ $users->name }}</a>
+                            <a href="{{ url('admin/user_profile/'.$users->id) }}">{{ $users->name }}</a>
                         </td>
                         <td class="d-none d-sm-table-cell font-size-sm">
                            {{ $users->email }}

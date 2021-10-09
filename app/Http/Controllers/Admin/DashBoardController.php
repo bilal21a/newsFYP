@@ -324,7 +324,8 @@ class DashBoardController extends Controller
         ->select('cat.name as cat_name','cat.id as cat_id','p.*')
         ->where('user.id', $user_id)
         ->where('p.status', 1)
-        ->latest()->get();
+        ->latest()->paginate(9);
+        // dd($news);
 
 
         //comments
@@ -332,7 +333,8 @@ class DashBoardController extends Controller
         ->join('users as u', 'c.user_id', '=', 'u.id')
         ->join('posts as p', 'c.commentable_id', '=', 'p.id')
         ->select('c.comment','c.created_at','c.commentable_id','u.name','u.profile_pic')
-        ->get()->toArray();
+        ->paginate(5);
+        // dd($comments);
 
 
         $publish_posts=Post::where('created_by',$user_id)->where('status',1)->get();
