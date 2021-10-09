@@ -343,6 +343,7 @@ class DashBoardController extends Controller
         $this->data['comments'] = $comments;
         $this->data['publish_posts'] = $publish_posts;
         $this->data['saved_posts'] = $saved_posts;
+        $this->data['user'] = $user;
 
 
         return view('admin.userprofile',$this->data);
