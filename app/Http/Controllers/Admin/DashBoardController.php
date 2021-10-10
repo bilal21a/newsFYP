@@ -270,6 +270,7 @@ class DashBoardController extends Controller
         Post::where('id',$post_id)->update([
             'status' =>1,
             'approved' => 1,
+            'notify' => 1,
             'created_at' => Carbon::now(),
         ]);
         return redirect()->back();
@@ -294,6 +295,7 @@ class DashBoardController extends Controller
     {
         User::where('id',$user_id)->update([
             'approved' => 1,
+            'notify' => 1
         ]);
         $user=User::find($user_id);
         $user->removeRole('guest');
@@ -333,6 +335,7 @@ class DashBoardController extends Controller
         ->join('users as u', 'c.user_id', '=', 'u.id')
         ->join('posts as p', 'c.commentable_id', '=', 'p.id')
         ->select('c.comment','c.created_at','c.commentable_id','u.name','u.profile_pic')
+        ->where('u.id', $user_id)
         ->paginate(5);
         // dd($comments);
 

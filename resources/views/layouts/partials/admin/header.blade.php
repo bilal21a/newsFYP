@@ -110,14 +110,14 @@
 
             @php
         $posts = Illuminate\Support\Facades\DB::table('posts as p')
-        ->where('p.notify', '!=', null)
+        ->where('p.notify', 1)
         ->join('users as user', 'p.created_by', '=', 'user.id')
         ->select('p.title','p.notify','p.created_at','p.id as post_id','user.profile_pic','user.id as user_id','user.name')
         ->where('p.status', 1)
         ->latest()->take(3)->get();
 
         $comments = Illuminate\Support\Facades\DB::table('comments as c')
-        ->where('c.notify', '!=', null)
+        ->where('c.notify', 1)
         ->join('users as user', 'c.user_id', '=', 'user.id')
         ->join('posts as p', 'c.commentable_id', '=', 'p.id')
         ->select('c.id','c.user_id','c.comment','c.created_at','c.commentable_id','c.notify','user.name','user.profile_pic','p.title as post_title')
@@ -125,7 +125,7 @@
 
 
         $users = Illuminate\Support\Facades\DB::table('users as u')
-        ->where('u.notify', '!=', null)->latest()->take(3)->get();
+        ->where('u.notify', 1)->latest()->take(3)->get();
         // dd($posts);
 
         $count = count($posts) + count($comments) + count($users);

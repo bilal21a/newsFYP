@@ -9,7 +9,11 @@
     <div class="bg-black-50">
         <div class="content content-full text-center">
             <div class="my-3">
-                <img class="img-avatar img-avatar-thumb" src="{{ asset('media/avatars/avatar13.jpg') }}" alt="">
+                @if ($user->profile_pic)
+                <img class="img-avatar img-avatar-thumb" src="{{ asset ('img/profile_image/'.$user->profile_pic) }}" alt="">
+                @else
+                <img class="img-avatar img-avatar-thumb" src="{{ asset ('media/avatars/avatar7.jpg') }}" alt="">
+                @endif
             </div>
             <h1 class="h2 text-white mb-0">{{ $user->name }}</h1>
             @if (isset($user->getRoleNames()[0]))
