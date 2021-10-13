@@ -66,6 +66,8 @@
                 </div>
 
                 <div class="block-content">
+                @if (!$news->isEmpty())
+
                 @foreach ($news as $single_news)
                     <div class="font-size-sm push">
                         <div class="row">
@@ -94,6 +96,9 @@
                 @endforeach
                 {{ $news->links() }}
 
+                @else
+                    <div class="text-center"><h4 >There is no Post for this User</h4></div>
+                @endif
 
                 </div>
             </div>
@@ -110,6 +115,8 @@
                     </h3>
                 </div>
                 <div class="block-content">
+                    @if (!$comments->isEmpty())
+
                     @foreach ($comments as $comment)
 
                     <div class="font-size-sm push">
@@ -132,6 +139,10 @@
                     @endforeach
                     {{ $comments->links() }}
 
+
+                    @else
+                    <div class="text-center"><h6 >There is no Comment for this User</h6></div>
+                    @endif
 
                 </div>
             </div>
