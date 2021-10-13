@@ -273,126 +273,136 @@
                      </td>
                   </tr>
                   <!-- Accept Modal -->
-                  <div class="modal fade" id="accept-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-top" role="document">
-                  <div class="modal-content">
-                  {{-- <form action="{{ route('admin.delete_posts') }}" method="POST" enctype="multipart/form-data"> --}}
-                  {{-- @csrf --}}
-                  <div class="block block-themed block-transparent mb-0">
-                  <div class="block-header bg-success">
-                  <h3 class="block-title">
-                  <i class="fa fa-fw fa-check mr-1"></i> Accept Post
-                  </h3>
-                  {{-- @php
-                  dd($post->id);
-                  @endphp --}}
-                  <input type="hidden" class="form-control" id="example-text-input" name="id" placeholder="" value="{{ $post->id }}">
-                  <div class="block-options">
-                  <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
-                  <i class="fa fa-fw fa-times"></i>
-                  </button>
-                  </div>
-                  </div>
-                  <div class="block-content">
-                  <p>Do you want to accept...</p>
-                  </div>
-                  <input class="form-control" type="hidden" id="message-id" name="id" value="">
-                  <div class="block-content block-content-full text-right border-top">
-                  <button type="button" class="btn btn-sm btn-outline-success mr-2" data-dismiss="modal">Cancel</button>
-                  <a href="{{ url('admin/post_accept/'.$post->id) }}"><button type="button" class="btn btn-sm btn-success"><i class="fa fa-fw fa-check mr-1"></i> Accept</button></a>
-                  </div>
-                  </div>
-                  {{-- </form> --}}
-                  </div>
-                  </div>
-                  </div>
-                  <!-- END Accept Modal -->
-                  <!-- Reject Modal -->
-                  <div class="modal fade" id="reject-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-top" role="document">
-                  <div class="modal-content">
-                  {{-- <form action="{{ route('admin.delete_posts') }}" method="POST" enctype="multipart/form-data"> --}}
-                  {{-- @csrf --}}
-                  <div class="block block-themed block-transparent mb-0">
-                  <div class="block-header bg-danger">
-                  <h3 class="block-title">
-                  <i class="fa fa-fw fa-times mr-1"></i> Reject Post
-                  </h3>
-                  {{-- @php
-                  dd($post->id);
-                  @endphp --}}
-                  <input type="hidden" class="form-control" id="example-text-input" name="id" placeholder="" value="{{ $post->id }}">
-                  <div class="block-options">
-                  <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
-                  <i class="fa fa-fw fa-times"></i>
-                  </button>
-                  </div>
-                  </div>
-                  <div class="block-content">
-                  <p>Do you want to reject...</p>
-                  </div>
-                  <input class="form-control" type="hidden" id="message-id" name="id" value="">
-                  <div class="block-content block-content-full text-right border-top">
-                  <button type="button" class="btn btn-sm btn-outline-danger mr-2" data-dismiss="modal">Cancel</button>
-                  <a href="{{ url('admin/post_reject/'.$post->id)  }}"><button type="button" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-times mr-1"></i> Reject</button></a>
-                  </div>
-                  </div>
-                  {{-- </form> --}}
-                  </div>
-                  </div>
-                  </div>
-                  <!-- END Reject Modal -->
-                  @endforeach
-                  @else
-                  <tr>
-                  <td colspan="4">
-                  <center><h5>No New Post Found for Approval</h5></center>
-                  </td>
-                  </tr>
-                  @endif
-               </tbody>
-            </table>
-            @if(count($post_all) > 6)
-            <div class="p-2 border-top">
-            <a class="btn btn-sm btn-light btn-block text-center" href="{{ route('admin.post_approval') }}">
-            <i class="fa fa-fw fa-arrow-down mr-1"></i> Load More..
-            </a>
-            </div>
-            @endif
-            </div>
-         </div>
-      </div>
-      <!-- END Latest Posts -->
-   </div>
-   <!-- END Customers and Latest Orders -->
-</div>
-<!-- END Page Content -->
-@endsection
-@section('js')
-@endsection
-@section('internal_css')
-<style>
-   .srch {
-   border: none;
-   background-color: transparent;
-   outline: none;
-   }
-   .srch:focus {
-   border: none;
-   }
-   .three_dots {
-   overflow: hidden;
-   width:150px;
-   display: -webkit-box;
-   -webkit-line-clamp: 3;
-   -webkit-box-orient: vertical;
-   }
-   .three_dots2 {
-   overflow: hidden;
-   width: 214px;
-   display: contents;
-   -webkit-line-clamp: 3;
-   -webkit-box-orient: vertical;
-   }
-</style>
-@endsection
+<div class="modal fade" id="accept-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-top" role="document">
+       <div class="modal-content">
+          {{--
+          <form action="{{ route('admin.delete_posts') }}" method="POST" enctype="multipart/form-data">
+             --}}
+             {{-- @csrf --}}
+             <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-success">
+                   <h3 class="block-title">
+                      <i class="fa fa-fw fa-check mr-1"></i> Accept Post
+                   </h3>
+                   {{-- @php
+                   dd($post->id);
+                   @endphp --}}
+                   <input type="hidden" class="form-control" id="example-text-input" name="id" placeholder="" value="{{ $post->id }}">
+                   <div class="block-options">
+                      <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                      <i class="fa fa-fw fa-times"></i>
+                      </button>
+                   </div>
+                </div>
+                <div class="block-content">
+                   <p>Do you want to accept...</p>
+                </div>
+                <input class="form-control" type="hidden" id="message-id" name="id" value="">
+                <div class="block-content block-content-full text-right border-top">
+                   <button type="button" class="btn btn-sm btn-outline-success mr-2" data-dismiss="modal">Cancel</button>
+                   <a href="{{ url('admin/post_accept/'.$post->id) }}"><button type="button" class="btn btn-sm btn-success"><i class="fa fa-fw fa-check mr-1"></i> Accept</button></a>
+                </div>
+             </div>
+             {{--
+          </form>
+          --}}
+       </div>
+    </div>
+ </div>
+ <!-- END Accept Modal -->
+ <!-- Reject Modal -->
+ <div class="modal fade" id="reject-modal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-top" role="document">
+       <div class="modal-content">
+          {{--
+          <form action="{{ route('admin.delete_posts') }}" method="POST" enctype="multipart/form-data">
+             --}}
+             {{-- @csrf --}}
+             <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-danger">
+                   <h3 class="block-title">
+                      <i class="fa fa-fw fa-times mr-1"></i> Reject Post
+                   </h3>
+                   {{-- @php
+                   dd($post->id);
+                   @endphp --}}
+                   <input type="hidden" class="form-control" id="example-text-input" name="id" placeholder="" value="{{ $post->id }}">
+                   <div class="block-options">
+                      <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                      <i class="fa fa-fw fa-times"></i>
+                      </button>
+                   </div>
+                </div>
+                <div class="block-content">
+                   <p>Do you want to reject...</p>
+                </div>
+                <input class="form-control" type="hidden" id="message-id" name="id" value="">
+                <div class="block-content block-content-full text-right border-top">
+                   <button type="button" class="btn btn-sm btn-outline-danger mr-2" data-dismiss="modal">Cancel</button>
+                   <a href="{{ url('admin/post_reject/'.$post->id)  }}"><button type="button" class="btn btn-sm btn-danger"><i class="fa fa-fw fa-times mr-1"></i> Reject</button></a>
+                </div>
+             </div>
+             {{--
+          </form>
+          --}}
+       </div>
+    </div>
+ </div>
+ <!-- END Reject Modal -->
+ @endforeach
+ @else
+ <tr>
+    <td colspan="4">
+       <center>
+          <h5>No New Post Found for Approval</h5>
+       </center>
+    </td>
+ </tr>
+ @endif
+ </tbody>
+ </table>
+ @if(count($post_all) > 6)
+ <div class="p-2 border-top">
+    <a class="btn btn-sm btn-light btn-block text-center" href="{{ route('admin.post_approval') }}">
+    <i class="fa fa-fw fa-arrow-down mr-1"></i> Load More..
+    </a>
+ </div>
+ @endif
+ </div>
+ </div>
+ </div>
+ <!-- END Latest Posts -->
+ </div>
+ <!-- END Customers and Latest Orders -->
+ </div>
+ <!-- END Page Content -->
+ @endsection
+ @section('js')
+ @endsection
+ @section('internal_css')
+ <style>
+    .srch {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    }
+    .srch:focus {
+    border: none;
+    }
+    .three_dots {
+    overflow: hidden;
+    width:150px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    }
+    .three_dots2 {
+    overflow: hidden;
+    width: 214px;
+    display: contents;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    }
+ </style>
+ @endsection
