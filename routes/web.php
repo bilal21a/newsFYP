@@ -20,7 +20,7 @@ use App\Http\Controllers\Admin\ApiPostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('admin_Profile', function () {return view('admin.userprofile');});
+Route::get('comments12', function () {return view('admin.comments');});
 
 
 
