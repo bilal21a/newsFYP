@@ -14,7 +14,7 @@
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
             <h1 class="flex-sm-fill h3 my-2">
-                Comments
+                Roles & Permissions
             </h1>
             <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#add-modal">
@@ -54,30 +54,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($rp as $key=>$role)
 
                     <tr>
-                        <td class="text-center font-size-sm">{{ $key }}</td>
+                        <td class="text-center font-size-sm">12</td>
                         <td class="font-w600 font-size-sm">
-                            <a href="be_pages_generic_blank.html">{{ $role->name }}</a>
+                            <a href="be_pages_generic_blank.html">bila</a>
                         </td>
-                        @php
-                           $perm= $role->getAllPermissions();
-                        //    dd($perm);
-                        @endphp
+
                         <td class="d-none d-sm-table-cell font-size-sm">
                             <ul>
-                                @foreach ($perm as $permission)
-                                <li>{{ $permission->name }}</li>
-                                @endforeach
+                                <li>
+                                    {{-- {{ $permission->name }} --}}
+                                </li>
                             </ul>
                         </td>
                         <td class="d-none d-sm-table-cell">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#edit-modal{{ $role->id }}">
+                                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#edit-modal">
                                     <i class="fa fa-fw fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#delete-modal{{ $role->id }}" >
+                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#delete-modal" >
                                     <i class="fa fa-fw fa-times"></i>
                                 </button>
                             </div>
@@ -85,7 +81,7 @@
                         </td>
                     </tr>
                     <!-- Edit Modal -->
-    <div class="modal fade" id="edit-modal{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
                 <form action="{{ route('admin.edit_role') }}" method="POST" enctype="multipart/form-data">
@@ -104,20 +100,14 @@
                         <div class="block-content">
                             <div class="form-group">
                                 <label for="message-email">Name</label>
-                                <input class="form-control" type="text" name="role_name" id="message-email" value="{{ $role->name }}">
-                                <input class="form-control" type="hidden" name="role_id" value="{{ $role->id }}">
+                                <input class="form-control" type="text" name="role_name" id="message-email" value="bila">
+                                <input class="form-control" type="hidden" name="role_id" value="1">
                             </div>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="example-text-input" class="main_label">Permissions</label>
-                                    <select class="js-select2 form-control " id="edit_perm{{ $role->id }}" name="edit_perm[]" style="width: 100%;" data-placeholder="Choose Skills" multiple>
-                                       @php
-                                       $allperms= Spatie\Permission\Models\Permission::get();
-                                        $perm= $role->getAllPermissions();
-                                       @endphp
-                                       @foreach ($allperms as $allperm )
-                                            <option  value="{{ $allperm->id }}">{{ $allperm->name }}</option>
-                                       @endforeach
+                                    {{-- <select class="js-select2 form-control " id="edit_perm{{ $role->id }}" name="edit_perm[]" style="width: 100%;" data-placeholder="Choose Skills" multiple> --}}
+                                            <option  value="1">12</option>
                                     </select>
 
                                 </div>
@@ -137,7 +127,7 @@
     <!-- END Edit Modal -->
 
     <!-- Delete Modal -->
-    <div class="modal fade" id="delete-modal{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
         <div class="modal-dialog modal-dialog-top" role="document">
             <div class="modal-content">
                 <form action="{{ route('admin.delete_role') }}" method="POST" enctype="multipart/form-data">
@@ -156,7 +146,7 @@
                         <div class="block-content">
                             <p>Do you want to delete...</p>
                         </div>
-                        <input class="form-control" type="hidden" id="message-id" name="role_id" value="{{ $role->id }}">
+                        <input class="form-control" type="hidden" id="message-id" name="role_id" value="1">
 
                         <div class="block-content block-content-full text-right border-top">
                             <button type="button" class="btn btn-sm btn-outline-danger mr-2" data-dismiss="modal">Cancel</button>
@@ -170,7 +160,6 @@
         </div>
     </div>
     <!-- END Delte Modal -->
-    @endforeach
 
                 </tbody>
             </table>
@@ -204,12 +193,7 @@
                                 <div class="col-lg-12">
                                     <label for="example-text-input" class="main_label">Permissions</label>
                                     <select class="js-select2 form-control " id="add_perm" name="add_perm[]" style="width: 100%;" data-placeholder="Choose Skills" multiple>
-                                        @php
-                                       $allperms= Spatie\Permission\Models\Permission::get();
-                                       @endphp
-                                       @foreach ($allperms as $allperm )
-                                            <option  value="{{ $allperm->id }}">{{ $allperm->name }}</option>
-                                       @endforeach
+
                                     </select>
                                 </div>
                             </div>
