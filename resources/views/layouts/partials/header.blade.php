@@ -37,11 +37,10 @@
             <div class="content">
 
               <div class="row">
-
                 <ul class="mega-links">
                     @foreach ($cats_1 as $cat1)
                     <li><a href="{{ url('categories/'.$cat1['id']) }}">{{ $cat1['name'] }}</a></li>
-                @endforeach
+                    @endforeach
                 </ul>
               </div>
               <div class="row">
