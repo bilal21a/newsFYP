@@ -14,22 +14,10 @@
     <div class="content content-full">
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
             <h1 class="flex-sm-fill h3 my-2">
-                Roles & Permissions
+                Comments
             </h1>
-            <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#add-modal">
-                    <i class="fa fa-fw fa-plus"></i>
-                </button>
-            </div>
-            {{-- <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-alt">
-                    <li class="breadcrumb-item">Tables</li>
-                    <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href=""> Roles & Permissions
-                        </a>
-                    </li>
-                </ol>
-            </nav> --}}
+
+
         </div>
     </div>
 </div>
@@ -46,85 +34,34 @@
             <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                 <thead>
                     <tr>
-                        <th class="text-center" style="width: 10%;">#</th>
-                        <th style="width: 40%;"> Roles</th>
-                        <th class="d-none d-sm-table-cell" style="width: 40%;">Permissions</th>
+
+
+                        <th class="d-none d-sm-table-cell" style="width: 50%;">Post</th>
+                        <th class="d-none d-sm-table-cell" style="width: 50%;">Comment</th>
                         {{-- <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th> --}}
-                        <th style="width: 10%;">Action</th>
+
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr>
-                        <td class="text-center font-size-sm">12</td>
+
+
+
                         <td class="font-w600 font-size-sm">
-                            <a href="be_pages_generic_blank.html">bila</a>
-                        </td>
-
-                        <td class="d-none d-sm-table-cell font-size-sm">
-                            <ul>
-                                <li>
-                                    {{-- {{ $permission->name }} --}}
-                                </li>
-                            </ul>
-                        </td>
-                        <td class="d-none d-sm-table-cell">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-success"  data-toggle="modal" data-target="#edit-modal">
-                                    <i class="fa fa-fw fa-pencil-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#delete-modal" >
-                                    <i class="fa fa-fw fa-times"></i>
-                                </button>
-                            </div>
-                            {{-- <span class="badge badge-info">Business</span> --}}
-                        </td>
+                            <a href="be_pages_generic_blank.html">Post title will be shown here</a>
+                        </td >
+                        <td class="d-none d-sm-table-cell font-size-sm" >
+                            <p style="line-height:0px !important;"> <a href="be_pages_generic_blank.html" class="text-success">(User name)</a> bila anwar group leader hai nids shnjw nwknskw nj
+                                <i class="fa fa-trash-alt text-danger" style="line-height:0px !important; float: right; margin: 0 20px; cursor: pointer;" data-toggle="modal" data-target="#delete-modal"></i>
+                            </p>
+                                <p style="line-height:0px !important;"> <a href="be_pages_generic_blank.html" class="text-success">(User name)</a> bila anwar group leader hai
+                                        <i class="fa fa-trash-alt text-danger" style="line-height:0px !important; float: right; margin: 0 20px; cursor: pointer;" data-toggle="modal" data-target="#delete-modal"></i>
+                                    </p>
+                                <p  data-toggle="modal" data-target="#modal-block-large" class="text-primary" style="cursor: pointer">Show all >></p>
+                            </td>
                     </tr>
-                    <!-- Edit Modal -->
-    <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-top" role="document">
-            <div class="modal-content">
-                <form action="{{ route('admin.edit_role') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-success">
-                            <h3 class="block-title">
-                                <i class="fa fa-pencil-alt mr-1"></i> Edit Role & Permission
-                            </h3>
-                            <div class="block-options">
-                                <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
-                                    <i class="fa fa-fw fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="block-content">
-                            <div class="form-group">
-                                <label for="message-email">Name</label>
-                                <input class="form-control" type="text" name="role_name" id="message-email" value="bila">
-                                <input class="form-control" type="hidden" name="role_id" value="1">
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <label for="example-text-input" class="main_label">Permissions</label>
-                                    {{-- <select class="js-select2 form-control " id="edit_perm{{ $role->id }}" name="edit_perm[]" style="width: 100%;" data-placeholder="Choose Skills" multiple> --}}
-                                            <option  value="1">12</option>
-                                    </select>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block-content block-content-full text-right border-top">
-                            <button type="button" class="btn btn-sm btn-outline-success mr-2" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-success">
-                                <i class="fa fa-pencil-alt mr-1"></i> Edit
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- END Edit Modal -->
 
     <!-- Delete Modal -->
     <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
@@ -135,7 +72,7 @@
                     <div class="block block-themed block-transparent mb-0">
                         <div class="block-header bg-danger">
                             <h3 class="block-title">
-                                <i class="fa fa-trash mr-1"></i> Delete Permmission
+                                <i class="fa fa-trash mr-1"></i> Delete Comment
                             </h3>
                             <div class="block-options">
                                 <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
@@ -161,55 +98,42 @@
     </div>
     <!-- END Delte Modal -->
 
+     <!-- Show all Modal -->
+     <div class="modal" id="modal-block-large" tabindex="-1" role="dialog" aria-labelledby="modal-block-large" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-primary-dark">
+                        <h3 class="block-title"> <a href="#" class="text-light"> Post title will be shown here </a></h3>
+                        <div class="block-options">
+                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                <i class="fa fa-fw fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="block-content font-size-sm">
+                        <p> <a href="be_pages_generic_blank.html" class="text-success">(User name)</a> bila anwar group leader hai
+                            <a><i class="fa fa-trash-alt text-danger" style="line-height:0px !important; float: right; margin: 0 20px; cursor: pointer;"></i></a>
+                        </p>
+                        <p> <a href="be_pages_generic_blank.html" class="text-success">(User name)</a> bila anwar group leader hai
+                            <a><i class="fa fa-trash-alt text-danger" style="line-height:0px !important; float: right; margin: 0 20px; cursor: pointer;"></i></a>
+                        </p>
+                    </div>
+                    <div class="block-content block-content-full text-right ">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Show all Modal -->
+
                 </tbody>
             </table>
         </div>
     </div>
 </div>
     <!-- END Dynamic Table Full -->
-    <!-- add Modal -->
-    <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="one-inbox-new-message" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-top" role="document">
-            <div class="modal-content">
-                <form action="{{ route('admin.add_role') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="block block-themed block-transparent mb-0">
-                        <div class="block-header bg-success">
-                            <h3 class="block-title">
-                                <i class="fa fa-plus mr-1"></i> Add Role
-                            </h3>
-                            <div class="block-options">
-                                <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
-                                    <i class="fa fa-fw fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="block-content">
-                            <div class="form-group">
-                                <label for="message-email">Name</label>
-                                <input class="form-control" type="text" id="message-email" value="" name="role_name" placeholder="Role Name">
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <label for="example-text-input" class="main_label">Permissions</label>
-                                    <select class="js-select2 form-control " id="add_perm" name="add_perm[]" style="width: 100%;" data-placeholder="Choose Skills" multiple>
 
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="block-content block-content-full text-right border-top">
-                            <button type="button" class="btn btn-sm btn-outline-success mr-2" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-success">
-                                <i class="fa fa-plus mr-1"></i> Add
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- END add Modal -->
 
     @if (session('error'))
     <input type="hidden" id="errors" value="{{ session('error') }}">
