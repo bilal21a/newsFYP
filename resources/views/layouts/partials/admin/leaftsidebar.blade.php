@@ -89,16 +89,24 @@
                 </a>
             </li>
             <li class="nav-main-item">
-                <a class="nav-main-link" href="{{ url('admin/rolespermission') }}">
+                <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false">
                     <i class="nav-main-link-icon fa fa-tasks"></i>
                     <span class="nav-main-link-name">Roles & Permissions</span>
                 </a>
-            </li>
-            <li class="nav-main-item">
-                <a class="nav-main-link" href="{{ url('admin/permission') }}">
-                    <i class="nav-main-link-icon fa fa-tasks"></i>
-                    <span class="nav-main-link-name">Permissions</span>
-                </a>
+                <ul class="nav-main-submenu">
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ url('admin/rolespermission') }}">
+                            <i class="nav-main-link-icon fa fa-tasks"></i>
+                            <span class="nav-main-link-name">Roles & Permissions</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="{{ url('admin/permission') }}">
+                            <i class="nav-main-link-icon fa fa-user-shield"></i>
+                            <span class="nav-main-link-name">Permissions</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li class="nav-main-item">
