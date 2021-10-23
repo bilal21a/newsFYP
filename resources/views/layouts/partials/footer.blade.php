@@ -33,9 +33,12 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-widget">
                         <h3 class="title">Categories </h3>
+                        {{-- @php
+                            dd($category_topFour);
+                        @endphp --}}
                         <ul>
                             @foreach ($category_topFour as $categories)
-                            <li><a href="#">{{ $categories['name'] }}</a></li>
+                            <li><a href="{{ url('categories/'.$categories['id']) }}">{{ $categories['name'] }}</a></li>
                             @endforeach
 
                         </ul>
