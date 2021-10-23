@@ -202,5 +202,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     //---UserProfile
     Route::get('/user_profile/{user_id}', [DashBoardController::class, 'user_profile'])->name('user_profile');
+    //---- Comment
+    Route::get('/comments', [DashBoardController::class, 'comments'])->name('comments');
 
 });

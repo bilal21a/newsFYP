@@ -56,7 +56,7 @@
                     <tr>
                         <td class="text-center font-size-sm">{{ $permissions->id }}</td>
                         <td class="font-w600 font-size-sm">
-                            <a href="be_pages_generic_blank.html">{{ $permissions->name }}</a>
+                            {{ $permissions->name }}
                         </td>
                         <td class="d-none d-sm-table-cell font-size-sm">
                             <p>{{ $permissions->description }}</p>

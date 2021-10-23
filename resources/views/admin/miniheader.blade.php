@@ -109,7 +109,7 @@
 
                     </td>
                     <td class="font-w600 font-size-sm">
-                        <a href="be_pages_generic_blank.html">{{ $header->source_name }}</a>
+                       {{ $header->source_name }}
                     </td>
                     <td class="d-none d-sm-table-cell font-size-sm">
                        {{ $header->source_api_name }}

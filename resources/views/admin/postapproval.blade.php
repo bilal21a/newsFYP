@@ -45,10 +45,10 @@
 
                 </td>
                   <td class="d-none d-sm-table-cell text- ">
-                     <p> {{ $post->title }}</p>
+                    <a href="{{ url('single_post/'.$post->id) }}"><p> {{ $post->title }}</p></a>
                   </td>
                   <td>
-                     <span class="font-w600">{{ App\User::find($post->created_by)->name }}</span>
+                     <a href="{{ url('author_name/'.$post->created_by) }}"> <span class="font-w600">{{ App\User::find($post->created_by)->name }}</span></a>
                   </td>
                   <td class="d-none d-sm-table-cell">
                      <span class="font-size-sm text-muted">today</span>

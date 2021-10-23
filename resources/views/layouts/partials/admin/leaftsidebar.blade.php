@@ -78,6 +78,12 @@
                                 <span class="nav-main-link-name">Post Request</span>
                             </a>
                         </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ url('admin/comments') }}">
+                                <i class="nav-main-link-icon fa fa-comments"></i>
+                                <span class="nav-main-link-name">Comments</span>
+                            </a>
+                        </li>
                     </li>
                 </ul>
             </li>

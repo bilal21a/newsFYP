@@ -20,14 +20,7 @@
                 </button>
             </div>
 
-            {{-- <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                <ol class="breadcrumb breadcrumb-alt">
-                    <li class="breadcrumb-item">Tables</li>
-                    <li class="breadcrumb-item" aria-current="page">
-                        <a class="link-fx" href="">Categories</a>
-                    </li>
-                </ol>
-            </nav> --}}
+
         </div>
     </div>
 </div>
@@ -38,13 +31,8 @@
     <!-- Dynamic Table Full -->
     <div class="block">
         <div class="block-header" >
-            {{-- <h3 class="block-title">Categories </h3> --}}
-            {{-- <small class="d-block d-sm-inline-block mt-2 mt-sm-0 font-size-base font-w400 text-muted"> --}}
-
-            {{-- </small> --}}
         </div>
         <div class="block-content block-content-full">
-            <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
             <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                 <thead>
                     <tr>
@@ -59,7 +47,7 @@
 
                     <tr>
                         <td class="font-w600 font-size-sm">
-                            <a href="">{{ $cat->name }}</a>
+                            {{ $cat->name }}
                         </td>
                         <td class="d-none d-sm-table-cell font-size-sm">
 

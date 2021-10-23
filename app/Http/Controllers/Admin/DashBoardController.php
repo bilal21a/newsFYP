@@ -351,6 +351,11 @@ class DashBoardController extends Controller
         $this->data['user'] = $user;
 
 
-        return view('admin.userprofile',$this->data);
+        return view('admin.userprofile', $this->data);
+    }
+
+    public function comments()
+    {
+        return view("admin.comments");
     }
 }
