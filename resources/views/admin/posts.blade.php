@@ -64,13 +64,13 @@
 
                         </td>
                         <td class="font-w600 font-size-sm">
-                            <a href="">{{ $post->title }}</a>
+                            <a href="{{ url('single_post/'.$post->id) }}">{{ $post->title }}</a>
                         </td>
                         <td class="d-none d-sm-table-cell font-size-sm">
                             @if ($post->author_name_api!=null)
                             <a href="">{{ $post->author_name_api }} </a><span class="badge badge-danger badge-pill"> api</span>
                             @else
-                            <a href="">{{ App\User::find($post->created_by)->name }} </a>
+                            <a href="{{ url('author_name/'.$post->created_by) }}">{{ App\User::find($post->created_by)->name }} </a>
                             @endif
                         </td>
                         <td class="d-none d-sm-table-cell">

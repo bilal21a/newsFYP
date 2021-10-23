@@ -23,7 +23,9 @@
          <table class="table table-striped table-hover table-borderless table-vcenter font-size-sm mb-0">
             <thead class="thead-dark">
                <tr class="text-uppercase">
-                  <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 50%;">Title</th>
+                  <th class="text-center" style="width: 10%;">
+                    <i class="far fa-image fa-2x"></i></th>
+                  <th class="d-none d-sm-table-cell font-w700 text-center" style="width: 40%;">Title</th>
                   <th class="font-w700" style="width: 20%;">Author</th>
                   <th class="d-none d-sm-table-cell font-w700" style="width: 10%;">Date</th>
                   <th class="font-w700 text-center" style="width: 20%;">Action</th>
@@ -33,6 +35,15 @@
                @if (!$posts->isEmpty())
                @foreach ($posts as $post)
                <tr>
+                <td class="text-center">
+
+                    @if ($post->main_image)
+                    <img class="img_post" src="{{ asset ('img/main_image/'.$post->main_image) }}" alt="">
+                    @else
+                    <img class="img_post" src="{{ asset ('img/deafault_post.png') }}" alt="">
+                    @endif
+
+                </td>
                   <td class="d-none d-sm-table-cell text- ">
                      <p> {{ $post->title }}</p>
                   </td>
@@ -166,5 +177,8 @@
    -webkit-line-clamp: 3;
    -webkit-box-orient: vertical;
    }
+   .img_post{
+    width: 90px;
+    height: 50px;
 </style>
 @endsection
