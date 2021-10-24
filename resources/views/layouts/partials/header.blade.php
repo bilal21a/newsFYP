@@ -177,8 +177,14 @@
       </ul>
 
       <label for="menu-btn" class="stylework menu-btn"><i class="fas fa-bars"></i></label>
+      @php
+        $logo = App\Setting::first();
+      @endphp
+      <div class="logo logo2"><a href="#">
+        <img src="{{ asset('img/system_image/front_logo.jpg') }}" alt=""></a></div>
 
-      <div class="logo logo2"><a href="#">LOGO</a></div>
+@if (Auth::user())
+
 
       <!-- Drop Down User Hamberger -->
       <div class="showdet2 dropdown d-inline-block">
@@ -225,7 +231,10 @@
         </div>
       </div>
 <!-- Drop Down User End Hamberger -->
-
+  {{-- @else
+  <li><a href="{{ route('login') }}">Login</a></li>
+  <li><a href="{{ route('register') }}">Signup</a></li> --}}
+@endif
 
   </div>
   </nav>
