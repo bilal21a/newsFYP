@@ -172,58 +172,55 @@
   </div>
   <!-- END Notifications Dropdown -->
 @endif
-
-
       </ul>
-
       <label for="menu-btn" class="stylework menu-btn"><i class="fas fa-bars"></i></label>
       @php
         $logo = App\Setting::first();
       @endphp
       <div class="logo logo2"><a href="#">
         <img src="{{ asset('img/system_image/front_logo.jpg') }}" alt=""></a></div>
-
 @if (Auth::user())
-
-
       <!-- Drop Down User Hamberger -->
       <div class="showdet2 dropdown d-inline-block">
         <button type="button" class="btn btn-sm btn-work" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="rounded" src="assets/media/avatars/avatar10.jpg" alt="Header Avatar" style="width: 18px;">
-            <span class="d-none d-sm-inline-block ml-1">Adam</span>
+          @if (Auth::user()->profile_pic==null)
+          <img class="rounded" src="{{asset('default.png')}}" alt="Header Avatar" style="width: 18px;">
+           @else
+          <img class="rounded" src="{{asset('img/profile_image/'. Auth::user()->profile_pic)}}" alt="Header Avatar" style="width: 18px;">
+           @endif
+            <span class="d-none d-sm-inline-block ml-1">{{ Auth::user()->name }}</span>
             <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
         </button>
         <div class="dropdown-menu dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="page-header-user-dropdown">
             <div class="p-3 text-center bg-primary">
-                <img class="img-avatar img-avatar48 img-avatar-thumb" src="assets/media/avatars/avatar10.jpg" alt="">
+              @if (Auth::user()->profile_pic==null)
+              <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('default.png')}}" alt="Header Avatar" >
+              @else
+              <img class="img-avatar img-avatar48 img-avatar-thumb" src="{{asset('img/profile_image/'.Auth::user()->profile_pic)}}" alt="Header Avatar" >
+              @endif
             </div>
             <div class="p-2">
                 <h5 class="dropdown-header text-uppercase">User Options</h5>
-                <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_inbox.html">
-                    <span>Inbox</span>
+                <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('your_comments') }}">
+                    <span>Comments</span>
                     <span>
-                        <span class="badge badge-pill badge-primary">3</span>
                         <i class="si si-envelope-open ml-1"></i>
                     </span>
                 </a>
-                <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="be_pages_generic_profile.html">
-                    <span>Profile</span>
+                <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('publish_posts') }}">
+                    <span>Posts</span>
                     <span>
-                        <span class="badge badge-pill badge-success">1</span>
+                        {{-- <span class="badge badge-pill badge-success">1</span> --}}
                         <i class="si si-user ml-1"></i>
                     </span>
                 </a>
-                <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ route('profile') }}">
                     <span>Settings</span>
                     <i class="si si-settings"></i>
                 </a>
                 <div role="separator" class="dropdown-divider"></div>
                 <h5 class="dropdown-header text-uppercase">Actions</h5>
-                <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="op_auth_lock.html">
-                    <span>Lock Account</span>
-                    <i class="si si-lock ml-1"></i>
-                </a>
-                <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="op_auth_signin.html">
+                <a class="heightwork dropdown-item d-flex align-items-center justify-content-between" href="{{ url('user_logout') }}">
                     <span>Log Out</span>
                     <i class="si si-logout ml-1"></i>
                 </a>
