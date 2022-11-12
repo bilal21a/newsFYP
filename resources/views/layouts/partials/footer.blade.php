@@ -56,11 +56,11 @@
                             <a class="text-success" href="callto:+123-456-7890" style="font-weight: 100;">  +123-456-7890</a>
                             </i></p>
                             <div class="social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook"></i></a>
-                                <a href=""><i class="fab fa-linkedin"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
+                                <a ><i class="fab fa-twitter"></i></a>
+                                <a ><i class="fab fa-facebook"></i></a>
+                                <a ><i class="fab fa-linkedin"></i></a>
+                                <a ><i class="fab fa-instagram"></i></a>
+                                <a ><i class="fab fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
