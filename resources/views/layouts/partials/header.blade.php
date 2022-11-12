@@ -11,7 +11,7 @@
       <ul class="nav-links">
         <label for="close-btn" class="stylework close-btn"><i class="fas fa-times"></i></label>
         <li><a href="{{ url('/') }}">Home</a></li>
-        <li><a href="#">About</a></li>
+        {{-- <li><a href="#">About</a></li> --}}
         <li>
           <a href="#" class="desktop-item">Menu</a>
           <input type="checkbox" id="showDrop">

@@ -106,7 +106,7 @@ div.scrollmenu a:hover {
   line-height: 70px;
   margin: auto;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
 }
 .heightwork{
