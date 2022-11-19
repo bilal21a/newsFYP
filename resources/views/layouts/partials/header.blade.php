@@ -5,7 +5,7 @@
         @endphp
         {{-- <img src="{{ asset('img/system_image/front_logo.jpg') }}" alt=""> --}}
         <div class="logo logo1"><a href="#">
-        <img src="{{ asset('img/system_image/front_logo.jpg') }}" alt=""></a></div>
+        <img src="{{ asset('img/system_image/front_logo.png') }}" style="    height: 54px;" alt=""></a></div>
       <input type="radio" name="slider" id="menu-btn">
       <input type="radio" name="slider" id="close-btn">
       <ul class="nav-links">

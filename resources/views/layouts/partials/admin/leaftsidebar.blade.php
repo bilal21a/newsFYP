@@ -8,10 +8,10 @@
         @endphp
          <!-- Logo -->
          <a class="font-w600 text-dual" href="index.html">
-            <i class="fa fa-circle-notch text-primary"></i>
+            {{-- <i class="fa fa-circle-notch text-primary"></i> --}}
             <span class="smini-hide">
                 <span class="font-w700 font-size-h5">
-                    <img  src="{{  asset('img/system_image/admin_logo.jpg')  }}" alt="" style="width: 160px;  margin-left: 6px">
+                    <img  src="{{  asset('img/system_image/admin_logo.png')  }}" alt="" style="width: 37px;  margin-left: 6px">
                 </span>
             </span>
         </a>
